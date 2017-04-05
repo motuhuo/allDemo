@@ -1,3 +1,3 @@
 export function formatDate (date, fmt) {
-  console.log('12')
+  console.log('12');
 }
