@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			div{
+				width:1200px;
+				margin:0 auto;
+			}
+			#floorList{
+				display:none;
+				position:fixed;
+				left:100px;
+				top:50%;
+				margin-top:-165px;
+				list-style:none;
+				width:50px;
+				height:330px;
+			}
+			#floorList li{
+				height:30px;
+				text-align:center;
+				line-height:30px;
+				font-size:20px;
+				color:gray;
+				cursor:pointer;
+			}
+			#floorList i{
+				font-style:normal;
+			}
+			#floorList span{
+				display:none;
+			}
+			#floorList li:hover{
+				background:red;
+			}
+			#floorList li:hover i{
+				display:none;
+			}
+			#floorList li:hover span{
+				color: white;
+				display:block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header" style="height:1000px;background:red;"></div>
+		<div style="height:500px;background:green;" class="floor">1F</div>
+		<div style="height:300px;background:yellow;" class="floor">2F</div>
+		<div style="height:1500px;background:blue;" class="floor">3F</div>
+		<div style="height:2500px;background:pink;" class="floor">4F</div>
+		<div style="height:800px;background:gray;" class="floor">5F</div>
+		<div style="height:1300px;background:orange;" class="floor">6F</div>
+		<div style="height:700px;background:purple;" class="floor">7F</div>
+		<div style="height:400px;background:aqua;" class="floor">8F</div>
+		<div style="height:500px;background:saddlebrown;" class="floor">9F</div>
+		<div style="height:700px;background:gold;" class="floor">10F</div>
+		<div style="height:800px;background:darkolivegreen;" class="floor">11F</div>
+		<ul id="floorList">
+			<li><i>1F</i><span>服饰</span></li>
+			<li><i>2F</i><span>美妆</span></li>
+			<li><i>3F</i><span>手机</span></li>
+			<li><i>4F</i><span>数码</span></li>
+			<li><i>5F</i><span>家电</span></li>
+			<li><i>6F</i><span>运动</span></li>
+			<li><i>7F</i><span>居家</span></li>
+			<li><i>8F</i><span>母婴</span></li>
+			<li><i>9F</i><span>食品</span></li>
+			<li><i>10F</i><span>图书</span></li>
+			<li><i>11F</i><span>服务</span></li>
+		</ul>
+		<script src="js/jquery-2.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			lazyDown($(".floor"))
+			function lazyDown(obj){
+				obj.each(function(){
+					this.flag = true;
+				})
+				$(window).scroll(function(){
+					//这个是让侧面的楼层按钮显示
+					if($(window).scrollTop()>=500){
+						$("#floorList").fadeIn(500);
+					}else{
+						$("#floorList").fadeOut(500);
+					}
+					
+					obj.each(function(){
+						var index = $(this).index();//1-11
+						if(($("body").scrollTop()>=obj.eq(index-1).offset().top)&&($("body").scrollTop()<=(obj.eq(index).offset().top+obj.eq(index-1).outerHeight()))){
+							
+							if(this.flag){
+								$.ajax({
+									type:"get",
+									url:"html/floor"+(index)+".html",
+									async:true,
+									beforeSend:function(){//beforeSend 在AJAX请求发送前 调用一个回调函数
+										obj.eq(index-1).css("background","url(img/timg.jpg)");
+									},
+									success:function(msg){
+										setTimeout(function(){
+											obj.eq(index-1).css("background","");
+											obj.eq(index-1).append(msg);
+										},3000)
+									}
+								});
+							}
+							this.flag = false;
+						}
+					})
+				})
+			}
+			$("#floorList li").click(function(){				
+				var index = $(this).index();
+				var oTop = $(".floor").eq(index).offset().top;
+				$("body").animate({scrollTop:oTop},1000,function(){
+					$("#floorList li").each(function(){
+						$(this).css("color","gray").children("span").css("display","none").siblings().css("display","block");
+					})
+					$("#floorList li").eq(index).css("color","red").children("span").css("display","block").siblings().css("display","none");
+				});
+			})
+
+			transform-style:preserve-3d;
+
+
+			
+//			var myJson = {
+//				"name":"syz",
+//				"age":"25",
+//				"job":"teacher"
+//			}
+		</script>
+	</body>
+</html>

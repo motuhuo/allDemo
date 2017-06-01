@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ 
+</style>
+<script type="text/javascript">
+/*
+alert(fn2());
+function fn2(){
+  return function(){
+     alert(1);
+  }
+}
+*/
+
+
+fn2(20)(10);
+function fn2(a){
+   return function(b){
+      alert(a+b);
+   }
+}
+
+
+alert(fn3(5));
+alert(fn3(7));
+function fn3(n){
+   var arr=[];
+   for (var i=0; i<=n; i++){
+      arr.push(i);
+   }
+   return arr;
+}
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

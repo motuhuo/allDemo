@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>		
+		<div class="header"></div>
+		<div class="floor"></div>
+		<div class="floor"></div>
+		<div class="floor"></div>
+		<div class="floor"></div>
+		<div class="floor"></div>
+		<div class="floor"></div>
+		<div class="floor"></div>
+		<div class="floor"></div>
+		<div class="floor"></div>
+		<div class="floor"></div>
+		<div class="floor"></div>
+		<script src="js/jquery-2.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(".floor").each(function(){
+//				index() 是找到当前层级 然后算所有的兄弟元素中排第几个 从0开始算
+				console.log($(this).index(".floor"));
+			})
+		</script>
+	</body>
+</html>

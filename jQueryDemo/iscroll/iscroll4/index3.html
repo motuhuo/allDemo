@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>iScroll</title>
+	<script src="zepto.min.js"></script>
+	<script type="text/javascript" src="iscroll.js"></script>
+	<script src="rem.js"></script>
+	<style>
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		body{
+			font-size: 12px;
+		}
+		.header{
+			height: 0.74rem;
+			background: #0f91c5;
+			box-sizing: border-box;
+			padding-top: 0.16rem;
+		}
+		.hot span{
+			font-size: 0.24rem;
+			float: left;
+			width: 50%;
+			height: 0.44rem;
+			text-align: center;
+			line-height: 0.44rem;
+			color: white;
+		}
+		.hot{
+			width: 2.14rem;
+			height: 0.44rem;
+			margin: 0px auto;
+			overflow: hidden;
+			border-radius: 0.4rem;
+		}
+		.hotNew{
+			background:#79c1df;
+		}
+		.focus{
+			background: #57b2d7;
+		}
+		.nav ul li{
+			float: left;
+			width: 33.33%;
+			list-style: none;
+			height: 0.66rem;
+			line-height: 0.66rem;
+			text-align: center;
+			box-sizing:border-box;
+
+		}
+		.active{
+			border-bottom: 5px solid #0f91c5;
+		}
+		.nav ul{
+			overflow: hidden;
+			border-bottom: 1px solid #ccc;
+		}
+		.footer{
+			height: 0.8rem;
+			width: 6.4rem;
+			border-top: 1px solid #cdcdcd;
+			position: fixed;
+			left:0px;
+			bottom:0px;
+			background-color:#222;
+			background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #999), color-stop(0.02, #666), color-stop(1, #222));
+			background-image:-moz-linear-gradient(top, #999, #666 2%, #222);
+			background-image:-o-linear-gradient(top, #999, #666 2%, #222);
+		}
+		.footer ul{
+			overflow: hidden;
+		}
+		.footer ul li{
+			list-style: none;
+			float: left;
+			width: 20%;
+			height: 0.8rem;
+			font-size: 0.2rem;
+			text-align: center;
+			line-height: 0.8rem;
+			color: white;
+		}
+		.itemList{
+			overflow: hidden;
+		}
+		.itemList li{
+			list-style: none;
+			padding-left: 0.2rem;
+			/*height: 0.7rem;
+			line-height: 0.7rem;*/
+			box-sizing: border-box;
+			border-bottom: 1px solid #999;
+			width: 50%;
+			float: left;
+			height: 2rem;
+		}
+		.itemList li img{
+			width: 100%;
+			height: 100%;
+		}
+		.itemList li p{
+			font-size: 22px;
+		}
+		#scroller div:nth-child(1){
+			height: 0.5rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<div class="hot">
+			<span class="hotNew">热点</span>
+			<span class="focus">关注</span>
+		</div>
+	</div>
+	<div class="nav">
+		<ul>
+			<li class="active">足球现场</li>
+			<li>足球生活</li>
+			<li>足球美女</li>
+		</ul>
+	</div>
+	<div class="main" id="wrapper">
+		<div id="scroller">
+			<div class='refresh'>
+                <i class='loading'></i>
+                <span>下拉刷新…</span>
+            </div>
+			<ul class="itemList">
+				
+			</ul>
+			<div class='refresh'>
+                <i class='loading'></i>
+                <span>上拉刷新…</span>
+            </div>
+		</div>
+	</div>
+	<div class="footer">
+		<ul>
+			<li>首页</li>
+			<li>发现</li>
+			<li>相机</li>
+			<li>我的</li>
+			<li>退出</li>
+		</ul>
+	</div>
+</body>
+<script>
+	var myScroll;
+	var pageIdx = 0;
+	var oScroll = document.getElementById("scroller");
+	$topFresh = $("#wrapper .refresh:first-child");
+    $btmFresh = $("#wrapper .refresh:last-child");
+	function loaded() {
+		var h = $(window).height() - $(".header").height() - $(".nav").height() - $(".footer").height()-10;
+		freshHeight = $topFresh.height();
+		console.log(h);
+		$("#wrapper").height(h);
+		myScroll = new iScroll("wrapper", {
+			useTransition: true,
+			vScrollbar:true,
+			topOffset: freshHeight,  // 
+			// 设置了topOffset之后实际上是让初始化的滚动位置变了（200），
+			// 
+			// topOffset: pullDownOffset,
+			onRefresh: function(){
+                if($topFresh.hasClass("loading")){
+                    $topFresh.removeClass("loading");
+                    $topFresh.addClass("stretch");
+                    $topFresh.find("span").text("下拉刷新…");
+                    this.minScrollY = -freshHeight;
+                }
+                if($btmFresh.hasClass("loading")){
+                    $btmFresh.removeClass("loading");
+                    $btmFresh.addClass("stretch");
+                    $btmFresh.find("span").text("上拉刷新…");
+                }
+                this.maxScrollY += freshHeight;
+            },
+            onScrollMove: function(){
+            	console.log(this.y);
+                   if(this.y > 0 && !$topFresh.hasClass("release")){
+                   		$topFresh.addClass("release");
+                   		$topFresh.find("span").text("释放刷新…");
+                   		this.minScrollY = 0;
+                   }else if(this.y <= 0 && $topFresh.hasClass("release")) {
+                   		$topFresh.removeClass("release");
+                   		$topFresh.addClass("stretch");
+                   		$topFresh.find("span").text("下拉刷新…");
+                   		this.minScrollY = -freshHeight;
+                   }else if(this.y < (this.maxScrollY - freshHeight) && !$btmFresh.hasClass("release")){
+                   		$btmFresh.addClass("release");
+                   		$btmFresh.find("span").text("释放刷新…");
+                   		this.maxScrollY -=freshHeight;
+                   }else if(this.y >= this.maxScrollY && $btmFresh.hasClass("release")){
+                   		$btmFresh.removeClass("release");
+                   		$btmFresh.find("span").text("上拉刷新…");
+                   		this.maxScrollY += freshHeight; 
+                   }
+            },
+            onScrollEnd: function(){
+                // alert(1);
+                if($topFresh.hasClass("release")){
+                    $topFresh.removeClass("release");
+                    $topFresh.addClass("loading");
+                    $topFresh.find("span").text("正在加载…");
+                    pageIdx = 0;
+                    loadData();
+                }
+                if($btmFresh.hasClass("release")){
+                    $btmFresh.removeClass("release");
+                    $btmFresh.addClass("loading");
+                    $btmFresh.find("span").text("正在加载…");
+                    pageIdx ++;
+                    loadData();
+                }
+            }
+
+		})	
+	}
+
+	function loadData(){
+		// alert(1);
+		//加载数据
+		$.ajax({
+			 url: "http://localhost:8080/Proxy/FootBall/tweet/json/query/hotspot.do",
+             data: {"category": 1},
+             success: function(data){
+             	// console.log(data);
+             	var result  = JSON.parse(data).data;
+             	var items = result.tweetlist;  //数组
+             	// var $frag = ;
+             	for(var i = 0;i<items.length;i++){
+             		var oImg = new Image();
+             		var content = items[i].content;
+             		var imgSrc = "http://101.200.173.217:8080/FootBall"+items[i].defaultFilePath+items[i].defaultFileName;
+             			html = '<li>' + '<img alt="" src="' + imgSrc + '" />' +'<p>' + content + '</p>' + '</li>',
+             			oImg.src = imgSrc;
+             		var $li = $("<li></li>");
+             			$li.append(oImg);
+             			$(".itemList").append(html);
+
+             		// (function(i){
+             		// 	var oImg = new Image();
+	             	// 	var imgSrc = "http://101.200.173.217:8080/FootBall"+items[i].defaultFilePath+items[i].defaultFileName;
+	             	// 		oImg.src = imgSrc;
+	             	// 	oImg.onload = function(){
+	             	// 		var $li = $('<li></li>');	
+	             	// 		$li.append(oImg);
+	             	// 		$("#scroller").append($li);
+	             	// 		myScroll.refresh();
+	             	// 	}
+             		// })(i)
+             	}
+             	myScroll.refresh();
+             	// oScroll.innerHTML = frag;
+             	// myScroll.refresh();
+             }
+		})
+	}
+	// document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+	// document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+	$(function(){
+		loaded();
+		loadData();
+	})
+</script>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box {
+				width: 950px;
+				margin: 50px auto;
+				position: relative;
+			}
+			#sImg {
+				width: 430px;
+				height: 430px;
+				border: 1px solid #ccc;
+				cursor: pointer;
+				float: left;
+			}
+			#move{
+				width: 200px;
+				height: 200px;
+				background: rgba( 0,0,0,.5 );
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			#bImg {
+				width: 480px;
+				height: 480px;
+				overflow: hidden;
+				float: right;
+				border: 1px solid #ccc;
+				display: none;
+				position: relative;
+			}
+			#img2 {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="sImg">
+				<span id="move"></span>
+				<img src="img/01.jpg" width="430" height="430" id="img1"/>
+			</div>
+			<div id="bImg">
+				<img src="img/01-1.jpg" width="800" height="800" id="img2"/>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var oBox = document.getElementById("box");
+			var oSimg = document.getElementById("sImg");
+			var oMove = document.getElementById("move");
+			var oBimg = document.getElementById("bImg");
+			var oImg1 = document.getElementById("img1");
+			var oImg2 = document.getElementById("img2");
+			oSimg.onmouseover = function(){
+				oMove.style.display = 'block';
+				oBimg.style.display = 'block';
+				oSimg.onmousemove = function( ev ){
+					var ev = ev || event;
+					var x = ev.clientX - oMove.offsetWidth/2 - oBox.offsetLeft;
+					var y = ev.clientY - oMove.offsetHeight/2 - oBox.offsetTop;
+					oMove.style.top = y + 'px';
+					oMove.style.left = x +'px';
+					var oW = oSimg.offsetWidth - oMove.offsetWidth;
+					var oH = oSimg.offsetHeight - oMove.offsetHeight;
+					if( oMove.offsetLeft < 0 ){
+						oMove.style.left = 0 + 'px';
+					}else if( oMove.offsetLeft > oW ){
+						oMove.style.left = oW + 'px';
+					}
+					
+					if( oMove.offsetTop < 0 ){
+						oMove.style.top = 0 + 'px';
+					}else if( oMove.offsetTop > oH ){
+						oMove.style.top = oH + 'px';
+					}
+					oImg2.style.left=-(800/430*oMove.offsetLeft)+'px';
+					oImg2.style.top=-(800/430*oMove.offsetTop)+'px';
+					
+					
+				}
+			}
+			oSimg.onmouseout = function(){
+				oMove.style.display = 'none';
+				oBimg.style.display = 'none';
+			}
+		</script>
+		
+	</body>
+</html>

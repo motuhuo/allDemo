@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+			}
+			#floorNav{
+				width: 32px;
+				border: 1px solid #ccc;
+				position: fixed;
+				top: 50%;
+				left: 100px;
+				margin-top: -190px;
+				display: none;
+			}
+			#floorNav ul li {
+				width: 32px;
+				height: 32px;
+				font-family: "微软雅黑";
+				font-size: 12px;
+				color: #ddd;
+				line-height: 32px;
+				text-align: center;
+				border-bottom: 1px dashed #ccc;
+				position: relative;
+				cursor: pointer;
+			}
+			#floorNav ul li span{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 32px;
+				height: 32px;
+				background: #c00;
+				display: none;
+				color: #fff;
+			}
+			
+			#floorNav ul li.hover span{
+				background: #c00;
+				display: block;
+				color: #fff;
+			}
+			#floorNav ul li.hover{
+				background: #fff;
+				display: block;
+				color: #c00;
+			}
+			#floorNav ul li span.active{
+				background: #fff;
+				display: block;
+				color: #c00;
+			}
+			#floorNav ul li.last {
+				background: #c00;
+				color: #fff;
+			}
+			#header {
+				width: 1000px;
+				height: 600px;
+				margin: 0 auto;
+				background: red;
+			}
+			#main{
+				width: 1000px;
+				margin: 0 auto;
+			}
+			#main .floor {
+				width: 100%;
+				color: #fff;
+				text-align: center;
+				font-size: 50px;
+			}
+			#footer {
+				margin: 0 auto;
+				width: 1000px;
+				height: 900px;
+				background: black;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="floorNav">
+			<ul>
+				<li>1F<span>服饰</span></li>
+				<li>2F<span>美妆</span></li>
+				<li>3F<span>手机</span></li>
+				<li>4F<span>家电</span></li>
+				<li>5F<span>数码</span></li>
+				<li>6F<span>运动</span></li>
+				<li>7F<span>居家</span></li>
+				<li>8F<span>母婴</span></li>
+				<li>9F<span>食品</span></li>
+				<li>10F<span>图书</span></li>
+				<li>11F<span>服务</span></li>
+				<li class="last">Top</li>
+			</ul>
+		</div>
+		<div id="header"></div>
+		<div id="main">
+			<div class="floor" style="background: yellowgreen; height: 600px;">服饰</div>
+			<div class="floor"  style="background: pink; height: 700px;">美妆</div>
+			<div class="floor"  style="background: brown; height: 600px;">手机</div>
+			<div class="floor"  style="background: paleturquoise; height: 800px;">家电</div>
+			<div class="floor"  style="background: purple; height: 800px;">数码</div>
+			<div class="floor"  style="background: orange; height: 600px;">运动</div>
+			<div class="floor"  style="background: olivedrab; height: 600px;">居家</div>
+			<div class="floor"  style="background: olive; height: 900px;">母婴</div>
+			<div class="floor"  style="background: palevioletred; height: 600px;">食品</div>
+			<div class="floor"  style="background: orchid; height: 600px;">图书</div>
+			<div class="floor"  style="background: plum; height: 600px;">服务</div>
+		</div>
+		<div id="footer"></div>
+		<script src="js/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var $floorNav = $('#floorNav ul li').not('.last'); //获取除了最后一个li的所有li
+			$floorNav.hover(function(){   //鼠标滑入添加ClassName
+				$(this).addClass('hover');
+			},function(){   //鼠标滑出删除ClassName
+				$(this).removeClass('hover');
+			});
+			var onOff = true; //锁
+			$floorNav.click(function(){ //点击事件
+				onOff = false; //当他为点击的时候把锁变成false这个时候不会执行滚动事件
+				$floorNav.find('span').removeClass('active');
+				$(this).find('span').addClass('active');
+				var $index = $(this).index();
+				var $top = $('#main .floor').eq($index).offset().top; //拿到制定楼层的距离顶部的高度
+				$('body,html').animate({'scrollTop':$top},500,function(){
+					onOff = true; //在动画执行完后把锁打开
+				});
+			});
+			$(window).scroll(function(){
+				if(onOff){ //判断 如果为true 我执行内动
+					var $t = $(this).scrollTop(); //拿当前的滚动高度
+					var $headerH = $('#header').height(); //拿header的高度
+					//当前高度大于或者等于$headerH高度的时候显示，否则隐藏
+					if( $t >= $headerH ){  
+						$('#floorNav').fadeIn(300);
+					}else{
+						$('#floorNav').fadeOut(300);
+					}
+					var $obj = $('#main .floor'); 
+					$obj.each(function(  ){ //循环所有拿到的楼层
+						//获取当前的div距离顶部的高度然后加上自身的距离除以2的目的是为了让他超过自身的一半后调到下一楼层
+						var index=$(this).index();
+						var $objTop = $(this).offset().top+$(this).height()/2;  
+						if( $t < $objTop ){ //如果滚动高度小于当前高度
+							$floorNav.find('span').removeClass('active');
+							$floorNav.eq(index).find('span').addClass('active');
+							return false; //匹配完了当前楼层就结束
+						}
+						//alert( $objTop );
+					})
+				}
+				
+			})
+			$('#floorNav ul li.last').click(function(){ //点击最后一个返回顶部
+				onOff = false;
+				$('body,html').animate({'scrollTop':'0'},300,function(){
+					onOff = true;
+				});
+			})
+		</script>
+	</body>
+</html>

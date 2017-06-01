@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css" >
+img {display:none;}
+div {width:500px; height:375px; margin:0 auto; border:1px solid red;}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+  var oBtn=document.getElementsByTagName('input');
+  var oDiv=document.getElementsByTagName('div')[0];
+  var arrUrl=['images/img04.jpg','images/img05.jpg','images/img06.jpg','images/img07.jpg'];
+  var num=0;
+  var timer=null;
+  
+  oBtn[0].onclick=function(){
+     clearInterval(timer);
+     autoPlay();
+	 
+    }
+	
+	oBtn[1].onclick=function(){
+	
+	   clearInterval(timer);
+	}
+	
+	function autoPlay (){
+	  clearInterval(timer);
+     timer=setInterval(function (){
+	 
+     oDiv.style.background='url('+arrUrl[num]+')';
+	 num++;
+	 num%=arrUrl.length;
+	 },500)
+  }
+	
+	oDiv.onmouseover=function(){
+	    clearInterval(timer);
+	};
+	 oDiv.onmouseout=autoPlay;
+	
+	
+	var oImg=document.getElementById('img1');
+	setTimeout(function(){
+	   oImg.style.display='block';
+	   
+	   setTimeout(function(){
+	   oImg.style.display='none';
+	   },4000);
+	},2000);
+}
+
+</script>
+</head>
+<body>
+
+<input id="btn1" type="button" value="换背景" />
+<input id="btn1" type="button" value="停" />
+
+<div>
+  
+</div>
+
+<img id="img1" src="images/img07.jpg" />
+</body>
+</html>

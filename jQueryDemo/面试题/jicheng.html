@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// var Person=function(name,age){
+		// 	this.name=name;
+		// 	this.age=age;
+
+		// }
+		// Person.prototype.say=function(){
+		// 	alert(this.name+","+this.age);
+		// }
+		// var student=function(name,age,no){
+		// 	this.no=no;
+		// 	Person.call(this,name,age);
+		// }
+		// student.prototype=new Person();
+		// var stu=new student();
+		// stu.name='八戒';
+		// stu.age=22;
+		// stu.say();
+		// 
+	
+		//基于原型链的继承方式 
+		var Person={
+			name:'悟空',
+			say:function(){
+				alert(this.name);
+			}
+		}
+		var Student=clone(Person);
+		Student.say();
+
+		function clone(obj){
+			var F=function(){};
+			F.prototype=obj;
+			return new F();
+		}
+
+	</script>
+</body>
+</html>

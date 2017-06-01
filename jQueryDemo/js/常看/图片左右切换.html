@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ *{margin:0 auto;padding:0;}
+ a {text-decoration:none;}
+   #div1 {width:600px; border:1px red solid; height:375px; position:relative; margin-top:50px;}
+   #aleft {float:left; width:50px; height:375px; line-height:375px; font-size:40px; background:#ccc; text-align:center;}
+   #aright {float:right; width:50px; height:375px; line-height:375px; font-size:40px; background:#ccc; text-align:center;}
+   #img1 {left:50px;}
+   #text1 {position:absolute; top:10px; left:250px; font-size:20px; color:blue;}
+   #num {position:absolute; bottom:10px; left:250px; font-size:20px; color:blue;}
+</style>
+<script type="text/javascript">
+    window.onload=function (){
+	    var oBtn1=document.getElementById('aleft');
+		var oBtn2=document.getElementById('aright');
+		var oText=document.getElementById('text1');
+		var oNum=document.getElementById('num');
+		var oImg=document.getElementById('img1');
+		
+		var arrImg=['images/img04.jpg','images/img05.jpg','images/img06.jpg','images/img07.jpg'];
+		var arrText=['第一张','第二张','第三张','第四张'];
+		//初始化
+		var num=0;
+		oImg.src=arrImg[num];
+		oText.innerHTML=arrText[num];
+		oNum.innerHTML=num+1+'/'+arrImg.length;
+		
+		
+		   var i=0;
+		   
+		    oBtn1.onclick=function(){
+		      //oImg.src=arrImg[i-1];
+			  //i++;
+			  
+	          if (i<arrImg.length-1){
+			      oImg.src=arrImg[i+1];
+				  oText.innerHTML=arrText[i+1];
+				  oNum.innerHTML=i+2+'/'+arrImg.length;
+				  i++;
+			    }
+				else {
+				i=0; 
+				oImg.src=arrImg[i];
+				oText.innerHTML=arrText[i];
+				  oNum.innerHTML=i+1+'/'+arrImg.length;
+				}
+				
+			  
+		    }
+			oBtn2.onclick=function(){
+		        if (i>0){
+			      oImg.src=arrImg[i-1];
+				  oText.innerHTML=arrText[i-1];
+				  oNum.innerHTML=i+'/'+arrImg.length;
+				  i--;
+			    }else {
+				  	i=0;
+					oImg.src=arrImg[i+1];
+				  	oText.innerHTML=arrText[i+1];
+				 	oNum.innerHTML=i+2+'/'+arrImg.length;
+				  	i++;
+			    }
+		    }
+		    
+				  
+			} 
+			 
+		
+</script>
+</head>
+<body>
+<div id="div1">
+  
+  <img id="img1"  />
+  <a id="aleft" href="#"><</a>
+  <a id="aright" href="#">></a>
+  <p id="text1"></p>
+  <span id="num"></span>
+</div>
+</body>
+</html>

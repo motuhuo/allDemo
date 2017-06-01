@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// 用工厂方式构造对象
+		// 缺点：1.没有new
+		// 2. p1.showName!=p2.showName 每个对象都有一套自己的函数--浪费资源
+		// function createPerson(name,sex){  //构造函数法
+		// 	var obj=new Object();
+		// 	obj.name=name;
+		// 	obj.sex=sex;
+		// 	obj.showName=function(){
+		// 		alert('我的名字是'+this.name);
+		// 	}
+		// 	obj.showSex=function(){
+		// 		alert('我是'+this.sex);
+		// 	}
+		// 	return obj;
+		// }
+		// var p1=createPerson('张三','男');
+		// var p2=createPerson('李四','女');
+		// p1.showName();
+		// p1.showSex();
+		// p2.showName();
+		// p2.showSex();
+
+		// 
+		// 有new 方法
+		// p1.showName!=p2.showName 每个对象都有一套自己的函数--浪费资源
+		// function createPerson(name,sex){
+			
+		// 	this.name=name;
+		// 	this.sex=sex;
+		// 	this.showName=function(){
+		// 		alert('我的名字是'+this.name);
+		// 	}
+		// 	this.showSex=function(){
+		// 		alert('我是'+this.sex);
+		// 	}
+			
+		// }
+		// var p1=new createPerson('张三','男');
+		// var p2=new createPerson('李四','女');
+		// p1.showName();
+		// p1.showSex();
+		// p2.showName();
+		// p2.showSex();
+
+
+		//混合法
+		//p1.showName==p2.showName 
+		function createPerson(name,sex){
+			
+			this.name=name;
+			this.sex=sex;
+			
+		}
+		createPerson.prototype.showName=function(){
+			alert('我的名字是'+this.name);
+		}
+		createPerson.prototype.showSex=function(){
+			alert('我是'+this.sex);
+		}
+		var p1=new createPerson('张三','男');
+		var p2=new createPerson('李四','女');
+		p1.showName();
+		p1.showSex();
+		p2.showName();
+		p2.showSex();
+	</script>
+</body>
+</html>

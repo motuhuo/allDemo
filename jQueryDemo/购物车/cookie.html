@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var endTime = new Date("2016/4/6,20:00:00");
+			document.cookie = "name=syz;expires="+endTime+";path=/";
+			document.cookie = "age=16;expires="+endTime+";path=/";
+			console.log(document.cookie)
+		</script>
+	</body>
+</html>

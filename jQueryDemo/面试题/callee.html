@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>产品1</p>
+	<p>产品2</p>
+	<p>产品3</p>
+	<p>产品4</p>
+	<p>产品5</p>
+	<p>
+		闭包就是能够读取其他函数内部变量的函数。 
+
+		由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成“定义在一个函数内部的函数”。 
+
+		所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。 
+	</p>
+	
+	
+	<script>
+		
+		// alert(pArr.length)
+		// 将变量 i 保存在匿名函数自身
+		// function init(){
+		// 	var pArr=document.getElementsByTagName('p');
+		// 	for(var i=0; i<pArr.length; i++){
+		// 		(pArr[i].onclick=function(){
+		// 			alert(arguments.callee.i);
+		// 		}).i=i;
+		// 	}
+		// }
+		// init();
+		// 
+		// 加一层闭包，i 以函数参数形式传递给内层函数
+		// function init3(){
+		// 	var pArr=document.getElementsByTagName('p');
+		// 	for(var i=0; i<pArr.length; i++){
+		// 		(function(i){
+		// 			pArr[i].onclick=function(){
+		// 				alert(i);
+		// 			}
+		// 		})(i)
+		// 	}
+		// }
+		// init3();
+		// 
+		//加一层闭包，i 以局部变量形式传递给内层函数;
+
+		
+			// var pArr=document.getElementsByTagName('p');
+			// for(var i=0; i<pArr.length; i++){
+			// 	(function(){
+			// 		var temp=i;
+			// 		pArr[i].onclick=function(){
+			// 			alert(temp);
+			// 		}
+			// 	})()
+			// }
+	
+	// 
+	function f1(){
+　　　　var n=999;
+　　　　nAdd=function(){n+=1}
+　　　　function f2(){
+		console.log(n);
+　　　　}
+　　　　return f2;
+　　}
+　　var result=f1();
+　　result(); // 999
+　　nAdd();
+　　result(); // 1000
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+			    counter-reset: section;
+			}
+			h1{
+			    counter-reset: subsection;
+			}
+			h1:before{
+			    counter-increment:section;
+			    content:counter(section) "、";
+			}
+			h2:before{
+			    counter-increment:subsection;
+			    content: counter(section) "." counter(subsection) "、";
+			}
+			/*五角星*/
+			#star-six {
+			  width: 0;
+			  height: 0;
+			  border-left: 50px solid transparent;
+			  border-right: 50px solid transparent;
+			  border-bottom: 100px solid #0066FF;
+			  position: relative;
+			}
+			#star-six::after {
+			  width: 0;
+			  height: 0;
+			  border-left: 50px solid transparent;
+			  border-right: 50px solid transparent;
+			  border-top: 100px solid #005599;
+			  position: absolute;
+			  content: "";
+			  top: 30px;
+			  left: -50px;
+			}
+			/*创建小图标*/
+			#phone {
+				width: 50px;
+				height: 50px;
+				border-left: 6px solid #EEB422;
+				border-radius: 20%;
+				transform: rotate(-30deg);
+				-webkit-transform: rotate(-30deg);
+				margin: 20px;
+				margin-right: 0px;
+				position: relative;
+				display: inline-block;
+				top: -5px;
+			}
+			
+			#phone:before {
+				width: 15px;
+				height: 15px;
+				background: #EEB422;
+				border-radius: 20%;
+				content: "";
+				position: absolute;
+				left: -2px;
+				top: 1px;
+			}
+			
+			#phone:after {
+				width: 15px;
+				height: 15px;
+				background: #EEB422;
+				border-radius: 20%;
+				content: "";
+				position: absolute;
+				left: -3px;
+				top: 34px;
+			}
+			p.doubleDot::before {
+			    content: open-quote;
+			    color: #ddd;
+			    z-index: -1;
+			    font-size:26px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>HTML tutorials</h1>
+		<h2>HTML Tutorial</h2>
+		<h2>XHTML Tutorial</h2>
+		<h2>CSS Tutorial</h2>
+		<h1>Scripting tutorials</h1>
+		<h2>JavaScript</h2>
+		<h2>VBScript</h2>
+
+		<h1>XML tutorials</h1>
+		<h2>XML</h2>
+		<h2>XSL</h2>
+		<hr>
+		<!--六角形-->
+		<div id="star-six"></div>
+
+		<div id="phone"></div>
+
+		<p class="doubleDot">引用一个段落,双引号用::before伪元素实现</p>
+	</body>
+</html>

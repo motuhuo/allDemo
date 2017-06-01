@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+  div {width:100px; height:100px; background:red; position:absolute; line-height:100px; text-align:center; font-size:30px; color:white;}
+</style>
+<script type="text/javascript">
+
+window.onload=function (){
+    var aDiv=document.getElementsByTagName('div');
+    for (var i=0; i<50; i++){
+      document.body.innerHTML+='<div></div>';  
+	}
+	   for (var i=0; i<aDiv.length;i++){
+	     aDiv[i].innerHTML=i+1;
+	  
+	    
+	      aDiv[i].style.left=10+i*110+'px';
+	 
+	    };
+		
+	
+	var oImg=document.getElementById('img1');
+	  var oof=true;
+	oImg.onclick=function (){
+	  if (oof){
+	     oImg.src='images/img05.jpg';
+		 oof=false;
+	  }else {oImg.src='images/img04.jpg';
+	    oof=true;
+	  }
+	}
+}
+
+
+</script>
+</head>
+<body>
+<img id="img1" src="images/img04.jpg" >
+</body>
+</html>

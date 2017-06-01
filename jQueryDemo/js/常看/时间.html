@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ 
+</style>
+<script type="text/javascript">
+ /*
+ var myTime=new Date();
+ alert(myTime.getFullYear())
+ */
+ window.onload=function(){
+	var oBody=document.body;
+	var timer=null;
+	fnTime();
+	timer=setInterval(fnTime,1000);
+	function fnTime(){
+	 var myTime=new Date()
+	 //alert (new Date());
+	 var iYear=myTime.getFullYear();
+	 var iMonth=myTime.getMonth()+1;
+	 var idate=myTime.getDate();
+	 var iday=myTime.getDay();
+	 var iHours=myTime.getHours();
+	 var iMinute=myTime.getMinutes();
+	 var iSecond=myTime.getSeconds();
+	 if (iday==0){iday='星期日'};
+	 if (iday==1){iday='星期一'};
+	 if (iday==2){iday='星期二'};
+	 if (iday==3){iday='星期三'};
+	 if (iday==4){iday='星期四'};
+	 if (iday==5){iday='星期五'};
+	 if (iday==6){iday='星期六'};
+	 var arr=iYear+' 年 '+toTwo(iMonth)+' 月 '+toTwo(idate)+' 日 '+iday+' '+toTwo(iHours)+' : '+toTwo(iMinute)+' : '+toTwo(iSecond)
+	
+	 
+	  function toTwo(n){
+		return n<10? "0"+n:""+n;
+	  }
+	  oBody.innerHTML=arr;
+	 }
+
+ }
+ 
+</script>
+</head>
+<body style="font-size:60px;">
+
+</body>
+</html>

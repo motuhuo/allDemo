@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery-1.12.2.js"></script>
+	<script src="js/jqevenodd.js"></script>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		.evenRow{
+			background: red;
+		}
+		.oddRow{
+			background: blue;
+		}
+		.activeRow{
+			 background: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul id="oUl">
+			<li>12</li>
+			<li>23</li>
+			<li>34</li>
+			<li>45</li>
+			<li>56</li>
+			<li>21</li>
+			<li>34</li>
+			<li>456</li>
+			<li>34</li>
+			<li>45</li>
+		</ul>
+	</div>
+</body>
+	<script>
+		// $('#oUl').find("li:even").addClass('evenRow');
+		$('#oUl').rowAct();
+		
+	</script>
+</html>

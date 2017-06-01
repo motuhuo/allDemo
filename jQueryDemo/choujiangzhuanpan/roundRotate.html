@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#header {
+				width:960px;
+				margin:0 auto;
+				position:relative;
+			}
+			
+			#turnplatewrapper {
+				height:592px;
+				width:592px;
+				background:url('img/turnplate/plate_06.png') top left no-repeat;
+				/*_background:url('img/turnplate/plate_06_8.png') top left no-repeat;*/
+				left:200px;
+				top:20px;
+				position:absolute;
+				-moz-user-select:none;
+				user-select:none;
+			}
+			
+			#turnplate {
+				height:592px;
+				width:592px;
+				background:url('img/turnplate/plate_05.png') left top no-repeat;
+				/*_background:url('img/turnplate/plate_05_8.png') top left no-repeat;*/
+				/*background: red;*/
+			}
+			
+			#turnplate #awards {
+				position:absolute;
+				width:100%;
+				height:100%;
+				background:url('img/turnplate/plate_03.png') top left no-repeat;
+				/*_background:url('img/turnplate/plate_03_8.png') top left no-repeat;*/
+			}
+			
+			#platebtn {
+				position:absolute;	
+				top:218px;
+				left:218px;
+				background:url('img/turnplate/plate_04.png') top left no-repeat;
+				/*_background:url('img/turnplate/plate_04_8.png') top left no-repeat;*/
+				height:155px;
+				width:155px;
+				cursor:pointer;
+			
+			}
+			
+			#platebtn:hover {
+				background-position:0 -155px 
+			}
+		</style>
+		<script src="js/jquery.min.js"></script>
+	</head>
+	<body>
+	<div id="header">
+		<div id="turnplatewrapper">
+			<div id="turnplate" class="bgfix">
+				<div id="awards" class="bgfix"></div>
+				<div id="platebtn" class="bgfix"></div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function(){
+//			var n=5;
+			var turnplate=$('#turnplate');
+			var platebtn=$('#platebtn');
+			var tapOne=true;
+			var timeOne=null;
+			var timeTwo=null;
+			var i=0;
+			n=Math.floor(Math.random()*10);
+			var num=20+n;
+			var arr=['5M','80M','1G','200M','100M','20M','继续','10M','50M','1T'];
+			var boxTap=true;
+			
+				platebtn.click(function(){
+				if(boxTap){	
+					clearInterval(timeOne);
+				
+					if(tapOne){
+						
+						
+						console.log(n);
+						
+						timeOne=setInterval(RunRotate,100)
+						
+						setTimeout(function(){
+		//					alert(arr[n]);
+							console.log(arr[n]);
+							alert(arr[n]);
+							tapOne=false;
+						},100*(23+n));
+					}
+//					}else{
+//						alert('已经没有机会了');
+//					}
+					boxTap=false;
+				}
+					
+					
+				})
+				
+				
+				
+				
+				
+				
+				
+						function RunRotate(){
+							i++;
+							if(i<=num){
+								var num2=i%10;
+		//						console.log(num2);
+								turnplate.css({'background':"url('img/turnplate/plate_05.png') left "+-592*num2+"px no-repeat"})
+							}		
+						}
+			
+			
+		
+		})
+			
+	</script>
+	</body>
+</html>

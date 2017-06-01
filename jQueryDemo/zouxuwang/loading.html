@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<script src="js/jquery-1.12.2.js"></script>
+	<script src="js/iscroll.js"></script>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		html,body,.box{
+			height: 100%;
+		}
+		.box{
+			position: relative;
+		}
+		.box .header{
+			position: absolute;
+			left: 0;
+			top:0;
+			width: 100%;
+			height: 44px;
+			background: #a90506;
+		}
+		.register{
+			box-sizing:border-box;
+			position:absolute;
+			width: 100%;
+			top:44px;
+			left:0px;
+			bottom: 0px;
+			background:#f3eff0;
+			padding:14px 4%;
+		}
+		.returnLogo{
+			display: block;
+			width:22px;
+			height:23px;
+			background:url(img/z.png) no-repeat; 
+			background-size: 100%;
+			position: absolute;
+			top:0;
+			bottom:0;
+			margin-top: auto;
+			margin-bottom: auto;
+			margin-left: 12px;
+		}
+		.header h3{
+			width: 100%;
+			height: 100%;
+			line-height: 44px;
+			color: #fff;
+			text-align: center;
+			font-size: 34px;
+		}
+		.user {
+			width: 100%;
+			border-radius: 4px;
+			background:white;
+			height: 45px;
+			line-height: 45px;
+
+		}
+		.register div{
+			margin-bottom: 14px;
+		}
+		.register label{
+			margin-left: 10px;
+		}
+		.register input {
+			height: 15px;
+			border:none;
+			outline: none;
+		}
+		.regst{
+			height: 44px;
+			width: 100%;
+			border-radius: 4px;
+			background: #b80606;
+			color: #fff;
+			line-height: 44px;
+			text-align: center;
+			margin-top:30%;
+			font-size: 35px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="header">
+			<a href="#" class="returnLogo"></a>
+				<h3>用户登陆</h3>
+			
+		</div>
+		<div class="register">
+			<div class="user" >
+				<label for="">账户名称：</label>
+				<input type="text" id="user" placeholder="请输入账户">
+			</div>
+			<div class="user">
+				<label for="">登陆密码：</label>
+				<input type="password" id="password" placeholder="请输入密码">
+			</div>
+			
+
+			<div class="regst">
+				确定登陆
+			</div>
+		</div>
+		
+	</div>
+</body>
+
+<script>
+		$(document).ready(function(){
+			$('.regst').click(function(){
+				var $user=$("#user").val();
+				var $paw=$("#password").val();
+				$.ajax({
+					type:'post',
+					dataType:'json',
+					data:{status:'login',userID:$user,password:$paw},
+					url:'http://datainfo.duapp.com/shopdata/userinfo.php',
+					success:function(data){
+						console.log(data);
+						if(data==0){
+							alert("该用户不存在");
+						}
+						else if(data==2){
+							alert("密码不正确");
+						}else{
+							localStorage.setItem('userID',data.userID);
+							// alert(localStorage.getItem('userID'))
+							window.location.href='zyouwang.html';
+						}
+					}
+				})
+			})
+		})
+	</script>
+</html>

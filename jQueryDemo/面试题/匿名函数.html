@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// (function(x, y){   
+		//     alert(x + y);       //5
+		// })(2, 3);
+		 var a=1;
+	     (function(){
+	     	console.log(a) //undefined
+	　　　　var a=100;
+			console.log(a)  //100
+			//匿名函数最大的用途是创建闭包.
+	　　})();
+      alert(a);  //1
+	</script>
+</body>
+</html>

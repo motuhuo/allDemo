@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<script src="js/angular.min.js"></script>
+</head>
+<body>
+	<div ng-controller="myCtrl">
+		<h2>{{name}}</h2>
+		<h2>{{count}}</h2>
+		<h2>{{value}}</h2>
+		<h2>{{fac}}</h2>
+		<h2>{{zdy}}</h2>
+	</div>
+</body>
+<script>
+	var app=angular.module("myApp",[]);
+	// 定义一个最简单的服务
+	// 1.controller实际能处理业务逻辑
+	// 2.为了保证controller结构简单: 
+	// (一)
+	app.service('abc', function(){
+		this.function(x){
+			return x.toString(x);
+		}
+	})
+	//config方法配置一个服务
+	//config $provide(angular.js的服务提供者)
+	//
+	// (二)
+	app.config(function($provide){
+		$provide.provider("myService",function(){
+				this.$get=function(){
+					// return "你好"
+					var factory={};
+					factory={
+						name:"这是一个自定义的config",
+						multipy:function(a,b){
+							return a*b;
+						},
+						getMinValue:function(arr){
+							var a=arr[0]
+							for (var i=0; i<arr.length; i++){
+								if(a>arr[i]){
+									a=arr[i];
+								}
+							}
+							return a;
+						}
+					} 
+					return factory;
+				}
+		})
+	})
+	app.config(function($provide){
+		$provide.provider("myZdy",function(){
+			this.$get=function(){
+				var factory={};
+				factory={
+					name:"这是自定义服务",
+					fn:function(){
+						return (1);
+					}
+				}
+				return factory;
+			}
+		})
+	})
+	//(三)
+	app.value('myValue', 50);
+
+	//factory
+	//(四)
+	app.factory("Mathser",["myService",function(myService){
+		var factory={};
+		factory={
+			name:myService.name,
+			getMinValue:myService.getMinValue
+		}
+		return factory;
+	}])
+
+	app.controller("myCtrl",function($scope,myService,myValue,Mathser,myZdy){
+		$scope.name=myService.getMinValue([2,3,5,1]);
+		$scope.count=myService.multipy(10,8);
+		$scope.value=myValue;
+		$scope.fac=Mathser.getMinValue([30,100,50,200]);
+		$scope.zdy=myZdy.fn();
+	})
+
+	
+</script>
+</html>

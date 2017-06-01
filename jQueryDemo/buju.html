@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>布局</title>
+  <style>
+    *{
+      margin:0;
+      padding: 0;
+    }
+    .container {
+      width: 100%;
+      clear: both;
+      overflow: hidden;
+      border:1px solid red;
+    }
+    .container div{
+      /*float: left;*/
+    }
+    .middle{
+      width: 100%;
+      float: left;
+    }
+    .left{
+      float: left;
+      margin-left: -100%;
+      border:1px solid blue;
+    }
+    .right{
+      margin-left: -300px;
+      border:1px solid pink;
+      float: left;
+    }
+    .box {
+      background: #ccc;
+      overflow: hidden;
+    }
+    .child{
+      margin-top: 300px;
+    }
+    .border {
+      margin: 30px;
+      width: 0;
+      height: 0;
+      border:30px solid transparent;
+      /*border-top-color: rgb(222,11,22);
+      border-left-color: rgb(20,100,200);*/
+      border-right-color: rgb(1,200,200);
+      border-bottom-color: rgb(100,20,200);
+    }
+    .boxShadow{
+      width: 100px;
+      height: 100px;
+      margin:30px;
+      background: rgb(200,100,200);
+      box-shadow: 40px 0 0 -20px rgb(200,100,200),
+                  -40px 0 0 -20px rgb(200,100,200),
+                  0 40px 0 -20px rgb(200,100,200),
+                  0 -40px 0 -20px rgb(200,100,200);
+    }
+    .boxItem{
+      width: 100px;
+        height: 100px;
+        outline: 10px solid rgb(110,110,110);
+        outline-offset: -45px;
+        border: 10px solid rgb(110,110,110);
+        border-radius: 50%;
+    }
+
+
+.cb-container{
+  width: 1000px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+html, body{
+  padding:0;
+  margin:0;
+  background-color: #fff;
+  color:#dcdcdc;
+  font-family:'Open Sans';
+}
+#checkbox{
+  display:none;
+}
+
+.cb-label{
+  height: 100px;
+  width: 100px;
+  background: rgb(249,249,249);
+  border: 10px solid #cfcece;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  transition: border-color ease .2s;
+  -moz-transition: border-color ease .2s;
+  -o-transition: border-color ease .2s;
+  -webkit-transition: border-color ease .2s;
+  cursor: pointer;
+  &::before,&::after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+    height: 0;
+    width: 20px;
+    background: #fff;
+    display: inline-block;
+    -moz-transform-origin: left top;
+    -ms-transform-origin: left top;
+    -o-transform-origin: left top;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    content: '';
+    -webkit-transition: opacity ease 0.5s;
+    -moz-transition: opacity ease 0.5s;
+    transition: opacity ease 0.5s;
+  }
+  &::before{
+    top:76px;
+    left: 31px;
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+  }
+  &::after {
+    top: 45px;
+    left:0;
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+}
+input[type=checkbox]:checked + .cb-label,
+.cb-label.checked{
+
+  background: rgb(101,141,181);
+  border-color:rgb(101,141,181);
+  &::after{
+    border-color:#fff;
+    height: 35px;
+    -moz-animation: dothabottomcheck .2s ease 0s forwards;
+    -o-animation: dothabottomcheck .2s ease 0s forwards;
+    -webkit-animation: dothabottomcheck .2s ease 0s forwards;
+    animation: dothabottomcheck .2s ease 0s forwards;
+  }
+
+  &::before{
+    border-color:#fff;
+    height: 100px;
+    -moz-animation: dothatopcheck .4s ease 0s forwards;
+    -o-animation: dothatopcheck .4s ease 0s forwards;
+    -webkit-animation: dothatopcheck .4s ease 0s forwards;
+    animation: dothatopcheck .4s ease 0s forwards;
+  }
+
+}
+@-moz-keyframes dothabottomcheck{
+  0% { height: 0; }
+  100% { height: 35px; }
+}
+
+@-webkit-keyframes dothabottomcheck{
+  0% { height: 0; }
+  100% { height: 35px; }
+}
+
+@keyframes dothabottomcheck{
+  0% { height: 0; }
+  100% { height: 35px;  }
+}
+
+@keyframes dothatopcheck{
+  0% { height: 0; }
+  50% { height: 0; }
+  100% { height: 70px; }
+}
+@-webkit-keyframes dothatopcheck{
+  0% { height: 0; }
+  50% { height: 0; }
+  100% { height: 70px; }
+}
+@-moz-keyframes dothatopcheck{
+  0% { height: 0; }
+  50% { height: 0; }
+  100% { height: 70px; }
+}
+  </style>
+</head>
+<body>
+  <!-- <div class="container">
+    <div class="middle">中间弹性区</div>
+    <div class="left">左边栏</div>
+    <div class="right">右边栏</div>
+  </div> -->
+  <div class="box">
+    <div class="child">12</div>
+  </div>
+  <div class="border"></div>
+  <div class="boxShadow"></div>
+  <div class="boxItem"></div>
+  <div class="cb-container">
+    <input type="checkbox" id="checkbox">
+    <label for="checkbox" class="cb-label"></label>
+</div>
+</body>
+<script>
+// function test() {
+//   setTimeout(function() {
+//     console.log('第1次');
+//     setTimeout(function(){
+//       console.log('555')
+//     },5000)
+//     setTimeout(function(){
+//       console.log('第二次')
+//     },2000);
+//   },10000);
+//   console.log('无')
+// }
+
+//   // test();
+
+//   setTimeout(function(){
+//     console.log('111');
+//   },0);
+//   console.log('222')
+//   test();
+
+
+
+</script>
+</html>

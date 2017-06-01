@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>小牛试刀测试页面</title>
+    <script src="scripts/jquery-1.8.0.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#txtSuggestions").keyup(function () {
+                var inputTxt = $("#txtSuggestions").val();   //获取输入的关键字
+                var qsData = { 'wd': inputTxt, 'p': '3', 'cb': 'getData', 't': new Date().getMilliseconds().toString() };
+                $.ajax({
+                    async: false,
+                    url: "http://suggestion.baidu.com/su",
+                    type: "GET",
+                    dataType: 'jsonp',
+                    jsonp: 'jsoncallback',
+                    data: qsData,
+                    timeout: 5000,
+                    success: function (json) {
+                    },
+                    error: function (xhr) {
+                    }
+                });
+            });
+        });
+
+        function getData(data) {
+            var Info = data['s'];  //获取异步数据
+            console.log(Info);
+        }
+    </script>
+</head>
+<body>
+    页面什么都没有，按F12看控制台输出！<br />
+    <input type="text" id="txtSuggestions" />
+</body>
+</html>

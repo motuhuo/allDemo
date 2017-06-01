@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="css/swiper-3.3.1.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/swiper-3.3.1.jquery.min.js"></script>
+	<script src="js/swiper.animate1.0.2.min.js"></script>
+	<script src="js/rem.js"></script>
+	<style>
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			img {
+				border:0;
+			}
+			html,body,.main{
+				height: 100%;
+				width:6.4rem;
+				color: #fff;
+			}
+			.swiper-container{
+				height:100%;
+				display: -webkit-box;
+				-webkit-box-sizing:border-box;
+			}
+			
+			
+			.btn {
+				
+				width:1.5rem;
+				position: absolute;
+				top:1rem;
+				right:0.3rem;
+				color: #fff;
+				font-size: 0.3rem;
+				z-index: 10
+			}
+			.btn span {
+				/*display: block;*/
+				position: absolute;
+				line-height: 44px;
+				float: left;
+				opacity: 0;
+
+			}
+			.btn i {
+				position: relative;
+				float: right;
+				width:44px;
+				height:44px;
+				display: block;
+				background:url(img/tab.png) no-repeat left top;
+				-webkit-transform:scale(0.6);
+				-webkit-animation: moveI 1s linear infinite;
+				display: block;
+				z-index: 10;
+				}
+
+				@keyframes moveI{
+					0%{
+						-webkit-transform:scale(0.6) rotate(0deg) ;
+					}
+					100%{
+						-webkit-transform:scale(0.6) rotate(-360deg) ;
+					}
+				}
+				.yinfu{
+					width:0.7rem;
+					height:1.5rem;
+					
+					position: absolute;
+					right:0;
+					bottom:0;
+					overflow: hidden;
+					
+					
+				}
+				.yinfu p:nth-child(1){
+					position: absolute;
+					right: 0;
+					bottom:-25px;
+					-webkit-animation:moveYinfu0 1.5s linear infinite;
+						
+				}
+
+				@keyframes moveYinfu0{
+					0%{
+						right: 0;
+						bottom:-25px;
+						-webkit-transform:scale(0.1) rotate(9deg);
+					}
+					100%{
+						
+						-webkit-transform:translateY(-1.5rem) translateX(-70px) scale(0.5) rotate(160deg);
+					}
+				}
+				
+				.yinfu p:nth-child(2){
+					position: absolute;
+					right: 20px;
+					bottom:-30px;
+					-webkit-animation:moveYinfu1 1.5s linear infinite;
+						
+				}
+
+				@keyframes moveYinfu1{
+					0%{
+						right: 20px;
+						bottom:-30px;
+						-webkit-transform:scale(0.1) rotate(30deg);
+					}
+					100%{
+						-webkit-transform:translateY(-2.0rem) translateX(-30px) scale(0.4) rotate(180deg);
+					}
+				}
+					
+					.yinfu p:nth-child(3){
+					position: absolute;
+					right: -20px;
+					bottom:25px;
+					-webkit-animation:moveYinfu2 1.5s linear infinite;							
+					}
+
+					@keyframes moveYinfu2{
+						0%{
+							right: 20px;
+							bottom:-30px;
+							-webkit-transform:scale(0.1) rotate(30deg);
+						}
+						100%{
+							
+							-webkit-transform:translateY(-2.0rem) translateX(-30px) scale(0.4) rotate(180deg);
+						}
+					}
+
+				.Up{
+					width:58px;
+					height:60px;
+					position: absolute;
+					background: url(img/up.png) -60px top;
+					bottom:0.1rem;
+					left:0;
+					right:0;
+					margin:auto;
+					z-index: 100;
+					-webkit-animation:btnUp 1.5s linear infinite;
+					
+				}
+				@keyframes btnUp{
+					0%{
+						-webkit-transform:scale(0.6) translateY(3rem);
+						opacity:0.8;
+					}
+					100%{
+						-webkit-transform:scale(0.6) translateY(0.1rem);
+						opacity:0;
+					}
+				}
+				.HeadT {
+					text-align: center;
+					line-height: 0.8rem;
+					position: absolute;
+					width:100%;
+					height:0.8rem;
+					background:#000;
+					color: #fff;
+					font-size:0.4rem;
+					z-index: 10;
+				}
+				.slide1{
+					width:6.4rem;
+					height: 100%;
+					background:url(img/bg.jpg) no-repeat;
+					background-size: 100% 100%;
+					position: relative;
+				}
+				.txt1 {
+					width:5.22rem;
+					height:0.74rem;
+					background:url(img/text.png) no-repeat;
+					background-size: 100% 100%;
+					position: absolute;
+					left:0;right: 0;
+					margin:1.5rem auto;
+				}
+				.txt2 {
+					width:4.54rem;
+					height:1.68rem;
+					background:url(img/one.png) no-repeat;
+					background-size: 100% 100%;
+					position: absolute;
+					left:0;right: 0;
+					margin:2.3rem auto;
+				}
+				.roll {
+					width:4.1rem;
+					height:3.88rem;
+					background:url(img/two.png) no-repeat;
+					background-size: 100% 100%;
+					position: absolute;
+					left:0;right: 0;
+					margin:4rem auto;
+				}
+				.txt3{
+					width:5.44rem;
+					height:1.42rem;
+					background:url(img/one.png) no-repeat;
+					background-size: 100% 100%;
+					position: absolute;
+					left:0;right: 0;
+					margin:8rem auto;
+				}
+				.slide2 {
+					width:6.4rem;
+
+					height: 100%;
+					background:url(img/bg2.jpg) no-repeat;
+					background-size: 100% 100%;
+					position: relative;
+				}
+				.bg2{
+					width:6.4rem;
+					height: 100%;
+					background:url(img/bg22.jpg) no-repeat;
+					background-size: 100% 100%;
+					position: absolute;
+					top:0;
+					left:0;
+				}
+				.Troll{
+					width:8.9rem;
+					height: 14rem;
+					position: absolute;
+					background:url(img/t5.png) no-repeat;
+					background-size: 100% 100%;
+					left:-4.45rem;
+					bottom: -2.5rem;
+					-webkit-animation:Trollmove 0.1s linear infinite;
+					
+				}
+				
+				@keyframes Trollmove{
+					0%{
+						-webkit-transform:rotate(-1deg);
+					}
+					100{
+						-webkit-transform:rotate(360deg);
+					}
+				}
+				.allRoll {
+					width:6.4rem;
+					height:100%;
+					position: absolute;
+				}
+				.rt{
+					width: 5.9rem;
+					height: 1.4rem;
+					position: absolute;
+					right: 0rem;
+					top:1rem;
+					
+				}
+				.roll1 {
+					width:1.44rem;
+					height: 1.44rem;
+					position: absolute;
+					background: url(img/allroo.jpg) no-repeat;
+					background-size: 100% 100%;
+					left:0.5rem;
+					
+				}
+				.Text1{
+					width: 5.9rem;
+					height: 1.4rem;
+					position: absolute;
+					background:url(img/T1.png) no-repeat;
+					background-size: 100% 100%;
+					right: 0rem;
+				}
+				.rt2 {
+					width:6.4rem;
+					height: 2.92rem;
+					position: absolute;
+					
+					right: 0rem;
+					top:2.5rem;
+				}
+				.roll2 {
+					width:1.96rem;
+					height: 1.96rem;
+					position: absolute;
+					background: url(img/allroo.jpg) no-repeat;
+					background-size: 100% 100%;
+					left:0.5rem;
+					
+				}
+				.Text2{
+					width: 6.4rem;
+					height: 1.96rem;
+					position: absolute;
+					
+					background:url(img/T2.png) no-repeat;
+					background-size: 100% 100%;
+					right: 0rem;
+				}
+
+
+
+				.rt3 {
+					width:6.4rem;
+					height: 2.92rem;
+					position: absolute;
+					
+					right: 0rem;
+					top:5rem;
+					left:2rem;
+				}
+				.roll3 {
+					width:2.3rem;
+					height: 2.36rem;
+					position: absolute;
+					background: url(img/allroo.jpg) no-repeat;
+					background-size: 100% 100%;
+					left:0.4rem;
+					
+				}
+				.Text3{
+					width: 6.4rem;
+					height: 2.92rem;
+					position: absolute;
+					
+					background:url(img/T3.png) no-repeat;
+					background-size: 100% 100%;
+					right: 0rem;
+					/*left:2rem;*/
+				}
+
+				.rt4 {
+					width:6.4rem;
+					height: 2.98rem;
+					position: absolute;
+					
+					left:-0.3rem;
+					top:6.5rem;
+				}
+				.roll4 {
+					width:2.3rem;
+					height: 2.3rem;
+					position: absolute;
+					background: url(img/allroo.jpg) no-repeat;
+					background-size: 100% 100%;
+					left:0.5rem;
+					
+				}
+				.Text4{
+					width: 6.4rem;
+					height: 2.98rem;
+					position: absolute;
+					
+					background:url(img/T4.png) no-repeat;
+					background-size: 100% 100%;
+					right: 0rem;
+					/*left:2rem;*/
+				}
+				.slide3 {
+					width:6.4rem;
+					height: 100%;
+					background:url(img/bg3.jpg) no-repeat;
+					background-size: 100% 100%;
+					position: relative;
+				}
+				.th1{
+					width:5.4rem;
+					height: 0.76rem;
+					background: url(img/th1.png) no-repeat;
+					background-size: 100% 100%;
+					left:0; right: 0;
+					margin:1.2rem auto 0 auto;
+				}
+				.allMid{
+					width:6.4rem;
+					height:6.3rem;
+					
+				}
+				.thM1{
+					width:1.6rem;
+					height:6.28rem;
+					background:url(img/m1.png) no-repeat;
+					background-size: 100% 100%;
+					float: left;
+				}
+				.thM2{
+					width:1.6rem;
+					height:6.28rem;
+					background:url(img/m2.png) no-repeat;
+					background-size: 100% 100%;					
+					float: left;
+				}
+				.thM3{
+					width:1.6rem;
+					height:6.3rem;
+					background:url(img/m3.png) no-repeat;
+					background-size: 100% 100%;					
+					float: left;
+				}
+				.thM4{
+					width:1.6rem;
+					height:6.28rem;
+					background:url(img/m4.png) no-repeat;
+					background-size: 100% 100%;					
+					float: left;
+				}
+				.th2 {
+					width:5.48rem;
+					height:1.48rem;
+					background:url(img/txt3.png) no-repeat ;
+					background-size: 100% 100%;
+					position: absolute;
+					left:0;right: 0;
+					margin:auto;
+				}
+				.slide4 {
+					width:6.4rem;
+					height: 100%;
+					background:url(img/bg4.jpg) no-repeat;
+					background-size: 100% 100%;
+					position: relative;
+				}
+				.four{
+					width:6.4rem;
+					height: 100%;
+					background:url(img/four.png) no-repeat;
+					background-size: 100% 100%;
+					position: absolute;
+					left:0;
+					top:0;
+					
+				}
+				.slide5 {
+					width:6.4rem;
+					height: 100%;
+					background:url(img/bg5.jpg) no-repeat;
+					background-size: 100% 100%;
+					position: relative;
+					display: -webkit-box;
+					-webkit-box-orient:vertical;
+				}
+				.FiveUp{
+					width:6.4rem;
+					height: 33%;
+					-webkit-box-flex:1;
+					padding-top: 0.8rem;
+					clear: bottom;
+					overflow: hidden;
+				}
+				.Fup1 {
+					width:4.62rem;
+					height: 2.92rem;
+					background:url(img/Fup1.png) no-repeat;
+					background-size: 100% 100%;
+					float: left;
+				}
+				.Fup2 {
+					width:1.78rem;
+					height: 3.68rem;
+					background:url(img/Fup2.png) no-repeat;
+					background-size: 100% 100%;
+					float: left;
+					margin-top:-0.3rem;
+				}
+				.FiveMid{
+					width:6.4rem;
+					height: 33%;
+					padding-top: 0.2rem;
+					-webkit-box-flex:1;
+				}
+				.Fmid1{
+					width:1.66rem;
+					height: 2.6rem;
+					background:url(img/fmid1.png) no-repeat;
+					background-size: 100% 100%;
+					float: left;
+				}
+				.Fmid2{
+					width:4.74rem;
+					height: 2.56rem;
+					background:url(img/fmid2.jpg) no-repeat;
+					background-size: 100% 100%;
+					float: left;
+				}
+
+				.FiveDown{
+					width:6.4rem;
+					height: 33%;
+					background:url(img/fd.jpg) no-repeat;
+					background-size: 100% 100%;
+				}
+				.slide6,.slide8 {
+					width:6.4rem;
+					height: 100%;
+					background:#000;
+					position: relative;
+				}
+				.six{
+					width:6.4rem;
+					height: 100%;
+					background:url(img/six.jpg) no-repeat;
+					background-size: 100% 100%;
+					position: absolute;
+					left:0;
+					top:0;
+				}
+				.slide7 {
+					width:6.4rem;
+					height: 100%;
+					background:url(img/bg7.jpg) no-repeat;
+					background-size: 100% 100%;
+					position: relative;
+					padding-left:0.18rem;
+					
+				}
+				.seven1,.seven2,.seven3,.seven4,.seven5,.seventBox,.nine1,.nine2,.nine3,.nine4,.nine5,.nineBox{
+					width:6.04rem;
+					height:8.34rem;
+					position: absolute;
+					padding-top:1rem;
+					
+				}
+				.seven1 img,.nine1 img {
+					width:6.04rem;
+					height:8.34rem;
+					-webkit-transform:rotate(-30deg) scale(0.9);
+				}
+				.seven2 img,.nine2 img {
+					width:6.04rem;
+					height:8.34rem;
+					-webkit-transform:rotate(-20deg) scale(0.9);
+				}
+				.seven3 img,.nine3 img {
+					width:6.04rem;
+					height:8.34rem;
+					-webkit-transform:rotate(-10deg) scale(0.9);
+				}
+				.seven4 img,.nine4 img {
+					width:6.04rem;
+					height:8.34rem;
+					-webkit-transform:rotate(0deg) scale(0.9);
+				}
+				.seven5 img,.nine5 img {
+					width:6.04rem;
+					height:8.34rem;
+					-webkit-transform:rotate(10deg) scale(0.9);
+				}
+				.seventTxt{
+					width:3.8rem;
+					height: 1.63rem;
+					position: absolute;
+					background:url(img/sevTxt.png) no-repeat;
+					background-size: 100% 100%;
+					left:0;
+					bottom:0.5rem;
+					-webkit-transform:rotate(10deg) scale(0.9);
+				}
+				.eight{
+					width:6.4rem;
+					height: 100%;
+					background:url(img/eight.jpg) no-repeat;
+					background-size: 100% 100%;
+					position: absolute;
+					left:0;
+					top:0;
+				}
+				.slide9 {
+					width:6.4rem;
+					height: 100%;
+					background:url(img/bg9.jpg) no-repeat;
+					background-size: 100% 100%;
+					position: relative;
+					padding-left:0.18rem;
+					
+				}
+				.nineTxt{
+					width:3.8rem;
+					height: 1.63rem;
+					position: absolute;
+					background:url(img/nineTxt.png) no-repeat;
+					background-size: 100% 100%;
+					left:0;
+					bottom:0.7rem;
+					-webkit-transform:rotate(10deg) scale(0.9);
+				}
+				.slide10{
+					width:6.4rem;
+					height: 100%;
+					background:url(img/bg10.jpg) no-repeat;
+					background-size: 100% 100%;
+					position: relative;
+
+				}
+				.ten{
+					width:5.26rem;
+					height:9.02rem;
+					position: absolute;
+					left:0;right: 0;
+					margin: 1rem auto 0 auto;
+					background: url(img/ten.png) no-repeat;
+					background-size: 100% 100%;
+				}
+
+	</style>
+</head>
+<body>
+	<div class="main">
+		<audio src="music.mp3" autoplay="autoplay" class="song" id="music"></audio>
+		<div class="btn">
+			<span>关闭</span>
+			<span>开启</span>
+			<i></i>
+			<div class="yinfu">
+				<p><img src="img/hb.png"></p>
+				<p><img src="img/hb.png"></p>
+				<p><img src="img/hb.png"></p>
+			</div>
+		</div>
+		
+		<div class="swiper-container">
+			<div class="Up"></div>
+		    <div class="HeadT">品牌·EDS菲芘酒吧</div>
+		    <div class="swiper-wrapper">
+
+		        <div class="swiper-slide slide1">
+		        	<div class="ani txt1" swiper-animate-effect="fadeInDown" swiper-animate-duration="1.8s" swiper-animate-delay="0.3s"></div>
+		        	<div class="ani txt2" swiper-animate-effect="fadeInDown" swiper-animate-duration="1.8s"></div>
+		        	<div class="ani roll" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s"></div>
+		        	<div class="ani txt3" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.8s"></div>
+		        </div>
+		        <div class="swiper-slide slide2">
+		        	 <div class="ani bg2" swiper-animate-effect="rotateInUpRight" swiper-animate-duration="2s" ></div>
+		        	<div class="Troll"></div> 
+						<div class="rt">
+							<div class="ani roll1" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay="1.5s"></div>
+							<div class="ani Text1" swiper-animate-effect="bounceInLeft" swiper-animate-duration="1s" swiper-animate-delay="2s"></div>
+						</div>
+						<div class="rt2">
+							<div class="ani roll2" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay="1.5s"class="ani roll1" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="2.5s"></div>
+							<div class="ani Text2" swiper-animate-effect="bounceInRight" swiper-animate-duration="1s" swiper-animate-delay="2s"></div>
+						</div>
+						<div class="rt3">
+							<div class="ani roll3" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay="1.5s"></div>
+							<div class="ani Text3" swiper-animate-effect="bounceInLeft" swiper-animate-duration="1s" swiper-animate-delay="2s"></div>
+						</div>
+						<div class="rt4">
+							<div class="ani roll4" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay="1.5s"></div>
+							<div class="ani Text4" swiper-animate-effect="bounceInRight" swiper-animate-duration="1s" swiper-animate-delay="2s"></div>
+						</div>
+		        </div>
+		        <div class="swiper-slide slide3">
+		        	<div class="ani th1" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.3s"></div>
+		        	<div class="allMid">
+		        		<div class="ani thM1" swiper-animate-effect="fadeInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.3s"></div>
+			        	<div class="ani thM2" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="1.3s"></div>
+			        	<div class="ani thM3" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0.3s"></div>
+			        	<div class="ani thM4" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="1.3s"></div>
+		        	</div>
+		        	<div class="ani th2" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="1.5s"></div>
+		        </div>
+		        <div class="swiper-slide slide4">
+		        	<div class="ani four" swiper-animate-effect="flipInY" swiper-animate-duration="1s" swiper-animate-delay="0.5s"></div>
+		        </div>
+		        <div class="swiper-slide slide5">
+		        	<div class="FiveUp">
+		        		<div class="ani Fup1" swiper-animate-effect="slideInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.3s"></div>
+		        		<div class="ani Fup2" swiper-animate-effect="slideInRight" swiper-animate-duration="1s" swiper-animate-delay="1s"></div>
+		        	</div>
+		        	<div class="FiveMid">
+		        		<div class="ani Fmid1" swiper-animate-effect="slideInLeft" swiper-animate-duration="1s" swiper-animate-delay="1s"></div>
+		        		<div class="ani Fmid2" swiper-animate-effect="slideInRight" swiper-animate-duration="1s" swiper-animate-delay="0.3s"></div>
+		        	</div>
+		        	<div class="ani FiveDown" swiper-animate-effect="slideInUp" swiper-animate-duration="1s" swiper-animate-delay="1s"></div>
+		        </div>
+		        <div class="swiper-slide slide6">
+		        	<div class="ani six" swiper-animate-effect="flipInY" swiper-animate-duration="1s" swiper-animate-delay="0.5s"></div>
+		        </div>
+		        <div class="swiper-slide slide7">
+		        	<div class="ani seven1" swiper-animate-effect="rotateInUpRight" swiper-animate-duration="1s" swiper-animate-delay="1s"><img src="img/seven1.JPG"></div>
+		        	<div class="ani seven2" swiper-animate-effect="rotateInUpRight" swiper-animate-duration="1s" swiper-animate-delay="2s"><img src="img/seven2.JPG"></div>
+		        	<div class="ani seven3" swiper-animate-effect="rotateInUpRight" swiper-animate-duration="1s" swiper-animate-delay="3s"><img src="img/seven3.JPG"></div>
+		        	<div class="ani seven4" swiper-animate-effect="rotateInUpRight" swiper-animate-duration="1s" swiper-animate-delay="4s"><img src="img/seven4.JPG"></div>
+		        	<div class="ani seven5" swiper-animate-effect="rotateInUpRight" swiper-animate-duration="1s" swiper-animate-delay="5s">
+		        		<img src="img/seven5.JPG">
+		        	</div>
+		        	<div class="ani seventBox" swiper-animate-effect="rotateInUpRight" swiper-animate-duration="1s" swiper-animate-delay="6s">
+		        		<div class="seventTxt"></div>
+		        	</div>	
+		        </div>
+				<div class="swiper-slide slide8">
+		        	<div class="ani eight" swiper-animate-effect="flipInY" swiper-animate-duration="1s" swiper-animate-delay="0.5s"></div>
+		        </div>
+		        <div class="swiper-slide slide9">
+		        	<div class="ani nine1" swiper-animate-effect="rotateInUpRight" swiper-animate-duration="1s" swiper-animate-delay="1s"><img src="img/e1.JPG"></div>
+		        	<div class="ani nine2" swiper-animate-effect="rotateInUpRight" swiper-animate-duration="1s" swiper-animate-delay="2s"><img src="img/e2.JPG"></div>
+		        	<div class="ani nine3" swiper-animate-effect="rotateInUpRight" swiper-animate-duration="1s" swiper-animate-delay="3s"><img src="img/e3.JPG"></div>
+		        	<div class="ani nine4" swiper-animate-effect="rotateInUpRight" swiper-animate-duration="1s" swiper-animate-delay="4s"><img src="img/e4.JPG"></div>
+		        	<div class="ani nine5" swiper-animate-effect="rotateInUpRight" swiper-animate-duration="1s" swiper-animate-delay="5s">
+		        		<img src="img/e5.JPG">
+		        	</div>
+		        	<div class="ani nineBox" swiper-animate-effect="rotateInUpRight" swiper-animate-duration="1s" swiper-animate-delay="6s">
+		        		<div class="nineTxt"></div>
+		        	</div>	
+		        </div>
+				<div class="swiper-slide slide10">
+					<div class="ani ten" swiper-animate-effect="fadeInUp" swiper-animate-duration="3s" swiper-animate-delay="0.3s"></div>
+				</div>
+		    </div>
+		   
+		</div>
+
+	</div>
+</body>
+	<script>        
+		  var mySwiper = new Swiper ('.swiper-container', {
+		    direction: 'vertical',
+		    loop: true,
+		     onInit: function(swiper){ 
+				    swiperAnimateCache(swiper); 
+				    swiperAnimate(swiper); 
+				  }, 
+				  onSlideChangeEnd: function(swiper){ 
+				    swiperAnimate(swiper); 
+				  } 
+		   
+		  })        
+		   var ado=document.getElementById('music');
+			var $T=$('.btn span');
+			var $M=$('.btn i');
+			var $aP=$('.yinfu p');
+
+			  	$('.btn').click(function(){
+			  		if(ado.paused){
+			  			ado.play()
+			  			$T.eq(1).css({'opacity':'1'}).siblings('span').css({'opacity':'0'})
+			  			setTimeout(function(){
+			  				$T.eq(1).animate({'opacity':'0'},500)
+			  			},1000)
+			  			$M.css({'-webkit-animation':'','-webkit-transform':'scale(0.6)'});
+			  			$aP.each(function(){
+			  				$(this).css('-webkit-animation','')
+			  			})
+			  		}else{
+			 			ado.pause();
+			 			$T.eq(0).css({'opacity':'1'}).siblings('span').css({'opacity':'0'})
+			 			setTimeout(function(){
+			  				$T.eq(0).animate({'opacity':'0'},500)
+			  			},1000)
+			  			$M.css('-webkit-animation','moveI');
+			  			$aP.each(function(){
+			  				$(this).css('-webkit-animation','moveYinfu'+$(this).index())
+			  			})
+			 		}
+				})
+
+			// var $divs=$('.slide7');
+			// var $adiv=$divs.find('.sevenRo')
+			// alert($adiv.size())
+
+  </script>
+</html>

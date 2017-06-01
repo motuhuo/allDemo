@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = "abbbaaaccccddfgh";
+	var obj  = {};
+	for(var i=0;i<str.length;i++){
+    var v = str.charAt(i);
+    console.log(v)
+    if(obj[v] && obj[v].value ){
+        obj[v].count = ++ obj[v].count;
+    }else{
+        obj[v] = {};
+        obj[v].count = 1;
+        obj[v].value = v;
+    }
+}
+for(key in obj){
+    document.write(obj[key].value +'='+obj[key].count+' '); // a=4  b=3  c=4  d=2  f=1  g=1  h=1 
+}
+
+
+
+// 
+// var str = 'asdfssaaasasasasaa';
+// var json = {};
+// for (var i = 0; i < str.length; i++) {
+//         if(!json[str.charAt(i)]){
+//                 json[str.charAt(i)] = 1;
+//         }else{
+//                 json[str.charAt(i)]++;
+// 				document.write(json[str.charAt(i)]);
+
+//         }
+
+// };
+// console.log(json[str.charAt(0)]);
+// var iMax = 0;
+// var iIndex = '';
+// for(var i in json){
+//         if(json[i]>iMax){
+//                 iMax = json[i];
+//                 iIndex = i;
+// 				//document.write(json[i]);
+//         }
+// }
+// alert('出现次数最多的是:'+iIndex+'出现'+iMax+'次')
+</script>
+</html>

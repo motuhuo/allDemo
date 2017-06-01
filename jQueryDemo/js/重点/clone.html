@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ 
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var x=function(){
+		alert(1);
+	}
+	var y=x;
+	y=function(){
+		alert(2);
+	}
+	
+	x();   //1
+	y();   //2
+}	
+//方法一：JavaScript代码
+function clone(obj){  
+    var o;  
+    if(typeof obj == "object"){  
+        if(obj === null){  
+            o = null;  
+        }else{  
+            if(obj instanceof Array){  
+                o = [];  
+                for(var i = 0, len = obj.length; i < len; i++){  
+                    o.push(clone(obj[i]));  
+                }  
+            }else{  
+                o = {};  
+                for(var k in obj){  
+                    o[k] = clone(obj[k]);  
+                }  
+            }  
+        }  
+    }else{  
+        o = obj;  
+    }  
+    return o;  
+}  
+//方法二：JavaScript代码
+function clone(obj){  
+    var o, obj;  
+    if (obj.constructor == Object){  
+        o = new obj.constructor();   
+    }else{  
+        o = new obj.constructor(obj.valueOf());   
+    }  
+    for(var key in obj){  
+        if ( o[key] != obj[key] ){   
+            if ( typeof(obj[key]) == 'object' ){   
+                o[key] = clone(obj[key]);  
+            }else{  
+                o[key] = obj[key];  
+            }  
+        }  
+    }  
+    o.toString = obj.toString;  
+    o.valueOf = obj.valueOf;  
+    return o;  
+}  
+ //方法三：JavaScript代码
+function clone(obj){  
+    function Fn(){}  
+    Fn.prototype = obj;  
+    var o = new Fn();  
+    for(var a in o){  
+        if(typeof o[a] == "object") {  
+            o[a] = clone(o[a]);  
+        }  
+    }  
+    return o;  
+} 
+
+//克隆
+Object.prototype.Clone = function(){
+    var objClone;
+    if (this.constructor == Object){
+        objClone = new this.constructor(); 
+    }else{
+        objClone = new this.constructor(this.valueOf()); 
+    }
+    for(var key in this){
+        if ( objClone[key] != this[key] ){ 
+            if ( typeof(this[key]) == 'object' ){ 
+                objClone[key] = this[key].Clone();
+            }else{
+                objClone[key] = this[key];
+            }
+        }
+    }
+    objClone.toString = this.toString;
+    objClone.valueOf = this.valueOf;
+    return objClone; 
+} 
+
+</script>
+</head>
+<body>
+
+
+</body>
+</html>

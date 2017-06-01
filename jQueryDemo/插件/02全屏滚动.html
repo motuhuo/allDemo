@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/ui-page.css"/>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="view">
+			<div style="background: red;">
+				<p>哈哈啊哈哈哈</p>
+			</div>
+			<div style="background: green;">
+				<p>呵呵呵呵呵</p>
+			</div>
+			<div style="background: greenyellow;">
+				<p>嘿嘿嘿嘿嘿</p>
+			</div>
+			<div style="background: blue;">
+				<p>嘻嘻嘻嘻嘻</p>
+			</div>
+			<div style="background: orange;">
+				<p>么么么么么么</p>
+			</div>
+			<div style="background: pink;">
+				<p>啦啦啦啦啦啦啦啦</p>
+			</div>
+		</div>
+		
+		<script src="js/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.ui-page.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		
+		$('#view').pageView();
+		
+//			$('#view').bind('mousewheel',function( ev ){
+//				var ev = ev || event;
+//				var wheelDe = ev.originalEvent.wheelDelta;
+//				wheelDe = wheelDe>0?1:0;
+//				var $index = $(this).attr('index');
+//				var $maxPage = $('.pageView',$(this)).size()-1;
+//				if( wheelDe ){
+//					if(--$index<0){
+//						return;
+//					}
+//				}else{
+//					if( ++$index>$maxPage ){
+//						return;
+//					}
+//				}
+//				if( !$(this).is(':animated') ){
+//					$(this).animate({'top':'-'+$index+'00%'},1000);
+//					$(this).attr('index',$index);
+//				};
+//				
+//				//console.log( wheelDe );
+//			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<style>
+		.clo{
+			background:red;
+		}
+	</style>
+	<script src="js/angular.min.js"></script>
+	<script src="js/jquery-1.12.2.js"></script>
+</head>
+<body>
+	<div ng-controller="myCtrl">
+		<h2>{{num1}}</h2>
+		<h2>{{name1}}</h2>
+		<h2>{{num2}}</h2>
+		<h2>{{name2}}</h2>
+		<h2>{{num3}}</h2>
+		<h2>{{num4}}</h2>
+		<h2>{{num5}}</h2>
+		<h2>{{name6}}</h2>
+		<input type="text" ng-model="txt"><br>
+		<p>隔字母大写: <span>{{txt | filter1}}</span></p>
+		<p>首字母大写：<span>{{txt | filter2}}</span></p>
+	</div>
+
+		<h2 my-dir>自定义指令(点击)</h2>
+		<my-dir2>mouseover(元素)</my-dir2>
+	<div>
+		<p ng-class="{clo:toF}">测试文字</p>
+		<input type="checkbox" ng-model="toF">点击改变背景
+	</div>
+	<div ng-controller="myCtrl3">
+		<ul>
+			<li ng-repeat="x in names">{{x.name+','+x.country}}
+			</li>
+		</ul>
+	</div>
+</body>
+<script>
+	var app=angular.module("myApp",[]);
+	app.controller("myCtrl",["$scope","mySer1","mySer2","mySer3","mySer4","mySer5","mySer6",function($scope,mySer1,mySer2,mySer3,mySer4,mySer5,mySer6){
+		$scope.num1=mySer1.add1(1,10);
+		$scope.name1=mySer1.name;
+		$scope.num2=mySer2.fn(2,10);
+		$scope.name2=mySer2.name;
+		$scope.num3=mySer3.getMinVal([4,1,5,10,15]);
+		$scope.num4=mySer4.add2(5,10);
+		$scope.num5=mySer5.fn5(10,5);
+		$scope.name6=mySer6.name;
+	}])
+	//(-)
+	app.service("mySer1",[function(){
+			this.name="这是自定义服务1"
+			this.add1=function(x,y){
+				return (x*y);
+			}
+			
+		}])
+	
+	//(二)
+	app.config(function($provide){
+		$provide.provider("mySer2",function(){
+			this.$get=function(){
+				var factory={};
+				factory={
+					name:"这是自定义服务2",
+					fn:function(x,y){
+						return (x*y);
+					}
+				}
+				return factory;
+			}
+		})
+	})
+	//(二)
+	app.config(function($provide){
+		$provide.provider("mySer3",function(){
+			this.$get=function(){
+				var factory={};
+				factory={
+					add:function(x,y){
+						return (x+y);
+					},
+					getMinVal:function(arr){
+						var a=arr[0]
+						for(var i=0; i<arr.length; i++){
+							if(a>arr[i]){
+								a=arr[i]
+							}
+						}			
+						return a;
+					}
+				}
+				return factory;
+			}
+
+		})
+	})			
+	//(三)  依赖mySer3;
+	app.factory('mySer4',['mySer3',function(mySer3){
+		var factory={};
+		factory={
+			add2:mySer3.add;
+		}
+		return factory;
+	}])	
+
+	app.config(function($provide){
+		$provide.provider("mySer5",function(){
+			this.$get=function(){
+				var factory={};
+				factory={
+					fn5:function(x,y){
+						return (x-y)
+					}
+				}
+				return factory;
+			}
+		})
+	})
+	app.config(function($provide){
+		$provide.provider("mySer6",function(){
+			this.$get=function(){
+				var factory={};
+				factory={
+					name:"这是自定义服务练习"
+				}
+				return factory;
+			}
+		})
+	})
+	//自定义过滤器
+	app.filter("filter1",function(){
+		return function(input){
+			var tem="";
+			if(input){
+				for(var i=0; i<input.length; i++){
+					if(i%2==0){
+						tem+=input[i].toUpperCase();
+					}else{
+						tem+=input[i];
+					}
+				}
+				return tem;
+			}
+		}
+	})
+	app.filter("filter2",function(){
+		return function(input){
+			if(input){
+				return input[0].toUpperCase()+input.slice(1);
+			}
+		}
+	})
+
+	//自定义指令
+	app.directive("myDir",function(){
+		return {
+			restrict:"A",
+			link:function(scope,element,attrs,ctrl){
+				element.bind("click",function(){
+					alert("自定义指令生效");
+				})
+			}
+		}
+	})
+
+	app.directive("myDir2",function(){
+		return {
+			restrict:"E",
+			link:function(scope,element,attrs,ctrl){
+				element.bind("mouseover",function(){
+					alert("mouseover 生效");
+				})
+			}
+		}
+	})
+	app.controller('myCtrl3', ['$scope', function($scope){
+		$scope.names=[
+			{name:'Jani',country:'Norway'},
+			{name:'Hege',country:'Sweden'},
+			{name:'Kai',country:'Denmark'}
+			];
+
+		}])
+	var objs =[{a:1},{a:2}];
+		angular.forEach(objs, function(data){
+		console.log(data.a);   //1,2
+	});
+
+
+		var obj = {name: 'xxx', country: 'China'};
+		angular.forEach(obj, function (value, key) {
+		    console.log(key + ':' + value);
+		    // console.log(value);
+		});
+
+		// name:xxx
+		// country:China
+
+		var array = ['xxx', 'yyy'];
+
+		angular.forEach(array, function (item, index) {
+		    console.log(index + ':' + item + ' form ' + this.country);
+		}, obj);
+
+		// 0:xxx form China
+		// 1:yyy form China
+
+		
+</script>
+</html>

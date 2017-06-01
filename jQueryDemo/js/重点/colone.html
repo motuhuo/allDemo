@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ 
+</style>
+<script type="text/javascript">
+function start(){
+	var Hand=function (finger){
+		this.fingerNumner=finger;
+	}
+	Hand.prototype.clone=function(){
+		var obj=new Hand();
+		obj.fingerNumner = this.fingerNumner;
+		return obj;
+	}
+	var People=function (){
+		this.name;
+		this.age;
+		
+		this.hand;   //对象作为属性
+	}
+	People.prototype.clone=function(){
+		var obj=new People();
+		obj.name=this.name; 
+		obj.age=this.age;
+		obj.hand=this.hand.clone();//调用hand对象深拷贝
+		return obj;
+	}
+	People.prototype.setName=function(name){
+		this.name=name;
+	}
+	People.prototype.getName=function(){
+		return this.name;
+	}
+	People.prototype.setAge=function(age){
+		this.age=age;
+	}
+	People.prototype.getAge=function(){
+		return this.age;
+	}
+	People.prototype.setHand=function(hand){
+		this.hand=hand;
+	}
+	People.prototype.getHand=function(){
+		return this.hand;
+	}
+	var p1=new People();
+	p1.setName('A1');
+	p1.setAge(20);
+	p1.setHand(new Hand(5));
+		
+	var p2=new People();
+	p2.setName('A2');
+	p2.setAge(30);
+	p2.setHand(new Hand(4));
+	
+	var p3=p1.clone();
+	console.log(p1,p3);
+	p3.hand.fingerNumner=2;
+	console.log(p1,p3);
+	console.log(p3,p1);
+
+	
+	
+	
+}
+
+window.onload=function(){
+		start();
+}	
+
+</script>
+</head>
+<body>
+
+
+</body>
+</html>

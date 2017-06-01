@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>走秀端口详情页</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<!-- <link rel="stylesheet" href="style/zxwang.css"> -->
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body,html,.main{
+			height: 100%;
+			position: relative;
+		}
+		ul li {
+			list-style: none;
+		}
+		.header{
+			width: 100%;
+		}
+		.header h2{
+			width:100%;
+			position: relative;
+			height: 42px;
+			background: #b01e1e;
+			text-align: center;
+			line-height: 42px;
+			font-size: 16px;
+		}
+		.header h2 a{
+			color: white;
+		}
+		
+		.logo {
+			position: absolute;
+			right: 20px;
+			top: 0px;
+			bottom: 0px;
+			margin-top: auto;
+			margin-bottom: auto;
+			width: 52px;
+			height: 27px;
+			background:url(img/logo.png) no-repeat;
+			background-size: 100%;
+		}
+		
+		.nav{
+			height: 28px;
+			background:url(img/nav.png) no-repeat;
+			background-size: 100% 100%;
+		}
+		.main {
+			position: relative;
+		}
+		.header{
+			position: absolute;
+			top:0px;
+			left: 0px;
+		}
+		#wrapper{
+			width: 100%;
+			position: absolute;
+			top:72px;
+			bottom: 48px;
+			overflow: scroll;
+		}
+		.content{
+			width: 100%;
+			position: absolute;
+			top:0px;
+			bottom: 0px;
+			overflow: scroll;
+		}
+		.itemList,.itemRight{
+			width: 50%;
+			
+			float: left;
+		}
+		.itemList li,.itemRight li{
+			list-style: none;
+			width: 100%;
+			text-align: center;
+		}
+		.itemList li h3,.itemRight li h3{
+			font-weight: normal;
+			font-size: 12px;
+		}
+		.itemList li img,.itemRight li img{
+			width: 76%;
+
+		}
+		.footer{
+			width: 100%;
+			height: 48px;
+			background:#484850;
+			position: absolute;
+			bottom: 0;
+		}
+
+
+		#pullUp {
+            background:#fff;
+            height:40px;
+            line-height:40px;
+            padding:5px 10px;
+            border-bottom:1px solid #ccc;
+            font-weight:bold;
+            font-size:14px;
+            color:#888;
+            text-align: center;
+        }
+
+        #pullDown .pullDownIcon, #pullUp .pullUpIcon  {
+            display:block; float:left;
+            width:40px; height:40px;
+            background:url(pull-icon@2x.png) 0 0 no-repeat;
+            -webkit-background-size:40px 80px; background-size:40px 80px;
+            -webkit-transition-property:-webkit-transform;
+            -webkit-transition-duration:250ms;  
+        }
+        #pullDown .pullDownIcon {
+            -webkit-transform:rotate(0deg) translateZ(0);
+        }
+        #pullUp .pullUpIcon  {
+            -webkit-transform:rotate(-180deg) translateZ(0);
+        }
+
+        #pullDown.flip .pullDownIcon {
+            -webkit-transform:rotate(-180deg) translateZ(0);
+        }
+
+        #pullUp.flip .pullUpIcon {
+            -webkit-transform:rotate(0deg) translateZ(0);
+        }
+
+        #pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+            background-position:0 100%;
+            -webkit-transform:rotate(0deg) translateZ(0);
+            -webkit-transition-duration:0ms;
+            -webkit-animation-name:loading;
+            -webkit-animation-duration:2s;
+            -webkit-animation-iteration-count:infinite;
+            -webkit-animation-timing-function:linear;
+        }
+
+        @-webkit-keyframes loading {
+            from { -webkit-transform:rotate(0deg) translateZ(0); }
+            to { -webkit-transform:rotate(360deg) translateZ(0); }
+        }
+        .footer div{
+        	float: left;
+        	width: 33.33%;
+        	height: 100%;
+        }
+        .userName,.sex,.userImg{
+			color: #fff;
+			font-size: 20px;
+			line-height: 44px;
+			text-align: center;
+        }
+        .userImg img{
+        	width: 100%;
+        	height: 100%;
+        }
+
+	</style>
+	<script src="js/jquery-1.12.2.js"></script>
+	<script src="js/iscroll.js"></script>
+	<script src="js/app.js"></script>
+</head>
+<body>
+	<div class="main">
+		<div class="header">
+			<h2>
+				<a href="#">新品上市</a>
+				<a href="#" class="logo"></a>
+			</h2>
+			
+			<div class="nav"></div>
+			
+		</div>
+		<div id="wrapper">
+			<div class="content" id="scroller">
+				<!-- <div id="pullDown">
+	           		<span class="pullDownIcon"></span><span class="pullDownLabel">Pull down to refresh...</span>
+	        	</div> -->
+	        	<!-- <div id="thelist"> -->
+	        		<ul class="itemList" id='itemList'></ul>
+					<ul class="itemRight" id='itemRight'></ul>
+	        	<!-- </div> -->
+	        	<div style="clear: both; overflow: hidden;"></div>
+				<div id="pullUp">
+	           		<span class="pullUpIcon"></span><span class="pullUpLabel">Pull up to refresh...</span>
+	       		</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="userName"></div>
+			<div class="userImg"></div>
+			<div class="sex"></div>
+		</div>
+	</div>
+</body>
+<script>
+	// $.ajax({
+	// 	type:'post',
+	// 	url:'http://datainfo.duapp.com/shopdata/getGoods.php',
+	// 	dataType:'jsonp',
+	// 	success:function(data){
+	// 		// console.log(data.length);
+	// 		// console.log(data);
+	// 		// var reg=/^(callback)|(\c)|(\)$/g;
+	// 		var len=data.length;
+	// 		var result=data;
+	// 		var html='';
+	// 		var oIndex=0;
+	// 		for (var i=0; i<len; i++){
+	// 			(function(i){
+	// 				var oImg=new Image();
+	// 				oImg.src=result[i].goodsListImg;
+	// 				oImg.onload=function(){
+	// 					var html="<li><img src='"+result[i].goodsListImg+"' title=''><h3>"+result[i].goodsName+"</h3></li>"
+	// 					if(oIndex==0){
+	// 						$('#itemList').append(html);
+	// 					}else{
+	// 						$('#itemRight').append(html);
+	// 					};
+	// 					oIndex=$('#itemList').height()>$('#itemRight').height()?1:0;
+	// 				}			
+	// 			})(i)
+	// 		}
+	// 	}
+	// })
+	
+	if(localStorage.getItem('userID')){
+
+		var $userID=localStorage.getItem('userID');
+		$.ajax({
+			type:'post',
+			url:'http://datainfo.duapp.com/shopdata/getuser.php',
+			data:{userID:$userID},
+			dataType:'jsonp',
+			success:function(data){
+				console.log(data);
+				(function(){
+					$('.userName').html(data[0].userID);
+					htm="<img src="+data[0].userimg_url+">";
+					$('.userImg').html(htm);
+					$('.sex').html(data[0].sex);
+				})()
+			}
+		})
+	}
+</script>
+</html>

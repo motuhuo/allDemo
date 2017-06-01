@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<script src="js/jquery-1.12.2.js"></script>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		a {
+			text-decoration: none;
+		}
+		body,html,.main{
+			height: 100%;
+			position: relative;
+			left: 0;
+			top: 0;
+		}
+		.header{
+			width: 100%;
+			height: 88px;
+			position: absolute;
+			left: 0;
+			top:0;
+		}
+		.header h2{
+			width: 100%;
+			height: 44px;
+			position: relative;
+			background: #a91918;
+			text-align: center;
+			line-height: 44px;
+		}
+		.header h2 a:nth-child(1){
+			color:#fff;
+		}
+		.header h2 a:nth-child(2){
+			width:57px;
+			height: 32px;
+			background:url(img/car.png) no-repeat;
+			background-size: 100% 100%;
+			position: absolute;
+			top:0;
+			bottom:0;
+			margin-bottom: auto;
+			margin-top: auto;
+			right: 23px;
+		}
+		.nav {
+			height: 44px;
+			width: 95%;
+			color: #fff;
+			background: #747474;
+			line-height: 44px;
+			font-size: 16px;
+			padding-left: 5%
+		}
+		.nav a:nth-child(2){
+			display: inline-block;
+			color: #ac1a1b;
+
+		}
+		.content{
+			width: 100%;
+			position: absolute;
+			left: 0;
+			top:88px;
+			bottom:50px;
+			background: #f7f7f7;
+			
+			overflow: scroll;
+		}
+		.content ul li {
+			width: 100%;
+			display: -webkit-box;
+			height: 119px;
+			background: #fff;
+			border-bottom: 1px solid #aaaaaa;
+			padding: 13px;
+		}
+		.pic{
+			width: 28%;
+			height: 119px;	
+			background:url(img/car1.png) no-repeat;	
+			background-size: 100% 100%;	
+		}
+		
+		.txt{
+			width: 58%;
+			height: 119px;
+			padding-left: 3%;
+
+		}
+		.txt p{
+			margin-bottom:10px; 
+		}
+		.txt input{
+			width: 32px;
+			height: 25px;
+			border-radius: 5px;
+			outline: none;
+			border:none;
+			text-align: center;
+		}
+		.logo{
+			width: 5%;
+			margin-right: 2%;
+			height: 20px;
+			background: url(img/btn.png) no-repeat;
+			background-size: 100% 100%;
+		}
+		
+		.footer{
+			width: 100%;
+			/*height: 50px;*/
+			background: #484850;
+			position: absolute;
+			bottom: 0px;
+			left: 0;
+		}
+		
+			
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="header">
+			<h2>
+				<a href="#">购物车</a>
+				<a href="#"></a>
+			</h2>
+			<div class="nav">
+				商品数量：<a href="#">2</a>
+				应付总额（不含运费）：<a href="#">￥598</a>
+
+			</div>
+		</div>
+		<div class="content">
+			<ul>
+				<li>
+					<div class="pic"></div>
+					<div class="txt">
+						<p>WSPRIT </p>
+						<p>T恤</p>
+						<p>单价：￥199</p>
+						<p>数量：
+						<input type="button" value="-">
+						<input type="text" class="num" value="1">
+						<input type="button" value="+">
+						</p>
+					</div>
+					<div class="logo"></div>
+				</li>
+			</ul>
+		</div>
+		<div class="footer">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

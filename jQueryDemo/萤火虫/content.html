@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body,html{
+				width: 100%;
+				height: 100%;
+				background: url(img/bg.jpg) no-repeat center;
+				position: fixed;
+				background-size: cover;
+			}
+			img{
+				width: 5px;
+				height: 5px;
+				/*transform: scale(0.2);*/
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -12px;
+				margin-top: -12px;
+				/*transition: all 1s;
+				-webkit-transition:all 1s;*/
+			}
+		</style>
+	</head>
+	<body>
+		<script src="js/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function Fireworm(){
+				this.element = $("<img src='img/1.jpg'>");
+				// this.run = (randomInt(5))*1000;
+			};
+			Fireworm.prototype.show = function (){
+				$('body').append(this.element);
+				this.element.css({'top':this.pointY+'px'});
+				return this;
+			}
+			Fireworm.prototype.newPoint = function() {
+				this.pointX = randomInt(innerWidth-50);
+				this.pointY = randomInt(innerHeight-50);
+				this.ScaleNum = Math.random().toFixed(1);
+				// this.element.css({'transform':'scale(0.8)'});
+				// console.log(this.ScaleNum);
+				return this;
+			}
+			
+			function randomInt(max){
+				return Math.floor(Math.random()*max);
+			}
+
+			Fireworm.prototype.fly = function(){
+				var This= this;
+				this.element.animate({'top':this.pointY+'px','left':this.pointX+'px','width':'100px','height':'100px'},randomInt(500)+500);
+			}
+			
+		var fireworm = [];
+			for(var i=0;i<60;i++){
+				fireworm[i] = new Fireworm();
+				fireworm[i].show().newPoint().fly();
+			};
+		</script>
+	</body>
+</html>

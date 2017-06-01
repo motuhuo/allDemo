@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ 
+</style>
+<script type="text/javascript">
+window.onload=function (){
+	/*
+	function Aaa(){
+		this.a=12;
+	}
+	Aaa.prototype.show=function(){
+		alert(this.a);
+	};
+	var A=new Aaa();
+	A.show();
+	*/
+	/*function Aaa(){
+		var B=this;   //因为有setInterval或事件,setInterval中的this为window.
+		this.a=12;
+		setInterval(function(){
+			B.show();
+		},1000);
+	}
+	Aaa.prototype.show=function(){
+		alert(this.a);
+	};
+	var A=new Aaa();*/
+	
+	function C() {
+  alert("hello");
+}
+
+C.alternate = function() {
+  alert("hi");
+}
+
+C();		//输出 "hello"
+C.alternate();	//输出 "hi"
+
+	
+};
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		.main{
+			height: 100%;
+			
+		}
+
+		.headerMain{
+			height: 10%;
+			box-sizing:border-box;
+			overflow: hidden;
+		}
+		.MainMid{
+			height: 75%;
+			padding: 0;
+			overflow: scroll;
+		}
+		.MainFoot{
+			height: 10%;
+			box-sizing:border-box;
+			overflow: hidden;
+		}
+		.MidImg{
+			width:50%;
+			float: left;
+		}
+		.MidImg img {
+			width:100%;
+
+		}
+		.MainA{
+			height: 5%;
+			display: block;
+		}
+		.TwoMin{
+			overflow: scroll;
+
+		}
+		.PageTwo{
+			height: 100%;
+		}
+		.TwoAll{
+			height: 95%;
+			box-sizing:border-box;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-box-orient:vertical;
+
+		}
+		.TwoHead{
+			width:100%;
+			height: 20%;
+			display: -webkit-box;
+			display: -moz-box;
+			-webkit-box-orient:vertical;
+			-webkit-box-pack:center;
+			-moz-box-orient:vertical;
+			-moz-box-pack:center;
+		}
+
+		.TwoHead .TwoCenter,.TwoFoot .TwoCenter{
+			margin:0;
+			width:100%;
+			box-sizing:border-box;
+		}
+		.TwoMin{
+			height: 70%;
+			padding: 0;
+			overflow: scroll;
+		}
+		.TwoFoot{
+			height: 10%;
+			display: -webkit-box;
+			display: -moz-box;
+			-webkit-box-orient:vertical;
+			-webkit-box-pack:center;
+			-moz-box-orient:vertical;
+			-moz-box-pack:center;
+		}
+	</style>
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+	 <div data-role="page" id="pageone">
+	  <div data-role="header">
+	    <h1>页眉文本</h1>
+	  </div>
+
+	 <div data-role="main" class="ui-content">
+    <form method="post" action="demoform.php">
+      <div class="ui-field-contain">
+        <label for="day">选择日期</label>
+        <select name="day" id="day">
+          <option value="mon">Monday</option>
+          <option value="tue">Tuesday</option>
+          <option value="wed" selected>Wednesday</option>
+          <option value="thu">Thursday</option>
+          <option value="fri">Friday</option>
+          <option value="sat">Saturday</option>
+          <option value="sun">Sunday</option>
+        </select>
+      </fieldset>
+      <input type="submit" data-inline="true" value="提交">
+    </form>
+  </div>
+  </div>
+	  <div data-role="footer">
+	    <h1>页脚文本</h1>
+	  </div>
+	</div> 
+
+
+</body>
+	<script>
+		$(document).on("pagecreate","#pageone",function(){
+			 $("p").on("swipe",function(){
+			    alert($(this).html())
+			  });               
+		});
+		 $(document).on("scrollstart",function(){
+			    console.log($(this).scrollTop());
+			  });      
+
+	</script>
+</html>

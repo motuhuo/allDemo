@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ 
+</style>
+<script type="text/javascript">
+/*var ax=100;
+var obj=new Object();
+obj.n=100;
+function foo(o){
+	o.n+=10;
+	console.log(o.n);
+}
+
+console.log(obj.n);
+foo(obj);
+console.log(obj.n);
+*/
+/*var obj1=new Object();
+obj1.n=100;
+var obj2=obj1;
+obj2.n='ssss';
+console.log(obj1.n);
+console.log(obj2.n);
+
+ax=100;
+bx=ax;
+bx+=10;
+console.log(ax,bx);*/
+
+
+//深拷贝 
+var obj1=new Object();
+obj1.n=100;
+obj1.m=200;
+
+
+obj1.fnClone=function(){
+	o=new Object();
+	o.n=this.n;
+	o.m=this.m;
+	return o;
+}
+
+var obj2=obj1.fnClone();
+var obj3=obj1.fnClone();
+obj2.n='sssss';
+//obj3.m='ss';
+console.log(obj1.n);
+console.log(obj2.n);
+console.log(obj3.m);
+
+
+
+</script>
+</head>
+<body>
+
+
+</body>
+</html>

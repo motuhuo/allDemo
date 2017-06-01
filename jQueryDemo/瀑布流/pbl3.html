@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+
+		}
+		body{margin:0; font-family:微软雅黑;} 
+		#flow-box{margin:10px auto 0 auto; padding:0; position:relative} 
+		#flow-box li{ 
+		width:190px; position:absolute; padding:10px; border:solid 1px #efefef; list-style:none; 
+
+		opacity:1; 
+		-moz-opacity:1; 
+		filter:alpha(opacity=1); 
+		-webkit-transition:opacity 500ms ease-in-out; 
+		-moz-transition:opacity 500ms ease-in-out; 
+		-o-transition:opaicty 500ms ease-in-out; 
+		transition:opaicty 500ms ease-in-out;} 
+		#flow-box li img{width:100%;} 
+		#flow-box li a{display:block; width:100%; text-align:center; font-size:14px; color:#333; line-height:18px; margin-top:10px; text-decoration:none;} 
+		.loadwrap{position:absolute; left:0; width:100%; text-align:center;} 
+
+	</style>
+	<script src="js/jquery-1.12.2.js"></script>
+</head>
+<body>
+	<ul id="flow-box">
+		<li>
+			<img src="imgs/gao1.jpg">
+			<a href="#">图片标题</a>
+		</li>
+		<li>
+			<img src="imgs/gao2.jpg">
+			<a href="#">图片标题</a>
+		</li>
+		<li>
+			<img src="imgs/gao3.jpg">
+			<a href="#">图片标题</a>
+		</li>
+		<li>
+			<img src="imgs/gao4.jpg">
+			<a href="#">图片标题</a>
+		</li>
+		<li>
+			<img src="imgs/gao5.jpg">
+			<a href="#">图片标题</a>
+		</li>
+		<li>
+			<img src="imgs/gao6.jpg">
+			<a href="#">图片标题</a>
+		</li>
+		<li>
+			<img src="imgs/gao7.jpg">
+			<a href="#">图片标题</a>
+		</li>
+		<li>
+			<img src="imgs/gao8.jpg">
+			<a href="#">图片标题</a>
+		</li>
+	</ul>
+</body>
+		<script>
+			
+			var arrHeight=[]; //每一列的高度
+			function flow(hw,vw){
+				// window.onresize=function(){
+					var sw = document.documentElement.offsetWidth;
+				
+				// var sw = document.documentElement.offsetWidth;  // 屏幕宽度
+				var oUl = document.getElementById("flow-box");  //容器
+				var lis = document.getElementsByTagName("li");  // 所有的li 获取
+				var iw = lis[0].offsetWidth+hw; 
+				var c = Math.floor(sw/iw);  // 因为有可能出现小数，1.5 实际上只能放一列。Math.floor;
+				oUl.style.width = c*iw - hw +"px";
+				var lisHei=[];    //行高
+				var lisLen=lis.length;  //行数
+				for(var i=0; i<lisLen; i++){
+					lisHei.push(lis[i].offsetHeight);
+				}
+				for(var i=0; i<c; i++){
+					lis[i].style.top='0';
+					lis[i].style.left=i*iw+'px';
+					arrHeight.push(lis[i].offsetHeight);
+					// console.log(c)
+				}
+
+				for(var i=c; i<lis.length; i++){
+					var x=_getMinValue(arrHeight);
+					lis[i].style.left=x*iw+'px';
+					lis[i].style.top=arrHeight[x]+vw+'px';
+					arrHeight[x]=arrHeight[x]+lis[i].offsetHeight;
+
+				
+				}
+				// window.onscroll=scroll;
+				// }
+			
+			}
+			window.onload=function(){
+				flow(10,10)
+			}
+			//最小值索引
+			function _getMinValue(arr){
+				var a=arr[0];
+				var b=0;
+				for(var k in arr){
+					if(a>arr[k]){
+						a=arr[k];
+						b=k;
+					}
+				}
+				return b;
+			}
+
+
+
+
+		</script>
+</html>

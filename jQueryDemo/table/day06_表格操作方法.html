@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>表格的操作</title>
+<script>
+/*
+  table相关的dom操作：
+    table相关：
+	  属性：
+	   table.rows: 返回所有的表格行对象数组。
+	  方法：
+	   table.insertRow(index);//指定索引位置前插入新行，返回新插入行对象row
+	   table.deleteRow(index);//删除指定位置的行
+	TableRow行对象:
+	  属性：
+	   row.cells: 返回当前行的列对象，类数组
+	   row.rowIndex:返回该行在表格中的索引位置
+	  方法：
+	   row.insertCell(index); //在当前行的指定位置插入列,返回新插入的列对象cell
+	   row.deleteCell(index);//删除当前行的指定列
+	  添加列数据：
+	    cell.innerHTML = 数据;//添加列数据
+		cell.cellIndex;//当前列在行中的索引
+*/
+
+  function addRow(){//添加
+	  var tab = document.getElementById('tab');
+	  var tr = tab.insertRow(tab.rows.length);
+	  var c1 = tr.insertCell(tr.cells.length);
+	  c1.innerHTML = '<input type="checkbox"/>';
+	  var c2 = tr.insertCell(tr.cells.length);
+	  c2.innerHTML = "张三";
+	  }
+  function deleteRow(){
+	    var tab = document.getElementById('tab');
+		tab.deleteRow(0);
+	  }
+  
+</script>
+</head>
+
+<body>
+ <table id="tab" border="1">
+    <tr>
+      <th><input type="checkbox" id="checkAll"/></th>
+      <th>姓名</th> 
+      <th>性别</th> 
+      <th>年龄</th>
+    </tr>  
+  </table>
+  <div id="manage"> 
+    <button onclick="addRow()">添加行</button><button onclick="deleteRow()">删除行</button>
+  </div>
+</body>
+</html>

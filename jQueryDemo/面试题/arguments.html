@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+	// 不用循环输出1-5
+	function show(n){
+		var arr=[];
+		return (function(){
+			arr.unshift(n);
+			n--;
+			if(n!=0){
+				arguments.callee();
+			}
+			return arr;
+		})()
+	}
+	alert(show(5));
+
+	function show1(n){
+		var arr2=[];
+		arr2.length=n+1;
+		var str=arr2.join('a');
+		var arr3=[];
+		str.replace(/a/g,function(){
+			arr3.unshift(n--);
+		});
+		return arr3;
+	}
+	alert(show1(5));
+	//一个数，如果小于100，返回此数字，如果大于100，返回100
+	//可用 if else,  ? :, switch(n<100) case true:return n; Math.min(), && ||
+	var m=-50;
+	/*function show4(m){
+		var json={name:'shuibian'};
+		var i=m<100||json;
+		for(var attr in i){
+			return 100;
+		}
+		return m;
+
+	}
+
+	alert(show4(m));*/
+	function show5(m){
+		var p=m>=100&&100;
+		return p=p||m;
+
+	}
+	alert(show5(m));
+</script>
+</html>

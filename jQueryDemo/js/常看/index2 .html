@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ ul li {list-style:none;}
+ h2 {background:blue; width:500px;}
+ h2.active {background:red;}
+ #lis ul {display:none;}
+ #lis ul li.hover {background:yellow;}
+</style>
+<script type="text/javascript">
+   window.onload=function (){
+     var oList=document.getElementById('list');
+     
+	 var aUl=oList.getElementsByTagName('ul');//1,2,3
+	 var aH2=oList.getElementsByTagName('h2');//字
+	 for (var i=0; i<aH2.length; i++){
+	     aH2[i].index=i;
+		  aH2[i].bian=1;
+		  aH2[i].onclick=function(){
+		   
+		   if (this.bian==1)
+		    {aUl[this.index].style.display='block';
+			   this.className='active';
+			   this.bian=0;   //开关必须与之对应；
+			  
+			}
+			else {
+				aUl[this.index].style.display='none';
+			    this.className='';
+				 this.bian=1;
+				
+			}
+		 }
+	 }
+	 
+	 
+	  var aLi=null;   //ul 下对应的li的集合
+	 var arrLi=[];  //二维数组
+	 for (var i=0;i<aUl.length; i++){
+	     aLi=aUl[i].getElementsByTagName('li');
+		   for (var j=0; j<aLi.length; j++){
+		      arrLi.push(aLi[j]);
+		    }
+	    }
+	 
+      for (var i=0; i<arrLi.length; i++){
+	       arrLi[i].onclick=function(){
+		      for (var i=0; i<arrLi.length; i++){
+			      arrLi[i].className='';
+				}
+		         this.className='hover';
+		    }
+	    }
+	   
+  }
+    
+</script>
+</head>
+<body>
+<ul id="list">
+   <li id="lis">
+     <h2>我的好友</h2>
+       <ul>
+	      <li>1</li>
+		  <li>1</li>
+		  <li>1</li>
+	   </ul>
+   </li>
+   
+   <li id="lis">
+      <h2>陌生人</h2>
+        <ul>
+	      <li>2</li>
+		  <li>3</li>
+		  <li>2</li>
+	   </ul>
+   </li>
+   
+   <li id="lis">
+      <h2>黑名单</h2>
+        <ul>
+	      <li>3</li>
+		  <li>4</li>
+		  <li>3</li>
+	   </ul>
+   </li>
+   <li id="lis">
+      <h2>黑名单2</h2>
+        <ul>
+	      <li>3</li>
+		  <li>4</li>
+		  <li>3</li>
+	   </ul>
+   </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li {
+				list-style: none;
+			}
+			#banner {
+				width: 520px;
+				height: 280px;
+				margin: 100px auto;
+				border: 1px solid #000;
+				position: relative;
+				overflow:hidden;
+			}
+			#banner ul li {
+				width: 520px;
+				height: 280px;
+				position: absolute;
+				top: 0;
+				left: 520px;
+			}
+			#banner ul li.first{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#banner .btn{
+			    display: block;
+			    text-align: center;
+			    height: 36px;
+			    width: 24px;
+			    line-height: 36px;
+			    color: #fff;
+			    background: rgba(0,0,0,.3);
+			    position: absolute;
+			    top: 50%;
+			    margin-top: -18px;
+			    text-decoration: none;
+			    font-weight: bold;
+			    display: none;
+			}
+			#banner .left{
+				left: 0px;
+			}
+			#banner .right{
+				right: 0px;
+			}
+			#banner .tab{
+				width:85px ;
+				padding: 1px 10px;
+				position: absolute;
+				bottom: 5px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				background: rgba(0,0,0,.3);
+				border-radius: 10px;
+			}
+			#banner .tab span {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				background: #ccc;
+				border-radius:5px ;
+				cursor: pointer;
+			}
+			#banner .tab span.active{
+				background: #f40;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="banner">
+			<div class="pic">
+				<ul>
+					<li class="first"><img src="img/TB15vVcMXXXXXbYaXXXXXXXXXXX-520-280.jpg"/></li>
+					<li><img src="img/TB1DMraMXXXXXbPXFXXXXXXXXXX-520-280.jpg"/></li>
+					<li><img src="img/TB1gWhYLFXXXXb3XFXXSutbFXXX.jpg"/></li>
+					<li><img src="img/TB1n4piLVXXXXaDXFXXSutbFXXX.jpg"/></li>
+					<li><img src="img/TB1WnA1LXXXXXcLXVXXSutbFXXX.jpg"/></li>
+				</ul>
+				<a href="javascript:;" class="btn left">&lt;</a>
+				<a href="javascript:;" class="btn right">&gt;</a>
+			</div>
+			<div class="tab">
+				<span class="active"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var $bSpan = $('#banner .tab span');
+			var $li = $('#banner .pic ul li');
+			var $len = $('#banner .pic ul li').size()-1;
+			var $btn = $('#banner .pic .btn');
+			var $index = 0;
+			var $prev = 0;
+			var timer = null;
+			$bSpan.click(function(){
+				$index = $(this).index();
+				caseMove();
+			});
+			$('.right').click(function(){
+				clickRight();
+			})
+			$('.left').click(function(){
+				$index--;
+				if( $index < 0 ){
+					$index = $len;
+					$prev = 0;
+				}
+				caseMove();
+			});
+			
+			
+			$('#banner').hover(function(){
+				clearInterval( timer );
+				$btn.fadeIn(300);
+			},function(){
+				$btn.fadeOut(300);
+				changeMove();
+			});
+			changeMove();
+			function changeMove(){
+				timer = setInterval(clickRight,2000);
+			};
+			
+			function caseMove(){
+				$bSpan.eq($index).addClass('active').siblings().removeClass('active');
+				if( $index==0 && $prev==$len){
+					right();
+				}else if( $index==$len && $prev==0 ){
+					left();
+				}else if( $index > $prev ){
+					right();				
+				}else if( $index < $prev ){
+					left();
+				};
+				$prev = $index;          //当前值赋给前一个
+			};
+			
+			function right(){
+				$li.eq($prev).stop(true,true).animate({'left':'-520px'},200);
+				$li.eq($index).css('left','520px').stop(true,true).animate({'left':'0'},200);
+			};
+			function left(){
+				$li.eq($prev).stop(true,true).animate({'left':'520px'},200);
+				$li.eq($index).css('left','-520px').stop(true,true).animate({'left':'0'},200);
+			};
+			function clickRight(){
+				$index++;
+				if( $index > $len ){
+					$index = 0;
+					$prev = $len;
+				};
+				caseMove();
+			};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,439 @@
+*{margin:0; padding: 0;}
+.layout{margin: 0 auto; width:1204px;}
+img {border:none;}
+a {text-decoration: none; color:#646464;}
+body {font-family: "微软雅黑";}
+ul li {list-style: none;}
+.header {width:100%; height:34px; background:#f9f9f9; border-top:1px solid #cecece; border-bottom: 1px solid #f2f2f2;}
+#headerLeft { height: 34px; float: left; position: relative;}
+#headerLeft a {display: block; height: 28px; line-height: 28px; margin-top:3px; position: relative; margin-left:5px; padding-left: 5px; }
+#headerLeft a img {margin:auto 5px;}
+#headerLeft a.hover {border: 1px solid #e6e6e6; border-bottom: none; background:#fff; height: 28px; margin-top:2px; margin-left:4px; z-index: 1;}
+#place {position: absolute; width:270px; height:160px; padding:20px; left:4px; top:30px; border:1px solid #e6e6e6; background:#fff; display: none;}
+#place ul li {float: left; margin:5px 5px; font-size: 12px;}
+#place ul li a:hover {color: red;}
+
+#headerRight {width:865px; position: relative; float: right; height:34px; font-size: 12px;}
+#Landing {float:left; width:180px; line-height: 34px; }
+#Landing #Land {color: red;}
+
+#headerList {float: left; margin-left:3px; width:680px; height:34px;}
+#headerList li {float: left; background:url(../img/headerbg2.png) no-repeat right top; height: 34px; position: relative; }
+#headerList li a{ display: block; height: 28px; line-height: 28px; margin-top:3px; position: relative;  padding-right:8px; padding-left: 8px;}
+#headerRight a:hover{ color: red;}
+
+#headerList li a.hover1 {border:1px solid #e6e6e6; height: 30px; line-height: 28px; margin-top:2px; position: relative;  padding-right:7px; padding-left: 7px; border-bottom: none; background:#FFF; z-index:3; color:red;}
+
+#headerList .headerPhone {width:210px; position: absolute; height:160px; top:32px; padding:10px; border:1px solid #e6e6e6; background:#FFF; display: none; z-index: 2;} 
+ 
+#headerList .headerPhone dl dt {margin:10px;}
+#headerList .headerPosition{position:absolute; border:1px solid #e6e6e6; top:31px; background:#fff;width:76px; display: none; z-index: 2;}
+#headerList .headerPosition p {padding: 8px;}
+#headerList .headerPosition p.hover2{background:#f2f2f2;}
+
+#headerList li a img {float:left; vertical-align: middle; margin-top:5px; margin-right:5px;}
+#headerList li.headerLast{background:none;}
+
+#headerList span img {float:left; margin-top:3px; margin-right: 5px; margin-left:5px;}
+#headerList span a{ display: block; height: 28px; line-height: 28px; margin-top:3px; }
+
+#headerNum {color: red; font-weight: bold; font-size: 16px;}
+#headerList li a img.HfloatRight{ display:block; float:right; margin:8px 0px 0px 5px;}
+/*banner*/
+#banner .bannerLeft {float:left; height:100px; width:201px;}
+#banner .bannerMiddle {float:right; width:566px;  margin-right: 72px; margin-top:20px;}
+#banner .bannerMiddle .search{width:566px; border:2px solid red; height:40px; }
+#banner .bannerMiddle .search #txt {width:400px; height:40px; border:none; outline: none; float:left; padding-left:8px;}
+#banner .bannerMiddle .search #banBtn {width:99px; height:40px; border:none; background:#f6f6f6; line-height: 40px; outline: none; float:left; padding-left:10px; position: relative;}
+#banner .bannerMiddle .search #banBtn #banContent{border:1px solid #dcdcdc;  width:97px; position:absolute; left:0px; background:#fff; height:288px; overflow: scroll; display: none; z-index: 3;}
+#banner .bannerMiddle .search #banBtn #banContent ul li { width:100%; height:26px; margin-bottom: 3px;}
+#banner .bannerMiddle .search #banBtn #banContent ul li a{display: block; line-height: 26px; margin-left: 10px;}
+#banner .bannerMiddle .search #banBtn img {margin-top:12px; margin-right:15px; float: right;}
+#banner .bannerMiddle .search #banBtn1 {width:49px; height:40px; background:url(../img/banbtn.png) no-repeat center center; outline: none; border:1px solid red; float:left; }
+#banner .bannerMiddle #midSpan {font-size: 12px; color: #969696; margin-top:5px; width:566px;}
+#banner .bannerMiddle #midSpan span {display: inline-block; margin-right: 5px;}
+#banner .bannerMiddle #midSpan span.spanLast {float:right; margin-right: 0px;}
+#banner .bannerMiddle #midSpan span a:hover {color: red; }
+
+#banner #bannerRight {width:200px; height:40px; border:2px solid #dcdcdc; margin-top:20px; float:right; font-size: 14px; line-height: 40px; background:#f6f6f6; position: relative;}
+
+#banner #bannerRight #shopping.showColor a{color:red;}
+
+#banner #bannerRight #shopping.showColor {width:109px; height:36px; float:left;  color: red; position: absolute; left:0; top:0; font-size: 14px;line-height: 40px;background:#f6f6f6; }
+
+#banner #bannerRight #shopping {width:113px; height:40px;  float:left; background:red; color: #fff; position: absolute; left:-2px; top:-2px; font-size: 14px; padding:2px;}
+#banner #bannerRight #shopping a{color:#fff;}
+#banner #bannerRight #shopping img {float:left; margin-top:8px;}
+#banner #bannerRight #done {float:right; text-align: center; width:85px; border-left: 2px solid #dcdcdc; }
+#banner #bannerRight #done a:hover {color:red;}
+/*contentList*/
+.conList {height:500px; background:url(../img/content.png) repeat-x left top; }
+.conList #contentHead{height:43px; }
+.conList #contentHead ul li {height: 43px; float: left; margin-right: 30px;}
+.conList #contentHead ul li.conListFirst {width:201px; height:43px; background:#ff2832; line-height: 43px; text-align: center; color: #fff;}
+.conList #contentHead ul li a {display: inline-block; line-height: 43px; font-weight: bold;}
+.conList #contentHead ul li a:hover {color: red;}
+.conList #contentHead ul li img {float: right;}
+.conList #contentList{height:457px;}
+.conList #contentList #conListLeft {width:201px;height:453px; float: left; position: relative; background:#fafafa; padding-top:4px;}
+.conList #contentList #conListLeft ul li {width:191px; height:32px; position: relative; padding-left:10px; font-size: 14px; z-index: 2;}
+.conList #contentList #conListLeft ul li a {text-align: center; line-height: 32px;}
+.conList #contentList #conListLeft ul li.conLion{margin:-2px 0px -2px -2px; border:2px solid red; border-right: none; background:#fff; z-index: 3; width:193px;}
+.conList #contentList #conListLeft ul li.conLion a {color: red; font-size: 16px;}
+/*.conList #contentList #conListLeft ul li.conLion a:hover {text-decoration: underline; margin-right: 3px;}
+*/
+.conList #contentList #conListLeft ul .conShow{position:absolute; left:201px; border:2px solid red; width:978px; min-height:435px; _height:435px; z-index: 2; top:0px; background:#FFF; border-top:none; padding:20px 5px 0px 15px; display: none;}
+
+.conList #contentList #conListLeft ul .conShow .conShowHead{width:92px; height:18px; background:url(../img/Lone.png) no-repeat center center; margin-bottom: 20px; margin-right:15px; float: left;}
+.conList #contentList #conListLeft ul .conShow .conShowHead a {width:72px; height:18px; background:#a2a2a2; display: block; font-size: 8px; text-align: center; line-height: 18px; color: #fff;}
+
+.conList #contentList #conListLeft ul .conShow .contCont dt { font-size: 16px; color: red; float:left; margin-right:40px; font-weight: bold; line-height:45px;}
+
+.conList #contentList #conListLeft ul .conShow .contCont dd{float:left; width:875px; border-bottom:1px dashed #d5d5d5; height:50px; background:#fff; line-height: 45px; padding-left:15px; min-height: 45px; _height:45px; font-size: 14px;}
+.conList #contentList #conListLeft ul .conShow .contCont dd a:hover{color:red; text-decoration: underline;}
+
+
+.conList #contentList #conListMid {width:796px;height:457px; float: left; position: relative; left:0px; overflow: hidden;}
+#conListMid #conMidUp {width:796px; height:296px; position: relative; overflow: hidden;}
+#conListMid #conMidUp .MidBtn {position: absolute; top:50%; background:#ccc; font-size: 36px; text-align:center; color: #fff; width:34px; margin-top:-35px; line-height: 70px; height:70px; filter:alpha(opacity=45); opacity:0.45; z-index: 1;}
+#conListMid #conMidUp .UpLeft {left:-34px;}
+#conListMid #conMidUp .UpRight {right:-34px;}
+/*#conListMid #conMidUp ul {width:796px; height:296px;  }*/
+#conListMid #conMidUp ul li {width:796px; height:296px; position:absolute;}
+#conListMid #MidBtn {position: absolute; width:300px; height:20px; top:266px; left:50%; margin-left:-100px;}
+#conListMid #MidBtn ul li {width:20px; height:20px; background:#646464; color: #FFF; border-radius: 50%; line-height: 20px; text-align: center; margin-right: 5px; float: left; cursor: pointer;}
+#conListMid #MidBtn ul li.Midactive {background:red;}
+#conListMid #conMidDown {position: relative;}
+#conListMid #conMidDown ul {width:796px; height:160px; position: absolute; }
+#conListMid #conMidDown ul li {width:198px; height:160px; border-right: 1px solid #e5e5e5; float:left; border-bottom:1px solid #e5e5e5; position: relative;}
+#conListMid #conMidDown ul li span {width:100%; height:100%; background:#000; opacity:0.06; left:0px; top:0px; display: block; position: absolute;}
+#conListMid #conMidDown ul li span.spanHover {display: none;}
+#conListMid #conMidDown .MidBtn1 {position: absolute; background:#ccc; font-size: 36px; text-align:center; color: #fff; width:30px; margin-top:60px; line-height: 40px; height:40px; filter:alpha(opacity=45); opacity:0.45; z-index: 1; display: block; }
+#conListMid #conMidDown .DownLeft{left:-30px;}
+#conListMid #conMidDown .DownRight{right:-30px;}
+
+.conList #contentList #conListRight {width:202px; height:455px; border:1px solid #e5e5e5; float:left; position: relative; }
+.conList #contentList #conListRight #information {width:202px; height:28px;}
+.conList #contentList #conListRight #information ul li {float:left; text-align: center; line-height: 28px; width:100px; height:28px; border-right:1px solid #e5e5e5; background:#f0f0f0;}
+.conList #contentList #conListRight #information ul li.inforOn {background:#fff;}
+
+.conList #contentList #conListRight #inforContent {width:202px; height:99px;}
+.conList #contentList #conListRight #inforContent ul li  {background:url(../img/mrbtn.png) no-repeat left center; padding-left:20px; width:182px; height:11px; line-height: 11px; margin-top:13px;}
+.conList #contentList #conListRight #inforContent ul li a:hover {color:red;}
+.conList #contentList #conListRight #inforContent #inform1 {display:none;}
+
+.conList #contentList #conListRight #allInform2{width:202px; height:118px;}
+.conList #contentList #conListRight #information2 {width:202px; height:28px;}
+.conList #contentList #conListRight #information2 ul li {float:left; text-align: center; line-height: 28px; width:66px; height:28px; border-right:1px solid #e5e5e5; background:#f0f0f0; border-top:1px solid #e5e5e5;}
+.conList #contentList #conListRight #information2 ul li.inforOn {background:#fff;}
+.conList #contentList #conListRight #inforContent2 {width:202px; height:90px; }
+.conList #contentList #conListRight #inforContent2 #inform2 {display:none; position: absolute;}
+
+/*todyShop*/
+#todyShopHead {height:36px; width:100%; margin-top:40px; border-bottom: 2px solid red; line-height: 36px;}
+
+#todyShopHead span a{color:red; display: block; font-size: 20px;}
+#todyShopHead .todyHeadL {float:left;}
+#todyShopHead .todyHeadR {float:right;}
+#todyShopHead #todyHeadRight {float:right; margin-right:138px; width:100px; height:36px; position: relative;}
+#todyShopHead #todyHeadRight ul{width:100%; height:100%; float:left; position: absolute;}
+#todyShopHead #todyHeadRight ul li {width:15px; height:15px; background:#c8c8c8; border-radius: 50%; float:left; margin-right: 5px; margin-top:15px; }
+
+#todyShopMain {width:100%; height:457px;}
+#todyShopMain #todyShopLeft {width:995px; height:457px; float: left;}
+#todyShopMain #todyShopLeft ul {width:995px; height:230px; border-left:1px solid #e6e6e6;}
+#todyShopMain #todyShopLeft ul li {width:178px; height:220px; border-right:1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; float: left; position: relative; padding:10px 0 0 20px;}
+#todyShopMain #todyShopLeft ul li .todyLiHead {width:178px; height:160px; position: relative; } 
+
+#todyShopMain #todyShopLeft ul li .todyLiHead img.todyImg {position: absolute; left:-21px; bottom:0px; display: block;}
+#todyShopMain #todyShopLeft ul li .todyprice a {display:block; color:red; font-size: 12px; width:100%;}
+#todyShopMain #todyShopLeft ul li .todyprice a span { display:block; color:#000; font-size: 14px; width:100%;}
+#todyShopMain #todyShopLeft ul li .todyprice span.price {display:block; color: red; font-size: 16px; width:100%; margin-top:-2px;}
+#todyShopMain #todyShopLeft ul li .todyprice a:hover{color:red; text-decoration: underline;}
+#todyShopMain #todyShopLeft ul li .todyprice a:hover span{color:red;}
+#todyShopMain #todyShopLeft #todyShopLeft1{display:none;}
+#todyShopMain #todyShopLeft #todyShopLeft2{display:none;}
+
+
+#todyShopMain #todyShopRight {width:206px; height:457px; border:1px solid #e6e6e6; position:relative; float: left;}
+#todyShopMain #todyShopRight ul li {position: relative; width:206px; height:114px; border-bottom: 1px solid #e6e6e6; overflow: hidden;}
+
+#todyShopMain #todyShopRight ul li img {position: absolute; left:0; top:0;}
+
+/*rushBuy*/
+#rushBuyHead {width:1204px; height:70px; background:url(../img/rushBuy.png) no-repeat left center;}
+#rushBuyHead a {float:right; color:red; line-height: 40px; margin-top:30px;}
+#rushBuyHead a:hover {text-decoration: underline;}
+
+#rushBuyMain {width:1202; height:508px; border-left:1px solid #e6e6e6; border-top:1px solid #e6e6e6; clear: both; overflow: hidden; border-bottom: 1px solid #e6e6e6;}
+#rushBuyMain ul {width:100%; height:254px;}
+#rushBuyMain ul li {width:189px; height:254px; border-right:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; float: left; position: relative;}
+#rushBuyMain ul li.rushBuyBig {width:438px;}
+#rushBuyMain ul li.rushBuyBig img {float: left; }
+
+#rushBuyMain ul li #rushRun {width:800px; }
+#rushBuyMain ul li #rushRun li {float:left; height: 222px; position: absolute; left:-189px;}
+#rushBuyMain ul li #rushRun li.rushFirst {left:0px;}
+#rushBuyMain ul li #rushRun .rushBtn { display:block; width:30px; height:45px; position: absolute; top:50%;  margin-top:-22px; text-align: center; line-height: 45px; background:rgba(0,0,0,0.3); font-weight:bold; color: #fff; font-size: 30px; display: none;}
+#rushBuyMain ul li #rushRun .left {left:0px;}
+#rushBuyMain ul li #rushRun .right{right:0px;}
+			    
+			    
+#rushBuyMain ul li #rushRun #rushTime {width:100%; height:30px; line-height: 30px; background:url(../img/timet.png) no-repeat left center; padding-left:30px;}
+#rushBuyMain ul li #rushRun #rushTime span {font-weight: bold;}
+
+#rushBuyMain ul li #rushTab #rushTabLi{width:120px; position: absolute; left:50%; bottom:-230px; margin-left:-50px;}
+#rushBuyMain ul li #rushTab #rushTabLi  li{width:12px; margin-right: 10px; height:12px; border-radius: 50%; background:#c7c7c7;}
+#rushBuyMain ul li #rushTab #rushTabLi  li.Rushon {background:#69b36a;}
+
+/*wph*/
+#wphHead {width:1204px; height:70px; background:url(../img/wph.jpg) no-repeat left center;}
+#wphHead a {float:right; color:red; line-height: 40px; margin-top:20px;}
+#wphHead a:hover {text-decoration: underline;}
+
+#wphMain {width:100%;height:520px; border-left:1px solid #e6e6e6; border-top:1px solid #e6e6e6; }
+#wphMain #wphUp li{ width:199px; height:280px; border-bottom: 1px solid #e6e6e6; border-right:1px solid #e6e6e6; float: left;  position: relative;}
+#wphMain #wphUp li span { width:195px; height:276px; border:2px solid #ff5797; position: absolute; left:0px; top:0px; display: none;}
+#wphMain #wphUp li.wphDown { width:199px; height:238px; border-bottom: 1px solid #e6e6e6; border-right:1px solid #e6e6e6; float:left; position: relative;}
+#wphMain #wphUp li.wphDown span { width:196px; height:234px; border:2px solid #ff5797; position: absolute; left:0px; top:0px; display: none;}
+/*当当优品*/
+#youpinHead {width:1204px; height:70px; background:url(../img/youpin.png) no-repeat left center;}
+
+#youpinMain {width:1204px; height:480px; border:1px solid #e6e6e6; border-right:none; border-bottom:none;}
+#youpinMain img {border:none;}
+#youpinMain ul {float: left;}
+#youpinMain li{ border-right:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; border-right:1px solid #e6e6e6;}
+#youpinMain ul.youpinThree {width:485px; height:480px;}
+#youpinMain ul.youpinThree li {height:161px; width:241px; float: left;}
+/*floor*/
+.floor {margin-top:30px;}
+#oneLeft {width:912px; height:500px; float: left;}
+
+.floorHead {width:912px; height:44px; border-bottom: 2px solid #000; margin-bottom:10px;}
+.floorHeadLeft {font-size: 18px; font-weight: bold; float: left; line-height: 44px;}
+
+.floorHeadRight ul {float:right; position: relative; border-top:1px solid #e6e6e6;}
+.floorHeadRight ul li {float:left; border-right: 1px solid #e6e6e6; background:#f5f5f5; height:43px; position: relative; width:115px; line-height: 43px; text-align: center;}
+.floorHeadRight ul li.floorHeadFirst {border-left:1px solid #e6e6e6;}
+.floorHeadRight ul li.floorOn {border:2px solid #000; padding:-2px; border-bottom:none; padding-bottom:none; height:43px; background:#fff; font-weight: bold; color: #000;}
+#oneLeftMain {width:912px; height:442px; border:1px solid #e6e6e6; margin-top:10px;}
+#oneLeftMain #oneLeftMainLeft {width:238px; height:113px; float:left; background:url(../img/dusu.jpg) no-repeat center center; border:1px solid #e6e6e6; padding-top:329px; }
+#oneLeftMain #oneLeftMainLeft ul li {float:left; width:63px; padding-left:10px; height:28px; line-height: 28px; overflow: hidden; font-size: 14px; color: #000000;}
+#oneLeftMain #oneLeftMainLeft ul li a:hover {display:block; color:red; text-decoration:underline;}
+
+#oneLeftMain #oneLeftMainMid {width:334px; height:442px; float:left; position: relative;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp {width:335px; height:221px; border-bottom:1px solid #e6e6e6; border-right:1px solid #e6e6e6; position: relative;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp ul {position: relative; width:335px; height:221px; overflow: hidden;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp ul li {position: absolute; left:334px;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp  a.oneMUpBt {position: absolute; display: block; width:30px; height:48px; font-size: 40px; color: #fff; background:#ccc; top:50%; margin-top:-23px; text-align: center; line-height: 48px; display: none;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp  a.oneLeft {left:0px;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp  a.oneRight {right:0px;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp #oneMidUpBtn ul{position: absolute; width:100px; height:10px; left:50%; margin-left:-35px; bottom:10px;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp #oneMidUpBtn ul li {position: relative; left:0px; float: left; width:10px; border:2px solid #fff; margin-right:5px; cursor: pointer;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp #oneMidUpBtn ul li.oneFloorOn {border:2px solid #000;}
+
+#oneRight {float:right; width:280px; height:500px; border:1px solid #e6e6e6;}
+#oneRight #oneRightHeadLi li {width:139px; height:48px; background:#f5f5f5; border-right:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; float:left; line-height: 48px; text-align: center; margin-bottom: 5px;}
+#oneRight #oneRightHeadLi li.oneRightHeadLiOn {background:#fff; border-bottom: none;}
+#oneRightHeadMain #oneRightHeadMainLi b {float:left; margin-right:10px; margin-left:10px; display: block; width:20px; height:33px; line-height: 33px;}
+#oneRightHeadMainLi {width:280px; height:33px; position:absolute; font-size: 12px;}
+#oneRightHeadMain #oneRightHeadMainLi span { position:absolute; border-bottom:1px solid #e6e6e6; display: block; width:240px; margin-left:40px;}
+#oneRightHeadMain #oneRightHeadMainLi em.onrRightOne { line-height: 33px; }
+#oneRightHeadMain #oneRightHeadMainLi span img {float:left; margin-left:-15px;}
+#oneRightHeadMain #oneRightHeadMainLi span.onrRightTwo {display: none;}
+#oneRightHeadMain #oneRightHeadMainLi span.onrRightTwo p {font-size:14px;}
+#oneRightHeadMain #oneRightHeadMainLi span a:hover {color: red; text-decoration: underline;}
+#oneRightHeadMain #oneRightHeadMainLi li {width:280px; clear: both; overflow: hidden; position:relative;}
+#oneRightHeadMain #oneRightHeadMainLi li.oneRightHeadMainLiOn {height:152px;}
+
+
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidDown ul li {float:left; width:166px; height:221px; border-right:1px solid #e6e6e6;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidDown ul li img {display: block; margin:7px auto 0px;}
+#oneLeftMain   ul li a p {color:#000; font-size:12px;}
+#oneLeftMain   ul li a:hover p {color:red; text-decoration: underline;}
+#oneLeftMain   ul li span.price {color:red;}
+
+#oneLeftMain #oneLeftMainRight {width:335px; height:442px;float:left;}
+#oneLeftMain #oneLeftMainRight li {float:left; width:166px; height:221px; border-right:1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6;}
+#oneLeftMain #oneLeftMainRight li img {display: block; margin:7px auto 0px;}
+
+
+
+
+
+
+
+/*#oneFloorTwo {display: none;}*/
+
+#oneLeftMain #oneLeftMainMid1 {width:334px; height:442px; float:left; position: relative;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1 {width:335px; height:221px; border-bottom:1px solid #e6e6e6; border-right:1px solid #e6e6e6; position: relative;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1 ul {position: relative; width:335px; height:221px; overflow: hidden;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1 ul li {position: absolute; left:334px;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1  a.oneMUpBt1 {position: absolute; display: block; width:30px; height:48px; font-size: 40px; color: #fff; background:#ccc; top:50%; margin-top:-23px; text-align: center; line-height: 48px; display: none;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1  a.oneLeft1 {left:0px;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1  a.oneRight1 {right:0px;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1 #oneMidUpBtn1 ul{position: absolute; width:100px; height:10px; left:50%; margin-left:-35px; bottom:10px;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1 #oneMidUpBtn1 ul li {position: relative; left:0px; float: left; width:10px; border:2px solid #fff; margin-right:5px; cursor: pointer;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1 #oneMidUpBtn1 ul li.oneFloorOn1 {border:2px solid #000;}
+
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidDown1 ul li {float:left; width:166px; height:221px; border-right:1px solid #e6e6e6;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidDown1 ul li img {display: block; margin:7px auto 0px;}
+#oneLeftMain   ul li a p {color:#000; font-size:12px;}
+#oneLeftMain   ul li a:hover p {color:red; text-decoration: underline;}
+#oneLeftMain   ul li span.price {color:red;}
+
+#oneLeftMain #oneLeftMainRight1 {width:335px; height:442px;float:left;}
+#oneLeftMain #oneLeftMainRight1 li {float:left; width:166px; height:221px; border-right:1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6;}
+#oneLeftMain #oneLeftMainRight1 li img {display: block; margin:7px auto 0px;}
+
+
+
+/*twoFloor*/
+#twoFloor {width:1204px; height:632px;}
+
+#twoFloor .twoHead {width:1204px; height:44px; border-bottom: 2px solid #000; }
+#twoFloor .twofloorHeadLeft {font-size: 18px; font-weight: bold; float: left; line-height: 44px;}
+
+#twoFloor .twofloorHeadRight ul {float:right; position: relative; border-top:1px solid #e6e6e6;}
+#twoFloor .twofloorHeadRight ul li {float:left; border-right: 1px solid #e6e6e6; background:#f5f5f5; height:43px; position: relative; width:115px; line-height: 43px; text-align: center;}
+#twoFloor .twofloorHeadRight ul li.twofloorHeadFirst {border-left:1px solid #e6e6e6;}
+#twoFloor .twofloorHeadRight ul li.twofloorOn {border:2px solid #000; padding:-2px; border-bottom:none; padding-bottom:none; height:43px; background:#fff; font-weight: bold; color: #000;}
+#twoFloor #twoMainAll {width:1204px; height:578px; border:1px solid #e6e6e6; margin-top:10px; border-right:none;}
+#twoFloor #twoMainAll #twoLeftMainLeft {width:238px; height:171px; float:left; background:url(../img/twobg.jpg) no-repeat center center; border:1px solid #e6e6e6; padding-top:352px; }
+
+#twoFloor #twoMainAll #twoLeftMainLeft ul li {float:left; width:63px; padding-left:16px; height:28px; line-height: 28px; overflow: hidden; font-size: 14px; color: #000000; background:#fff;}
+#twoFloor #twoMainAll #twoLeftMainLeft ul li a:hover {display:block; color:red; text-decoration:underline;}
+
+#twoFloor #twoRightMain {width:960px; float:left; border:1px solid #e6e6e6; border-right:none;}
+
+#twoFloor #twoRightMain #twoOne li {width:191px; height:340px; border-right:1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; float: left;}
+#twoFloor #twoRightMain #twoTwo li {width:191px; height:180px; float: left; border-right:1px solid #e6e6e6;}
+#twoFloor #twoRightMain #twoOne li.twoOneFirst {width:383px; height:340px; position: relative; }
+
+
+
+
+
+#twoFloor #twoRightMain #twoOne #twoOneMain {width:383px; height:340px; float:left; position: relative; overflow: hidden;}
+#twoFloor #twoRightMain #twoOne #twoOneMain #twoTwoUl {width:2000px; height:340px;  position: absolute; left:-383px; top:0;}
+
+#twoFloor #twoRightMain #twoOne #twoOneMain #twoTwoUl li {float:left; width:383px;}
+/*#twoOneMain #twoTwoUl li.twoOneShow {left:0px;}*/
+
+#twoOneMain #twoTwoUltwo {width:383px; height:340px;  position: relative;}
+
+#twoOneMain #twoTwoUltwo li {position: absolute; left:383px;}
+#twoOneMain #twoTwoUltwo li.twoOneShow {left:0px;}
+
+#twoOneMain #twoTwoUlthree {width:383px; height:340px;  position: relative;}
+
+#twoOneMain #twoTwoUlthree li {position: absolute; left:383px;}
+#twoOneMain #twoTwoUlthree li.twoOneShow {left:0px;}
+
+
+
+#twoOneMain  a.twoMUpBt {position: absolute; display: block; width:30px; height:48px; font-size: 40px; color: #fff; background:#ccc; top:50%; margin-top:-23px; text-align: center; line-height: 48px; display: none;}
+#twoOneMain  a.twoLeft {left:0px;}
+#twoOneMain  a.twoRight {right:0px;}
+
+#twoMidUpBtn {position: relative; width:100px; height:10px; left:50%; margin-left:-35px; bottom:10px;}
+#twoOne #twoMidUpBtn span { float: left; width:10px; border:2px solid #fff; margin-right:5px; cursor: pointer; display: block;}
+#twoOne #twoMidUpBtn span.twoFloorOn {border:2px solid #000;}
+
+/*floorList*/
+#floorList {left: 50%;margin-left: -655px;position: fixed;bottom: 30px; display: none;}
+    
+#floorList ul {width:40px; position: relative; z-index: 100;  margin: 0; padding: 0; background:#F6F6F6 url(../img/floor.png) 0 0 no-repeat;}
+#floorList ul li {height:40px; z-index: 10; }
+#floorList ul li a {display: block; font-size: 14px; padding-left: 38px; height: 40px;  cursor: pointer; position: relative;  width:98px; float: left; padding-right: 10px;}
+
+#floorList ul li a span { padding:10px 15px 11px 2px; display: block;  color: #red; position: relative;  z-index: 200;  float: left; color:#fff; display: none;}
+
+   
+/*search*/
+#head {width:100%; height:52px; background:#e7313d; position: fixed; top:0px; z-index: 1000; display: none;}
+#head img {float:left; width:300px; height:52px;}
+#head .floorS {float: left; width:745px; margin-top:10px;}
+#head .floorS .Txt {width:713px; border:none; background:#fff; height:33px;float:left; outline: none;}
+#head .floorS #floorbtn {width:32px; height:33px; border:none; outline: none; float:left; background:url(../img/floorSear.png) no-repeat center center;}
+
+/*右框*/
+#rightBanner {width:42px; height:100%; position: fixed; right:0; top:0; background:#000;}
+#br2 {position: relative;}
+#br2 .br2First {background:url(../img/br2.png) 0 0 no-repeat; display: block; width:42px; height:28px;}
+#br2 .br2Two {width:100px; height:125px; position: absolute; left:-110px; top:0px;padding:5px; background:#fff; display: none;}
+#br3 {text-align: center;}
+#br3 a {display: block; width: 42px; height: 120px; padding: 8px 0 5px; color: #fff; font-size: 14px;} 
+#br3 a:hover {background:red;}
+#br3 a #brCar {display:block; width:42px; height:24px; margin-bottom: 8px; background:url(../img/br2.png) 0 -50px no-repeat;}
+#br3 a:hover #brCar {background:url(../img/br2.png) -42px -50px no-repeat;}
+#br3 a #rNum {font-size: 14px; width:28px; height:28px; border-radius:50%; line-height: 28px; display: block; margin: 8px auto; background:red; text-align: center;} 
+#br4 {position:absolute; bottom: 33px; width:42px; text-align: center; color: #fff;}
+#br4 #br4One {background:url(../img/br2.png) 0px -84px no-repeat; display: block; width:42px; height:40px;}
+#br4 #br4One:hover {background:url(../img/br2.png) -42px -84px no-repeat;}
+#br4 span {padding: 0 10px 0 15px; width: 64px; line-height: 40px; background-color: #ff3228; position: relative;  position: absolute; left:42px; display: block; color: #fff;}
+#br4 #br4Two {background:url(../img/br2.png) 0px -126px no-repeat; display: block; width:42px; height:40px;}
+#br4 #br4Two:hover {background:url(../img/br2.png) -42px -126px no-repeat;}
+#br4 #brThree {background:url(../img/br2.png) 0px -168px no-repeat; display: block; width:42px; height:40px ;}
+#br4 #brThree:hover {background:url(../img/br2.png) -42px -168px no-repeat;}   
+#br4 #yijian {width:32px; height:48px; padding:1px 6px 3px; color: #fff; display: block;}
+#br4 a:hover {background:red;}
+
+
+/*推广*/
+#tuiguang {width:1204px; }
+#tuiguang .tuiHead {width:1204px; height:34px; border-bottom: 2px solid red;}
+#tuiguang .tuiHead .tuiHeadLeft {width:500px; height:34px; font-size: 18px; color: red; float: left; line-height: 34px; font-weight: bold;}
+#tuiguang .tuiHead .tuiheadRight {float:right; width:100px; height:34px;}
+#tuiguang .tuiHead .tuiheadRight li {float:right; margin-right: 8px; width:15px; height:15px; background:#646464; border-radius: 50%; margin-top:15px;}
+#tuiguang #tuipic {width:1140px; padding:10px 29px 0px; border:1px solid #646464; height:526px; position: relative;}
+#tuiguang #tuipic img {padding-left:10px; display: block;}
+#tuiguang #tuipic ul li {float:left; width:180px; height:252px;  margin-bottom: 1px; padding:5px;}
+#tuiguang #tuipic ul li a {font-size: 12px; color: #000000; margin-top:5px; display: block; padding-left:10px;}
+#tuiguang #tuipic ul li a:hover {text-decoration: underline; color: red;}
+#tuiguang #tuipic ul li p.price a{color: red; font-size: 16px; padding-left:10px; display: block;}
+#tuiguang #tuipic ul li p.pinglun {padding-left:10px;}
+#tuiguang ul {float:left;}
+#tuiguang #tuipic .tBtn {width:35px; height:88px; line-height: 88px; text-align: center; font-size: 28px; color: #fff; position:absolute; top:50%; margin-top:-44px; background:#CCCCCC; cursor: pointer; display: none;}
+#tuiguang #tuipic .TLeft {left:0px;}
+#tuiguang #tuipic .TReft {right:0px;}
+#tuiguang #tuipic ul li span {display: none;}
+
+/*footer*/
+
+.footer {width:100%; height:76px; margin:33px 0px 0px; border-top:2px solid red; background:#FAFAFA;}
+.footerContent {width: 940px; margin: 0 auto; height: 68px;  padding: 5px 0 5px 30px;}
+.footerContent a {display: block;  height: 52px; width: 187px;  float: left;  padding: 7px 0 7px 48px;}
+
+.footerContent a span { display: block; width: 138px;  height: 52px; background:url(../img/f1.png) 0 0 no-repeat;  cursor: pointer;}
+   
+ .f2Content {width: 950px; height: 140px; margin: 0 auto;  padding-top: 30px;}
+ .f2Content .f2One {width: 154px; float: left; text-align: center;}
+ .f2Content .f2One span {display: block; padding-left: 30px;  font-size: 14px; color: #000; height: 36px; line-height: 36px;}   
+ .f2Content .f2One ul {padding-left: 30px;}
+ .f2Content .f2One ul li {line-height: 20px; height:20px;}  
+ .f2Content .f2One ul li a {font-size: 12px; }
+ .f2Content .f2One ul li a:hover {text-decoration: underline; color: red;}
+    
+ .f3 {border-top:1px solid #969696; width:100%; padding:17px 0 50px;}
+ .f3 .f3Content {text-align: center;  line-height: 20px;  padding-bottom: 17px;}
+ .f3 .f3Content a {color:#8c8c8c; font-size: 12px;}
+ .f3 .f3Content a:hover {color: red; text-decoration: underline;}  
+  .f3 .f3Content span {margin: 0 17px 0 19px;}
+ .f4 {line-height: 20px; text-align: center; width: 960px; margin: 0 auto;}
+ .f4 a:hover {color: red; text-decoration: underline;}
+ .f5 {margin:0 auto; width:265px; height:47px;}
+ .f5 img {float:left; margin-right:3px;}
+
+
+
+
+
+
+
+
+
+
+
+
+

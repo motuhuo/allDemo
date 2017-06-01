@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ 
+</style>
+<script type="text/javascript">
+/*
+   解析过程
+alert (a);   //function a(){alert(4);}
+var a=1;
+alert(a);    //1
+function a(){alert(2);}
+alert(a);    //1
+
+var a=3;
+alert (a);    //3
+function a(){alert(4);}
+alert(a);   //3
+a();        //报错*/
+
+/*  二
+var a=1;
+function f1(){
+  alert(a);    //1
+   a=2;
+}
+f1();
+alert (a);   //2
+*/
+
+/*a=2;
+var a=1;
+alert (a);  //1  */
+
+
+/*  三 
+var a=1;
+function f1(a){
+  alert(a);    //undefined;
+   a=2;
+}
+f1();
+alert (a);   //1
+*/ 
+
+ /*  四
+var a=1;
+function f1(a){
+  alert(a);    //1;
+   a=2;
+}
+f1(a);
+alert (a);   //1  */
+ 
+
+
+
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

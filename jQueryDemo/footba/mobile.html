@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		.main{
+			height: 100%;
+			
+		}
+
+		.headerMain{
+			height: 10%;
+			box-sizing:border-box;
+			overflow: hidden;
+		}
+		.MainMid{
+			height: 75%;
+			padding: 0;
+			overflow: scroll;
+		}
+		.MainFoot{
+			height: 10%;
+			box-sizing:border-box;
+			overflow: hidden;
+		}
+		.MidImg{
+			width:50%;
+			float: left;
+		}
+		.MidImg img {
+			width:100%;
+
+		}
+		.MainA{
+			height: 5%;
+			display: block;
+		}
+		.TwoMin{
+			overflow: scroll;
+
+		}
+		.PageTwo{
+			height: 100%;
+		}
+		.TwoAll{
+			height: 95%;
+			box-sizing:border-box;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-box-orient:vertical;
+
+		}
+		.TwoHead{
+			width:100%;
+			height: 20%;
+			display: -webkit-box;
+			display: -moz-box;
+			-webkit-box-orient:vertical;
+			-webkit-box-pack:center;
+			-moz-box-orient:vertical;
+			-moz-box-pack:center;
+		}
+
+		.TwoHead .TwoCenter,.TwoFoot .TwoCenter{
+			margin:0;
+			width:100%;
+			box-sizing:border-box;
+		}
+		.TwoMin{
+			height: 70%;
+			padding: 0;
+			overflow: scroll;
+		}
+		.TwoFoot{
+			height: 10%;
+			display: -webkit-box;
+			display: -moz-box;
+			-webkit-box-orient:vertical;
+			-webkit-box-pack:center;
+			-moz-box-orient:vertical;
+			-moz-box-pack:center;
+		}
+	</style>
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+	<div data-role="page" id="pageone" class="main">
+		 <a href="#pagetwo" data-transition="turn" class="MainA">淡入第二个页面</a>
+		 <a href="#" data-role="button" data-rel="back">返回</a>
+		<a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">显示弹窗</a>
+
+    <div data-role="popup" id="myPopup" class="ui-content">
+      <h3>欢迎!</h3>
+      <p>"ui-content" 类在弹窗使用 <span style="font-size:55px;">样式文本</span> 时是特别有用的，它可以使得弹窗看起来更加美观时尚。 <strong>注意：</strong> 如果需要文本会包含多行。</p>
+    </div>
+		 <div data-role="controlgroup" data-type="horizontal">
+			<a href="#anylink" data-role="button">按钮 1</a>
+			<a href="#anylink" data-role="button">按钮 2</a>
+			<a href="#anylink" data-role="button">按钮 3</a>
+		</div>
+		  <div data-role="header" class="headerMain">
+		    <h1>欢迎来到我的主页</h1>
+		  </div>
+
+		  <div data-role="main" class="ui-content MainMid">
+		    <!-- <p>我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!</p> -->
+			   <div class="MidImg">
+			   		<img src="img/gao3.jpg"><br>
+			   		高高兴高高兴
+			   </div>
+			   <div class="MidImg">
+			   		<img src="img/gao3.jpg"><br>
+			   		高高兴高高兴
+			   </div>
+			   <div class="MidImg">
+			   		<img src="img/gao3.jpg"><br>
+			   		高高兴高高兴
+			   </div>
+			   <div class="MidImg">
+			   		<img src="img/gao3.jpg"><br>
+			   		高高兴高高兴
+			   </div>
+			   <div class="MidImg">
+			   		<img src="img/gao3.jpg"><br>
+			   		高高兴高高兴
+			   </div>
+			   <div class="MidImg">
+			   		<img src="img/gao3.jpg"><br>
+			   		高高兴高高兴
+			   </div>
+			   <div class="MidImg">
+			   		<img src="img/gao3.jpg"><br>
+			   		高高兴高高兴
+			   </div>
+			   <div class="MidImg">
+			   		<img src="img/gao3.jpg"><br>
+			   		高高兴高高兴
+			   </div>
+		  </div>
+		<div data-role="footer" class="MainFoot">
+			    <h1>底部文本</h1>
+		</div>
+		
+	</div>
+
+	<div data-role="page" id="pagetwo" class="PageTwo">
+	  <a href="#pageThree" data-transition="fade" style="height: 5%; display: block;" data-transition="flow">淡入第三个页面</a>
+	  <a href="#" data-role="button" data-rel="back">返回</a>
+	 	 <div class="TwoAll">
+	 	 	<div data-role="header" class="TwoHead">
+			    <h1  class="TwoCenter">欢迎来到我的第二页</h1>
+			</div>
+			  <div data-role="main" class="ui-content TwoMin">
+			    <p>我现在是一个移动端开发者!!动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!我现在是一个移动端开发者!!</p>
+			  </div>
+			  <div data-role="footer" class="TwoFoot">
+			    <h1 class="TwoCenter">底部文本</h1>
+			  </div>
+	 	 </div>
+	</div>
+
+
+	<div data-role="page" id="pageThree">
+		  <div data-role="header">
+		    <h1>欢迎来到我的第三页</h1>
+		  </div>
+
+		  <div data-role="main" class="ui-content">
+		    <p>欢迎!</p>
+		    <a href="#pageFour" data-transition="turn">登录</a>
+		  </div>
+
+		  <div data-role="footer">
+		    <h1>底部文本</h1>
+		  </div>
+	</div> 
+
+		<div data-role="page" data-dialog="true" id="pageFour">
+			  <div data-role="header">
+			    <h1>我是一个对话框！</h1>
+			  </div>
+
+			  <div data-role="main" class="ui-content">
+			    <p>对话框与普通页面不同，它显示在当期页面上, 但又不会填充完整的页面，顶部图标 "X" 用于关闭对话框。</p>
+			    <a href="#pageone">跳转到第一个页面</a>
+			  </div>
+
+			  <div data-role="footer">
+			    <h1>对话框底部文本</h1>
+			  </div>
+		</div> 
+
+
+</body>
+</html>

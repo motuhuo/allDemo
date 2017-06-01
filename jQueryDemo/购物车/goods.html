@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<span class="goodName">商品1</span>
+				<span class="price">1</span>
+				<input type="text" />
+				<button>加入购物车</button>
+			</li>
+			<li>
+				<span class="goodName">商品2</span>
+				<span class="price">2</span>
+				<input type="text" />
+				<button>加入购物车</button>
+			</li>
+			<li>
+				<span class="goodName">商品3</span>
+				<span class="price">3</span>
+				<input type="text" />
+				<button>加入购物车</button>
+			</li>
+		</ul>
+		<script src="js/cookieControl.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var btn = document.getElementsByTagName("button");
+			for(var i=0;i<btn.length;i++){
+				btn[i].onclick = function(){
+					var goodName = this.parentNode.children[0].innerHTML;
+					var goodPrice = this.parentNode.children[1].innerHTML;
+					var goodNum = this.parentNode.children[2].value;
+					var goodInfo = {
+						"goodPrice":goodPrice,
+						"goodNum":goodNum
+					}
+					goodInfo = JSON.stringify(goodInfo);//JSON.stringify可以吧json转换成字符串
+					setCookie(goodName,goodInfo,7);
+				}
+			}
+		</script>
+	</body>
+</html>

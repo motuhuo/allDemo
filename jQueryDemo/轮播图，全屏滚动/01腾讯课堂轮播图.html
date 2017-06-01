@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding: 0;
+			}
+			ul li {
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			#banner{
+				width: 100%;
+				height: 300px;
+				position: relative;
+			}
+			#banner .pic{
+				width: 760px;
+				height: 300px;
+				margin: 0 auto;
+				position: relative;
+				
+			}
+			#banner .pic ul li{
+				width: 760px;
+				height: 300px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#banner .pic ul li a img{
+				width: 760px;
+				height: 300px;
+				display: block;
+			}
+			#banner .dot{
+				padding: 5px 15px;
+				position: absolute;
+				bottom: 10px;
+				left: 50%;
+				margin-left: -40px;
+				border-radius:10px ;
+				background: rgba(0,0,0,.5);
+			}
+			#banner .dot ul li {
+				width: 10px;
+				height: 10px;
+				border: 1px solid #fff;
+				border-radius: 5px;
+				float: left;
+				margin-left: 8px;
+			}
+			#banner .dot ul li.active{
+				background: #fff;
+			}
+			#banner .pic .btn{
+				width: 50px;
+				height: 70px;
+				position: absolute;
+				top: 50%;
+				margin-top: -35px;
+				text-align: center;
+				line-height: 70px;
+				font-size: 40px;
+				font-weight: bold;
+				color: #fff;
+				display: none;
+			}
+			#banner .pic .prev{
+				left: 10px;
+			}
+			#banner .pic .prev:hover{
+				background: rgba(0,0,0,.5);
+			}
+			#banner .pic .next{
+				right: 10px;
+			}
+			#banner .pic .next:hover{
+				background: rgba(0,0,0,.5);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="banner">
+			<div class="pic">
+				<ul>
+					<li bgColor="rgb(150, 218, 255)"><a href="###"><img src="img/1.jpg"/></a></li>
+					<li bgColor="rgb(54, 43, 37)"><a href="###"><img src="img/2.jpg"/></a></li>
+					<li bgColor="rgb(61, 67, 163)"><a href="###"><img src="img/3.jpg"/></a></li>
+					<li bgColor="rgb(61, 67, 163)"><a href="###"><img src="img/4.jpg"/></a></li>
+					<li bgColor="rgb(56, 116, 168)"><a href="###"><img src="img/5.jpg"/></a></li>
+				</ul>
+				<a href="###" class="btn prev">&lt;</a>
+				<a href="###" class="btn next">&gt;</a>
+			</div>
+			<div class="dot">
+				<ul>
+					<li class="active"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		
+		
+		<script src="js/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var $banner = $('#banner');
+			var $pic = $('#banner .pic');
+			var $btn = $('#banner .pic .btn');
+			var $banners = $('#banner .pic ul li');
+			var $list = $('#banner .dot ul li');
+			var $prev = $('.prev');
+			var $next = $('.next');
+			var $index = 0;
+			$banner.hover(function(){ //鼠标划入
+				$btn.fadeIn(500);
+				console.log(1);
+				clearInterval(timer);
+			},function(){ //鼠标划出
+				$btn.fadeOut(500);
+				timer = setInterval(change,2000);
+			});
+			$list.mouseover(function(){
+				$index = $(this).index();
+				change();
+			});
+			$prev.click(function(){
+				var $listPrev = $list.filter('.active').prev();
+				$listPrev = $index == 1?$list.last():$listPrev;
+				$listPrev.trigger('mouseover');
+//				$index -= 2;
+//				if( $index < 0 ){
+//					$index += $list.size();
+//				}
+//				change();
+			});
+			
+			$next.click(function(){
+				change();
+			});
+			timer = setInterval(change,2000);
+			function change(){
+				$list.eq($index).addClass('active').siblings().removeClass('active');
+				var $bInd = $banners.eq($index);
+				var $bColor = $bInd.attr( 'bgcolor' );
+				$banner.css('background',$bColor);
+				$banners.eq($index).stop().fadeIn(1000).siblings().stop().hide();
+				$index = ++$index%$list.size();
+			}
+			change();
+		</script>
+	</body>
+</html>

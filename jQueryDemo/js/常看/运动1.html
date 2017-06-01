@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ div {width:100px; height:100px; background:red; position:absolute; left:-90px; top:100px;}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var oInp=document.getElementsByTagName('input')[0];
+	var oDiv1=document.getElementById('div1');
+	oDiv1.onmouseover=function(){
+		startMove(10,0);
+	}
+	oDiv1.onmouseout=function(){
+		startMove(-10,-90);
+	}
+}
+
+ var timer=null;
+	  function startMove(speed,target){   
+	    var oDiv1=document.getElementById('div1');
+	   
+		clearInterval(timer);
+		timer=setInterval(function(){
+		if (oDiv1.offsetLeft==target){      //判断是否到达终点；
+			clearInterval(timer);
+			}
+		else {oDiv1.style.left=oDiv1.offsetLeft+speed+'px';}
+		},30);
+	}
+	
+
+</script>
+</head>
+<body>
+<input type="button" value="运动" />
+<div id="div1"></div>
+
+</body>
+</html>

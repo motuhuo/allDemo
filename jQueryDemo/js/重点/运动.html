@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+	* {margin:0;padding:0;}
+	#ul1 {width:500px; margin:0 auto; border:1px solid red;}
+	ul li {list-style:none; border-bottom:1px dashed #666; margin:2px; filter:alpha(opacity:30); opacity:0.3; overflow:hidden;}
+</style>
+<script src="file:///F|/js/jsonsports.js"></script>
+<script type="text/javascript" >
+	window.onload=function()
+	{	
+		var oTxt=document.getElementById("text1");
+		var oBtn=document.getElementById('btn');
+		var oUl=document.getElementById('ul1');
+		
+		oBtn.onclick=function()
+		{	
+			var oLi=document.createElement('li');
+			oLi.innerHTML=oTxt.value;
+			oTxt.value='';
+			var aLi=oUl.getElementsByTagName('li');
+			if (aLi.length)
+			{	
+				oUl.insertBefore(oLi,aLi[0]);
+			}
+			else
+			{
+				oUl.appendChild(oLi);
+			}
+			var iHeight=oLi.offsetHeight;
+			oLi.style.height=0;
+			startMove(oLi,{height:iHeight},function(){
+				startMove(oLi,{opacity:100})
+			})
+		}
+	}
+</script>
+</head>
+<textarea id="text1" cols="40" rows="10"></textarea><br />
+<input id="btn" type="button" value="提交"/>
+<ul id="ul1">
+	
+</ul>
+<body>
+</body>
+</html>

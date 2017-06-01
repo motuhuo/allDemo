@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<select id="Pro"></select>
+		<select id="City" disabled="true"></select>
+		<select id="Area" disabled="true"></select>
+	</body>
+	<script src="js/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function initPro(){
+			var proArr = [{'id':'1','name':'北京'},{'id':'2','name':'湖北省'},{'id':'3','name':'湖南省'},{'id':'4','name':'河北省'},{'id':'5','name':'河南省'}];
+			var html = '<option>---请输入省份---</option>';
+			for( var i=0;i<proArr.length;i++ ){
+				html +='<option value="'+proArr[i].id+'">'+proArr[i].name+'</option>';
+			};
+			$('#Pro').append(html);
+		};
+		initPro();
+		
+		var city = {
+			'1' : ['101#北京市'],
+			'2' : ['201#武汉市','202#黄冈市','203#仙桃市','204#襄阳市','205#宜昌市'],
+			'3' : ['301#长沙市','302#张家界','303#怀化市','304#岳阳市'],
+			'4' : ['401#邯郸市','402#石家庄市','403#邢台市','404#保定市','405#唐山市','406#承德市','407#衡水市','408#张家口市','409#秦皇岛市'],
+			'5' : ['501#郑州市','502#安阳市','503#洛阳市','504#开封市','505#新乡市','506#南阳市','507#驻马店']
+		};
+		$('#Pro').change(function(){
+			$('#City').children().remove();
+			$('#Area').children().remove();
+			$('#Area').attr('disabled',true);
+			var val = $(this).val();
+			var cityArr = city[val];
+			var html = '<option>---请输入城市---</option>';
+			for( var i=0;i<cityArr.length;i++ ){
+				var citySp = cityArr[i].split('#');
+				html +='<option value="'+citySp[0]+'">'+citySp[1]+'</option>';
+			};
+			$('#City').append(html);
+			$('#City').attr('disabled',false);
+		});
+		var Area = {
+			'101' : ['朝阳区','海淀区','大兴区','丰台区','密云区'],
+			'201' : ['武昌区','汉口区','汉阳区','青山区'],
+			'301' : ['岳麓区','芙蓉区','长沙县','新沙区'],
+			'401' : ['邯钢山','丛台区'],
+			'501' : ['二七区','金水区','龙海区']
+		};
+		$('#City').change(function(){
+			$('#Area').children().remove();
+			var val = $(this).val();
+			var areaArr = Area[val];
+			var html = '<option>---请输入城区---</option>';
+			for( var i=0;i<areaArr.length;i++ ){
+				html +='<option >'+areaArr[i]+'</option>';
+			};
+			$('#Area').append(html);
+			$('#Area').attr('disabled',false);
+		})
+	</script>
+</html>

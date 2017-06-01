@@ -1,0 +1,545 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>jquery圆盘抽奖特效代码 - 素材家园 - www.sucaijiayuan.com</title>
+
+<script src="js/jquery-1.12.2.js"></script>
+<script src="js/rem.js"></script>
+
+
+<style>
+*{margin:0;padding:0;list-style:none;border:0;}
+body {
+
+	font:Arial,Helvetica,sans-serif;
+}
+
+#header {
+
+	width: 7.5rem;
+	margin:0 auto;
+	position:relative;
+}
+
+#turnplatewrapper {
+	height:5.92rem;
+	width:5.92rem;
+
+
+	background:url('img/turnplate/plateOne1.png') left 0rem no-repeat;
+	background-size: 100% 100%;
+	
+	left:0.5rem;
+	top:0.20rem;
+	position:absolute;
+	-moz-user-select:none;
+	user-select:none;
+	overflow: hidden;
+}
+
+#turnplate {
+	
+	height:59.2rem;
+	width:5.92rem;
+	background:url('img/turnplate/plate_05.png') top left no-repeat;
+	background-size: 100% 100%;
+	
+	overflow: hidden;
+}
+
+#turnplate #awards {
+	position:absolute;
+	width:5.92rem;
+	height:5.92rem;
+	background:url('img/turnplate/plate_03.png') top left no-repeat;
+	background-size: 100% 100%;
+
+}
+
+#platebtn {
+	position:absolute;	
+	top:2.18rem;
+	left:2.18rem;
+	background:url('img/turnplate/plateBtn.png') top left no-repeat;
+	background-size: 100% 100%;
+
+	height:1.55rem;
+	width:1.55rem;
+	cursor:pointer;
+
+}
+
+#platebtn.hover {
+	background:url('img/turnplate/plate2Btn.png') top left no-repeat;
+	background-size: 100% 100%;
+}
+
+#turnplate #platebtn.click {
+	background:url('img/turnplate/plate3Btn.png') top left no-repeat;
+	background-size: 100% 100%;
+}
+
+#gift {
+	width:398px;			
+	height:89px;
+	
+	position:absolute;
+	left:90px;
+	top:720px;
+}
+
+#msg {
+	position:absolute;
+	display:none;
+	top:130px;
+	left:195px;
+	border-radius:5px;
+	color:#333;
+	border:3px solid #FED33f;
+	box-shadow:2px 2px 2px rgba(0,0,0,0.6);
+	background:#fffcf2;
+	width:200px;
+	padding:10px;
+	text-align:center;
+	
+	/*display: block;*/
+}
+
+#content {
+	width:960px;
+	margin:0 auto;
+}
+
+
+
+#init {
+	position:absolute;
+	top:50%;
+	left:50%;
+	width:100px;
+	height:30px;
+	border-radius:5px;
+	color:#333;
+	border:3px solid #FED33f;
+	box-shadow:2px 2px 2px rgba(0,0,0,0.6);
+	background:#fffcf2;
+	width:250px;
+	padding:10px;
+	margin-top:-30px;
+	margin-left:-138px;
+	text-align:center;
+	opacity:0.9;
+	filter:alpha(opacity=90);
+
+}
+
+#login {
+	margin-left:20px;
+}
+
+#login .tips {
+	margin-left:50px;
+	font-size:12px;
+	margin-bottom:-5px;
+}
+
+#login .tips a {
+	color:#039;
+	font-size:16px;
+	text-decoration:underline;
+}
+
+#login .tips a:hover {
+}
+
+#login .msg {
+	color:red;
+}
+
+#login label {
+	height:30px;
+	line-height:30px;
+	font-size:16px;
+}
+
+#login .ipt {
+	background:#fff;
+	border:1px solid #ccc;	
+	height:28px;
+	line-height:28px;
+	margin-bottom:10px;
+	box-shadow:0 1px 0 #fff;
+	border-radius:2px;
+	width:200px;
+}
+
+#login .ipt:focus {
+	box-shadow:0 0 3px rgba(86,180,289,0.3);
+	border:1px solid #56b4ef;
+}
+
+#lotteryMsg {
+ position: relative;
+ width: 500px;
+ height: 200px;
+
+ left: 10px;
+ top: 50px;
+}
+
+#lotteryMsg .msg {
+	font-size:16px;
+	color:red;
+    font-weight:bold; 
+    text-align:center;
+    font-size:26px;
+    color:#ba0f54;
+    line-height:1;
+	margin-bottom:10px;
+}
+
+#lotteryMsg .tips {
+    text-align:center;
+    font-size:14px;
+}
+
+#lotteryMsg .sp {
+    border-top:1px solid #c3c3c3;
+    border-bottom:0 none transparent;
+    border-right:0 none transparent;
+    border-left:0 none transparent;
+    overflow:hidden;
+    height:0;
+    margin:10px 0;
+}
+
+#lotteryMsg a {
+	color:#138cbe;
+}
+
+#lotteryMsg a:hover {
+    color:#039;
+}
+
+#lotteryMsg .content {
+	border:1px solid #ccc;
+	border-radius:5px;
+	padding:10px;
+	background:#fff;
+	line-height:1.5;
+}
+
+#top-menu-wrapper {
+	height:51px;
+
+	margin-bottom:-51px;
+	background: red;
+}
+
+#top-menu {
+	width:960px;
+	margin:0 auto;
+}
+
+#top-menu a, #top-menu span {
+	line-height:50px;
+	display:inline-block;
+	font-size:16px;
+	color:#fff;
+	text-decoration:1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#top-menu .user {
+	padding-left:30px;
+	display:inline-block;
+	height:50px;
+	color:#fff;
+
+}
+
+
+/*jquery ui 定制 */
+body .ui-dialog {
+	padding:0px;
+	background:#ebeae3;
+	box-shadow:2px 2px 5px rgba(0,0,0,0.5);
+}
+
+body .ui-dialog .ui-dialog-titlebar {
+	height:23px;
+	padding:0;
+	margin:0;
+	background:none;
+	border:0 none transparent;
+}
+
+body .ui-dialog .ui-dialog-titlebar .ui-dialog-title {
+	display:none;
+}
+
+body .ui-widget-content {
+	border:4px solid #F7D102;
+}
+
+body .ui-dialog .ui-dialog-titlebar-close {
+	background:#f6d20d;
+	right:0;
+	margin-top:-12px;
+}
+
+body .ui-dialog .ui-dialog-buttonpane {
+    border:0 none transparent;
+}
+
+body .ui-dialog .ui-button-text {
+    padding:0.8em 1em;
+}
+
+body .ui-widget-overlay {
+
+	_filter:alpha(opacity=60);
+}
+
+.mv5 {
+    margin-left:5px;
+    margin-right:5px;
+}
+</style>
+</head>
+
+<div id="top-menu-wrapper" class="dn bgfix">
+	<div id="top-menu">
+		<div class="l"><a class="user bgfix" href="###"> </a> <span>（今天还有</span><span class="lottery-times">0</span><span>次抽奖机会）</span></div>
+	</div>
+</div>
+<div id="header">
+	<div id="turnplatewrapper"  class="bgfix">
+		<div id="turnplate" class="bgfix">
+			<div id="awards" class="bgfix"></div>
+			
+			<div id="platebtn" class="bgfix"></div>
+			
+			<!--<p id="msg"></p>-->
+		</div>
+	</div>
+	
+</div>
+
+
+<div id="lotteryMsg" class="dn" style="display: none;">
+	<p class="msg"></p>
+	<!--<span class="option"></span>-->
+</div>
+
+<body>
+
+
+<script>
+var turnplate = {
+	turnplateBox : $('#turnplate'),  //图片白色背景
+	turnplateBtn : $('#platebtn'),   //点击按钮
+	lightDom : $('#turnplatewrapper'), //背景图无字
+	freshLotteryUrl : '',
+	msgBox : $('#msg'),
+	lotteryUrl : '',
+	height : '5.92', //帧高度
+	lightSwitch : 0, //闪灯切换开关. 0 和 1间切换
+	minResistance : 5, //基本阻力
+	Cx : 0.01, //阻力系数 阻力公式：  totalResistance = minResistance + curSpeed * Cx;	
+	accSpeed : 15, //加速度
+	accFrameLen : 40, //加速度持续帧数
+	maxSpeed : 250, //最大速度 
+	minSpeed : 20, //最小速度 
+	frameLen : 10, //帧总数
+	totalFrame : 0, //累计帧数,每切换一帧次数加1
+	curFrame : 0, //当前帧
+	curSpeed : 20, //上帧的速度
+	lotteryTime : 1, //抽奖次数
+	lotteryIndex : 1, //奖品index
+	errorIndex : 6, //异常时的奖品指针
+
+	initFreshInterval : 500, //进度条刷新间隔
+	virtualDistance : 10000, //虚拟路程,固定值，速度越快，切换到下帧的时间越快: 切换到下帧的时间 = virtualDistance/curSpeed
+	isStop : false, //抽奖锁,为true时，才允许下一轮抽奖
+	timer2 : undefined, //计时器
+	initTime : undefined,
+	showMsgTime : 2000, //消息显示时间
+	lotteryChannel: '',
+
+
+
+	lotteryList : [
+		'5M 永久空间',
+		'80M 永久空间',		
+		'1G 永久空间',		
+		'200M 永久空间',		
+		'100M 永久空间',		
+		'20M 永久空间',		
+		'继续攒人品',		
+		'10G 永久空间',		
+		'50M 永久空间',		
+		'1T 永久空间',
+	],
+
+
+
+	//初始化
+	init : function() {
+//		this.initAnimate()
+		this.freshLottery();
+		this.turnplateBtn.click($.proxy(function(){
+			this.click();	
+		},this));	
+	},
+
+
+
+
+	freshLotteryTime : function() {
+		$('#top-menu').find('.lottery-times').html(this.lotteryTime);
+	},
+
+	//更新抽奖次数
+	freshLottery : function() {
+
+		this.setBtnHover();
+		this.isStop = true;
+		this.lotteryTime = 1;
+		this.freshLotteryTime();
+
+	},
+
+	//设置按钮三态
+	setBtnHover : function() {
+		//按钮三态
+		$('#platebtn').hover(function(){
+			$(this).addClass('hover');
+		
+		},function() {
+			$(this).removeClass('hover click');
+		}).mousedown(function(){
+			$(this).addClass('click');
+		}).mouseup(function(){
+			$(this).removeClass('click');
+		});	
+	},
+
+	//获取奖品
+	lottery : function() {
+		this.lotteryIndex = undefined;
+		this.lotteryTime--;
+		if(this.lotteryTime>=0){
+			this.freshLotteryTime();
+			this.totalFrame = 0;
+			this.curSpeed = this.minSpeed;
+			this.turnAround();
+			this.lotteryIndex =0;  //奖品号
+		}
+	},
+
+	//点击抽奖
+	click : function() {
+		//加锁时
+		if(this.isStop == false) {
+			this.showMsg('转盘正在旋转，请忍心等待');
+			return;
+		} 
+		if(this.lotteryTime==0&&this.isStop == true){
+//			msg='今天已经抽过奖了，明天再来吧';
+			this.showMsg('今天已经抽过奖了，明天再来吧');
+			return;
+		}
+		this.lottery();
+
+	},
+
+	//更新当前速度
+	freshSpeed : function() {
+		var totalResistance = this.minResistance + this.curSpeed * this.Cx; //阻力系数
+		var accSpeed = this.accSpeed;  //加速度
+		var curSpeed = this.curSpeed;  //上帧速度
+		if(this.totalFrame >= this.accFrameLen) { //累计帧数,每切换一帧次数加1；加速度持续帧数
+			accSpeed = 0;
+		}
+		curSpeed = curSpeed - totalResistance + accSpeed;
+
+		if(curSpeed < this.minSpeed){ 
+			curSpeed = this.minSpeed;
+		}else if(curSpeed > this.maxSpeed){
+			curSpeed = this.maxSpeed;
+		}
+
+		this.curSpeed  = curSpeed;
+	},
+
+	//闪灯,切换到下一张时调用
+//	switchLight : function() {
+//		this.lightSwitch = this.lightSwitch === 0 ? 1 : 0;
+//		var lightHeight = -this.lightSwitch * this.height;
+//		this.lightDom.css('backgroundPosition','0 ' + lightHeight.toString() + 'rem');	
+//	},
+
+	//旋转,trunAround,changeNext循环调用
+	turnAround : function() {
+		//加锁
+		this.isStop = false;
+		var intervalTime = parseInt(this.virtualDistance/this.curSpeed);		
+		this.timer = window.setTimeout('turnplate.changeNext()', intervalTime);		
+	},
+
+	//弹出奖品
+	showAwards : function(){
+		$('#lotteryMsg').css({'display':'block'});
+		var showMsg = '您抽中了： ' + turnplate.lotteryList[turnplate.lotteryIndex];
+//				
+				$('#lotteryMsg').find('.msg').html(showMsg);
+	},
+
+	//显示提示信息
+	showMsg : function(msg, isFresh) {
+		isFresh = typeof isFresh == 'undefined' ? false : true;
+//		if(typeof msg != 'string'){
+//			msg = '今天已经抽过奖了，明天再来吧';
+//		}
+		
+		var msgBox = this.msgBox;
+		var display = msgBox.css('display');
+
+		msgBox.html(msg);	
+
+		window.clearTimeout(this.timer2);
+		msgBox.stop(true,true).show();
+		var fadeOut = $.proxy(function() {
+			this.msgBox.fadeOut('slow');
+		}, this);
+		this.timer2 = window.setTimeout(fadeOut, this.showMsgTime);
+	},
+
+
+	//切换到下帧
+	changeNext : function() {
+		//判断是否应该停止
+		if(this.lotteryIndex !== undefined && this.curFrame == this.lotteryIndex && this.curSpeed <= this.minSpeed+10 && this.totalFrame > this.accFrameLen) {
+			this.isStop = true;
+			this.showAwards();
+			return; 		
+		}
+
+		var nextFrame =  this.curFrame+1 < this.frameLen ? this.curFrame+1 : 0;
+		var bgTop = - nextFrame * this.height;		
+		this.turnplateBox.css('backgroundPosition','0 ' + bgTop.toString() + 'rem');	
+//		this.switchLight();
+		this.curFrame = nextFrame;
+		this.totalFrame ++;
+		this.freshSpeed();
+		this.turnAround();
+	}
+}
+turnplate.init();
+</script>
+
+</body>
+</html>
+	

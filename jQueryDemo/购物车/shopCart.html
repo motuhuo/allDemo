@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.oClone{
+				width:500px;
+				height:100px;
+				overflow: hidden;
+			}
+			span{
+				width:100px;
+				height:100px;
+				float:left;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="oClone" style="display:none;">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span class="delete">删除</span>
+		</div>
+		<script src="js/cookieControl.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			if(document.cookie){
+				var oBox = document.getElementsByClassName("oClone")[0];
+				var oBody = document.getElementsByTagName("body")[0];
+				var reg = /\s+/g;
+				var cookie = document.cookie.replace(reg,"");
+				var cookieArr = cookie.split(";");
+				for(var i=0;i<cookieArr.length;i++){
+					var attrArr = cookieArr[i].split("=");
+	//				console.log(attrArr[0]+":"+attrArr[1]);
+					var oClone = oBox.cloneNode(true);//深克隆
+					oClone.children[0].innerHTML = attrArr[0];
+					oClone.children[1].innerHTML = JSON.parse(attrArr[1]).goodPrice;
+					oClone.children[2].innerHTML = JSON.parse(attrArr[1]).goodNum;
+					oClone.children[3].innerHTML = JSON.parse(attrArr[1]).goodPrice*JSON.parse(attrArr[1]).goodNum;
+					oClone.style.display = "";
+					oClone.children[4].onclick = function(){
+						remove(this.parentNode.children[0].innerHTML);
+						this.parentNode.parentNode.removeChild(this.parentNode);
+					}
+					oBody.appendChild(oClone);
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#warp {
+				
+				width: 800px;
+				border: 1px solid #ccc;
+				margin: 0 auto;
+			}
+			#list{
+				width: 100%;
+			}
+			#list li {
+				list-style: none;
+				float: left;
+				border: 1px solid #ddd;
+				width: 258px;
+				margin-left:10px;
+			}
+			#pic {
+				width: 258px;
+				margin-bottom: 10px;
+			}
+			#pic img {
+				display: block;
+				width: 258px;
+			}
+			#pic p {
+				text-align: center;
+				font-family: "微软雅黑";
+				font-size: 14px;
+				margin-top: 10px;
+				margin-bottom: 10px;
+			
+			}
+			#pic p a{
+				text-decoration: none;
+				color: #000;
+			}
+			#pic p a:hover {
+				color: #abcdef;
+			}
+			#btn {
+				width: 300px;
+				height: 40px;
+				display: block;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="warp">
+			<ul id="list">
+				<li style="margin-left: 0;">
+					<!--<div id="pic">
+						<img src="img/1.jpg"/>
+						<p><a href="#">哈哈嘿嘿啦啦哇哇呱呱呵呵</a></p>
+					</div>-->
+				</li>
+				<li></li>
+				<li></li>
+				<div style="clear: both;"></div>
+			</ul>
+		</div>
+		<input type="button" id="btn" value="点击加载更多……" />
+		<script src="js/ajax.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oUl = document.getElementById("list");
+			var oLi = oUl.getElementsByTagName("li");
+			var oBtn = document.getElementById("btn");
+			var Num = 0;
+			load(Num);
+		    oBtn.onclick = function(){
+		    	Num += 8;
+		    	load(Num);
+		    };
+			
+			function load(Num){
+				ajax({
+				'url' : 'images.php',
+				success : function( res ){
+						var res = eval( res );
+						var str = '';
+						for( var i=Num;i<Num+8;i++ ){
+							str = '<div id="pic"><img src='+res[i].src+' width='+res[i].width+' height='+res[i].height+'/><p><a href="#">'+res[i].title+'</a></p></div>';
+							oLi[getSmall()].innerHTML += str;
+						}
+					}
+				});
+			}
+			
+			
+			function getSmall(){
+				var index = 0;
+				var iH = oLi[index].offsetHeight;
+				for( var i=1;i<oLi.length;i++ ){
+					if( oLi[i].offsetHeight < iH ){
+						index = i;
+						iH = oLi[i].offsetHeight;
+					}
+				}
+				return index;
+			}
+			
+			
+		</script>
+	</body>
+</html>

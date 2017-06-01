@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#main{
+				width: 960px;
+				position: relative;
+				margin: auto;
+			}
+			
+			#main .left{
+				width: 220px;
+				float: left;
+			}
+			
+			#main .right{
+				width: 730px;
+				float: right;
+			}
+		
+			
+			#main .right .block{
+				margin-bottom: 15px;
+			}
+			
+			#main .main_all .block > *{
+				cursor:move;
+			}
+			#main .main_all .block.active{
+				background-color:#eee;
+				border:1px dashed #000;
+			}
+			#main .main_all .block.active > *{
+				position:relative;
+				z-index:999;
+				opacity:.9;
+			}
+			#mark{
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: #000000;
+				opacity: .8;
+				display: none;
+			}
+			#main .clickBtn{
+				width:32px;
+				height:61px;
+				background:url("img/btn_dzsy.png");
+				position:absolute;
+				top:0px;
+				left:-40px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="mark"></div>
+		<div id="main">
+			<a href="###" class="clickBtn">
+				
+			</a>
+			<div class="main_all left">
+				<div class="block">
+					<img src="img/1.png"/>
+				</div>
+				<div class="block">
+					<img src="img/2.png"/>
+				</div>
+				<div class="block">
+					<img src="img/3.png"/>
+				</div>
+			</div>
+			<div class="main_all right">
+				<div class="block">
+					<img src="img/4.png"/>
+				</div>
+				<div class="block">
+					<img src="img/5.png"/>
+				</div>
+				<div class="block">
+					<img src="img/6.png"/>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			document.body.ondragstart = function(){return false;}; //禁止拖动事件
+			var $mark = $('#mark'); //找到遮罩层
+			var $main = $('#main'); //找到大DIV
+			var $block = $('.main_all .block',$main); //拿到DIV里面的所有block
+			var $first = $block.find(':first'); //拿到所有block里面的第一个元素
+			$('.clickBtn').click(function(){ //点击按钮
+				$mark.fadeToggle(200); // 遮罩层显示/隐藏
+				if( $main.toggleClass('main').hasClass('main') ){  //判断，如果有名字的话可以拖拽
+					console.log('可拖拽');
+					$first.mousedown(function( ev ){  //给block里的第一个元素绑定，mousedown事件
+						var $this = $(this); //存储当前的this指向
+						var $parent = $this.parent(); //拿到他的父类
+						var offsetY = ev.offsetY; //拿到当前的Y坐标
+						var offsetX = ev.offsetX; //拿到当前的X坐标
+						$parent.addClass("active"); //给父类添加class
+						$('body').mousemove(function( ev ){ //给document.body绑定移动事件
+							var pageX = ev.pageX; //拿到当前页面的X坐标
+							var pageY = ev.pageY; //拿到当前页面的Y坐标
+							//给$first的CSS样式进行修改 
+							$this.css({'top':pageY-offsetY-$parent.offset().top,'left':pageX-offsetX-$parent.offset().left})
+							$parent.siblings().each(function(){ //循环父类的所有兄弟
+								var $curr = $(this);
+								//判断当前的位置
+								if(pageX>$curr.offset().left&&pageX<$curr.offset().left+$curr.width()&&pageY>$curr.offset().top&&pageY<$curr.offset().top+$curr.height()){
+									if( $parent.index() > $curr.index() ){ //判断父类和当前index()的值,
+										$parent.after($curr);  //如果父类的index大于当前的index值那么让当前的插到父类后面
+									}else{
+										$curr.after( $parent ); //如果父类的index小于当前的index值那么让父类的插到当前后面
+									};
+									return false;  //找到最近的那个就不找了
+								};
+								//最后需要在从新赋值
+								$this.css({'top':pageY-offsetY-$parent.offset().top,'left':pageX-offsetX-$parent.offset().left})
+							});
+						}).mouseup(function(){
+							$(this).unbind('mousemove'); //解除document.body的绑定事件
+							$this.css({top:0,left:0}); //让$first的样式还原防止下次拖动位置被修改
+							$parent.removeClass("active"); //移除父类的Class名
+						});
+					});
+				}else{
+					$first.unbind("mousedown"); //不能拖拽的时候解除$first的绑定事件
+					console.log('不可拖拽');
+				};
+			});
+		</script>
+	</body>
+</html>

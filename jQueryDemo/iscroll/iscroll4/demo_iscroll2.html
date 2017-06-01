@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>iSCRoll的demo</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<script src="iscroll.js"></script>
+	<script src="zepto.min.js"></script>
+	<style>
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		html,body{
+			height: 100%;
+		}
+		body{
+			position: relative;
+		}
+		.header{
+			position:absolute;
+			width: 100%;
+			left: 0px;
+			top: 0px;
+			height: 50px;
+			/*height: 10%;*/
+			background: red;
+		}
+		.footer{
+			width: 100%;
+			position:absolute;
+			left: 0px;
+			height: 50px;
+			/*height: 10%;*/
+			background: yellow;
+			bottom: 0px;
+		}
+		.main{
+			width: 100%;
+			/*height: 80%;*/
+			position: absolute;
+			top: 50px;
+			bottom:50px;
+			left: 0px;
+		}
+		.mainList li{
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			box-sizing: border-box;
+			border-bottom: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		iscroll
+	</div>
+	<div id="wrapper" class="main">
+	    <ul class="mainList">
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	        <li>千锋第一段子手： 青蛙王子</li>
+	    </ul>
+	</div>
+	<div class="footer">
+		footer
+	</div>
+</body>
+
+<script type="text/javascript">
+    var myScroll;
+    function loaded() {
+        myScroll = new iScroll('wrapper',{
+        	useTransition: true, // 去除警告
+        	vScrollbar:false,
+        	
+
+        });
+    }
+    document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+
+</html>

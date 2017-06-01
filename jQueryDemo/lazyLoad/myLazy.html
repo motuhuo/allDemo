@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>lazyTest</title>
+  <style type="text/css">
+    img{
+      display: block;
+      margin: 20px;
+    }
+  </style>
+  
+</head>
+<body>
+  <img data-original="http://oolg8et0c.bkt.clouddn.com/img/bmw_m1_hood.jpg" style="width: 300px; height: 300px" class="lazy">
+  
+  <img data-original="http://oolg8et0c.bkt.clouddn.com/img/bmw_m1_side.jpg" style="width: 300px; height: 300px" class="lazy">
+  <img data-original="http://oolg8et0c.bkt.clouddn.com/img/corvette_pitstop.jpg" alt="" style="width: 300px; height: 300px" class="lazy">
+
+  <img data-original="http://oolg8et0c.bkt.clouddn.com/img/viper_1.jpg" style="width: 300px; height: 300px" class="lazy">
+
+  <img data-original="https://www.baidu.com/img/bd_logo1.png" style="width: 300px; height: 300px" class="lazy">
+  <img data-original="http://oolg8et0c.bkt.clouddn.com/img/bmw_m3_gt.jpg" alt="" style="width: 300px; height: 300px" class="lazy">
+  <img data-original="http://my.csdn.net/webxiaoma" style="width: 300px; height: 300px" class="lazy">
+  <img data-original="https://www.baidu.com/img/bd_logo1.png" style="width: 300px; height: 300px" class="lazy">
+  <img data-original="http://oolg8et0c.bkt.clouddn.com/img/viper_corner.jpg" alt="" style="width: 300px; height: 300px" class="lazy">
+  
+  
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <!-- <script type="text/javascript" src="js/jquery.lazyload.js"></script> -->
+  <script type="text/javascript" src="js/jquery.lazyload.min.js"></script>
+</body>
+<script type="text/javascript" charset="utf-8">
+// http://oolg8et0c.bkt.clouddn.com/img/loading.gif
+  $("img.lazy").lazyload({
+    effect : "fadeIn",
+    placeholder: 'img/loading.gif'
+  });
+</script>
+</html>

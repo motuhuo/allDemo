@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var u = navigator.userAgent;
+		    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		    if (isAndroid) {
+		        //android终端
+		        //showToash原生方法
+		        window.android.showToast("哈哈啊哈");
+		        alert('android')
+		    }
+		    if (isiOS) {
+		        //ios终端
+            alert('ios')
+		    }
+
+/*android分享方法开始 */
+// android传值
+    function getShareTxtA() {
+         var getMsg = "{" + '"share_txt":' + '"' + share_txt + '"' + ',"title_txt":' + '"' + share_txt + '" ' + ', "webHref":' + '"' + ApiRoot + "/pages/account/share_loginregister.html?inviter=" + (investorId != null ? investorId : 0) + '"' + ',"imgHref":' + '"' + MarketRoot + "/Content/img/LOGO_300x300.png" + '"' + "}";
+        //inviteFriends是android原生方法
+        window.android.inviteFriends(getMsg);
+    }
+/*android分享方法结束 */
+</script>
+</html>

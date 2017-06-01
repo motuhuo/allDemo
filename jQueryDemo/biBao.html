@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var a = 3;
+	function one(){
+		a =4;
+	}
+	
+	function two(){
+		// setTimeout(a,4000);
+		console.log('two:'+a);
+	}
+	console.log('one:'+a);
+
+	two();
+	one();
+</script>
+</html>

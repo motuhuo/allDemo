@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{margin:0; font-family:微软雅黑;} 
+		#flow-box{margin:10px auto 0 auto; padding:0; position:relative} 
+		#flow-box li{ 
+		width:190px; position:absolute; padding:10px; border:solid 1px #efefef; list-style:none; 
+		opacity:0; 
+		-moz-opacity:0; 
+		filter:alpha(opacity=0); 
+		-webkit-transition:opacity 500ms ease-in-out; 
+		-moz-transition:opacity 500ms ease-in-out; 
+		-o-transition:opaicty 500ms ease-in-out; 
+		transition:opaicty 500ms ease-in-out;} 
+		#flow-box li img{width:100%;} 
+		#flow-box li a{display:block; width:100%; text-align:center; font-size:14px; color:#333; line-height:18px; margin-top:10px; text-decoration:none;} 
+		.loadwrap{position:absolute; left:0; width:100%; text-align:center;} 
+	</style>
+</head>
+<body>
+	<ul id="flow-box">
+		<li>
+			<img src="imgs/gao1.jpg" />
+			<a href="#">图片标题1</a>
+		</li> 
+		<li>
+			<img src="imgs/gao2.jpg" />
+			<a href="#">图片标题1</a>
+		</li> 
+		<li>
+			<img src="imgs/gao3.jpg" />
+			<a href="#">图片标题1</a>
+		</li> 
+		<li>
+			<img src="imgs/gao4.jpg" />
+			<a href="#">图片标题1</a>
+		</li>
+		<li>
+			<img src="imgs/gao5.jpg" />
+			<a href="#">图片标题1</a>
+		</li> 
+		<li>
+			<img src="imgs/gao6.jpg" />
+			<a href="#">图片标题1</a>
+		</li>
+		<li>
+			<img src="imgs/gao4.jpg" />
+			<a href="#">图片标题1</a>
+		</li>
+		<li>
+			<img src="imgs/gao5.jpg" />
+			<a href="#">图片标题1</a>
+		</li> 
+		<li>
+			<img src="imgs/gao6.jpg" />
+			<a href="#">图片标题1</a>
+		</li>
+	</ul>
+</body>
+<script>
+	var arrHeight = [];  //每一列的高度存放数组
+	function flow(hw,vw){
+		// 列数： Math.floor(sw /liW + hw) ? floor
+		var sw = document.documentElement.offsetWidth;  // 屏幕宽度
+		var oUl = document.getElementById("flow-box");  //容器
+		var lis = document.getElementsByTagName("li");  // 所有的li 获取
+		var iw = lis[0].offsetWidth+hw; 
+		var c = Math.floor(sw/iw);  // 因为有可能出现小数，1.5 实际上只能放一列。Math.floor;
+		oUl.style.width = c*iw - hw +"px";
+
+
+		//所有li高度获取出来存进一个数组：
+		var lisHei = [];
+		
+		var lisLen = lis.length;
+		for(var i = 0;i<lis.length;i++){
+			lisHei.push(lis[i].offsetHeight);
+
+		}
+
+		//排放第一行，同时将第一行的每一列的高度添加到高度数组arrHeight
+		for(var i = 0;i<c;i++){
+			lis[i].style.top = "0";
+			lis[i].style.left = i*iw+"px";
+			arrHeight.push(lis[i].offsetHeight);
+			lis[i].style.opacity = "1"; 
+			lis[i].style["-moz-opacity"] = "1"; 
+			lis[i].style["filter"] = "alpha(opacity=100)"; 
+		}
+
+		
+
+		//? 每一列的高度？ 要通过每一列的高度判断添加到哪一列。。
+		//
+		//
+		//将除了第一排的其他的单元排放好
+		for(var i = c;i<lis.length;i++){
+			// 获取最矮的那一列？
+			// 
+			var x = _getMinValue(arrHeight);
+			lis[i].style.top = arrHeight[x]+vw+"px";
+			lis[i].style.left = x*iw+"px";
+			arrHeight[x] = arrHeight[x]+lis[i].offsetHeight+vw;
+			lis[i].style.opacity = "1"; 
+			lis[i].style["-moz-opacity"] = "1"; 
+			lis[i].style["filter"] = "alpha(opacity=100)";
+		}
+		window.onscroll = scroll;
+	}
+
+	// 滚动加载函数
+	 function scroll (){
+	 	var scrollTop = document.documentElement.scrollTop>document.body.scrollTop?document.documentElement.scrollTop:document.body.scrollTop;
+	 	var st = _getMaxValue(arrHeight);
+	 	if(scrollTop+document.documentElement.clientHeight>=st-50){
+	 		// alert("快到极限值了");
+	 		
+	 	}
+	 }
+
+
+
+
+	window.onload = function(){
+		flow(10,10);
+	}
+
+	// 获取数组里面最小值的索引值
+	function _getMinValue (arr){
+		var a = arr[0];
+		var b = 0;
+		for(var k in arr){
+			if(a>arr[k]){
+				a = arr[k];
+				b =  k;
+			}
+		}
+		return b;
+	}
+	// alert(_getMinValue([2,4,2,0]));
+	// 
+	// 获取数组里面最小值的索引值
+	function _getMaxValue (arr){
+		var a = arr[0];
+		var b = 0;
+		for(var k in arr){
+			if(a<arr[k]){
+				a = arr[k];
+				b =  k;
+			}
+		}
+		return a;
+	}
+
+	//加载数据方法
+	function loadData(url){
+		// chuangjian
+		if(window.XMLHttpRequest){
+			var oAjax = new XMLHttpRequest();
+		}
+		else{
+			var oAjax = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		// 
+		oAjax.open("post",url,true);
+		//请求
+		oAjax.send();
+
+		//处理数据
+		if(oAjax.readyState == 4&&oAjax.status==200){
+			return responseText;
+		}
+	}
+</script>
+</html>

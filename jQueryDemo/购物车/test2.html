@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="js/jquery-2.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$body = $("body");
+			$.ajax({
+				type:"get",
+				url:"page1.html",
+				async:true,
+				beforeSend:function(){
+					$body.css("background","url(img/1.jpg)");
+				},
+				success:function(msg){
+					setTimeout(function(){
+						$body.append(msg);
+					},10000)
+				}
+			});
+		</script>
+	</body>
+</html>

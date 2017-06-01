@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <link rel="stylesheet" type="text/css" href="css/cunguan.css">
+  <link rel="stylesheet" type="text/css" href="css/onePx.css">
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="js/rem.js"></script>
+</head>
+<body>
+  <div class="head">
+    <img src="img/head.png">
+  </div>
+  <div class="courseTitle BorderBottom">
+    虔诚猫金服存管历程
+  </div>
+  <div class="courseWrapper">
+    <div id="courseBox" class="courseBox">
+      <img class="imgSlide" src="img/timeline.png">
+      <img src="img/timeline.png">
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var imgSlide = $(".imgSlide")
+    var timer = '';
+    var leftNum = 0;
+    // moveImg();
+
+    //点击开始
+    document.getElementById('courseBox').addEventListener('touchstart', function(event) {
+      allComon();
+      imgSlide.css({'marginLeft':'-' + Math.abs(leftNum) + 'rem'})
+      console.log( 'touchstart:'+leftNum)
+    }, false);
+    //移动中
+    document.getElementById('courseBox').addEventListener('touchmove', function(event) {
+      var event = event || window.event;  
+      console.log('获取left:'+event.clientX)
+      $('.courseBox').css({'width':'28.5rem'});
+     
+      allComon();
+      imgSlide.css({'marginLeft':'-' + Math.abs(leftNum) + 'rem'})
+      console.log('touchmove:'+leftNum)
+    }, false);
+    //点击结束
+    document.getElementById('courseBox').addEventListener('touchend', function(event) {
+      $('.courseBox').css({'width':'57rem'});
+      // moveImg();
+      console.log('touchend:'+leftNum)
+    }, false);
+
+    function moveImg(){
+      clearInterval(timer);
+      timer = setInterval(function(){
+        
+        imgSlide.css({'marginLeft':'-' + Math.abs(leftNum) + 'rem'})
+        leftNum = Number((leftNum + 0.5).toFixed(1));
+        console.log(leftNum);
+        if(Math.abs(leftNum) > 28.5){
+          leftNum = 0;
+        }
+      },100)
+    }
+
+    function allComon () {
+      clearInterval(timer);
+      leftNum = Math.abs(Number((imgSlide.offset().left * 2/100).toFixed(1)));
+      if(Math.abs(leftNum) >=  28.5){
+        leftNum = 0;
+      }
+    }
+})
+</script>
+</html>

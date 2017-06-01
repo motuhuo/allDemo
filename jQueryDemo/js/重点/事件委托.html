@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ul {width:300px;}
+li {list-style:none;}
+</style>
+<script>
+	window.onload=function(){	
+		var oUl=document.getElementById('ul1');
+		var aLi=document.getElementsByTagName('li');
+		var oBtn=document.getElementById('btn');
+		var oLi=document.createElement('li');
+		var num=4;
+		oBtn.onclick=function(){	
+			num++;
+			var oLi=document.createElement('li');
+			oLi.innerHTML=1111*num;
+			oUl.appendChild(oLi);
+		}
+		/*for (var i=0; i<aLi.length; i++){	
+			aLi[i].onmouseover=function(){
+				this.style.background='red';
+			}
+			aLi[i].onmouseout=function(){
+				this.style.background='';
+			}
+		}*/
+		oUl.onmouseover=function(ev){	
+			var ev=ev||window.event;
+			var target=ev.target||ev.srcElement;
+			if (target.nodeName.toLowerCase()=='li'){
+				target.style.background='red';
+			}
+		}
+		oUl.onmouseout=function(ev){	
+			var ev=ev||window.event;
+			var target=ev.target||ev.srcElement;
+			if (target.nodeName.toLowerCase()=='li'){
+				target.style.background='';
+			}
+		}
+	}
+</script>
+</head>
+
+<body>
+<input type="button" id="btn" value="添加">
+<ul id="ul1">
+	<li>1111</li>
+    <li>2222</li>
+    <li>3333</li>
+    <li>4444</li>
+    
+</ul>
+</body>
+</html>

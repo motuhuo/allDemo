@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+   <head>
+   	<meta charset="UTF-8">
+      <title>Bootstrap 模板</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- 引入 Bootstrap -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+		
+      <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body style="padding: 50px;">
+   <!-- 有 .h1——h6 给tr,td加class="sr-only"隐藏-->
+      <code>&lt;<span>234</span>&gt;</code><br>
+      用户输入：<kbd>345u</kbd><br />
+      <form class="form-inline">  //内联表单
+         <div class="input-group">
+            <div class="input-group-addon">￥</div>
+            <input type="text" class="form-control" placeholder="输入价格">
+            <div class="input-group-addon">.00</div>
+         </div>
+         <br />
+         <!-- 添加额外的图标 glyphicon-ok成功状态
+               glyphicon-warning-sign 警告状态
+               glyphicon-remove 错误状态
+          -->
+         <div class="form-group has-feedback">
+            <label>电子邮件</label>
+            <input type="email" class="form-control">
+            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+         </div>
+      </form>
+   </body>
+   
+    <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+      <script src="js/jquery.js"></script>
+      <!-- 包括所有已编译的插件 -->
+      <script src="js/bootstrap.min.js"></script>
+   
+   
+</html>

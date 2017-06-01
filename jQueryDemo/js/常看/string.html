@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ 
+</style>
+<script type="text/javascript">
+
+
+window.onload=function(){
+
+var str='另外，然后呢';
+
+var arr=''
+	for (var i=0; i<str.length; i++){
+		arr+=String.fromCharCode(str.charCodeAt(i)-500);
+	}
+	document.body.innerHTML=arr+'<br />';
+
+var arr1='';
+for (var j=0;j<arr.length;j++){
+	arr1+=String.fromCharCode(arr.charCodeAt(j)+500);
+}
+document.body.innerHTML+=arr1;
+
+
+/*	var str='中国人民解放军，中国人民解放军，中国人民解放军。中国。中国';
+	var s='中国';
+	var i=0;
+	for (;str.indexOf(s,i)!=-1;){    //全局查找 indexOf返回首次查找到的位置，i表示从第i位开始查找； 
+		alert(str.indexOf(s,i));
+		i=str.indexOf(s,i)+s.length;
+	}*/
+
+};
+</script>
+</head>
+<body>
+
+</body>
+</html>

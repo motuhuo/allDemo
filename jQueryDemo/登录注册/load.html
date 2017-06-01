@@ -1,0 +1,143 @@
+
+<!--@{
+    ViewBag.Title = "RegisterMobile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/commom.css" rel="stylesheet" />
+    <link href="../../Content/css/register.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.12.2.min.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+    <div style="width:100%;height:100%;padding-bottom:158px">
+        <section class="layout">
+            <article class="regNav">
+                首页<span> > </span><span class="regAccount">账户注册</span>
+            </article>
+        </section>
+        <section class="layout">
+            <article class="regBox">
+                <section class="regBoxTitle">
+                    <ul class="regBoxUl">
+                        <li><span class="regWidth"><span class="regPhone"><img src="../../Content/img/register/regPhoneActive.png" /></span><span>验证手机</span></span><span class="regLine"></span></li>
+                        <li><span class="regWidth"><span class="regPsd"><img src="../../Content/img/register/regPsd.png" /></span><span>设置密码</span></span><span class="regLine"></span></li>
+                        <li><span><span class="regSuccess"><img src="../../Content/img/register/regSuccess.png" /></span><span>注册成功</span></span></li>
+                    </ul>
+
+                </section>
+                <div class="regBoxLoad">
+                    <section class="phoneBox">
+                        <article class="phoneNum">手机号</article>
+                        <input class="phoneInput" type="tel" maxlength="11" name="phoneInput" onblur="ValidateMobile()" id="txtMobile" placeholder="请输入您的手机号码">
+                        <span class="phoneClear"><img src="../../Content/img/register/clear.png" /></span>
+                        <span class="phoneBtn"><img src="../../Content/img/register/phoneBtn.png" /></span>
+                    </section>
+                    <span class="phoneError" id="spMobileError" style="display:none"><img src="../../Content/img/register/error.png" /><span id="spMError"></span></span>
+
+                    <section class="phoneBox imgBox">
+                        <article class="phoneNum imgText" for="phoneInput">图形验证</article>
+                        <input class="imgInput" maxlength="4" onblur="ValidateCaptca()" id="txtCaptcha" name="phoneInput" placeholder="请输入验证码">
+                        <span class="imgImg"><img id="captca_img" alt="验证码" src="/Account/Captcha/?name=login_captcha" width="91" height="32" style="cursor: pointer;" onclick="this.src = '/Account/Captcha/?name=login_captcha&time=' + Math.random();" /></span>
+                        <span class="imgBtn"><img src="../../Content/img/register/phoneBtn.png" /></span>
+                    </section>
+                    <span class="imgError" id="spCaptcaError" style="display:none"><img src="../../Content/img/register/error.png" /><span id="spCError"></span></span>
+
+                    <a href="javascript:void(0)" onclick="RegisterTwo()" class="setOne">下一步</a>
+                    <section class="goLoad">已有账号？<a href="/Account/Login">去登录</a></section>
+                </div>
+            </article>
+        </section>
+
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    function ValidateMobile()
+    {
+        var mobile = $("#txtMobile").val().trim();
+        var reg = /^1(3|4|5|7|8)\d{9}$/;
+        if (mobile.length == 0 )
+        {
+            $("#spMobileError").show();
+            $("#spMError").text("请输入手机号码");
+            $("#txtMobile").addClass("borderColor");
+            return false;
+        }
+        if (!reg.test(mobile))
+        {
+            $("#spMobileError").show();
+            $("#spMError").text("请输入合法的手机号码");
+            $("#txtMobile").addClass("borderColor");
+            return false;
+        }
+        $("#spMobileError").hide();
+        $("#spMError").text("");
+        $("#txtMobile").removeClass("borderColor");
+        return true;
+       
+    }
+
+    function ValidateCaptca()
+    {
+        var txtCaptca = $("#txtCaptcha").val().trim();
+        if (txtCaptca.length == 0)
+        {
+            $("#spCaptcaError").show();
+            $("#spCError").text("请输入验证码");
+            $("#txtCaptcha").addClass("borderColor");
+            return false;
+        }
+        $("#spCaptcaError").hide();
+        $("#spCError").text("");
+        $("#txtCaptcha").removeClass("borderColor");
+        return true;
+    }
+
+    function RegisterTwo()
+    {
+        if (ValidateMobile() == true && ValidateCaptca() == true)
+        {
+            var mobile = $("#txtMobile").val().trim();
+            var captca = $("#txtCaptcha").val().trim();
+            $.post("/Account/ValidateMobileCaptca", { mobile: mobile, captca: captca }, function (data) {               
+                // if (data == "1")
+                //{
+                //    $("#spCaptcaError").show();
+                //    $("#spCError").text("验证码错误");
+                //    $('#captca_img').attr('src', '/Account/Captcha/?name=login_captcha&time=' + Math.random());
+                //    $("#txtCaptcha").addClass("borderColor");
+                //    return false;
+                //}
+                // else if (data == "2") {
+                //     $("#spMobileError").show();
+                //     $("#spMError").text("该手机号已注册");
+                //     $("#txtMobile").addClass("borderColor");
+                //     return true;
+                // }
+                // else {
+                     window.location.href = "/Account/RegisterTwo/"+mobile;
+                 //}
+            });
+            
+        }
+
+    }
+
+
+
+
+
+
+
+</script>

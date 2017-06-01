@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="css/swiper-3.3.1.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/swiper-3.3.1.jquery.min.js"></script>
+	<script src="js/swiper.animate1.0.2.min.js"></script>
+	<script src="js/rem.js"></script>
+	<style>
+		*{
+				margin:0px;
+				padding:0px;
+			}
+			html,body,.main{
+				height: 100%;
+				width:6.4rem;
+				color: #fff;
+			}
+			.swiper-container{
+				height:100%;
+				display: -webkit-box;
+				-webkit-box-sizing:border-box;
+			}
+			
+			
+			.HeadT {
+				text-align: center;
+				line-height: 0.5rem;
+				position: absolute;
+				width:100%;
+				height:0.5rem;
+				background:#000;
+				color: #fff;
+				font-size:0.3rem;
+				z-index: 10;
+			}
+			
+			.slide1{
+				width:6.4rem;
+
+				height: 100%;
+				background:url(img/bg1.jpg) no-repeat;
+				background-size: 100% 100%;
+				/*position: relative;*/
+
+			}
+			.btn {
+				
+				width:1.5rem;
+				position: absolute;
+				top:1rem;
+				right:0.3rem;
+				color: #fff;
+				font-size: 0.3rem;
+				z-index: 10
+			}
+			.btn span {
+				/*display: block;*/
+				position: absolute;
+				line-height: 44px;
+				float: left;
+				opacity: 0;
+
+			}
+			.btn i {
+				position: relative;
+				float: right;
+				width:44px;
+				height:44px;
+				display: block;
+				background:url(img/tab.png) no-repeat left top;
+				-webkit-transform:scale(0.6);
+				-webkit-animation: moveI 1s linear infinite;
+				display: block;
+				z-index: 10;
+				}
+				@keyframes moveI{
+					0%{
+						-webkit-transform:scale(0.6) rotate(0deg) ;
+					}
+					100%{
+						-webkit-transform:scale(0.6) rotate(-360deg) ;
+					}
+				}
+				.yinfu{
+					width:70px;
+					height:1.5rem;
+					
+					position: absolute;
+					right:0;
+					bottom:0;
+					overflow: hidden;
+					
+					
+				}
+				.yinfu p:nth-child(1){
+					position: absolute;
+					right: 0;
+					bottom:-25px;
+					-webkit-animation:moveYinfu0 1.5s linear infinite;
+						
+				}
+
+				@keyframes moveYinfu0{
+					0%{
+						right: 0;
+						bottom:-25px;
+						-webkit-transform:scale(0.1) rotate(9deg);
+					}
+					100%{
+						
+						-webkit-transform:translateY(-1.5rem) translateX(-70px) scale(0.5) rotate(160deg);
+					}
+				}
+				
+				.yinfu p:nth-child(2){
+					position: absolute;
+					right: 20px;
+					bottom:-30px;
+					-webkit-animation:moveYinfu1 1.5s linear infinite;
+						
+				}
+
+				@keyframes moveYinfu1{
+					0%{
+						right: 20px;
+						bottom:-30px;
+						-webkit-transform:scale(0.1) rotate(30deg);
+					}
+					100%{
+						
+						-webkit-transform:translateY(-2.0rem) translateX(-30px) scale(0.4) rotate(180deg);
+					}
+				}
+					
+					.yinfu p:nth-child(3){
+					position: absolute;
+					right: -20px;
+					bottom:25px;
+					-webkit-animation:moveYinfu2 1.5s linear infinite;
+							
+					}
+
+					@keyframes moveYinfu2{
+						0%{
+							right: 20px;
+							bottom:-30px;
+							-webkit-transform:scale(0.1) rotate(30deg);
+						}
+						100%{
+							
+							-webkit-transform:translateY(-2.0rem) translateX(-30px) scale(0.4) rotate(180deg);
+						}
+					}
+
+			
+			.sanjiao{
+				position: absolute;
+				width:4.48rem;
+				height:4.44rem;
+				background:url(img/three.png) no-repeat;
+				background-size: 100% 100%;
+				/*top:2rem;*/
+				left:0;
+				right:0;
+				margin:2rem auto 0rem;
+			}
+			
+			.sixNine {
+				width:100%;
+				height:0.54rem;
+				font-size: 0.36rem;
+				color:#fff;
+				position: absolute;
+				/*top:3rem;*/
+				left:0;
+				right:0;
+				margin:2.8rem 1rem 0rem;
+			}
+
+			.yaoqing {
+				width:2.92rem;
+				height:1.92rem;
+				background:url(img/yaoqing.png) no-repeat;
+				background-size:100% 100%;
+				position: absolute;
+				top:6.6rem;
+				left:1.8rem;
+			}
+			.hp{
+				position: absolute;
+				width:2.26rem;
+				height:0.46rem;
+				background: url(img/jiao.png) no-repeat;
+				background-size: 100% 100%;
+				left:0;
+				right:0;
+				margin:3.3rem auto;
+			}
+			.China {
+				position: absolute;
+				color:#fff;
+
+				width:1.34rem;
+				height:0.4rem;
+				font-size: 0.26rem;
+				left:0;
+				right:0;
+				margin:3.9rem auto;
+			}
+
+			.Up{
+				width:58px;
+				height:60px;
+				position: absolute;
+				background: url(img/up.png) -60px top;
+				/*background-size: 100% 100%;*/
+				bottom:0.1rem;
+				left:0;
+				right:0;
+				margin:auto;
+				z-index: 100;
+				-webkit-animation:btnUp 1.5s linear infinite;
+
+			}
+				@keyframes btnUp{
+					0%{
+						-webkit-transform:scale(0.6) translateY(3rem);
+						opacity:0.8;
+					}
+					100%{
+						-webkit-transform:scale(0.6) translateY(0.1rem);
+						opacity:0;
+					}
+				}
+
+			.slide2{
+				width:6.4rem;
+				position: relative;
+				height: 100%;
+				background:url(img/bg1.jpg) no-repeat;
+				background-size: 100% 100%;
+				color:#fff;
+				
+				padding-left:0.5rem;
+			}
+			.oneThree {
+				position: absolute;
+				width:3.6rem;
+				height:0.42rem;
+				font-size: 16px;
+				top:1rem;
+			}
+			.Tone{
+				width:0.22rem;
+				height:1.24rem;
+				position: absolute;
+				top:0.5rem;
+				background:url(img/rH.png) no-repeat;
+				background-size: 100% 100%;
+				left:5.12rem;
+			}
+			.Ttwo{
+				width:4.84rem;
+				height:0.22rem;
+				position: absolute;
+				background: url(img/two.png) no-repeat;
+				background-size: 100% 100%;
+				top:1.64rem;
+			}
+			.Tpic1{
+				width:4.46rem;
+				height:2.8rem;
+				background:url(img/j1.jpg) no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				top:2.1rem;
+				left:0.8rem;
+			}
+
+			.Tthree{
+				width:0.22rem;
+				height:4.28rem;
+				position: absolute;
+				background:url(img/Tthree.png) no-repeat;
+				background-size: 100% 100%;
+				top:1.65rem;
+			}
+			.Tfour {
+				width:1.14rem;
+				height:0.72rem;
+				position: absolute;
+				background:url(img/Tfour.png) no-repeat;
+				background-size: 100% 100%;
+				top:5.21rem;
+				left:0.38rem;
+			}
+			.Tfive{
+				width:4.34rem;
+				height:0.16rem;
+				position: absolute;
+				background:url(img/Tfive.png) no-repeat;
+				background-size: 100% 100%;
+				top:5.21rem;
+				left:1.3rem;
+
+			}
+			.kuming{
+				position: absolute;
+				width:3.6rem;
+				height:0.42rem;
+				font-size: 16px;
+				top:5.6rem;
+				left:2.2rem;
+			}
+			.Tpic3{
+				width:4.46rem;
+				height:2.8rem;
+				background:url(img/j2.jpg) no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				top:6.3rem;
+				left:0.8rem;
+			}
+			.Tsix{
+				width:0.22rem;
+				height:4.28rem;
+				position: absolute;
+				background:url(img/Tsix.png) no-repeat;
+				background-size: 100% 100%;
+				top:5.21rem;
+				left:5.45rem;
+			}
+			.Tseven{
+				width:4.62rem;
+				height:0.22rem;
+				position: absolute;
+				background:url(img/Tseven.png) no-repeat;
+				background-size: 100% 100%;
+				top:9.3rem;
+				left:1.05rem;
+			}
+			.Teight{
+				width:0.28rem;
+				height: 1.2rem;
+				position: absolute;
+				background:url(img/TEight.png) no-repeat;
+				background-size: 100% 100%;
+				top:9.4rem;
+				left:1rem;
+			}
+			
+			
+
+			.slide3{
+				width:6.4rem;
+				position: relative;
+				height: 100%;
+				background:url(img/bg1.jpg) no-repeat;
+				background-size: 100% 100%;
+				padding-left:0.5rem;
+			}
+			.oneThree1 {
+				position: absolute;
+				width:3.6rem;
+				height:0.42rem;
+				font-size: 16px;
+				top:1rem;
+				left:1rem;
+			}
+			.Thone{
+				width:0.22rem;
+				height:1.24rem;
+				position: absolute;
+				top:0.5rem;
+				background:url(img/rH.png) no-repeat;
+				background-size: 100% 100%;
+				left:0.5rem;
+			}
+			.Thtwo{
+				width:4.84rem;
+				height:0.22rem;
+				position: absolute;
+				background: url(img/two.png) no-repeat;
+				background-size: 100% 100%;
+				top:1.64rem;
+			}
+			.Thpic1{
+				width:4.46rem;
+				height:2.8rem;
+				background:url(img/j3.jpg) no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				top:2.1rem;
+				left:0.5rem;
+			}
+
+			.Ththree{
+				width:0.22rem;
+				height:4.28rem;
+				position: absolute;
+				background:url(img/Tthree.png) no-repeat;
+				background-size: 100% 100%;
+				top:1.65rem;
+				left:5.1rem;
+			}
+			.Thfour {
+				width:1.14rem;
+				height:0.72rem;
+				position: absolute;
+				background:url(img/Thfour.png) no-repeat;
+				background-size: 100% 100%;
+				top:5.21rem;
+				left:4.3rem;
+			}
+			.Thfive{
+				width:4.1rem;
+				height:0.16rem;
+				position: absolute;
+				background:url(img/Tfive.png) no-repeat;
+				background-size: 100% 100%;
+				top:5.21rem;
+				left:0.5rem;
+
+			}
+			.kuming1{
+				position: absolute;
+				width:3.6rem;
+				height:0.42rem;
+				font-size: 16px;
+				top:5.6rem;
+				left:2rem;
+			}
+			.Thpic3{
+				width:4.46rem;
+				height:2.8rem;
+				background:url(img/j4.jpg) no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				top:6.3rem;
+				left:0.8rem;
+			}
+			.Thsix{
+				width:0.22rem;
+				height:4.28rem;
+				position: absolute;
+				background:url(img/Tsix.png) no-repeat;
+				background-size: 100% 100%;
+				top:5.21rem;
+				left:0.5rem;
+			}
+			.Thseven{
+				width:4.62rem;
+				height:0.22rem;
+				position: absolute;
+				background:url(img/Tseven.png) no-repeat;
+				background-size: 100% 100%;
+				top:9.3rem;
+				left:0.5rem;
+			}
+			.Theight{
+				width:0.28rem;
+				height: 1.2rem;
+				position: absolute;
+				background:url(img/TEight.png) no-repeat;
+				background-size: 100% 100%;
+				top:9.4rem;
+				left:4.9rem;
+			}
+			
+			.slide4{
+				width:6.4rem;
+				position: relative;
+				height: 100%;
+				background:url(img/bg1.jpg) no-repeat;
+				background-size: 100% 100%;
+				padding-left:0.5rem;
+			}
+
+			.oneThree4 {
+				position: absolute;
+				width:3.6rem;
+				height:0.42rem;
+				font-size: 20px;
+				top:1rem;
+				left:0.8rem;
+			}
+			.Tone4{
+				width:0.22rem;
+				height:1.24rem;
+				position: absolute;
+				top:0.5rem;
+				background:url(img/rH.png) no-repeat;
+				background-size: 100% 100%;
+				left:5.12rem;
+			}
+			.Ttwo4{
+				width:4.84rem;
+				height:0.22rem;
+				position: absolute;
+				background: url(img/two.png) no-repeat;
+				background-size: 100% 100%;
+				top:1.64rem;
+			}
+			.lilin{
+				font-size: 30px;
+				position: absolute;
+				top:2.5rem;
+				left:1.5rem;
+			}
+
+			.Tthree4{
+				width:0.22rem;
+				height:2.22rem;
+				position: absolute;
+				background:url(img/Tthree.png) no-repeat;
+				background-size: 100% 100%;
+				top:1.65rem;
+			}
+			
+			.Tfive4{
+				width:4.48rem;
+				height:0.16rem;
+				position: absolute;
+				background:url(img/Tfive.png) no-repeat;
+				background-size: 100% 100%;
+				top:3.7rem;
+				left:0.5rem;
+
+			}
+			.fuzou{
+				position: absolute;
+				width:4rem;
+				
+				font-size: 16px;
+				top:4rem;
+				left:0.8rem;
+			}
+			
+			.Tsix4{
+				width:0.22rem;
+				height:5.24rem;
+				position: absolute;
+				background:url(img/Tsix.png) no-repeat;
+				background-size: 100% 100%;
+				top:3.7rem;
+				left:4.8rem;
+			}
+			.Tseven4{
+				width:2.62rem;
+				height:0.22rem;
+				position: absolute;
+				background:url(img/Tseven.png) no-repeat;
+				background-size: 100% 100%;
+				top:8.8rem;
+				left:2.35rem;
+			}
+			.Teight4{
+				width:0.28rem;
+				height: 1.2rem;
+				position: absolute;
+				background:url(img/TEight.png) no-repeat;
+				background-size: 100% 100%;
+				top:8.9rem;
+				left:2.25rem;
+			}
+
+			
+			.slide5{
+				width:6.4rem;
+				position: relative;
+				height: 100%;
+				background:url(img/bg1.jpg) no-repeat;
+				background-size: 100% 100%;
+				padding-left:0.5rem;
+				display: -webkit-box;
+				
+			}
+			.Five1{
+				position: absolute;
+				width:0.22rem;
+				height:1.22rem;
+				background:url(img/five1.png) no-repeat;
+				background-size: 100% 100%;
+				left:0rem;
+				right: 0rem;
+				margin:0.5rem auto 0 auto;
+			}
+			.Five2{
+				width:5.6rem;
+				height:3.12rem;
+				background:url(img/five2.jpg) no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				margin: 1.72rem auto 0 auto;
+			}
+			.Five3{
+				width:0.2rem;
+				height:0.6rem;
+				background:url(img/five3.png) no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				left:0; right: 0;
+				margin:4.84rem auto 0 auto;
+			}
+
+			.Five5{
+				position: absolute;
+				width:100%;
+				font-size:16px;
+				
+				top:5.44rem;
+			}
+			.Five5 p {
+				width:100%;
+				margin-left: -0.5rem;
+				text-align: center;
+			}
+			.Five5 .Five5One{
+				font-size:0.4rem;
+			}
+			
+			.Five5 .Five5Two{
+				font-size:0.6rem;
+			}
+			.Five6 {
+				position: absolute;
+				width:0.58rem;
+				height: 1.32rem;
+				
+				left:0; right:0;
+				margin:7rem auto 0 auto;
+			}
+			.Five6 .Five6One{
+				width:0.2rem;
+				height: 0.7rem;
+				background: url(img/fone.png) no-repeat;
+				background-size: 100% 100%;
+				left:0; right: 0;
+				position: absolute;
+				margin:0 auto;
+
+			}
+			.Five6 .Five6Two{
+				width:0.58rem;
+				height:0.62rem;
+				background:url(img/five4.png) no-repeat;
+				background-size: 100% 100%;
+				margin: 0.5rem auto 0 auto;
+
+			}
+
+	</style>
+</head>
+<body>
+
+	<div class="main">
+		<audio src="music.mp3" autoplay="autoplay" class="song" id="music"></audio>
+		<div class="btn">
+			<span>关闭</span>
+			<span>开启</span>
+			<i></i>
+			<div class="yinfu">
+				<p><img src="img/hb.png"></p>
+				<p><img src="img/hb.png"></p>
+				<p><img src="img/hb.png"></p>
+			</div>
+		</div>
+		
+		<div class="swiper-container">
+			
+			<div class="HeadT">第69届中国教育装备展示会</div>
+			<div class="Up"></div>
+			 <div class="swiper-wrapper">
+				
+			        <div class="swiper-slide slide1">
+			        	<div class="ani sanjiao" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay="0.1s"></div>
+			        	<div class="ani sixNine" swiper-animate-effect="bounceInLeft" swiper-animate-duration="1.8s" swiper-animate-delay="0.2s">第69届中国教育装备展示会</div>
+			        	<div class="ani hp" swiper-animate-effect="bounceInRight" swiper-animate-duration="1.8s" swiper-animate-delay="0.2s"></div>
+			        	<div class="ani China" swiper-animate-effect="bounceInLeft" swiper-animate-duration="1.8s" swiper-animate-delay="0.2s">中国·福州</div>
+						<div class="ani yaoqing" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.8s" swiper-animate-delay="1.2s"></div>
+						
+			        </div>
+			        <div class="swiper-slide slide2">
+			        	<div class="ani oneThree" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay="1s">2013.11·中国成都</div>
+			        	<div class="ani Tone" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay="0.3s"></div>
+			        	<div class="ani Ttwo" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay="1s"></div>
+						<div class="ani Tpic1" swiper-animate-effect="bounceIn" swiper-animate-duration="0.8s" swiper-animate-delay="0.8s"></div>
+
+			        	<div class="ani Tthree" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay="1.4s"></div>
+			        	<div class="ani Tfour" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay="1.6s"></div>
+			        	<div class="ani Tfive" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay="1.8s"></div>
+						<div class="ani kuming" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay="1.5s">2014.03·中国昆明</div>
+
+						<div class="ani Tpic3" swiper-animate-effect="bounceIn" swiper-animate-duration="0.8s" swiper-animate-delay="2s"></div>
+						<!-- <div class="Tpic3"></div> -->
+			        	<div class="ani Tsix" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay="2s"></div>
+			        	<div class="ani Tseven" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay="2.3s"></div>
+						<div  class="ani Teight" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.8s" swiper-animate-delay="2.5s"></div>
+			        	
+			        </div>
+			        <div class="swiper-slide slide3">
+			        	
+			        	<div class="ani oneThree1" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay="1s">2014.11·中国南昌</div>
+			        	<div class="ani Thone" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay="0.3s"></div>
+			        	<div class="ani Thtwo" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay="1s"></div>
+						<div class="ani Thpic1" swiper-animate-effect="bounceIn" swiper-animate-duration="0.8s" swiper-animate-delay="0.8s"></div>
+
+			        	<div class="ani Ththree" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay="1.4s"></div>
+			        	<div class="ani Thfour" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay="1.6s"></div>
+			        	<div class="ani Thfive" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay="1.8s"></div>
+						<div class="ani kuming1" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay="1.5s">2015.03·中国临沂</div>
+
+						<div class="ani Thpic3" swiper-animate-effect="bounceIn" swiper-animate-duration="0.8s" swiper-animate-delay="2s"></div>
+						
+			        	<div class="ani Thsix" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay="2s"></div>
+			        	<div class="ani Thseven" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay="2.3s"></div>
+						<div  class="ani Theight" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.8s" swiper-animate-delay="2.5s"></div>
+			        	
+			        </div>
+			        <div class="swiper-slide slide4">
+			        
+			        	<div class="ani oneThree4" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay="1s">2015.10·中国福州</div>
+			        	<div class="ani Tone4" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay="0.3s"></div>
+			        	<div class="ani Ttwo" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay="1s"></div>		
+						<div class="ani lilin" swiper-animate-effect="bounceIn" swiper-animate-duration="0.8s" swiper-animate-delay="1.4s">期待您的莅临</div>
+			        	<div class="ani Tthree4" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay="1.4s"></div>
+			        	<div class="ani Tfive4" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay="1.8s"></div>
+						<div class="ani kuming4" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay="1.5s"> </div>
+						<div class="ani fuzou" swiper-animate-effect="bounceIn" swiper-animate-duration="0.8s" swiper-animate-delay="2s">2015年10月31日-11月2日，“第69届中国教育装备展示会”在福建福州举行。<br />&nbsp;&nbsp;届时，惠普公司联合北京龙戴特公司将以“惠普e-数学实验室重塑数学教育”主题进行特展。展会期间还将举行“第六届惠普e-数学实验室全国应用基地发展论坛暨代理商交流会”敬请各位莅临！<br />&nbsp; &nbsp;我们真诚期待您的光临!期盼与您携手共创精彩未来！
+						</div>
+			        	<div class="ani Tsix4" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay="2s"></div>
+			        	<div class="ani Tseven4" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="2.3s"></div>
+
+						<div  class="ani Teight4" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="2.5s"></div>
+			        </div>
+			        <div class="swiper-slide slide5">
+			        	<div class="ani Five1" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s"></div>
+			        	<div class="ani Five2" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay="0.6s"></div>
+			        	<div class="ani Five3" swiper-animate-effect="fadeInDown" swiper-animate-duration="1.6s" swiper-animate-delay="1s"></div>
+			        	<div class="ani Five4" swiper-animate-effect="fadeInDown" swiper-animate-duration="1.6s" swiper-animate-delay="1.5s"></div>
+			        	<div class="Five5">
+			        		<p class="ani Five5One" swiper-animate-effect="fadeInDown" swiper-animate-duration="1.6s" swiper-animate-delay="1.8s">2015年10月31日-11月2日</p>
+			        		<p class="ani Five5One" swiper-animate-effect="fadeInDown" swiper-animate-duration="1.6s" swiper-animate-delay="1.8s">福州海峡国际会展</p>
+			        		<p class="ani Five5Two" swiper-animate-effect="bounceIn" swiper-animate-duration="1.6s" swiper-animate-delay="1.8s">7号馆7A020</p>
+			        	</div>
+			        	<div class="ani Five6" swiper-animate-effect="fadeInDown" swiper-animate-duration="1.6s" swiper-animate-delay="1.8s">
+			        		<div class="Five6One"></div>
+			        		<div class="Five6Two"></div>
+			        	</div>
+			        </div>
+			       
+			        
+			 </div>
+			   
+			    
+			   
+		</div>
+	</div>
+	<script>
+		var mySwiper = new Swiper ('.swiper-container', {
+		    direction: 'vertical',
+		    loop: true,
+		  
+		    onInit: function(swiper){ 
+				    swiperAnimateCache(swiper); 
+				    swiperAnimate(swiper); 
+				  }, 
+				  onSlideChangeEnd: function(swiper){ 
+				    swiperAnimate(swiper); 
+				  } 
+		    
+		  })        
+
+		    var ado=document.getElementById('music');
+			var $T=$('.btn span');
+			var $M=$('.btn i');
+			var $aP=$('.yinfu p');
+
+			  	$('.btn').click(function(){
+			  		if(ado.paused){
+			  			ado.play()
+			  			$T.eq(1).css({'opacity':'1'}).siblings('span').css({'opacity':'0'})
+			  			setTimeout(function(){
+			  				$T.eq(1).animate({'opacity':'0'},500)
+			  			},1000)
+			  			$M.css({'-webkit-animation':'','-webkit-transform':'scale(0.6)'});
+			  			$aP.each(function(){
+			  				$(this).css('-webkit-animation','')
+			  			})
+			  		}else{
+			 			ado.pause();
+			 			$T.eq(0).css({'opacity':'1'}).siblings('span').css({'opacity':'0'})
+			 			setTimeout(function(){
+			  				$T.eq(0).animate({'opacity':'0'},500)
+			  			},1000)
+			  			$M.css('-webkit-animation','moveI');
+			  			$aP.each(function(){
+			  				$(this).css('-webkit-animation','moveYinfu'+$(this).index())
+			  			})
+			 		}
+				})
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+	<div class="content slide-left" >
+		<div class="header">
+			<a id="Espan" href="#/indexone.html"><</a>
+			<h3> Employee</h3>
+		</div>
+		<div class="Jam">
+			<img src='img/james_king.jpg' alt="">
+			<div class="ziti">
+			<a href="#/report.html">
+				<h3>james king</h3>
+				<p>President and CEO</p>
+				<p>Boston,MA</p>
+			</a>
+			</div>
+		</div>
+		<div class="empMain" ng-controller="empCtrlone">
+			<ul>
+				<li  ng-repeat="x in data">
+					<div class="mainTxt">
+						<h3>{{x.por}}</h3>
+						<p>{{x.num}}</p>
+					</div>
+					<a href="javascript:;"><img ng-src={{x.img}}></a>
+				</li>
+				
+			</ul>
+		</div>
+	</div>

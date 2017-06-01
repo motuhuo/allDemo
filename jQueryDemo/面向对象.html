@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+// 面向对象有三大特性：封装、继承、多态
+// 封装即隐藏对象的一些私有的属性和方法
+// 多态意味着同名方法的实现依据类型有所改变，在JS中只需要在“子类”Student的prototype定义同名方法即可，因为原型链是单向的，不会影响上层的原型。
+
+
+ function Person(name){
+   this.name = name;
+   var label = 'Person';
+ }
+ 
+ Person.prototype.nickName = 'PersonPrototype';
+ 
+ Person.prototype.greet = function(){
+     console.log('Hi! I am ' + this.name);
+ }
+ 
+ function Student(name,school){
+     this.name = name;
+     this.school = school;
+     var label = 'Student';
+ }
+ 
+ Student.prototype.__proto__ = Person.prototype;
+
+ Student.prototype.greet = function()
+ {
+     console.log('Hi! I am ' + this.name + ',my school is ' + this.school);
+ };
+ //Hi! I am s1,my school is USTB
+ var p1 = new Person('p1');
+ var s1 = new Student('s1','USTB');
+ p1.greet();//Hi! I am p1
+ s1.greet();//Hi! I am s1
+</script>
+</html>

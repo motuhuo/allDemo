@@ -1,0 +1,57 @@
+*{margin:0; padding: 0;}
+.layout{margin: 0 auto; width:1204px;}
+img {border:none;}
+a {text-decoration: none; color:#646464;}
+body {font-family: "微软雅黑";}
+ul li {list-style: none;}
+.header {width:100%; height:34px; background:#f9f9f9; border-top:1px solid #cecece; border-bottom: 1px solid #f2f2f2;}
+#twoFloor {width:1204px; height:632px;}
+
+#twoFloor .twoHead {width:1204px; height:44px; border-bottom: 2px solid #000; }
+#twoFloor .twofloorHeadLeft {font-size: 18px; font-weight: bold; float: left; line-height: 44px;}
+
+#twoFloor .twofloorHeadRight ul {float:right; position: relative; border-top:1px solid #e6e6e6;}
+#twoFloor .twofloorHeadRight ul li {float:left; border-right: 1px solid #e6e6e6; background:#f5f5f5; height:43px; position: relative; width:115px; line-height: 43px; text-align: center;}
+#twoFloor .twofloorHeadRight ul li.twofloorHeadFirst {border-left:1px solid #e6e6e6;}
+#twoFloor .twofloorHeadRight ul li.twofloorOn {border:2px solid #000; padding:-2px; border-bottom:none; padding-bottom:none; height:43px; background:#fff; font-weight: bold; color: #000;}
+#twoFloor #twoMainAll {width:1204px; height:578px; border:1px solid #e6e6e6; margin-top:10px; border-right:none;}
+#twoFloor #twoMainAll #twoLeftMainLeft {width:238px; height:171px; float:left; background:url(../img/twobg.jpg) no-repeat center center; border:1px solid #e6e6e6; padding-top:352px; }
+
+#twoFloor #twoMainAll #twoLeftMainLeft ul li {float:left; width:63px; padding-left:16px; height:28px; line-height: 28px; overflow: hidden; font-size: 14px; color: #000000; background:#fff;}
+#twoFloor #twoMainAll #twoLeftMainLeft ul li a:hover {display:block; color:red; text-decoration:underline;}
+
+#twoFloor #twoRightMain {width:960px; float:left; border:1px solid #e6e6e6; border-right:none;}
+
+#twoFloor #twoRightMain #twoOne li {width:191px; height:340px; border-right:1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; float: left;}
+#twoFloor #twoRightMain #twoTwo li {width:191px; height:180px; float: left; border-right:1px solid #e6e6e6;}
+#twoFloor #twoRightMain #twoOne li.twoOneFirst {width:383px; height:340px; position: relative; }
+
+
+
+
+
+#twoFloor #twoRightMain #twoOne #twoOneMain {width:383px; height:340px; float:left; position: relative; overflow: hidden;}
+#twoFloor #twoRightMain #twoOne #twoOneMain #twoTwoUl {width:2000px; height:340px;  position: absolute; left:-383px; top:0;}
+
+#twoFloor #twoRightMain #twoOne #twoOneMain #twoTwoUl li {float:left; width:383px;}
+/*#twoOneMain #twoTwoUl li.twoOneShow {left:0px;}*/
+
+#twoOneMain #twoTwoUltwo {width:383px; height:340px;  position: relative;}
+
+#twoOneMain #twoTwoUltwo li {position: absolute; left:383px;}
+#twoOneMain #twoTwoUltwo li.twoOneShow {left:0px;}
+
+#twoOneMain #twoTwoUlthree {width:383px; height:340px;  position: relative;}
+
+#twoOneMain #twoTwoUlthree li {position: absolute; left:383px;}
+#twoOneMain #twoTwoUlthree li.twoOneShow {left:0px;}
+
+
+
+#twoOneMain  a.twoMUpBt {position: absolute; display: block; width:30px; height:48px; font-size: 40px; color: #fff; background:#ccc; top:50%; margin-top:-23px; text-align: center; line-height: 48px; display: none;}
+#twoOneMain  a.twoLeft {left:0px;}
+#twoOneMain  a.twoRight {right:0px;}
+
+#twoMidUpBtn {position: relative; width:100px; height:10px; left:50%; margin-left:-35px; bottom:10px;}
+#twoOne #twoMidUpBtn span { float: left; width:10px; border:2px solid #fff; margin-right:5px; cursor: pointer; display: block;}
+#twoOne #twoMidUpBtn span.twoFloorOn {border:2px solid #000;}

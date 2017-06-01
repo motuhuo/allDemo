@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/account/shareInvite.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<script src="../../js/jquery-2.1.4.min.js"></script>
+		<script src="../../js/common.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/public.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/rem.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+		</script>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav new_bar">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color:white"></a>
+			<h3 class="mui-title" style="color:white">分享邀请</h3>
+		</header>
+		<div class="shareApp">快让小伙伴们扫码下载APP吧</div>
+		<div class="two">
+			<img src="../../img/share/two.png" />
+		</div>
+		<div class="moreShare">你还可以通过以下方式分享给好友哟</div>
+		<ul class="shareWay">
+			<li onclick="shareAction('sinaweibo',0)">
+				<span class="imgBox"><img src="../../img/share/weibo.png"/></span>
+				<div>新浪微博</div>
+			</li>
+			<li onclick="shareAction('qq',1)">
+				<span class="imgBox"><img src="../../img/share/qq.png"/></span>
+				<div>腾讯QQ</div>
+			</li>
+			<li onclick="shareAction('weixin','WXSceneSession',2)">
+				<span class="imgBox"><img src="../../img/share/wx.png"/></span>
+				<div>微信好友</div>
+			</li>
+			<li onclick="shareAction('weixin',3)">
+				<span class="imgBox"><img src="../../img/share/wxFriend.png"/></span>
+				<div>朋友圈</div>
+			</li>
+		</ul>
+
+	</body>
+
+	<script type="text/javascript">
+		mui.plusReady(function() {
+			plusReady();
+		})
+
+		var shares = null,
+			bhref = false,
+			content = null;
+		var investorid = null;
+		var share_txt = null;
+		var title_txt = null;
+		// 扩展API加载完毕，现在可以正常调用扩展API 
+		function plusReady() {
+			investorid = plus.storage.getItem('Orange_InvestorId');
+
+			$.ajax({
+				type: "get",
+				url: ApiRoot + "api/Common/GetJsonData?fileName=BonusRainShare.json&investorId=" + investorid,
+				async: false,
+				success: function(data) {
+					if(data.content) {
+						//						$("#div1").html('<img src="' + ApiRoot + data.content + '" style="width: 100%;height: 100%;display: block;" />');
+						//						$(".my_btn").show();
+						//$("#div1").html(data.content);
+					}
+					if(data.sharetext) {
+						share_txt = data.sharetext;
+						title_txt = data.titletext;
+					}
+				}
+			});
+			updateSerivces();
+		}
+
+		function updateSerivces() {
+			plus.share.getServices(function(s) {
+				shares = {};
+				for(var i in s) {
+					var t = s[i];
+					shares[t.id] = t;
+				}
+			}, function(e) {
+				//plus.nativeUI.alert(e.message, function() {}, "7天理财", "确认");
+			});
+		}
+
+		/**
+		 * 分享操作
+		 * @param {String} id
+		 */
+		function shareAction(id, ex) {
+			var s = null;
+			console.log("分享操作：" + ex);
+			if(!id || !(s = shares[id])) {
+				console.log("无效的分享服务！");
+				return;
+			}
+			if(s.authenticated) {
+				console.log("---已授权---");
+				shareMessage(s, ex);
+			} else {
+				console.log("---未授权---");
+				s.authorize(function() {
+					shareMessage(s, ex);
+				}, function(e) {
+					console.log("认证授权失败：" + e.code + " - " + e.message);
+				});
+			}
+		}
+		/**
+		 * 发送分享消息
+		 * @param {plus.share.ShareService} s
+		 */
+		function shareMessage(s, ex) {
+			var titletext = title_txt;
+			if(ex == "WXSceneTimeline")
+				titletext = null;
+			else
+				titletext = title_txt;
+
+			var msg = {
+				title: titletext,
+				content: share_txt,
+				href: '',
+				thumbs: '',
+				extra: {
+					scene: ex
+				}
+			};
+			var date = new Date().getFullYear() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getDate();
+
+			//			msg.href = MarketRoot + "Account/UserPromoteRegister?inviter=" + investorid;
+			msg.href = MarketRoot + "Account/UserRegister?inviter=" + (investorid!=null?investorid:0);
+			msg.thumbs = [MarketRoot + "/Content/img/LOGO_300x300.png"];
+
+			if(s.id == "sinaweibo") {
+				if(mui.os.ios) {
+					msg.content = share_txt + msg.href;
+				} else {
+					msg.content = share_txt;
+				}
+
+			}
+
+			s.send(msg, function() {
+				plus.nativeUI.alert("分享到" + s.description + "成功！", function() {}, "虔诚猫金服", "确认");
+			});
+		}
+	</script>
+
+</html>

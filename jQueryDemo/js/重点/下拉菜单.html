@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{margin: 0; padding: 0;}
+			a {text-decoration:none;}
+			ul li {list-style: none;}
+			#nav {margin: 100px auto; position:relative; height: 50px; width:750px; border:1px solid red; }
+			#nav ul {width:100%; height:50px; background:pink; }
+			#nav ul  li {float:left; line-height: 50px; text-align: center; width:100px; position: relative;}
+			#nav ul li a {display: block; border-right:1px solid red; border-top:none; position:relative;}
+			#nav ul li a:hover {background:green;}
+			#nav ul li a.hover {height:50px; background:blue; border:1px solid #333333; border-bottom:none; z-index: 1;}
+			#nav ul li div {width:200px; background:blue; height:500px; border:1px solid #333333; position: absolute; top:50px; display:none;}
+			#nav ul li div span {display: block;}
+		
+			
+		</style>
+		<script src="js/jquery-1.12.2.js"></script>
+		<script type="text/javascript">
+			$(function(){	
+				$('#ul1 li a').mouseover(function(){
+					$(this).parent().has('div').find('a').addClass('hover')
+					$(this).parent().has('div').find("div").css({display:"block"})
+				})
+				//var timer=null;
+				$('#ul1 li a').mouseout(function(){
+					
+					$(this).parent().has('div').find("div").css({display:"none"}); 
+					$(this).parent().has('div').find('a').removeClass('hover')
+					
+					$(this).parent().find('div').mouseover(function(){
+						$(this).parent().has('div').find('a').addClass('hover')
+						$(this).css({display:'block'})
+					})
+					
+					$(this).parent().find('div').mouseout(function(){
+						$(this).parent().has('div').find('a').removeClass('hover')
+						$(this).css({'display':'none'})
+					})
+						
+				})
+				
+			})
+		
+		</script>
+	</head>
+	<body>
+		<div id="nav">
+			<ul id="ul1">
+				<li>
+					<a href="###">1</a>
+					<div>
+						<span>首页</span>
+						<span>首页</span>
+						<span>首页</span>
+					</div>
+				
+				</li>
+				
+				
+				<li>
+					<a>2</a>
+					<div>
+						<span>首页2</span>
+						<span>首页2</span>
+						<span>首页2</span>
+					</div>
+				</li>
+				<li><a>3</a></li>
+				<li><a>4</a></li>
+				<li><a>5</a></li>
+				<li><a>6</a></li>
+				<li>
+					<a>7</a>
+					<div>
+						<span>首页</span>
+						<span>首页</span>
+						<span>首页</span>
+					</div>
+					
+				</li>
+			</ul>
+			
+		</div>
+	</body>
+</html>

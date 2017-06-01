@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title-虔诚猫</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="channel" content="Smartphone" />
+    <meta name="keywords" content="虔诚猫金服，虔诚猫投资理财，互联网理财平台，互联网金融，P2P投资理财，P2P网贷平台">
+    <meta name="description" content="虔诚猫，用心呵护您的财富！虔诚猫金服致力于为投资理财用户打造安全透明高收益的互联网金融P2P理财平台。" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/commom.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/Content/img/orange-logo.png" type="image/x-icon" />
+    <script src="~/Scripts/js/jquery-1.12.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/Scripts/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <link href="~/Content/iconfont/iconfont.css" rel="stylesheet" />
+    <!--[if lte IE 8]>
+    <noscript>
+         <style>.html5-wrappers{display:none!important;}</style>
+         <div class="ie-noscript-warning">您的浏览器禁用了脚本，请<a href="">查看这里</a>来启用脚本!或者<a href="/?noscript=1">继续访问</a>.
+         </div>
+    </noscript>
+    <![endif]-->
+    <script type="text/javascript">
+        //返回浏览器版本
+        function GetAgent() {
+            if (navigator.userAgent.indexOf("MSIE 8.0") > 0) return "IE8";
+            else if (navigator.userAgent.indexOf("MSIE 9.0") > 0) return "IE9";
+            else if (window.navigator.userAgent.indexOf("Chrome") > 0) return "Chrome";
+            else if (navigator.userAgent.indexOf("Firefox") > 0) return "Firefox";
+            else if (navigator.userAgent.indexOf("Safari") > 0) return "Safari";
+            else if (navigator.userAgent.indexOf("Camino") > 0) return "Camino";
+            else if (navigator.userAgent.indexOf("Gecko/") > 0) return "Gecko";
+            else return "other version";
+        }
+        function clo() {
+            $("#msgDiv").slideUp();
+        }
+        window.onload = function () {
+            var nar = document.all ? "IE" : "others";
+            if (nar == "IE") {
+                var navigator_userAgent = GetAgent();
+                if (navigator_userAgent == "other version") {
+                    $("#msgDiv").slideDown();
+                }
+            }
+            else $("#msgDiv").hide();
+        }
+    </script>
+    <style>
+        #msgDiv {
+            height: 50px;
+            display: none;
+            /*background: url(../../Content/img/msg.jpg);*/
+        }
+
+            #msgDiv #up, #clo {
+                height: 50px;
+                line-height: 50px;
+                font-size: 18px;
+                font-weight: bold;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            #msgDiv #up {
+                margin-left: 308px;
+            }
+
+            #msgDiv #clo {
+                margin-left: 30px;
+            }
+
+        .IEup {
+            padding: 5px;
+            color: green;
+            font-weight: bold;
+            font-size: 22px;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body style="overflow-y: scroll; ">
+    <div id="msgDiv">
+        <a id="up" href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie">升级浏览器</a>
+        <a id="clo" href="javascript:location:clo()">取消</a>
+    </div>
+    <header class="header">
+        <section class="layout">
+
+            <article class="headerLeft">
+                <a>
+                    <i class="of of-ring" style="font-size:12px;color:#ff8718;vertical-align:middle"></i>
+                    客服热线:
+                    <span style="color:#ff8718">400-008-7077</span>
+                </a>
+            </article>
+            <article class="headerRight">
+                <ul>
+                    <li class="lastImg">
+                        <div>
+                            <a href="###"><i class="of of-wechat" style="line-height:14px;"></i></a>
+                            <article class="head-wechat">
+                                <article class="wechat" style="right: -35px;margin-top: 10px;">
+                                    <img src="~/Content/img/weixin.png" width="80" height="80" alt="" title="" />
+                                </article>
+                                <article class="triangle-up">    <!--向右的三角--> </article>
+                            </article>
+                        </div>
+                    </li>
+                    <li class="app">
+                        <div>
+                            <a href="###"><i class="of of-phone" style="font-size:12px;"></i><span style="margin-left:3px;">手机金融</span></a>
+                            <article class="head-app">
+                                <article class="wechat" style="margin-top: 10px;">
+                                    <img src="~/Content/img/calculator/appLoad.png" width="80" height="80" alt="" title="" />
+                                </article>
+                                <article class="triangle-up">    <!--向右的三角--> </article>
+                            </article>
+                        </div>
+                    </li>
+                    @*<li><div><a href="###">精彩活动</a></div></li>*@
+                    @*<li><div><a href="###">帮助中心</a></div></li>
+                        <li><div><a href="###">邀请有礼</a></div></li>*@
+                    @if (AgileBoost.Osman.User.LoginUser.Current != null)
+                    {
+
+                        string user = !string.IsNullOrEmpty(AgileBoost.Osman.User.LoginUser.Current.RealName) ? AgileBoost.Osman.User.LoginUser.Current.RealName : AgileBoost.Osman.User.LoginUser.Current.Account;
+                        <li><div><a href="/Account/Logout">退出</a></div></li>
+                        <li class="register">
+                            <div>
+                                <span>欢迎：</span>
+                                <a href="/UserCenter/Home" style="color:#ff8718">@user</a>
+                            </div>
+                        </li>
+
+                        @*<li class="register"><a href="###"> 退出 </a></ li >*@
+                    }
+                    else
+                    {
+                        <li class="register">
+                            <div>
+                                <a href="/Account/RegisterMobile">注册</a>
+                            </div>
+                        </li>
+                        <li class="load active">
+                            <div>
+                                <a href="/Account/Login">登录</a>
+                            </div>
+                        </li>
+
+                    }
+
+                </ul>
+            </article>
+        </section>
+    </header>
+
+    @RenderBody()
+
+    <!--<section class="footLast">
+        <article class="footBox">
+            <article class="dizhi">虔诚猫金服|杭州香橙网络科技有限公司版权所有</article>
+            <article class="footLine"></article>
+            <img src="~/Content/img/bei.png" />
+            <article class="beizhu">浙ICP备 16009189号</article>
+        </article>
+    </section>-->
+    <script>
+    	//判断是移动端还是PC端
+    	
+        function pageSourceFrom() {
+            if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+                //移动端
+                return "W";
+            } else {
+                //PC端
+                return "P";
+            }
+        }
+    </script>
+<script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1261115647'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261115647' type='text/javascript'%3E%3C/script%3E"));
+    $('#cnzz_stat_icon_1261115647').css('display', 'none');
+</script>
+
+</body>
+</html>

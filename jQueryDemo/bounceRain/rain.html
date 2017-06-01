@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="save" content="history" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/rain.css">
+    <script src="js/mui.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <title>红包雨</title>
+    <style>
+      .dded {
+        color: #ffffff;
+      }
+      
+      .mui-bar {
+        background: #043FAB;
+        padding: 0 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      
+      .money {
+        width: 90px;
+        height: 80px;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        animation: myfirst 3s;
+        -webkit-animation: myfirst 3s;
+        /* Safari and Chrome */
+        animation-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards;
+      }
+      
+      @keyframes myfirst {
+        0% {
+          margin-top: 0px;
+        }
+        99.99% {
+          margin-top: -100px;
+        }
+        100% {
+          margin-top: -100px;
+          opacity: 0;
+        }
+      }
+      
+      @-webkit-keyframes myfirst {
+        0% {
+          margin-top: 0px;
+        }
+        99.99% {
+          margin-top: -100px;
+        }
+        100% {
+          margin-top: -100px;
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="mui-bar mui-bar-nav new_bar" style="background:#fa4d4d;position:relative;z-index:99999">
+      <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color:white"></a>
+      <h3 class="mui-title" style="color:white">红包雨</h3>
+      <span onclick="shareShow()" style="float: right;font-size: 35px;color: white;text-align: center;line-height: 25px;margin-right:10px">...</span>
+    </header>
+    <!-- 抢的结果 -->
+    <header class="mui-bar mui-bar-nav header" style="position:relative;z-index:100">
+      <ul style="height:36px;position:relative;">
+        <li>
+          <a class="mui-action-back  mui-pull-left" style="color:white;float:left;padding-top:8px;z-index:-1"></a>
+        </li>
+        <li>已抢红包<span id="redbagcount">0</span>个<i><img src="img/header_ico.png" /></i></li>
+        <li>金额<span id="amount">0</span>元</li>
+        <li>还剩<span id="idcode">15</span>秒</li>
+      </ul>
+    </header>
+
+    <div class="page_rain">
+      <!-- 红包雨部分 -->
+      <div class="div bg_1" style="margin-top:-100px; height:120%"></div>
+      <input type="hidden" value="0" id="val_i" />
+      <!-- 红包钱数 -->
+
+      <!--蒙层-->
+      <div class="chuai_box" style="display: none;position:absolute" id="chuai_box">
+        <div class="chuai">
+          <div onclick="hide_div()" class="closes">&times;</div>
+          <div></div>
+          <h5><i><img src="img/bonusrain_huange.png" id="tips_img" /></i></h5>
+          <p class="tips1" id="tips">&nbsp;</p>
+          <h6 class="tips2">奖品已发放到“我的奖励”中</h6>
+          <h6 class="tips3" id="amount">0</h6>
+          <!--  <h6 class="tips4" id="share"><span onclick="shareShow()">分享朋友圈</span></h6> -->
+          <h6 class="tips4" id="share"><span>分享朋友圈</span></h6>
+          <h6 class="tips4" style="display: none;" onclick="appdown()">点击下载APP</h6>
+        </div>
+      </div>
+
+      <!-- 1、2、3 -->
+      <div class="chuai_box" id="daoshu" style="position:absolute">
+        <div style="width:150px;margin:0 auto;position:relative;margin-top:55%;"><img id="daoshu_img" /></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var number = 4;
+      var Timerr;
+      var innter;
+
+      // 开始 1、2、3显示
+      $(function() {
+        var innterFirst = setInterval(function() {
+          number--;
+          if(number > 0)
+            $("#daoshu_img").attr("src", "img/" + number + ".png");
+          if(number == 0) {
+            innter = setInterval(countdown, 1000);
+            $('#daoshu').hide();
+          }
+          if(number < 0) {
+            Timerr = setInterval(CreateBag, intevaltime);
+            clearInterval(innterFirst);
+          }
+        }, 1000);
+      })
+
+      $(document).on('touchstart', '.dd', function() {
+
+        var money = parseFloat($(this).children('input').eq(0).val());
+        // arr_Amt.push(''+money+'');
+        var id = parseInt($(this).children('input').eq(1).val());
+        //  arr_id.push(id);
+
+        if(money != 0) {
+          //  var p2 = plus.audio.createPlayer("/Content/sound/111.wav");
+          // p2.play();
+          $(this).html("+" + money);
+          $(this).css("color", "whilte");
+          $(this).attr("class", "you");
+          $(this).stop().animate({}, 500, 'swing');
+          $(this).addClass("money");
+        } else {
+          $(this).attr("class", "kong");
+        }
+        count++;
+        amount = amount + money;
+        AllAmount = parseFloat(amount).toFixed(2);
+        $('#amount').text(AllAmount);
+        $('#redbagcount').text(count);
+        $('.tips3').text(AllAmount);
+      });
+    </script>
+    <script type="text/javascript">
+      var timeNumber = 15; //倒计时秒数
+      var count = 0; //红包个数
+      var intevaltime = 200 //每创建4个红包时间间隔
+      //var Timerr = setInterval(CreateBag,intevaltime);
+      var amount = 0; //抢到总金额
+      var AllAmount = 0;
+      var low = 0; //最少
+      var high = 10; //最多
+      var slow = 5000; //慢速
+      var mediu = 5000; //中速
+      var quick = 5000; //快速
+
+      document.addEventListener('touchmove', function(e) {
+        e.preventDefault()
+      }, false);
+
+      /********创建红包***********/
+      function CreateBag() {
+        for(var i = 0; i < 4; i++) {
+          var m = parseInt(Math.random() * 700 + 100);
+          var j2 = parseInt(Math.random() * 300 + 1200);
+          var j = parseInt(Math.random() * 1600 + 50);
+          var j1 = parseInt(Math.random() * 300 + 300);
+          var n = parseInt(Math.random() * 10 + (-10));
+          var money = (Math.random() * 1).toFixed(2);
+          var money1 = parseFloat(0) + parseFloat((Math.random() * 1));
+          money1 = parseFloat(money1).toFixed(2);
+          //  $('.div').prepend('<div class="dd"><input type="hidden"  value='+money+'/></div>');
+          //  $('.div').children('div').eq(0).css({'left':j,'top':n});
+          if(i == 0) {
+            $('.div').prepend('<div class="dd"><input type="hidden"  value=' + money + '/></div>');
+            $('.div').children('div').eq(0).css({
+              'left': j,
+              'top': n
+            });
+            $('.div').children('div').eq(0).animate({
+              'left': j - j1,
+              'top': $(window).height() + 120
+            }, mediu);
+          } else if(i == 3) {
+            $('.div').prepend('<div class="dd"><input type="hidden"  value=' + money1 + '/></div>');
+            $('.div').children('div').eq(0).css({
+              'left': j,
+              'top': n
+            });
+            $('.div').children('div').eq(0).animate({
+              'left': j - j1,
+              'top': $(window).height() + 120
+            }, quick);
+          } else {
+            $('.div').prepend('<div class="dd"><input type="hidden"  value="1.1"/></div>');
+            $('.div').children('div').eq(0).css({
+              'left': j,
+              'top': n
+            });
+            $('.div').children('div').eq(0).animate({
+              'left': j - j1,
+              'top': $(window).height() + 120
+            }, slow);
+          }
+        }
+      }
+
+      /*******倒计时********/
+
+      function countdown() {
+        $("#idcode").text(timeNumber);
+        timeNumber--;
+        flag = false;
+        if(timeNumber == 0)
+          clearInterval(Timerr);
+        if(timeNumber < 0) {
+          flag = true;
+          $('#chuai_box').show();
+          $('#tips').text("您抢到了" + count + "个红包");
+          var allamount = parseFloat(AllAmount.toString());
+          // $('#tips_img').attr("src", "/Content/img/bonusrain_tuhao.png");
+          //  $(".chuai").css("background-image", "url(/Content/img/bonusrain_bg2.png)");
+          //  $(".tips4").css('display', 'block');
+          if(AllAmount == 0) //换个姿势
+            $('#tips_img').attr("src", "img/bonusrain_huange.png");
+          else if(AllAmount > 0 && AllAmount <= 1 && redbagcount < 20)
+            $('#tips_img').attr("src", "img/bonusrain_jiasu.png");
+          else if(AllAmount > 0 && AllAmount <= 1 && redbagcount > 20)
+            $('#tips_img').attr("src", "img/bonusrain_shousu.png");
+          else if(AllAmount > 1 && AllAmount <= 5) //人品大爆发
+            $('#tips_img').attr("src", "img/bonusrain_renpin.png");
+          else if(AllAmount > 5)
+            $('#tips_img').attr("src", "img/bonusrain_tuhao.png");
+          clearInterval(Timerr);
+          //$(".div").removeClass("bg_1");
+          //$(".div").addClass("bg_2");
+          clearInterval(innter);
+        }
+
+      }
+
+      function hide_div() {
+        $('#chuai_box').hide();
+        // window.open("http://a.app.qq.com/o/simple.jsp?pkgname=com.weeklyfinance.mm","_tagret");
+        //window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.weeklyfinance.mm";
+        //mui.back();
+      }
+      mui.plusReady(function() {
+        plus.webview.currentWebview().setStyle({
+          'popGesture': 'none'
+        });
+        plus.webview.currentWebview().setStyle({
+          'backbutton': 'none'
+        });
+        document.addEventListener("close", function() {
+          //  if (!Ispost)
+          //   PostDataToServer(AllAmount, count);
+        });
+      })
+    </script>
+  </body>
+
+</html>
+
+</body>
+
+</html>

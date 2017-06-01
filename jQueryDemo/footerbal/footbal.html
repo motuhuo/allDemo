@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script src="js/iscroll.js"></script>
+	<!-- <script src="js/rem.js"></script> -->
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		ul li {
+			list-style: none;
+		}
+		#pageone .Loading,#register .Loading,#forget .Loading,#pwd .Loading,#search .Loading,#user .Loading{
+			width:100%;
+			display: block;
+			background:#0f91c5;
+			font-size: 26px;
+			color:#fff;
+			text-align: center;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			font-family: "微软雅黑";
+			font-weight: normal;
+		}
+		.AllContain{
+			box-sizing:border-box;
+			width:100%;
+			padding:25px;
+		}
+		.OneContain{
+			width:100%;
+			padding-top:25px;
+			clear: both;
+			overflow: hidden;
+			border-bottom: 1px solid #CCC;
+		}
+		.OneMid{
+			width:25%; float: left; margin-top:17px
+		}
+		.OneInp{
+			width:75%; float: right;
+		}
+		.reg{
+			margin-top: 15px;
+			font-size: 10px;
+			overflow: hidden;
+			clear: both;
+		}
+		.reg a:nth-child(1){
+			float: left;
+			text-decoration: underline;
+		}
+		.reg a:nth-child(2){
+			float: right;
+			text-decoration: underline;
+		}
+		
+		#OneFoot{
+			width:80%;
+			margin-left: 10%;
+			background:#0f91c5;
+			border-radius: 6px;
+			text-align: center;
+			color:#fff;
+		}
+		#OneFootOn{
+			display: block;
+			color:#fff;
+			padding:10px;
+		}
+		.Finp{
+			width:50%;
+			float: left;
+			height:30px;
+		}
+		.getPsd{
+			width:50%;
+			float: right;
+		}
+		#Psd{
+			height: 2.6rem;
+		}
+		#getPass{
+			background:#0f91c5;
+			color: #fff;
+			font-weight: normal;
+		}
+		.pwdOne{
+			margin:20px;
+			border-bottom: 1px solid #ccc;
+		}
+
+		#indexBg{
+			height: 10%;
+			width:100%;
+			background:#0f91c5;
+			margin:0;
+			box-sizing:-webkit-box;
+			padding: 0px;
+			border-radius:0;
+			position: fixed;
+		}
+		#indexHead{
+			
+			margin:3% 30%;
+
+		}
+		#index1{
+			background:#79c1df;
+			border:1px solid #79c1df;
+			color:#fff;
+			font-size: 8px;
+			font-weight: normal;
+		}
+		#index2{
+			background:#57b2d7;
+			border:1px solid #57b2d7;
+			color:#fff;
+			font-size: 8px;
+			font-weight: normal;
+		}
+		#Innov{
+			width:100%;
+			height:10%;
+			background: #fff;
+			position: fixed;
+			box-sizing:-webkit-box;
+			top:10%;
+			
+		}
+		#userPic{
+			width:100%;
+			height:10%;
+			background: #fff;
+			margin-top: 10px;
+			box-sizing:-webkit-box;
+		}
+		#Innov li,#userPic li {
+			width:33%;
+			float: left;
+			box-sizing:-webkit-box;
+			text-align: center;
+			padding:4% 0;
+			font-weight: bold;
+
+		}
+		#Innov li a,#userPic li a{
+			display: block;
+			color:#000;
+		}
+		#Innov li.active,#userPic li.active{
+			border-bottom: 2px solid #0f91c5;
+			
+		}
+		#userPic li.active a {
+			color: #57b2d7
+		}
+		#Incontent .main1{
+			height: 67%;
+			width: 100%;
+			overflow: scroll;
+			padding-top: 2%;
+			position: absolute;
+			top:20%;
+			background: #f1f1f1;
+			clear: both;
+			overflow: scroll;
+			text-align: center;
+		}
+		#theList{
+			width: 100%;
+		}
+		.Pic1{
+			width:49%;
+			float: left;
+			padding-left: 0;
+			margin-left: 0;
+			
+		}
+		#Incontent img {
+			width:100%;
+		}
+		#Incontent div {
+			margin-bottom: 4px;
+			border:1px solid #ccc;
+		}
+		.Pic2{
+			width:49%;
+			float: right;
+	
+		}
+		.Bgcolor{
+			width:100%;
+			height: 1%;
+			background:#ccc;
+			position: fixed;
+			bottom: 10%;
+		}
+		.InFoot{
+			height:10%;
+			width: 100%;
+			position: fixed;
+			bottom: 0;
+			background:#fff;
+			text-align: center;
+		}
+		.InFoot li {
+			float: left;
+			width:20%;
+			height: 100%;
+		}
+		figure img{
+    		height: 27px;
+		}
+		figcaption{
+			font-size: 12px;
+		}
+		.fone{
+			width: 95%;
+			height: 95%;
+			margin-top: -10px;
+			z-index: 10;
+		}
+		#search1{
+			width:100%;
+			height: 1.3em;
+			clear: both;
+			overflow: hidden;
+			position: absolute;
+			top:10%;
+		}
+		
+
+		
+		html,body{
+			height:100%;
+            position: relative;
+		}
+		
+		
+        #pullDown, #pullUp {
+            background:#fff;
+            height:40px;
+            line-height:40px;
+            padding:5px 10px;
+            border-bottom:1px solid #ccc;
+            font-weight:bold;
+            font-size:14px;
+            color:#888;
+        }
+        #pullDown .pullDownIcon, #pullUp .pullUpIcon  {
+            display:block; float:left;
+            width:40px; height:40px;
+            background:url(pull-icon@2x.png) 0 0 no-repeat;
+            -webkit-background-size:40px 80px; background-size:40px 80px;
+            -webkit-transition-property:-webkit-transform;
+            -webkit-transition-duration:250ms;  
+        }
+        #pullDown .pullDownIcon {
+            -webkit-transform:rotate(0deg) translateZ(0);
+        }
+        #pullUp .pullUpIcon  {
+            -webkit-transform:rotate(-180deg) translateZ(0);
+        }
+
+        #pullDown.flip .pullDownIcon {
+            -webkit-transform:rotate(-180deg) translateZ(0);
+        }
+
+        #pullUp.flip .pullUpIcon {
+            -webkit-transform:rotate(0deg) translateZ(0);
+        }
+
+        #pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+            background-position:0 100%;
+            -webkit-transform:rotate(0deg) translateZ(0);
+            -webkit-transition-duration:0ms;
+
+            -webkit-animation-name:loading;
+            -webkit-animation-duration:2s;
+            -webkit-animation-iteration-count:infinite;
+            -webkit-animation-timing-function:linear;
+        }
+
+        @-webkit-keyframes loading {
+            from { -webkit-transform:rotate(0deg) translateZ(0); }
+            to { -webkit-transform:rotate(360deg) translateZ(0); }
+        }
+        ul{
+            
+            clear:both;
+            overflow: hidden;
+        }
+       
+		.Seabox{
+			width:96%;
+			height: 58px;
+			padding:10px;
+		}
+		#seaInp{
+			width:75%;
+			display: block;
+			height: 38px;
+			outline: none;
+			float: left;
+			border-radius: 5px;
+		}
+		#seaBtn{
+			width:20%;
+			height: 38px;
+			background: #0f91c5;
+			color: #fff;
+			float: right;
+			display: block;
+			line-height: 38px;
+			outline: none;
+			border:none;
+			border-radius: 5px;
+		}
+		
+		#seaUi li a{
+			width: 100%;
+		}
+		.seaBtn1{
+			position: absolute;
+    		right: 132px;
+			background:#0f91c5;
+			outline: none;
+			border:none;
+			border-radius: 5px;
+			padding:5px;
+			color:#fff;
+		}
+		.zp{
+			width:150px;
+			height: 150px;
+			background:url(img/zp.png) no-repeat;
+			background-size: 100% 100%;
+		}
+	</style>
+</head>
+<body>
+	<div data-role="page" id="pageone">
+		
+		<a href="#" class="Loading">足球圈子 — 登录</a>
+		<div class="AllContain">
+			<div class="OneContain">
+				<div class="OneMid">手机号:</div>
+				<div class="OneInp"><input type="text"></div>
+			</div>
+			<div class="OneContain">
+				<div class="OneMid">密码:</div>
+				<div class="OneInp"><input type="text"></div>
+			</div>
+			<div class="reg">
+				<a href="#register">注册</a><a href="#forget">忘记密码?</a>
+			</div>
+			
+		</div>
+
+			<div id="OneFoot">
+				<a href="#" id="OneFootOn">提 交</a>
+			</div>
+ 			
+		
+	</div> 
+	<div data-role="page" id="register">
+		<a href="#" class="Loading">足球圈子 — 注册</a>
+		<div class="AllContain">
+			<div class="OneContain">
+				<div class="OneMid">手机号:</div>
+				<div class="OneInp"><input type="text"></div>
+			</div>
+			<div class="OneContain">
+				<div class="OneMid">密码:</div>
+				<div class="OneInp"><input type="text"></div>
+			</div>
+			<div class="OneContain">
+				<div class="OneMid">昵称:</div>
+				<div class="OneInp"><input type="text"></div>
+			</div>
+			<div class="reg">
+				<a href="#register">注册</a><a href="#forget">忘记密码?</a>
+			</div>
+			
+		</div>
+
+			<div id="OneFoot">
+				<a href="#" id="OneFootOn">提 交</a>
+			</div>
+	</div> 
+
+	<div data-role="page" id="forget">
+		<a href="#" class="Loading">足球圈子 — 找回密码</a>
+		<div class="AllContain">
+			<div class="OneContain">
+				<div class="OneMid">手机号:</div>
+				<div class="OneInp"><input type="text"></div>
+			</div>
+			<div class="OneContain">
+				<div class="OneMid">密码:</div>
+				<div class="OneInp">
+					<div class="Finp"><input type="text" id="Psd"></div>
+					<div class="getPsd"><a href="#" class="ui-btn ui-corner-all"  id="getPass">获取验证码</a></div>
+				</div>
+			</div>
+		</div>
+
+			<div id="OneFoot">
+				<a href="#pwd" id="OneFootOn">提 交</a>
+			</div>
+	</div>
+
+
+	<div data-role="page" id="pwd">
+		<a href="#" class="Loading">足球圈子 — 重置密码</a>
+		<div class="pwdOne">
+			<input type="text" placeholder="新密码（密码在6-16位之间）">
+		</div>
+		<div class="pwdOne">
+			<input type="text" placeholder="重复新密码">
+		</div>
+
+			<div id="OneFoot">
+				<a href="#index" id="OneFootOn">提 交</a>
+			</div>
+	</div>
+
+	<div data-role="page" id="index">
+		<div class="InAll">
+		<div data-role="main" class="ui-content" id="indexBg">
+		    <div data-role="controlgroup" data-type="horizontal" id="indexHead">
+		      <a href="#" class="ui-btn ui-btn-inline ui-mini" id="index1">热点</a>
+		      
+		      <a href="#" class="ui-btn ui-btn-inline ui-mini" id="index2">关注</a>
+		    </div>
+		</div>
+		</div>
+		
+		<div id="Innov">
+			<ul>
+				<li class="active"><a href="#">足球现场</a></li>
+				<li><a href="#">足球生活</a></a></li>
+				<li><a href="#">足球美女</a></li>
+			</ul>
+		</div>
+		<div id="Incontent">
+			<div id="wrapper" class="main1">
+   				<div id="scroller">
+        			
+					<ul id="thelist">
+						<li class="Pic1">
+							<div>
+								<img src="img/1.png"><p>小丸子啊小丸子</p>
+							</div>
+							<div>
+								<img src="img/1.png"><p>小丸子啊小丸子</p>
+							</div>
+							<div>
+								<img src="img/3.png"><p>2342345</p>
+							</div>
+
+						</li>
+						<li class="Pic2">
+							<div>
+								<img src="img/3.png"><p>2342345</p>
+							</div>
+							<div>
+								<img src="img/3.png"><p>2342345</p>
+							</div>
+							<div>
+								<img src="img/1.png"><p>小丸子啊小丸子</p>
+							</div>
+						</li>
+
+					</ul>
+					<div id="pullUp">
+            			<span class="pullUpIcon"></span><span class="pullUpLabel">上拉刷新</span>
+        			</div>
+        		</div>
+			</div>
+		</div>
+		<div class="Bgcolor"></div>
+		<div class="InFoot">
+			
+			<ul>
+				<li>
+					<figure><div><a href="#index"><img src="img/home.png"></a></div>
+						<figcaption>主页</figcaption>
+					</figure>
+				</li>
+				<li>
+					<figure><a href="#search"><img src="img/search.png"></a>
+						<figcaption>发现</figcaption>
+					<figure>
+				</li>
+				<li>
+					<a href="#"><img src="img/fone.png" class="fone"></a>
+					
+
+				</li>
+				<li>
+					<figure><a href="#user"><img src="img/use.png"></a>
+						<figcaption>我的</figcaption>
+					</figure>
+				</li>
+				<li>
+					<figure><a href="#"><img src="img/tuicu.png"></a>
+						<figcaption>退出</figcaption>
+					</figure>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div data-role="page" id="search">
+		<a href="#" class="Loading">发现</a>
+		
+			<div class="Seabox">
+				<input type="text" id="seaInp" data-role="none" placeholder="请输入昵称">
+			    <input type="button" id="seaBtn" data-role="none" value="搜索">
+			</div>
+
+		<ul data-role="listview" data-icon="false" id="seaUi">
+		 	<li><a href="#"><img src="img/zj.png">
+		 	<input type="button" value="关注" data-role="none" class="seaBtn1">
+					<h2>我叫小萌</h2>
+					<p>我是小萌，我怕谁</p>
+		 		</a>
+		 		
+		 	</li>
+		 	<li><a href="#"><img src="img/zj.png">
+		 	<input type="button" value="关注" data-role="none" class="seaBtn1">
+					<h2>我叫小萌</h2>
+					<p>我是小萌，我怕谁</p>
+		 		</a>
+		 		
+		 	</li>
+		</ul>
+	
+		
+	    <div class="Bgcolor"></div>
+		<div class="InFoot">
+			
+			<ul>
+				<li>
+					<figure><div><a href="#index"><img src="img/home1.png"></a></div>
+						<figcaption>主页</figcaption>
+					</figure>
+				</li>
+				<li>
+					<figure><a href="#search"><img src="img/search1.png"></a>
+						<figcaption>发现</figcaption>
+					<figure>
+				</li>
+				<li>
+					<a href="#"><img src="img/fone.png" class="fone"></a>
+					
+
+				</li>
+				<li>
+					<figure><a href="#user"><img src="img/use.png"></a>
+						<figcaption>我的</figcaption>
+					</figure>
+				</li>
+				<li>
+					<figure><a href="#"><img src="img/tuicu.png"></a>
+						<figcaption>退出</figcaption>
+					</figure>
+				</li>
+			</ul>
+		</div>
+	 	</div>
+  	
+
+
+  	<div data-role="page" id="user">
+		<a href="#" class="Loading">个人中心</a>
+		
+			<div class="Seabox">
+				<input type="text" id="seaInp" data-role="none" placeholder="请输入昵称">
+			    <input type="button" id="seaBtn" data-role="none" value="搜索">
+			</div>
+
+		<ul data-role="listview" data-icon="false" id="seaUi">
+		 	<li><a href="#"><img src="img/zj.png">
+		 	<input type="button" value="关注" data-role="none" class="seaBtn1">
+					<h2>我叫小萌</h2>
+					<p>我是小萌，我怕谁</p>
+		 		</a>
+		 	</li>
+		</ul>
+		<div id="userPic">
+			<ul>
+				<li class="active"><a href="#">照片(1)</a></li>
+				<li><a href="#">关注(3)</a></a></li>
+				<li><a href="#">粉丝(8)</a></li>
+			</ul>
+		</div>
+		<div class="zp">
+		
+		</div>
+	    <div class="Bgcolor"></div>
+		<div class="InFoot">
+			
+			<ul>
+				<li>
+					<figure><div><a href="#index"><img src="img/home1.png"></a></div>
+						<figcaption>主页</figcaption>
+					</figure>
+				</li>
+				<li>
+					<figure><a href="#search"><img src="img/search.png"></a>
+						<figcaption>发现</figcaption>
+					<figure>
+				</li>
+				<li>
+					<a href="#"><img src="img/fone.png" class="fone"></a>
+					
+
+				</li>
+				<li>
+					<figure><a href="#"><img src="img/use1.png"></a>
+						<figcaption>我的</figcaption>
+					</figure>
+				</li>
+				<li>
+					<figure><a href="#"><img src="img/tuicu.png"></a>
+						<figcaption>退出</figcaption>
+					</figure>
+				</li>
+			</ul>
+		</div>
+	 	</div>
+</body>
+<script>
+	var el = document.getElementById('thelist');
+        var aLi=el.getElementsByTagName("li");
+        function getSmall(){
+				var index = 0;
+				var iH = aLi[index].offsetHeight;
+				for( var i=1;i<aLi.length;i++ ){
+					if( aLi[i].offsetHeight < iH ){
+						index = i;
+						iH = aLi[i].offsetHeight;
+					}
+				}
+				return index;
+			}
+function pullUpAction () {
+   
+        var el, li, i,result,item,oImg;
+       
+        //ajax请求
+        
+        $.ajax({
+            type:"get",
+            url:"imgJson.json",
+            success:function(data){
+               result=data;
+
+               for(var i=0; i<result.length; i++){
+                (function(i){
+                    oImg=new Image();
+                    oImg.src=result[i].url;
+                    var str = '';
+                    oImg.onload=function(){
+                        
+                        str = '<div><img src='+result[i].url+'><p>234567sd</p></div>';
+						aLi[getSmall()].innerHTML += str;
+                    }
+                })(i)
+               
+               }
+            }
+        });
+       
+        myScroll.refresh();    
+}
+
+function loaded() {
+    
+    pullUpEl = document.getElementById('pullUp');
+    pullUpOffset = pullUpEl.offsetHeight;
+
+
+    myScroll = new iScroll('wrapper', {
+        useTransition: true,
+         //头部的滚动距离
+        onRefresh: function () {    //
+            _maxScrollY = this.maxScrollY = this.maxScrollY + pullUpOffset;
+            
+           if (pullUpEl.className.match('loading')) {
+                pullUpEl.className = '';
+                pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉刷新';
+            }
+        },
+        onScrollMove: function () {
+            if (this.y <= (_maxScrollY - pullUpOffset) && !pullUpEl.className.match('flip')) {
+                pullUpEl.className = 'flip';
+                pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Release to refresh...';
+                this.maxScrollY = this.maxScrollY - pullUpOffset;
+            } else if (this.y > (_maxScrollY - pullUpOffset) && pullUpEl.className.match('flip')) {
+                pullUpEl.className = '';
+                pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more...';
+                this.maxScrollY = this.maxScrollY + pullUpOffset;
+            }
+        },
+        onScrollEnd: function () {
+            if (pullUpEl.className.match('flip')) {
+                pullUpEl.className = 'loading';
+                pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Loading...';
+                pullUpAction(); // Execute custom function (ajax call?)
+            }
+        }
+    });
+
+    (function () { document.getElementById('wrapper').style.left = '0'; })();
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+document.addEventListener('DOMContentLoaded', function () { loaded()});
+</script>
+</html>

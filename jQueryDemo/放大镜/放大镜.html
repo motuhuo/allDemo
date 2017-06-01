@@ -1,0 +1,49 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta  charset="utf-8" />
+<title>放大镜</title> 
+<style>
+	div,body,img,span{margin:0;padding:0;}
+	#box{margin-left:20px;position:relative;width:320px;height:200px;background:red;}
+	.small{position:absolute;width:320px;height:200px;}
+	span{width:50px;height:50px;position:absolute;left:0;top:0;z-index:2;opacity:.5;background:pink;}
+	.big{position:absolute;width:200px;height:200px;overflow:hidden;left:340px;top:0;}
+	img{position:absolute;top:0;left:0;}
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".small").mousemove(fun1);
+			function fun1(ev){
+				var xx=ev.pageX-parseInt($("#box").offset().left)-$("span").width()/2;
+				var yy=ev.pageY-parseInt($("#box").offset().top)-$("span").height()/2;
+				//console.log(xx-parseInt($("#box").offset().left))
+				if(xx<0){
+					xx=0;
+				}
+				else if(xx>270){
+					xx=270;
+				}
+				if(yy<0){
+					yy=0;
+				}
+				else if(yy>150){
+					yy=150;
+				}
+				$("span").css({"left":xx,"top":yy});				
+				$(".big img").css({"left":-xx*4,"top":-yy*4});			
+			}		
+	})	
+</script>
+</head>
+<body>
+	<div id="box">
+		<div class="small">
+			<img src="img/girl23.jpg" style="width:320px;height:200px;"/>
+			<span></span>			
+		</div>
+		<div class="big"><img src="img/girl23.jpg" /></div>
+	</div>
+</body>
+</html>

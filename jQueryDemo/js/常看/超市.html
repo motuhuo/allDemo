@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ ul li {list-style:none; margin-bottom:10px;}
+</style>
+<script type="text/javascript">
+ window.onload=function ()
+{
+	   var oUl=document.getElementById("list");
+	   var aLi=oUl.getElementsByTagName("li");
+	  
+	  for (var i=0;i<aLi.length;i++){
+	        fn1(aLi[i]);
+	      }
+	    function fn1(oLi){      //先写单个Li然后用循环 传参数；  只有Li不同，将其做为参数 ；
+		   var aBtn=oLi.getElementsByTagName("input");
+		   var oStrong=oLi.getElementsByTagName("strong")[0];
+		   var oEm=oLi.getElementsByTagName("em")[0];
+		   var oSpan=oLi.getElementsByTagName("span")[0];
+		   var n1=oStrong.innerHTML;
+		   var n2=oEm.innerHTML;
+		   aBtn[1].onclick=function(){
+			   n1++;
+			   oStrong.innerHTML=n1;
+			   oSpan.innerHTML=n1*n2;
+		   }
+		   aBtn[0].onclick=function(){
+			   n1--;
+			   if (n1<0){
+			      n1=0;
+			   }
+			   oStrong.innerHTML=n1;
+			   oSpan.innerHTML=n1*n2;
+			   
+		   }
+	   }
+};
+</script>
+</head>
+
+<body>
+<ul id="list">
+<li><input  type="button" value="-">&nbsp;
+	<strong>0</strong>&nbsp;
+	<input  type="button" value="+">&nbsp;
+	单价:&nbsp;<em>5</em>&nbsp;元&nbsp;合计:&nbsp;<span>0</span>&nbsp;元
+</li>
+
+<li><input  type="button" value="-">&nbsp;
+<strong>0</strong>&nbsp;
+<input  type="button" value="+">&nbsp;
+单价:&nbsp;<em>5</em>&nbsp;元&nbsp;合计:&nbsp;<span>0</span>&nbsp;元</li>
+<li><input  type="button" value="-">&nbsp;
+<strong>0</strong>&nbsp;
+<input  type="button" value="+">&nbsp;
+单价:&nbsp;<em>5</em>&nbsp;元&nbsp;合计:&nbsp;<span>0</span>&nbsp;元</li>
+<li><input  type="button" value="-">&nbsp;
+<strong>0</strong>&nbsp;
+<input  type="button" value="+">&nbsp;
+单价:&nbsp;<em>5</em>&nbsp;元&nbsp;合计:&nbsp;<span>0</span>&nbsp;元</li>
+
+</ul>
+</body>
+</html>

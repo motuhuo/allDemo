@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>官方demo布局</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>iScroll</title>
+	<script src="zepto.min.js"></script>
+	<script type="text/javascript" src="iscroll.js"></script>
+	<script src="rem.js"></script>
+	<style>
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		html,body{
+			height: 100%;
+		}
+		.header{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			z-index: 2;
+			height: 50px;
+			line-height: 50px;
+			font-size: 20px;
+			color: white;
+			text-align: center;
+			font-weight: 800;
+			background-color:#d51875;
+			background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #fe96c9), color-stop(0.05, #d51875), color-stop(1, #7b0a2e));
+			background-image:-moz-linear-gradient(top, #fe96c9, #d51875 5%, #7b0a2e);
+			background-image:-o-linear-gradient(top, #fe96c9, #d51875 5%, #7b0a2e);
+		}
+		.itemList li{
+			list-style: none;
+			height: 0.8rem;
+			line-height: 0.8rem;
+			box-sizing: border-box;
+			border-bottom: 1px solid #ccc;
+			font-size: 0.2rem;
+		}
+		.footer{
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+			width: 100%;
+			z-index: 2;
+			height: 50px;
+			line-height: 50px;
+			font-size: 0.3rem;
+			text-align: center;
+			font-weight: 800;
+			color: white;
+			background: gray;
+		}
+		#wrapper{
+			position: absolute;
+			top: 50px;
+			width: 100%;
+			bottom: 50px;
+			left: 0px;
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		iScroll
+	</div>
+	<div id="wrapper">
+		<ul id="scroller" class="itemList">
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+			<li>list1</li>
+		</ul>
+	</div>
+	<div class="footer">
+		footer
+	</div>
+</body>
+<script>
+	var myScroll;
+	// var oScroll = document.getElementById("scroller");
+	function loaded() {
+		var h = $(window).height() - $(".header").height() - $(".nav").height() - $(".footer").height()-10;
+		console.log(h);
+		$("#wrapper").height(h);
+		myScroll = new iScroll("wrapper", {
+			useTransition: true,
+			vScrollbar:false,
+			// topOffset: pullDownOffset,
+		})
+	}
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+	document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+</script>
+</html>

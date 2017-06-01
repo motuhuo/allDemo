@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="8000"></canvas>
+</body>
+<script>
+	var canvas=document.getElementById('canvas');
+	var can=canvas.getContext('2d');
+	can.fillRect(0,0,100,100);
+	var oImg=can.getImageData(0,0,100,100);
+	function getXY(obj,x,y){
+		var w=obj.width;
+		var h=obj.height;
+		var d=obj.data;
+		var color=[];
+		color[0]=d[4*(w*y+x)];
+		color[1]=d[4*(w*y+x)+1];
+		color[2]=d[4*(w*y+x)+2];
+		color[3]=d[4*(w*y+x)+3];
+		return color;
+	}
+	alert(getXY(oImg,5,5));
+
+
+	function setXY(obj,x,y,color){
+		var w=obj.width;
+		var h=obj.height;
+		var d=obj.data;
+		d[4*(w*y+x)]=color[0];
+		d[4*(w*y+x)+1]=color[1];
+		d[4*(w*y+x)+2]=color[2];
+		d[4*(w*y+x)+3]=color[3];
+	}
+	for (var i=0; i<oImg.width; i++){
+		setXY(oImg,i,5,[255,0,0,255])
+	}
+	can.putImageData(oImg,100,100)
+</script>
+</html>

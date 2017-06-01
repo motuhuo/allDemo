@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		ul li {
+			list-style: none;
+		}
+		.head{
+			width:6.4rem;
+			height: 2.94rem;
+			background:url(img/head.png) no-repeat;
+			background-size: 100% 100%;
+		}
+		.nav{
+			width:6.4rem;
+			height: 1.5rem;
+			
+		}
+		.nav ul li{
+			padding-top:0.3rem;
+			width:1.6rem;
+			height: 1.5rem;
+			float: left;
+			font-size: 0.16rem;
+			text-align: center;
+		}
+		.nav ul li img {
+			width:0.9rem;
+			height: 0.9rem;
+		}
+		.game{
+			width:5.6rem;
+			height: 0.42rem;
+			background:#ff5c31;
+			color: #fff;
+			font-size: 0.18rem;
+			margin-top: 0.2rem;
+			padding:0 0.4rem;
+		}
+		.game p:nth-child(1){
+			float: left;
+		}
+		.game p:nth-child(2){
+			float: right;
+		}
+		.Game{
+			width: 6.4rem;
+			font-size: 0.08rem;
+			text-align: center;
+			clear: both;
+			overflow: hidden;
+		}
+		.Game ul li{
+			width:1rem;
+			margin-top:0.15rem ;
+			margin-left: 0.2rem;
+			float: left;
+			
+		}
+		.Game ul li img{
+			width: 0.86rem;
+		}
+		.jingpin{
+			width: 6rem;
+			height: 1.3rem;
+			border-top:2px solid #ccc;
+			margin-top: 0.2rem;
+			padding-top:0.15rem;
+			padding-left:0.4rem;
+			clear: both;
+			overflow: hidden;
+		}
+		.jpPic{
+			float: left;
+			width:2.16rem;
+			height: 1.3rem;
+		}
+		.jpPic img{
+			width:2.16rem;
+			height: 1.14rem;
+		}
+		.gameJp{
+			font-size: 0.18rem;
+			width:3.84rem;
+			height: 1.3rem;
+			float: right;
+		}
+		.gameJp li {
+			
+			width:1rem;
+			height: 1.3rem;
+			margin-right:0.2rem;
+			float: right;
+		}
+		.gameJp img{
+			width:0.9rem;
+			height: 0.9rem;
+		
+		}
+		.frient{
+			width:5.6rem;
+			
+			background:#ff5c31;
+			color: #fff;
+			font-size: 0.3rem;
+			margin-top: 0.2rem;
+
+			padding:0.1rem 0.4rem;
+		}
+		.frientPlay{
+			width:6.4rem;
+			
+			height: 1.12rem;
+
+		}
+		.frientPlay ul li{
+			width:5.6rem;
+			height: 0.9rem;
+			padding:0.1rem 0.4rem;
+			border-bottom: 1px solid #cfcfcf;
+		}
+		.fpPic{
+			width:0.9rem;
+			height: 0.9rem;
+			float: left;
+		}
+		.fpPic img{
+			width:0.9rem;
+			height: 0.9rem;
+			float: left;
+		}
+		.fpContent{
+			width:3.5rem;
+			margin-left: 0.1rem;
+			
+			font-size: 0.18rem;
+			float: left;
+		}
+		.fpContent p:nth-child(2){
+			color: gray;
+			margin:0.06rem 0rem;
+			
+		}
+		.fpContent p:nth-child(3){
+			color: #ff5c31;
+			
+		}
+		.tiaozan{
+			width: 0.98rem;
+			height: 0.55rem;
+			float: right;
+			margin-top:-0.15rem;
+			
+		}
+		.tiaozan img{
+			width: 0.98rem;
+			height: 0.55rem;
+		}
+		.frientPlay ul li.hostUp{
+			width:5.6rem;
+			height: 1rem;
+			border-bottom: 3px solid #cfcfcf;
+		}
+		.hostUp p{
+			text-align: center;
+			margin-top: 0.3rem;
+
+		}
+
+		.hostUp p span{
+			color: gray;
+		}
+		.hostPic{
+			width:0.49rem;
+			height: 0.49rem;
+			float: right;
+			margin-top: -0.2rem;
+		}
+		.hostPic img{
+			width:0.49rem;
+			height: 0.49rem;
+		}
+		#Bgcolor {
+			width:6.4rem;
+			padding-top:0.2rem;
+			background: #cfcfcf;
+
+			
+		}
+		#Bgcolor li {
+			width:5.6rem;
+			height: 1.1rem;
+			background: #eee;
+			padding-top:0.3rem;
+			margin-bottom: 0.1rem;
+		}
+		.foot {
+			width:6.4rem;
+			height:4rem;
+			background:#fff;
+			margin-top: 1rem;
+		}
+
+		.foot img{
+			width:2.74rem;
+			height: 1.87rem;
+			float: left;
+			margin:0.2rem;
+		}
+
+
+
+		
+	</style>
+	<script src="js/rem.js"></script>
+</head>
+<body>
+	<div class="head"></div>
+	<div class="nav">
+		<ul>
+			<li>
+				<img src="img/1.png">
+				<p>游戏排行</p>
+			</li>
+			<li>
+				<img src="img/2.png">
+				<p>炫酷礼包</p>
+			</li>
+			<li>
+				<img src="img/3.png">
+				<p>最新消息</p>
+			</li>
+			<li>
+				<img src="img/1.png">
+				<p>游戏排行</p>
+			</li>
+		</ul>
+	</div>
+	<div class="game">
+		<p>我的游戏</p>
+		<p>全部>></p>
+	</div>
+	<div class="Game">
+		<ul>
+			<li>
+				<img src="img/game.png">
+				<p>火影忍者</p>
+			</li>
+			<li>
+				<img src="img/game.png">
+				<p>火影忍者</p>
+			</li>
+			<li>
+				<img src="img/game.png">
+				<p>火影忍者</p>
+			</li>
+			<li>
+				<img src="img/game.png">
+				<p>火影忍者</p>
+			</li><li>
+				<img src="img/game.png">
+				<p>火影忍者</p>
+			</li>
+			<li>
+				<img src="img/game.png">
+				<p>火影忍者</p>
+			</li><li>
+				<img src="img/game.png">
+				<p>火影忍者</p>
+			</li>
+			
+			<li><img src="img/game2.png"></li>
+			<li><img src="img/game2.png"></li>
+			<li><img src="img/game2.png"></li>
+		</ul>
+	</div>
+	<div class="jingpin">
+		<div class="jpPic">
+			<img src="img/tisi.png">
+		</div>
+		<ul class="gameJp">
+			<li>
+				<img src="img/game.png">
+				<p>火影忍者</p>
+			</li>
+			<li>
+				<img src="img/game.png">
+				<p>火影忍者</p>
+			</li>
+			<li>
+				<img src="img/game.png">
+				<p>火影忍者</p>
+			</li>
+
+		</ul>
+	</div>
+	<div class="frient">
+		<p>好友玩的</p>
+	</div>
+	<div class="frientPlay">
+		<ul>
+			<li>
+				<div class="fpPic"><img src="img/game.png"></div>
+				<div class="fpContent">
+					<p>火影忍者 online</p>
+					<p>正版手游，国内首发</p>
+					<p>小可爱</p>
+				</div>
+				<div class="tiaozan"><img src="img/tiaozhan.png"></div>
+			</li>
+			<li>
+				<div class="fpPic"><img src="img/game.png"></div>
+				<div class="fpContent">
+					<p>火影忍者 online</p>
+					<p>正版手游，国内首发</p>
+					<p>小可爱</p>
+				</div>
+				<div class="tiaozan"><img src="img/tiaozhan.png"></div>
+			</li>
+			<li>
+				<div class="fpPic"><img src="img/game.png"></div>
+				<div class="fpContent">
+					<p>火影忍者 online</p>
+					<p>正版手游，国内首发</p>
+					<p>小可爱</p>
+				</div>
+				<div class="tiaozan"><img src="img/tiaozhan.png"></div>
+			</li>
+
+			<li class="hostUp">
+				<div class="fpPic"><img src="img/host.png"></div>
+				<div class="fpContent">
+					<p>执门游戏 <span>共37款</span></p>
+				</div>
+				<div class="hostPic"><img src="img/up.png"></div>
+			</li>
+
+			
+		</ul>
+		<ul id="Bgcolor">
+				<li>
+					<div class="fpPic"><img src="img/game.png"></div>
+					<div class="fpContent">
+						<p>火影忍者 online</p>
+						<p>正版手游，国内首发</p>
+						<p>小可爱</p>
+					</div>
+					<div class="tiaozan"><img src="img/tiaozhan.png"></div>
+				</li>
+				<li>
+					<div class="fpPic"><img src="img/game.png"></div>
+					<div class="fpContent">
+						<p>火影忍者 online</p>
+						<p>正版手游，国内首发</p>
+						<p>小可爱</p>
+					</div>
+					<div class="tiaozan"><img src="img/tiaozhan.png"></div>
+				</li>
+				<li>
+					<div class="fpPic"><img src="img/game.png"></div>
+					<div class="fpContent">
+						<p>火影忍者 online</p>
+						<p>正版手游，国内首发</p>
+						<p>小可爱</p>
+					</div>
+					<div class="tiaozan"><img src="img/tiaozhan.png"></div>
+				</li>
+				<li>
+					<div class="fpPic"><img src="img/game.png"></div>
+					<div class="fpContent">
+						<p>火影忍者 online</p>
+						<p>正版手游，国内首发</p>
+						<p>小可爱</p>
+					</div>
+					<div class="tiaozan"><img src="img/tiaozhan.png"></div>
+				</li>
+
+				
+		</ul>
+		<ul>
+			<li class="hostUp">
+				<div class="fpPic"><img src="img/man.png"></div>
+				<div class="fpContent">
+					<p>执门游戏 <span>共37款</span></p>
+				</div>
+				<div class="hostPic"><img src="img/down.png"></div>
+			</li>
+			<li class="hostUp">
+				<div class="fpPic"><img src="img/two.png"></div>
+				<div class="fpContent">
+					<p>执门游戏 <span>共37款</span></p>
+				</div>
+				<div class="hostPic"><img src="img/down.png"></div>
+			</li>
+			<li class="hostUp">
+				<div class="fpPic"><img src="img/man.png"></div>
+				<div class="fpContent">
+					<p>执门游戏 <span>共37款</span></p>
+				</div>
+				<div class="hostPic"><img src="img/down.png"></div>
+			</li>
+		</ul>
+	</div>
+	<div style="clear: both;overflow: hidden;"></div>
+	<div class="foot">
+		<ul>
+			<li><img src="img/pic1.png"></li>
+			<li><img src="img/pic2.png"></li>
+			<li><img src="img/pic3.png"></li>
+			<li><img src="img/pic4.png"></li>
+		</ul>
+	</div>
+</body>
+</html>

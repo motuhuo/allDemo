@@ -1,0 +1,262 @@
+﻿.image-slider {
+	width: 1100px;
+	height: 150px;
+	margin: 0 auto;
+	position: relative;
+
+}
+
+.image-slider-back,.image-slider-forward{
+	width: 23px;
+	height: 98px;
+	color: White;
+	position: absolute;
+	top: 26px;
+	cursor: pointer;
+	z-index: 50;
+	display: none;
+    background-size:100% 100%;
+}
+
+.image-slider-back {
+	
+	background-repeat: no-repeat;
+	background-position: left;
+	left: 0;
+    background-image: url('../img/invest/bigLeft.svg');
+
+}
+.image-slider-back:hover{
+    background-image: url(../img/invest/arrow-left.svg);
+}
+.image-slider-forward {
+    background-repeat: no-repeat;
+    background-position: right;
+    right: 0;
+    background-image: url('../img/invest/bigRight.svg');
+}
+.image-slider-forward:hover{
+    background-image: url(../img/invest/arrow-right.svg);
+}
+.image-slider-contents {
+	width: 1110px;
+	height: 150px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+
+.image-slider-contents .contents-wrapper {
+	position: absolute;
+	left: 0;
+}
+
+.image-slider-contents .outer {
+	float: left;
+	width: 270px;
+	height: 150px;
+	margin-right:10px;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.spic {
+	width: 270px;
+	height: 150px;
+	text-align: center;
+	position: relative;
+}
+
+.image-slider-contents img {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.hidden {
+	display: none;
+}
+
+.visible {
+	display: block;
+}
+
+.thumbnail-active {
+	filter: alpha(opacity=100);
+	opacity: 1.0;
+	cursor: pointer;
+}
+
+.thumbnail-inactive {
+	filter: alpha(opacity=20);
+	opacity: 0.2;
+	cursor: pointer;
+}
+
+.zhezhao{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	display: none;
+	opacity:0.5;
+	filter: alpha(opacity=50);
+	background:#000000;
+}
+.zhezhao_2{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 70px;
+	z-index: 1600;
+	display: none;
+	line-height: 70px;
+	text-align: center;
+	opacity:0.8;
+	filter: alpha(opacity=80);
+	background:rgba(0,0,0,0.50);
+    color:#ffffff;
+}
+.zhezhao_2 span{
+	color: #FFFFFF;
+	font-size: 16px;
+}
+.bigImg{
+	width: 30px;
+	height: 30px;
+	background: url(../img/invest/bigImg.svg) no-repeat;
+	position: fixed;
+	top: 20px;
+	right: 140px;
+    cursor:pointer;
+	display: none;
+	z-index: 5000;
+}
+.smallImg{
+	width: 30px;
+	height: 30px;
+	background: url(../img/invest/smallImg.svg) no-repeat;
+	position: fixed;
+	top: 20px;
+	right:88px;
+    cursor:pointer;
+	display: none;
+	z-index: 3000;
+}
+.preview{
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.preview .img-large {
+	z-index: 1000;
+	margin: 0 auto;
+}
+
+.preview .img-large .left {
+	position: absolute;
+	left: 30px;
+	top: 50%;
+	width: 60px;
+	height: 60px;
+	z-index: 1500;
+	background: url(../img/invest/bigLeft.svg) left top no-repeat;
+	cursor: pointer;
+    background-size:100% 100%;
+}
+.preview .img-large .left:hover{
+    background: url(../img/invest/arrow-left.svg) left top no-repeat;
+    width: 60px;
+	height: 60px;
+     background-size:100% 100%;
+}
+
+.preview .img-large .right {
+	position: absolute;
+	right: 30px;
+	top: 50%;
+	z-index: 1500;
+	width: 60px;
+	height: 60px;
+	z-index: 1500;
+	background: url(../img/invest/bigRight.svg) left top no-repeat;
+	cursor: pointer;
+     background-size:100% 100%;
+}
+.preview .img-large .right:hover{
+    background: url(../img/invest/arrow-right.svg) left top no-repeat;
+    width: 60px;
+	height: 60px;
+     background-size:100% 100%;
+}
+.preview .close {
+	position: absolute;
+	left: 434px;
+	top: -16px;
+	width: 32px;
+	height: 34px;
+	background: url(../img/invest/close.png);
+	float: right;
+	cursor: pointer;
+	z-index: 2000;
+	display: none;
+}
+
+.scrolTest{
+	-moz-transform:scale(1.2); 
+ -webkit-transform:scale(1.2); 
+ -o-transform:scale(1.2); 
+}
+
+.imgTitle{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background: rgba(0,0,0,0.50);
+	display: none;
+}
+.imgTitle span{
+	display: inline-block;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+.tisi,.tisiLast{
+	opacity:0.8;
+	background:rgba(0,0,0,0.50);
+	border-radius:6px;
+	width:144px;
+	height:57px;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	z-index: 1500;
+	color: #ffffff;
+	font-size: 16px;
+	text-align: center;
+	line-height: 57px;
+	margin-left: -72px;
+	margin-top: -28px;
+	display: none;
+	
+}
+.cancelImg {
+    width: 34px;
+    height: 34px;
+    background: url('../img/invest/cancel.svg') no-repeat;
+    background-size: 100% 100%;
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    display: none;
+    z-index: 5000;
+    cursor:pointer;
+}

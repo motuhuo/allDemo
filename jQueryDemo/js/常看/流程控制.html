@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ 
+</style>
+<script type="text/javascript">
+window.onload=function (){
+    var oUl1=document.getElementById('ul1');
+	var aLi=document.getElementsByTagName('li');
+	var arr=['red','yellow','blue','green','pink'];
+	for (var i=0; i<aLi.length;i++){
+	    aLi[i].index=i;
+	   aLi[i].style.background=arr[i%arr.length];
+	   
+	   aLi[i].onmouseover=function(){
+	     this.style.background='gray';
+		 
+	   }
+	   aLi[i].onmouseout=function(){
+	      this.style.background=arr[this.index%arr.length];
+		  
+	   }
+	}
+   
+}
+</script>
+</head>
+<body>
+<ul id="ul1">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
+</body>
+</html>

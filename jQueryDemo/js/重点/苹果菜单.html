@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body{margin:0; padding:0;}
+#div1{width:100%;  position:absolute; bottom:0px; text-align:center;}
+</style>
+<script>
+document.onmousemove=function(ev)
+{	
+	var oEvent=ev||event;
+	var aTxt=document.getElementsByTagName('input');
+	var oDiv1=document.getElementById('div1');
+	var aImg=document.getElementsByTagName('img');
+	for(var i=0; i<aImg.length; i++)
+	{	
+		var x=aImg[i].offsetLeft+aImg[i].offsetWidth/2;
+		var y=aImg[i].offsetTop+oDiv1.offsetTop+aImg[i].offsetHeight/2;
+		//aTxt[i].value='x: '+x+', y: '+y;
+		var a=x-oEvent.clientX;   //中心点距离；
+		var b=y-oEvent.clientY;
+		var dis=Math.sqrt(a*a+b*b);
+		//aTxt[i].value=parseInt(dis);
+		var scale=1-dis/300;
+		if(scale<0.5)
+		{	
+			scale=0.5;
+		}
+		aImg[i].width=scale*140;
+		aTxt[i].value=scale.toFixed(2);
+		
+		
+	}
+	
+	
+}
+</script>
+</head>
+
+<body>
+<input type="text" />
+<input type="text" />
+<input type="text" />
+<input type="text" />
+<input type="text" />
+<div id="div1">
+	<img src="images/mn1.jpg" width="140">
+    <img src="images/mn2.jpg" width="140">
+    <img src="images/mn3.jpg" width="140">
+    <img src="images/mn4.jpg" width="140">
+    <img src="images/mn5.jpg" width="140">
+</div>
+</body>
+</html>

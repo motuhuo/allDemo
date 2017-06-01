@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	*{margin:0;padding:0;}
+	ul {width:400px; height:40px; position:relative; margin:100px auto;}
+	ul li { height:38px; float:left; list-style:none; text-align:center; line-height:38px; position:relative; border:1px solid #36F; z-index:2;}
+	#last { height:5px; position:absolute; background:red; z-index:1; margin-top:35px; border:none; clear:left; overflow:hidden;}
+</style>
+<script>
+	window.onload=function()
+	{	
+		var oUl=document.getElementById('ul1');
+		var aLi=oUl.getElementsByTagName('li');
+		var oLi=aLi[aLi.length-1];
+		
+		for (var i=0; i<aLi.length-1; i++)
+		{
+			aLi[i].onmouseover=function()
+			{	
+				startMove(oLi,this.offsetLeft,this.offsetWidth);
+				
+			}
+		}
+	}
+		var left=0;
+		var iSpeed=0;
+		function startMove(obj,iTarget,offsetWidth)
+		{	
+			clearInterval(obj.timer);
+			
+			obj.style.width=offsetWidth+'px';
+			obj.timer=setInterval(function(){
+				iSpeed+=(iTarget-obj.offsetLeft)/5;
+				iSpeed*=0.7;
+				left+=iSpeed;
+			if (Math.abs(iSpeed)<1&&Math.abs(left-iTarget)<1)
+				{
+					clearInterval(obj.timer);
+					obj.style.left=iTarget+'px';
+					obj.style.width=offsetWidth+'px';
+				}
+			else
+				{
+					obj.style.left=left+'px';
+				}
+					
+			},30)
+			
+		}
+	
+</script>
+</head>
+
+<body>
+<ul id="ul1">
+	<li>联系我们</li>
+    <li>联系我们</li>
+    <li>联系我们ewetruo</li>
+    <li>联系我们</li>
+    <li id="last"></li>
+</ul>
+</body>
+</html>

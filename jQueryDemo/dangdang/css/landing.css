@@ -1,0 +1,60 @@
+*{margin:0; padding: 0;}
+.layout1{margin: 0 auto; width:968px;}
+img {border:none;}
+a {text-decoration: none; color:#646464;}
+body {font-family: "微软雅黑"; background:#F6F9FB;}
+ul li {list-style: none;}
+.layout3 {width:869px; margin: 0 auto;}
+.landHead {padding:40px 0 24px 0; margin: 0 auto 20px; width:865px; height:60px; background:url(../img/landing.png) left center no-repeat;}
+.landHead ul {width:192px; height:66px; line-height: 24px; float: right;}
+.landHead ul li {width:48px; height:66px; float: left; margin-right: 16px; background:url(../img/landing1.png) no-repeat; padding-top:42px; overflow: hidden; font-size: 12px; overflow: hidden; }
+.landHead ul li.l1{background-position:5px 0 ;}
+.landHead ul li.l2{background-position:-65px 0 ;}
+.landHead ul li.l3{background-position:-136px 0 ;}
+.landHead ul li a:hover {color:red; text-decoration: underline;}
+.newCHead {line-height: 24px; color:#828282; padding-left:22px; width:515px; border:1px solid #fedbd1; background:url(../img/newp.png) 3px 5px no-repeat #fef7f5; margin:-30px auto 30px; height:22px; font-size: 10px; float: right;}
+.landConten {width:100%; height:420px; background:#fff;}
+.landPic {width:480px; height:384px; margin-left:15px; margin-top:-10px; float:left;}
+
+.landRight {width:311px; float: right; margin-right: 35px;}
+.landRight input {width:270px; float: left; line-height: 34px; border:0px; outline: none; }
+.landRight .landU {height:36px; border: 1px solid #e6e6e6; width:311px; margin-top:30px;}
+.landU span {width:30px; margin-right:10px; height:36px; float:left; background:url(../img/land2.png) 10px -110px no-repeat; }
+
+.landRight .landPsd {height:36px; border: 1px solid #e6e6e6; width:311px; margin-top:30px;}
+.landPsd span {width:30px; margin-right:10px; height:36px; float:left; background:url(../img/land2.png) 10px -150px no-repeat; }
+
+.landRight #landLand {width:100%; height:20px; margin-top:30px; font-size: 14px;}
+
+.landRight #landLand input {float: left; padding-left: 0; width:25px; margin-top:5px;}
+.landRight #landLand a {display: block; float: right; color: dodgerblue;}
+
+.land {width:311px; height:44px; background:red; border-radius: 6px; line-height: 44px; text-align: center; font-size: 24px; font-weight: bold; margin-top:15px;}
+.land a {color: #fff;}
+.qita {margin-top:20px;}
+.qita span {float: left;}
+.qita a {float: right; font-size: 12px; display: block;}
+.qita a:hover {color: red; display: block;}
+.landpic {width:153px; height:23px; margin-top:50px; background: url(../img/land3.png) left top no-repeat; padding-left:103px; font-size: 14px; }
+.landpic a:hover {color: red; text-decoration: underline;}
+
+#tanchuang {position: absolute; margin:200px auto; width:600px; height:200px; z-index: 5; background:#fff; display: none;}
+#tanchuang .tanHead {width:100%; height:42px; background:#969696; text-align: center; line-height: 42px; float: left; }
+#tanchuang span {color:red; display: inline-block; margin:20px 10px 40px 10px;  }
+#tanchuang .tanKnow {background:#FF2832; width:60px; height:30px; margin: 0 auto; line-height: 30px; text-align: center; border-radius: 5px; cursor: pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

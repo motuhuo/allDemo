@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				opacity: .3;
+				filter: alpha( opacity = 30 );
+				width: 200px;
+				height: 150px;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<img id="pic" src="img/17.jpg"/>
+		
+		
+		<script type="text/javascript">
+			var oPic = document.getElementById("pic");
+		
+			oPic.onmouseover = function(){
+				move( oPic , 'width' , 100 );
+				
+			}
+			oPic.onmouseout = function(){
+				move( oPic , 'width' , 30 );
+			}
+
+			
+			function move( obj , attr , target ){
+				clearInterval( obj.timer );
+				obj.timer = setInterval(function(){
+					if( attr == 'opacity' ){
+						 var iCur = getStyle( obj , attr ) * 100;
+					}else{
+						var iCur = parseInt( getStyle( obj , attr ) );
+					}
+					var speed = ( target - iCur ) / 2;
+					if( iCur > target ){
+						speed = Math.floor( speed );
+					}else{
+						speed = Math.ceil( speed );
+					}
+					if( iCur == target ){
+						clearInterval( obj.timer );
+					}else{
+						if( attr == 'opacity' ){
+							obj.style[attr] = (iCur + speed)/100;
+							obj.style.filter = 'alpha( opacity = '+(iCur + speed)+' )';
+						}else{
+							obj.style[attr] = iCur + speed + 'px';
+						}
+					}
+				},30);
+				
+			};
+			
+			
+			
+			
+			
+			function getStyle( obj , attr ){
+				return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle( obj , false )[attr];
+			}
+		</script>
+		
+	</body>
+</html>

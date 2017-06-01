@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box {
+				width: 750px;
+				height: 500px;
+				border: 1px solid #ddd;
+				margin: 100px auto;
+				position: relative;
+			}
+			#list li {
+				width: 125px;
+				height: 125px;
+				background: url(img/1.jpg);
+				box-shadow: 0 0 1px #ccc;
+				list-style: none;
+				float: left;
+				
+			}
+			
+			a {
+				display: block;
+				width: 50px;
+				height: 50px;
+				background: rgba( 0,0,0,.3 );
+				position: absolute;
+				top: 50%;
+				margin-top: -25px;
+				text-decoration: none;
+				text-align: center;
+				color: #fff;
+				font-size: 25px;
+				line-height: 50px;
+			}
+			a:hover {
+				background: rgba( 0,0,0,.8 );
+			}
+			#left{
+				left: 0;
+			}
+			#right{
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box">
+			<ul id="list"></ul>
+			<a href="###" id="left"><</a>
+			<a href="###" id="right">></a>
+		</div>
+		
+		<script type="text/javascript">
+			var oBox = document.getElementById("box");
+			var oUl = document.getElementById("list");
+			var oLeft = document.getElementById("left");
+			var oRight = document.getElementById("right");
+			var oLi = oUl.getElementsByTagName("li");
+			var num = 1;
+			var timer = null;
+			
+			for( var i=0;i<24;i++ ){
+				var x = i % 6;
+				var y = Math.floor(i / 6);
+				var li = document.createElement('li');
+				li.style.backgroundPosition = x*-125+'px '+y*-125+'px';
+				oUl.appendChild(li);
+			};
+			oRight.onclick = function(){
+				num++;
+//				for( var i=0;i<oLi.length;i++ ){
+//					oLi[i].style.backgroundImage = 'url(img/'+num+'.jpg)';
+//				}
+				if( num > 24 ){
+					num = 1
+				};
+				ranTab();
+		};
+			
+			oLeft.onclick = function(){
+				num--;
+//				for( var i=0;i<oLi.length;i++ ){
+//					oLi[i].style.backgroundImage = 'url(img/'+num+'.jpg)';
+//				}
+				if( num < 1 ){
+					num = 24;
+				}
+				ranTab();
+				
+			}
+			
+			function ranTab(){
+				var arr = [];
+				for( i=0;i<24;i++ ){
+					arr[i] = i;
+				};
+				clearInterval(timer);
+				timer = setInterval(function(){
+					var index = Math.floor(Math.random()*arr.length);
+					oLi[arr[index]].style.backgroundImage = 'url(img/'+num+'.jpg)';
+					arr.splice( index , 1 );
+					if( arr.length == 0 ){
+						clearInterval(timer)
+					};
+				},50);
+			};
+		</script>
+		
+	</body>
+</html>

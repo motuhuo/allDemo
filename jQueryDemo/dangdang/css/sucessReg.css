@@ -1,0 +1,68 @@
+*{margin:0; padding: 0;}
+.layout1{margin: 0 auto; width:968px;}
+img {border:none;}
+a {text-decoration: none; color:#646464;}
+body {font-family: "微软雅黑"; background:#F6F9FB}
+ul li {list-style: none;}
+.header {width:968px; height:72px; background:#f9f9f9; border-top:1px solid #cecece; border-bottom: 1px solid #f2f2f2; margin:0 auto; border-bottom:2px solid red;}
+#headerLeft {width:172px; height:72px; float:left;}
+
+#headerRight {width:550px; position: relative; float: right; height:34px; font-size: 12px;}
+#Landing {float:left; width:180px; line-height: 34px; }
+#Landing #Land {color: red;}
+#regName {float: right; margin-right: 70px;}
+#regName a {color:blue;}
+#headerList {float: left; margin-left:3px; width:680px; height:34px;}
+#headerList li {float: left; background:url(../img/headerbg2.png) no-repeat right top; height: 34px; position: relative; }
+#headerList li a{ display: block; height: 28px; line-height: 28px; margin-top:3px; position: relative;  padding-right:8px; padding-left: 8px;}
+#headerRight a:hover{ color: red;}
+
+#headerList li a.hover1 {border:1px solid #e6e6e6; height: 30px; line-height: 28px; margin-top:2px; position: relative;  padding-right:7px; padding-left: 7px; border-bottom: none; background:#FFF; z-index:3; color:red;}
+#headerList .headerPosition{position:absolute; border:1px solid #e6e6e6; top:31px; background:#fff;width:76px; display: none; z-index: 2;}
+#headerList .headerPosition p {padding: 8px;}
+#headerList .headerPosition p.hover2{background:#f2f2f2;}
+
+#headerList li a img {float:left; vertical-align: middle; margin-top:5px; margin-right:5px;}
+#headerList li.headerLast{background:none;}
+
+#headerList span img {float:left; margin-top:3px; margin-right: 5px; margin-left:5px;}
+#headerList span a{ display: block; height: 28px; line-height: 28px; margin-top:3px; }
+
+#headerNum {color: red; font-weight: bold; font-size: 16px;}
+#headerList li a img.HfloatRight{ display:block; float:right; margin:8px 0px 0px 5px;}
+
+
+.newPeople {width:950px; height:580px; background:#ebeeef; ; margin-top: 30px; margin-bottom: 40px; position: relative;} .shadowBox {background:#fff; position: relative; top:-10px; right:-10px; width:950px; box-shadow: -1px 1px 1px rgb(232,235,236); height:580px;}
+.newPeople .newHead {width:950px; height:36px; background: url(../img/reg1.png) repeat-x; line-height: 36px; margin:0 auto;}
+.newPeople .newHead .newHL{font-size: 18px; padding:0 20px 0 10px; float: left; font-weight: bold;}
+.newPeople .newHead .newHM {float: left;}
+.newPeople .newHead .newHR {float:right; margin-right: 5px; }
+.newPeople .newHead .newHR:hover {color: red;}
+.newContent {padding:45px 0 25px; position: relative;}
+.newCHead {line-height: 24px; color:#828282; padding-left:22px; width:685px; border:1px solid #fedbd1; background:url(../img/newp.png) 3px 5px no-repeat #fef7f5; margin:-30px auto 30px; height:22px; font-size: 10px;}
+.successR {background:url(../img/zc.png) no-repeat left top; padding-left:66px; width:300px; height:61px; line-height: 61px; margin: 0 auto;}
+
+.f6 {line-height: 20px; text-align: center; width: 960px; margin: 100px auto;}
+ .f6 a:hover {color: red; text-decoration: underline;}
+ .f7 {margin:0 auto; width:265px; height:47px; margin-top:10px;}
+ .f7 img {float:left; margin-right:3px; }  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,87 @@
+*{margin:0; padding:0;}
+*{margin:0; padding: 0;}
+.layout{margin: 0 auto; width:1204px;}
+img {border:none;}
+a {text-decoration: none; color:#646464;}
+body {font-family: "微软雅黑";}
+ul li {list-style: none;}
+.header {width:100%; height:34px; background:#f9f9f9; border-top:1px solid #cecece; border-bottom: 1px solid #f2f2f2;}
+.floor {margin-top:10px;}
+#oneLeft {width:912px; height:500px; float: left;}
+
+.floorHead {width:912px; height:44px; border-bottom: 2px solid #000; margin-bottom:10px;}
+.floorHeadLeft {font-size: 18px; font-weight: bold; float: left; line-height: 44px;}
+
+.floorHeadRight ul {float:right; position: relative; border-top:1px solid #e6e6e6;}
+.floorHeadRight ul li {float:left; border-right: 1px solid #e6e6e6; background:#f5f5f5; height:43px; position: relative; width:115px; line-height: 43px; text-align: center;}
+.floorHeadRight ul li.floorHeadFirst {border-left:1px solid #e6e6e6;}
+.floorHeadRight ul li.floorOn {border:2px solid #000; padding:-2px; border-bottom:none; padding-bottom:none; height:43px; background:#fff; font-weight: bold; color: #000;}
+#oneLeftMain {width:912px; height:442px; border:1px solid #e6e6e6; margin-top:10px;}
+#oneLeftMain #oneLeftMainLeft {width:238px; height:113px; float:left; background:url(../img/dusu.jpg) no-repeat center center; border:1px solid #e6e6e6; padding-top:329px; }
+#oneLeftMain #oneLeftMainLeft ul li {float:left; width:63px; padding-left:10px; height:28px; line-height: 28px; overflow: hidden; font-size: 14px; color: #000000;}
+#oneLeftMain #oneLeftMainLeft ul li a:hover {display:block; color:red; text-decoration:underline;}
+
+#oneLeftMain #oneLeftMainMid {width:334px; height:442px; float:left; position: relative;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp {width:335px; height:221px; border-bottom:1px solid #e6e6e6; border-right:1px solid #e6e6e6; position: relative;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp ul {position: relative; width:335px; height:221px; overflow: hidden;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp ul li {position: absolute; left:334px;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp  a.oneMUpBt {position: absolute; display: block; width:30px; height:48px; font-size: 40px; color: #fff; background:#ccc; top:50%; margin-top:-23px; text-align: center; line-height: 48px; display: none;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp  a.oneLeft {left:0px;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp  a.oneRight {right:0px;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp #oneMidUpBtn ul{position: absolute; width:100px; height:10px; left:50%; margin-left:-35px; bottom:10px;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp #oneMidUpBtn ul li {position: relative; left:0px; float: left; width:10px; border:2px solid #fff; margin-right:5px; cursor: pointer;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidUp #oneMidUpBtn ul li.oneFloorOn {border:2px solid #000;}
+
+#oneRight {float:right; width:280px; height:500px; border:1px solid #e6e6e6;}
+#oneRight #oneRightHeadLi li {width:139px; height:48px; background:#f5f5f5; border-right:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; float:left; line-height: 48px; text-align: center; margin-bottom: 5px;}
+#oneRight #oneRightHeadLi li.oneRightHeadLiOn {background:#fff; border-bottom: none;}
+#oneRightHeadMain #oneRightHeadMainLi b {float:left; margin-right:10px; margin-left:10px; display: block; width:20px; height:33px; line-height: 33px;}
+#oneRightHeadMainLi {width:280px; height:33px; position:absolute; font-size: 12px;}
+#oneRightHeadMain #oneRightHeadMainLi span { position:absolute; border-bottom:1px solid #e6e6e6; display: block; width:240px; margin-left:40px;}
+#oneRightHeadMain #oneRightHeadMainLi em.onrRightOne { line-height: 33px; }
+#oneRightHeadMain #oneRightHeadMainLi span img {float:left; margin-left:-15px;}
+#oneRightHeadMain #oneRightHeadMainLi span.onrRightTwo {display: none;}
+#oneRightHeadMain #oneRightHeadMainLi span.onrRightTwo p {font-size:14px;}
+#oneRightHeadMain #oneRightHeadMainLi span a:hover {color: red; text-decoration: underline;}
+#oneRightHeadMain #oneRightHeadMainLi li {width:280px; clear: both; overflow: hidden; position:relative;}
+#oneRightHeadMain #oneRightHeadMainLi li.oneRightHeadMainLiOn {height:152px;}
+
+
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidDown ul li {float:left; width:166px; height:221px; border-right:1px solid #e6e6e6;}
+#oneLeftMain #oneLeftMainMid #oneLeftMainMidDown ul li img {display: block; margin:7px auto 0px;}
+#oneLeftMain   ul li a p {color:#000; font-size:12px;}
+#oneLeftMain   ul li a:hover p {color:red; text-decoration: underline;}
+#oneLeftMain   ul li span.price {color:red;}
+
+#oneLeftMain #oneLeftMainRight {width:335px; height:442px;float:left;}
+#oneLeftMain #oneLeftMainRight li {float:left; width:166px; height:221px; border-right:1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6;}
+#oneLeftMain #oneLeftMainRight li img {display: block; margin:7px auto 0px;}
+
+
+
+
+
+
+
+/*#oneFloorTwo {display: none;}*/
+
+#oneLeftMain #oneLeftMainMid1 {width:334px; height:442px; float:left; position: relative;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1 {width:335px; height:221px; border-bottom:1px solid #e6e6e6; border-right:1px solid #e6e6e6; position: relative;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1 ul {position: relative; width:335px; height:221px; overflow: hidden;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1 ul li {position: absolute; left:334px;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1  a.oneMUpBt1 {position: absolute; display: block; width:30px; height:48px; font-size: 40px; color: #fff; background:#ccc; top:50%; margin-top:-23px; text-align: center; line-height: 48px; display: none;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1  a.oneLeft1 {left:0px;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1  a.oneRight1 {right:0px;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1 #oneMidUpBtn1 ul{position: absolute; width:100px; height:10px; left:50%; margin-left:-35px; bottom:10px;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1 #oneMidUpBtn1 ul li {position: relative; left:0px; float: left; width:10px; border:2px solid #fff; margin-right:5px; cursor: pointer;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidUp1 #oneMidUpBtn1 ul li.oneFloorOn1 {border:2px solid #000;}
+
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidDown1 ul li {float:left; width:166px; height:221px; border-right:1px solid #e6e6e6;}
+#oneLeftMain #oneLeftMainMid1 #oneLeftMainMidDown1 ul li img {display: block; margin:7px auto 0px;}
+#oneLeftMain   ul li a p {color:#000; font-size:12px;}
+#oneLeftMain   ul li a:hover p {color:red; text-decoration: underline;}
+#oneLeftMain   ul li span.price {color:red;}
+
+#oneLeftMain #oneLeftMainRight1 {width:335px; height:442px;float:left;}
+#oneLeftMain #oneLeftMainRight1 li {float:left; width:166px; height:221px; border-right:1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6;}
+#oneLeftMain #oneLeftMainRight1 li img {display: block; margin:7px auto 0px;}

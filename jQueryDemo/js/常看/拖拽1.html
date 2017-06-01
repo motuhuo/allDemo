@@ -1,0 +1,78 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+  #div1 {width:100px; height:100px; background:red; position:absolute;}
+  #div2 {width:100px; height:100px; background:yellow; position:absolute;}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+   new Drag('div1');
+  new Drag('div2');
+}
+  function Drag(id)
+  {	
+     var _this=this;
+     this.oDiv=document.getElementById(id);
+	 this.disx=0;
+	 this.disy=0;
+	 document.onmousedown=function(){
+	 _this.fnDown();
+	 };
+	
+  }
+  Drag.prototype.fnDown=function (ev)
+	 {	
+		var _this=this;
+	   var oEvent=ev||event;
+	   this.disx=oEvent.clientX-this.oDiv.offsetLeft;
+	   this.disy=oEvent.clientY-this.oDiv.offsetTop;
+	   document.onmousemove=function(){
+			_this.fnMove();
+		};
+	    document.onmouseup=function(){
+			_this.fnUp();
+			return false;
+		}
+		
+	};
+  Drag.prototype.fnMove=function (ev)
+	   {	
+		
+	     var oEvent=ev||event;
+		  l=oEvent.clientX-this.disx;
+		  t=oEvent.clientY-this.disy;
+		 if (l<0)
+			 {
+				 l=0;
+			 }
+		 else if (l>document.documentElement.clientWidth-this.oDiv.offsetWidth)
+			 {
+				 l=document.documentElement.clientWidth-this.oDiv.offsetWidth;
+			 }
+		 if (t<0)
+			 {
+				 t=0;
+			 }
+		 else if (t>document.documentElement.clientHeight-this.oDiv.offsetHeight)
+			 {
+				 t=document.documentElement.clientHeight-this.oDiv.offsetHeight;
+			 }
+		 this.oDiv.style.left=l+'px';
+		 this.oDiv.style.top=t+'px';
+	   };
+Drag.prototype.fnUp=function ()
+		 {	
+			 document.onmousemove=null;
+			 document.onmouseup=null;
+		 };
+</script>
+</head>
+
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>动态操作表格</title>
+<script>
+/*
+  步骤：
+   1 创建基本的HTML表格结构
+   2 添加基本的样式表
+   3 添加新行
+*/
+function addRow(){//添加一行
+	var tab = document.getElementById('tab');
+	var tr = tab.insertRow(tab.rows.length);//添加新行到末尾
+	
+	var tempColor;//记录tr原本的样式
+	tr.onmouseover = function(){//鼠标放上的样式
+	    tempColor = this.style.backgroundColor;
+		  this.style.backgroundColor ='blue';
+		}
+	tr.onmouseout = function(){//还原本来的样式
+		this.style.backgroundColor = tempColor; 
+		}
+	
+	var c0 = tr.insertCell(0);//添加0位置
+	c0.innerHTML = '<input type="checkbox" name="chk">';//给checkbox添加name是为了便于多选
+	c0.style.width = '5%';
+	var c1 = tr.insertCell(1);//第一列
+	c1.onclick = function(){
+		var inp = document.createElement('input');
+		inp.type = 'text';
+		inp.value = c1.innerHTML;//给文本框赋值
+		c1.innerHTML = '';//清空cell的值
+		c1.appendChild(inp);
+		inp.focus();//inp获得焦点
+		inp.onclick = function(event){
+			//var event = event||window.event;//兼容非IE和IE事件		
+			window.event?window.event.cancelBubble = true:event.stopPropagation();
+			//实际就是点击事件处理到inp为止，不向外冒泡传播
+		}
+		
+		inp.onblur = function(){//inp失去焦点
+			this.parentNode.innerHTML = this.value;//文本框的值赋值给父cell元素
+			}
+		}
+	
+	var c2 = tr.insertCell(2);//性别列
+	c2.innerHTML = '女';
+	c2.onclick = function(){
+		var sel = document.createElement('select');
+		var op1 = document.createElement('option');
+		var op1Txt = document.createTextNode('男');
+		op1.appendChild(op1Txt);
+		
+		var op2 = document.createElement('option');
+		var op2Txt = document.createTextNode('女');
+		op2.appendChild(op2Txt);
+		
+		sel.appendChild(op1);
+		sel.appendChild(op2);	
+		
+		var str = this.innerHTML;//记录当前单元格内容
+		this.innerHTML = '';
+		
+		this.appendChild(sel);
+		//sel的options属性返回下拉框的所有选项对象数组
+		sel.options[0].innerHTML ==str?sel.options[0].selected = true:sel.options[1].selected = true;//判断默认的第一个选项的文字是否和单元格的内容相同，相同则选中，否则选中第二个
+		sel.focus();//获得焦点以便只能触发onclick和onblur事件
+		
+		sel.onclick = function(event){
+			window.event?window.event.cancelBubble=true:event.stopPropagation();
+			}
+		sel.onblur = function(){
+			this.parentNode.innerHTML = this.value;
+			}
+		}
+	
+	var c3 = tr.insertCell(3);
+	
+	c3.onclick = function(){
+		var inp = document.createElement('input');
+		inp.type = 'text';
+		inp.value = c1.innerHTML;//给文本框赋值
+		c3.innerHTML = '';//清空cell的值
+		c3.appendChild(inp);
+		inp.focus();//inp获得焦点
+		inp.onclick = function(event){
+			//var event = event||window.event;//兼容非IE和IE事件		
+			window.event?window.event.cancelBubble = true:event.stopPropagation();
+			//实际就是点击事件处理到inp为止，不向外冒泡传播
+			}
+		inp.onblur = function(){//inp失去焦点
+			this.parentNode.innerHTML = this.value;//文本框的值赋值给父cell元素
+			}
+		}
+	
+	
+	changeColor();//隔行变色
+	}
+function delRow(){//删除行
+    var tab = document.getElementById('tab');
+	var chks = document.getElementsByName('chk');
+	/*
+	for(var i = 0;i<chks.length;i++){
+		if(chks[i].checked){
+			var index = chks[i].parentNode.parentNode.rowIndex;//获取tr的rowIndex索引
+			tab.deleteRow(index);
+			i--;//删除一行后，索引变换了，需要重新循环
+			}
+		}*/
+	 for(var i = chks.length-1;i>=0;i--){//从结尾往开始删除，因为索引没有变化。所以不用重新开始
+		  if(chks[i].checked){
+			var index = chks[i].parentNode.parentNode.rowIndex;//获取tr的rowIndex索引
+			tab.deleteRow(index);
+			  }
+		 }
+	}
+function selectAll(chk){//多选效果，传入当前的复选框是为了获取他的选中状态
+	var chks = document.getElementsByName('chk');
+	for(var i=0;i<chks.length;i++){
+		chks[i].checked = chk.checked;
+		}
+	}
+	
+function changeColor(){
+	var tab = document.getElementById('tab');
+	var rows = tab.rows;
+	for(var i=1;i<rows.length;i++){
+		rows[i].style.backgroundColor = '';
+		}
+	for(var i=1;i<rows.length;i+=2){
+		rows[i].style.backgroundColor = '#999';
+		}
+}
+function resort(){//排序
+	var tab = document.getElementById('tab');
+	var rows = tab.rows;
+	var arrs = [];
+	for(var i=1;i<rows.length;i++){
+		//var cell = rows[i].cells[1];
+		arrs.push(rows[i]);//把行对象放入数组中，以便排序
+		}
+	arrs.sort(function(str1,str2){
+		//使用行中的第二列的内容进行比较
+		 return (str1.cells[1].innerHTML).localeCompare(str2.cells[1].innerHTML);
+		});
+	tab.rows.length = 1;//仅th表头保留 也可以循环删除表格内容行
+	var temp = document.createDocumentFragment();//使用文档碎片提高效率
+	for(var i=0;i<arrs.length;i++){
+		temp.appendChild(arrs[i]);
+		}	
+	tab.appendChild(temp);
+	changeColor();
+	}
+	
+function resortByNum(){
+	var tab = document.getElementById('tab');
+	var rows = tab.rows;
+	var arrs = [];
+	for(var i=1;i<rows.length;i++){
+		//var cell = rows[i].cells[1];
+		arrs.push(rows[i]);//把行对象放入数组中，以便排序
+		}
+	arrs.sort(function(str1,str2){
+		//使用行中的第二列的内容进行比较
+		 return parseInt(str1.cells[3].innerHTML)-parseInt(str2.cells[3].innerHTML);
+		});
+	tab.rows.length = 1;//仅th表头保留 也可以循环删除表格内容行
+	var temp = document.createDocumentFragment();//使用文档碎片提高效率
+	for(var i=0;i<arrs.length;i++){
+		temp.appendChild(arrs[i]);
+		}	
+	tab.appendChild(temp);
+	changeColor();
+	}
+</script>
+<style>
+table {
+	border-collapse:collapse;/*合并表格的边框*/
+	width:80%;/*父元素的width为参照*/
+	margin:0 auto;/*自动居中*/
+}
+table, td, th {
+	border:1px solid black;/*设置边框的样式*/
+}
+#manage {
+	width:80%;/*父元素的width为参照*/
+	margin:20px auto;/*自动居中,上下外边距20px*/
+}
+</style>
+</head>
+
+<body>
+<table id="tab" >
+  <tr>
+    <th><input type="checkbox" id="checkAll" onclick="selectAll(this)"/></th>
+    <th onclick="resort()">姓名</th>
+    <th>性别</th>
+    <th onClick="resortByNum()">年龄</th>
+  </tr>
+</table>
+<div id="manage">
+  <button onclick="addRow()">添加行</button>
+  <button onclick="delRow()">删除行</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ 
+</style>
+<script type="text/javascript">
+	/*var josn={name:1,age:23,color:'red'}
+	for (var a in josn){
+		//alert (josn[a]);
+		//alert (josn[a]);
+		alert (a);
+	}*/
+	var arr=[1,2,2,2,2,2,3,4,5,5,6];
+	for (var i=0;i<arr.length;i++){
+		for (var j=i+1;j<arr.length;j++){
+			if (arr[i]==arr[j]){
+				arr.splice(j,1);
+				j--;
+			}
+		}
+	
+	}
+	alert(arr);
+</script>
+</head>
+<body>
+
+</body>
+</html>

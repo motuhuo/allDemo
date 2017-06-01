@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="zepto.min.js"></script>
+	<style>
+		.box{
+			width: 300px;
+
+		}
+		.btnLi{
+			overflow: hidden;
+			width: 100%;
+		}
+		.btnLi li{
+			float: left;
+			width: 25%;
+			height: 100px;
+			list-style: none;
+		}
+		.active{
+			background:red;
+		}
+		.cont div{
+			width: 300px;
+			height: 300px;
+		}
+		.show{
+			display: block;
+			background: orange;
+		}
+		.hide{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul class="btnLi">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<div class="cont">
+			<div class="show">11</div>
+			<div class="hide">22</div>
+			<div class="hide">33</div>
+			<div class="hide">44</div>
+		</div>
+	</div>
+</body>
+<script>
+	// function add(num){
+	// 	if(num==1){
+	// 		return 1;
+	// 	}
+	// 	else {
+	// 		return naum+add(num-1);
+	// 	}
+	// }
+	// alert(add(5));  // 5+ (4+3+2+1)
+	var index;
+	var len = $(".btnLi li").length;
+	 $(".btnLi li").each(function(){
+	 	// for(var i = 0;i<len;i++){
+	 	// 	$(".btnLi li")[i]
+	 	// }
+	 	$(this).click(function(){
+	 		 $(this).addClass("active").siblings().removeClass("active");
+	 		 index = $(this).index;
+	 		 changeDisplay(index);
+	 		});
+	 })
+	 function changeDisplay(){
+	 	for(var i = 0;i<divs.length;i++){
+	 		divs[i].style.display = "none";
+	 	}
+	 	divs[index].style.display = "block";
+	 }
+	 var sayHello = test();
+	 	sayHello();  //节省内存空间，避免变量空间的污染； 需求：需要在函数外部去访问内容的一些值（变量，对象,JSON。。。。），闭包就成为一种可行解决方案； 
+</script>
+</html>

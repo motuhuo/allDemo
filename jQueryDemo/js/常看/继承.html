@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+ 
+</style>
+<script type="text/javascript">
+//window.onload=function (){	};
+function Person(name,sex){
+	this.name=name;
+	this.sex=sex;
+}
+Person.prototype.showName=function(){
+	alert(this.name);
+}
+Person.prototype.showSex=function(){
+	alert(this.sex);
+}
+//var p1=new Person('1','男');
+//p1.showName();
+
+function Worker(name,sex,job){
+    //this指new 出来的worker 对象。构造函数伪装。
+	Person.call(this,name,job)   //调用父级的构造函数为了继承父级属性
+	this.job=job;
+}
+/*  //通过原型来继承父级的方法。 原型链
+Worker.prototype=Person.prototype;    //子类影响父类，这种方法不对 */
+for (var i in Person.prototype){
+	Worker.prototype[i]=Person.prototype[i];
+}
+Worker.prototype.showJob=function(){
+	alert(this.job);
+}
+var oW1=new Worker('2','女','找事');
+oW1.showName();    //2
+oW1.showJob();     //找事
+/*alert (Person.prototype.showJob);  //function(){alert(this.job);}*/
+	
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

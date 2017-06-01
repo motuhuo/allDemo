@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>gif</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.img1{
+			width: 224px;
+			height: 126px;
+			border: 1px solid red;
+			position: relative;
+			left: 400px;
+			top: 300px;
+		}
+		.img2{
+			width: 224px;
+			height: 126px;
+			border: 1px solid blue;
+		}
+		/*canvas {
+			left: 400px;
+			top: 300px;
+		}*/
+	</style>
+</head>
+<body>
+	<div class="img1">
+		<img id="testImg" src="img/1.jpg" alt="暂停" width="224" height="126">
+	</div>
+	<div class="img2">
+		<img id="testImg2" src="img/1.jpg" alt="暂停" width="224" height="126">
+	</div>
+<p><input type="button" id="testBtn" value="停止"></p>
+</body>
+<script type="text/javascript">
+	if ('getContext' in document.createElement('canvas')) {
+    HTMLImageElement.prototype.play = function() {
+        if (this.storeCanvas) {
+            // 移除存储的canvas
+            this.storeCanvas.parentElement.removeChild(this.storeCanvas);
+            this.storeCanvas = null;
+            // 透明度还原
+            image.style.opacity = '';
+        }
+        if (this.storeUrl) {
+            this.src = this.storeUrl;    
+        }
+    };
+    HTMLImageElement.prototype.stop = function() {
+        var canvas = document.createElement('canvas');
+        // 尺寸
+        var width = this.width, height = this.height;
+        if (width && height) {
+            // 存储之前的地址
+            if (!this.storeUrl) {
+                this.storeUrl = this.src;
+            }
+            // canvas大小
+            canvas.width = width;
+            canvas.height = height;
+            // 绘制图片帧（第一帧）
+            canvas.getContext('2d').drawImage(this, 0, 0, width, height);
+            // 重置当前图片
+            try {
+                this.src = canvas.toDataURL("image/gif");
+            } catch(e) {
+                // 跨域
+                this.removeAttribute('src');
+                // 载入canvas元素
+                canvas.style.position = 'absolute';
+                // 前面插入图片
+                this.parentElement.insertBefore(canvas, this);
+                // 隐藏原图
+                this.style.opacity = '0';
+                // 存储canvas
+                this.storeCanvas = canvas;
+            }
+        }
+    };
+}
+
+var image = document.getElementById("testImg"),
+ 		image2 = document.getElementById("testImg2"),
+    button = document.getElementById("testBtn");
+    
+// if (image && button) {
+//     button.onclick = function() {
+//         if (this.value == '停止') {
+//             image.stop();
+//             this.value = '播放';
+//         } else {
+//             image.play();
+//             this.value = '停止';
+//         }
+//     };
+// }
+image.stop();
+image2.stop();
+// image.onclick = function () {
+// 	if(this.getAttribute('alt') == '暂停'){
+// 		image.play();
+// 		this.setAttribute('alt','播放');
+// 	}else{
+// 		image.stop();
+// 		this.setAttribute('alt','暂停');
+// 	}
+// }
+image2.onclick = function () {
+	if(this.getAttribute('alt') == '暂停'){
+		image.play();
+		this.setAttribute('alt','播放');
+	}else{
+		image.stop();
+		this.setAttribute('alt','暂停');
+	}
+}
+</script>
+
+</html>

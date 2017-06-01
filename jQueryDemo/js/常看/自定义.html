@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+
+<script type="text/javascript">
+ window.onload=function (){
+    var aBtn=document.getElementsByTagName('input');
+	for (var i=0; i<aBtn.length;i++){
+	   aBtn[i].index=i;
+	   
+	   aBtn[i].onclick=function (){
+	      this.value=this.index+1;
+	      
+	   }
+	}
+	
+ }
+</script>
+</head>
+<body>
+<input type="button" value="a" />
+<input type="button" value="b" />
+<input type="button" value="c" />
+</body>
+</html>
