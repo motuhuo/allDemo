@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mouseWheel</title>
+	<style>
+		
+		body{padding:0;margin:0; overflow:hidden }
+		ul{list-style:none;}
+		.div_01,.div_02,.div_03,.div_04{width:100%;margin:0 auto; text-align: center;}
+		.div_01{background: #b20909;}
+		.div_02{background: #0941b2;}
+		.div_03{background: #2db209;}
+		.div_04{background: #b29c09;}
+		.left_fixed{position:fixed;width:15px; height:100px; left:100px;top:200px;z-index:999;}
+		.left_fixed ul li{background:#000;cursor:pointer;width:15px;height: 15px;border-radius:15px;margin-bottom: 10px;}
+		.left_fixed ul li.active{background:#fff;}
+
+	</style>
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mousewheel.js"></script>
+</head>
+<body>
+	<div class="content">
+		<div class="div_01"></div>
+		<div class="div_02"></div>
+		<div class="div_03"></div>
+		<div class="div_04"></div>
+	</div>
+	<div class="left_fixed">
+		<ul>
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+</body>
+<script>
+var i=0;//翻屏变量，初始第一屏
+var s = 0; //该变量作用是鼠标滑轮一直向下或者向上滑动时出现抖动现象
+
+$(function(){
+
+	var starttime = 0,
+	endtime = 0;
+	$("body").mousewheel(function(event, delta) {
+
+    starttime = new Date().getTime(); //记录翻屏的初始时间
+
+    if (delta < 0&& i>=0 && i<=2) { 
+
+      if (s>=0&&(starttime == 0 || (endtime - starttime) <= -500)) { //在500ms内执行一次翻屏
+      	s=1;
+      	i++;
+      	console.log(i);
+        renderPage(i,true); //翻屏函数
+        endtime = new Date().getTime(); //记录翻屏的结束时间
+      }
+    } else if (delta > 0&& i>=1&&s==1&& (starttime == 0 || (endtime - starttime) <= -500)) {  
+    	i--;
+      //console.log(i);
+      renderPage(i,true);
+      endtime = new Date().getTime();           
+    }  
+
+  });
+
+	var div_height=$(window).height(); 
+
+	$(".div_01,.div_02,.div_03,.div_04").css({'height':div_height});
+
+	$(window).resize(function(){
+		var div_height=$(window).height();
+		$(".div_01,.div_02,.div_03,.div_04").css({'height':div_height});
+	});
+
+	function renderPage(pageNumber, isScroll){ 
+		if (isScroll){
+			$('body, html').animate({scrollTop:pageNumber*div_height }, 'slow');
+			$(".left_fixed ul li").removeClass("active");
+			$(".left_fixed ul li").eq(pageNumber).addClass("active");
+		}
+		return;
+	}
+
+  $(".left_fixed ul li").on("click", function(){ //点击小导航也执行翻屏
+  	var index = $(this).index();
+  	renderPage(index, true);
+  	$(".left_fixed ul li").removeClass("active");
+  	$(this).addClass("active");
+  	return false;
+  });
+})
+
+
+</script>
+</html>

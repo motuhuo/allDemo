@@ -1,7 +1,7 @@
 1. 在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”（temporal dead zone，简称 TDZ）。
 2. 双向数据绑定
   一.访问器属性（访问器属性是对象中的一种特殊属性，它不能直接在对象中设置，而必须通过 defineProperty() 方法单独定义。）
-     var obj = {}
+    var obj = {}
     Object.defineProperty(obj, 'hello', {
       get: function () {
         console.log('get方法被调用了')
@@ -10,6 +10,7 @@
         console.log('set方法被调用了，参数为val:' + val)
       }
     })
+
     obj.hello  //get方法被调用了
     obj.hello = 'abc'  //set方法被调用了，参数为val:abc
   二、极简双向绑定的实现

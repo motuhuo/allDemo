@@ -1,16 +1,30 @@
 // JavaScript Document
 /* 1、事件源  2、连续事件   3、4、getByclassName  5、获取当前样式   6、事件绑定  7、鼠标滚轮事件   8、选中文字  9、阻止冒泡   10、阻止默认事件   11、弹性菜单(运动框架) 12、input兼容ie8  13、1px兼容问题 14、苹果  15、深拷贝     16.input type="file"样式的修改   17.fontface(字体) 18.清除按钮  19.获取图片的原始 宽 、高 20、省略号  21、图片垂直居中 
-22、清除浮动 23、css3常用  24、hack 25、闭包 26、prototype 27、面向对象 28、ajax状态值 29、HTTP状态码 30、判断andriod ios 31、排序方法 32、es6的类 class的用法 33、媒介查寻  34、rem布局 35、屏幕旋转的事件和样式  
+22、清除浮动 23、css3常用  24、hack 25、闭包 26、prototype 27、面向对象 28、ajax状态值 29、HTTP状态码 30、判断andriod ios 31、排序方法 32、es6的类 class的用法 33、媒介查寻  34、rem布局 35、屏幕旋转的事件和样式  36、模拟placeholder  37、前端文章 https://juejin.im/  entry/5936c99efe88c20061e63ad5/detail  知识点：https://mp.weixin.qq.com/s/zgIC0y0-PXhoTisLDdzVHw   38、双向数据绑定 
 
 */
 // ios上上下拉动滚动条是卡顿  -webkit-overflow-scrolling: touch;  overflow-scrolling: touch;
+
+// 标题前面的小图标 <link rel='icon' type='image/x-icon' href='xxx.ico'>   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+// 网站头部信息
+// <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+// <title>@ViewBag.Title-虔诚猫</title>
+// <meta http-equiv="X-UA-Compatible" content="IE=edge">
+// <link rel="shortcut icon" href="/Content/img/orange-logo.png" type="image/x-icon" />
+// <meta name="channel" content="Smartphone" />
+// <meta name="keywords" content="虔诚猫金服，虔诚猫投资理财，互联网理财平台，互联网金融，P2P投资理财，P2P网贷平台">
+// <meta name="description" content="虔诚猫，用心呵护您的财富！虔诚猫金服致力于为投资理财用户打造安全透明高收益的互联网金融P2P理财平台。" />
+    
 
 // 动画定义3D启用硬件加速
 // Element {
 //  -webkit-transform:translate3d(0, 0, 0)
 //  transform: translate3d(0, 0, 0);
 // }
- 
+
+
+
 /*
 var scrolltop = document.documentElement.scrollTop||document.body.scrollTop;
 var scrollleft = document.documentElement.scrollLeft||document.body.scrollLeft;
@@ -663,3 +677,37 @@ HTML代码：
       @media all and (orientation:portrait){   }
       //横屏时样式
       @media all and (orientation:landscape){   }
+
+    36、模拟placeholder
+
+      div作为输入框，本身加入placeholder是无效的。得借助于伪元素。
+      // <div id="content" class="inputcontent needsclick" placeholder="有问题就尽管提问吧" contenteditable="true"></div>
+      
+      .tools .inputcontent:after {
+        display: inline-block;
+        width: 100%;
+        color: #999;
+        content: attr(placeholder);
+      }
+
+    38、双向数据绑定
+      // <input type="text" id='a'>
+      // <span id='b'></span>
+
+      var obj = {}
+      Object.defineProperty(obj, 'hello', {
+        get: function () {
+          console.log('get方法被调用了')
+        },
+        set: function (newVal) {
+          document.getElementById('a').val = newVal
+          document.getElementById('b').innerHTML = newVal
+        }
+      })
+
+      document.getElementById('a').addEventListener('keyup', function (e) {
+        obj.hello = e.target.value
+      })
+
+
+

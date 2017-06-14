@@ -1,8 +1,4 @@
-/*
-	Function : pageView
-	Author : hhl
-	Address : shQF
-*/
+
 (function($){
 	$.fn.pageView = function( ops ){
 
