@@ -3,6 +3,24 @@
 22、清除浮动 23、css3常用  24、hack 25、闭包 26、prototype 27、面向对象 28、ajax状态值 29、HTTP状态码 30、判断andriod ios 31、排序方法 32、es6的类 class的用法 33、媒介查寻  34、rem布局 35、屏幕旋转的事件和样式  36、模拟placeholder  37、前端文章 https://juejin.im/  entry/5936c99efe88c20061e63ad5/detail  知识点：https://mp.weixin.qq.com/s/zgIC0y0-PXhoTisLDdzVHw   38、双向数据绑定 
 
 */
+
+
+// 图片压缩 https://tinypng.com/
+// 
+// Git   前面加  http://htmlpreview.github.io/? 可以运行html文件
+
+//       git add xx
+//       git commit -m "说明"
+// 提交：git remote add origin git@github.com:motuhuo/位置.git
+//       git push origin master
+//       
+// 错误 $ git remote rm origin
+//      $ git remote add origin git@github.com:motuhuo/位置.git
+//      
+// 克隆：git clone git@github.com:motuhuo/位置.git
+
+
+
 // ios上上下拉动滚动条是卡顿  -webkit-overflow-scrolling: touch;  overflow-scrolling: touch;
 
 // 标题前面的小图标 <link rel='icon' type='image/x-icon' href='xxx.ico'>   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
@@ -15,11 +33,11 @@
 // <meta name="channel" content="Smartphone" />
 // <meta name="keywords" content="虔诚猫金服，虔诚猫投资理财，互联网理财平台，互联网金融，P2P投资理财，P2P网贷平台">
 // <meta name="description" content="虔诚猫，用心呵护您的财富！虔诚猫金服致力于为投资理财用户打造安全透明高收益的互联网金融P2P理财平台。" />
-    
+
 
 // 动画定义3D启用硬件加速
 // Element {
-//  -webkit-transform:translate3d(0, 0, 0)
+//  -webkit-transform:translate3d(0, 0, 0);
 //  transform: translate3d(0, 0, 0);
 // }
 

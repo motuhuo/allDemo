@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+/*.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}*/
+
+.radioBox i,
+.radioBox :after, .radioBox :before {
+  margin: 0;
+  padding: 0;
+}
+
+.radioBox .label {
+  display: block;
+  margin-bottom: 6px;
+  line-height: 19px;
+  font-weight: 400;
+  font-size: 13px;
+  color: #333;
+  text-align: left;
+}
+.radioBox .checkbox,
+.radioBox .radio {
+	position: relative;
+  display: block;
+  font-weight: 400;
+  margin-bottom: 4px;
+  /*左侧圆的大小 25px*/
+  padding-left: 25px;
+  line-height: 25px;
+  color: #333;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/*移出默认input*/
+.radioBox .checkbox input,
+.radioBox .radio input {
+  position: absolute;
+  left: -9999px;
+}
+/*想要的圆*/
+.radioBox .checkbox i,
+.radioBox .radio i {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  display: block;
+  width: 15px;
+  height: 15px;
+  outline: 0;
+  border:1px solid transition;
+  background: #ff8718;
+}
+
+.radioBox .radio i {
+  border-radius: 50%;
+}
+
+.radioBox .checkbox input+i:after, .radioBox .radio input+i:after {
+  position: absolute;
+  opacity: 0;
+  transition: opacity .1s;
+  -webkit-transition: opacity .1s;
+}
+
+/*选中时的样式*/
+.radioBox .radio input+i:after {
+  content: '';
+  top: 3px;
+  left: 3px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+/*白点*/
+.radioBox .radio input+i:after {
+  background-color: #fff;
+}
+
+.radioBox .checkbox input:checked+i:after,
+.radioBox .radio input:checked+i:after {
+  opacity: 1;
+}
+
+.radioBox .checkbox input+i:after {
+  /*content: '\f00c';*/
+ content:'\2714';
+  top: -3px;
+  left: 1px;
+  width: 15px;
+  height: 15px;
+  font: 400 16px/19px FontAwesome;
+  color: #fff;
+  text-align: center;
+}
+	</style>
+	<script src="../js/jquery-3.0.0.min.js"></script>
+</head>
+<body>
+	<!-- <form action="" class="radioBox"> -->
+	<div class="radioBox">
+    <div class="row">
+      <label class="radio">
+        <input type="radio" name="radio2" value="4" checked="checked">
+        <i></i>A
+      </label>
+      <label class="radio">
+        <input type="radio" value="3" name="radio2">
+        <i></i>B
+      </label>
+      <label class="radio">
+        <input type="radio" value="2" name="radio2">
+        <i></i>C
+      </label>
+      <label class="radio">
+        <input type="radio" value="1" name="radio2">
+        <i></i>C
+      </label>
+    </div>  
+	</div>
+  <div class="radioBox">
+		<p>Columned radios</p>
+      <div class="row">
+        <label class="radio">
+          <input type="radio" name="radio2" value="4" checked="checked">
+          <i></i>A
+        </label>
+        <label class="radio">
+          <input type="radio" value="3" name="radio2">
+          <i></i>B
+        </label>
+        <label class="radio">
+          <input type="radio" value="2" name="radio2">
+          <i></i>C
+        </label>
+        <label class="radio">
+          <input type="radio" value="1" name="radio2">
+          <i></i>C
+        </label>
+      </div>
+	</div>
+
+   
+	<div class="radioBox">
+    <label class="checkbox">
+      <input type="checkbox" name="checkbox" checked="checked">
+      <i></i>Alexandra
+    </label>
+    <label class="checkbox">
+      <input type="checkbox" name="checkbox">
+      <i></i>Alice
+    </label>
+    <label class="checkbox">
+      <input type="checkbox" name="checkbox">
+      <i></i>Anastasia
+    </label>
+  </div>
+</body>
+</html>

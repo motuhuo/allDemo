@@ -1,0 +1,26 @@
+/* ---------------------------------------- css content 内容部分（针对16:9标准屏）----------------------------------------*/
+
+/*---------------------------------------- css media 适配部分（针对iphone4） ----------------------------------------------*/
+@media screen and (device-width:320px) and (device-height:480px), screen and (device-width:540px) and (device-height:702px){
+
+}
+
+/*---------------------------------------- css media 适配部分（针对iphone6） ----------------------------------------*/
+@media screen and (device-width:375px) and (device-height:667px), screen and (device-width:540px) and (device-height:868px){
+
+}
+
+/*---------------------------------------- css media 适配部分（针对iphone6 plus） -----------------------------------*/
+@media screen and (device-width:414px) and (device-height:736px) and (-webkit-min-device-pixel-ratio:3), screen and (device-width:540px) and (device-height:876px){
+
+}
+
+/*---------------------------------------- css media 适配部分（针对android）----------------------*/
+@media screen and (min-width:720px), screen and (device-width:360px), screen and (device-width:412px) and (-webkit-min-device-pixel-ratio:3.5){
+
+}
+
+/*---------------------------------------- css media 适配部分（针对使用虚拟系统按键的android）----------------------*/
+@media screen and (device-width:720px) and (max-height:960px), screen and (device-width:1080px) and (max-height:1440px), screen and (device-width:1440px) and (max-height:1920px), screen and (device-width:360px) and (max-height:560px), screen and (device-width:412px) and (max-height:690px) and (-webkit-min-device-pixel-ratio:3.5), screen and (device-width:540px) and (device-height:780px){
+
+}

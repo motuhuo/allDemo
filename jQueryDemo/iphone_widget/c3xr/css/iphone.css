@@ -1,0 +1,44 @@
+/* ---------------------------------------- css content 内容部分（针对16:9标准屏）----------------------------------------*/
+
+/* 分享浮层 */
+aside.shareBox{position:fixed; left:0; top:0; width:100%; height:100%; text-align:center; background:rgba(0,0,0,0.85); z-index:997; display:none;}
+aside.shareBox>img{ width:80%; margin:2rem auto 0;}
+
+/* 根级标签 */
+body{ background-color:#fff; color:#000;}
+a,a:visited{ color:#000;}
+input::-webkit-input-placeholder,input:focus::-webkit-input-placeholder{color:#000;}
+article{ width:100%; height:100%; position:relative; overflow: hidden; }
+
+
+
+
+/*---------------------------------------- css media 适配部分（针对iphone4） ----------------------------------------------*/
+@media screen and (device-width:320px) and (device-height:480px), screen and (device-width:540px) and (device-height:702px){
+
+}
+
+/*---------------------------------------- css media 适配部分（针对iphone5）----------------------------------------*/
+@media screen and (device-width:320px) and (device-height:568px){
+
+}
+
+/*---------------------------------------- css media 适配部分（针对iphone6） ----------------------------------------*/
+@media screen and (device-width:375px) and (device-height:667px){
+
+}
+
+/*---------------------------------------- css media 适配部分（针对iphone6 plus） -----------------------------------*/
+@media screen and (device-width:414px) and (device-height:736px) and (-webkit-min-device-pixel-ratio:3){
+
+}
+
+/*---------------------------------------- css media 适配部分（针对android机）----------------------*/
+@media screen and (min-width:480px){
+	
+}
+
+/*---------------------------------------- css media 适配部分（针对使用虚拟系统按键的android机）----------------------*/
+@media screen and (min-width:480px) and (max-height:700px), screen and (min-width:540px) and (max-height:800px), screen and (device-width:540px) and (device-height:780px){
+
+}

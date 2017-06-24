@@ -16,6 +16,47 @@
 
 	state: 驱动应用的数据源；
 	getters: 可以认为是 store 的计算属性；
-	mutations: 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation；
-	actions: 响应在view上的用户输入导致的状态变化, Action 提交的是 mutation, 而不是直接变更状态, 可以包含任意异步操作。
+	mutations: 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation； (方法)
+	actions: 响应在view上的用户输入导致的状态变化, Action 提交的是 mutation, 而不是直接变更状态, 可以包含任意异步操作。（执行方法）
 	modules: 将 store 分割到模块（module）。每个模块拥有自己的 state、mutation、action、getters、甚至是嵌套子模块——从上至下进行类似的分割。
+
+6.一个vue对象通常包括的几个属性
+	//从父组件获取数据
+	props: {
+		name: {
+  		type: Object
+  	}
+	}
+
+	//vue对象的数据
+	data () {
+    return {
+      msg: 'msg'
+    }
+  }
+
+  //vue对象的方法
+	methods: {}
+
+	//计算逻辑放到computed中 
+	computed: {}
+
+	//属性已绑定，dom未生成，一般在这里进行ajax处理以及页面初始化处理
+	created () {
+		this.$http.get('/api/goods').then(( response ) => {
+      response = response.body;
+    })
+	}
+	
+	//组件的组成部分
+	components: {}
+
+	//过滤器
+	filters: {}
+
+	//完成挂载
+	mounted () {}
+
+	//更新 
+	this.$nextTick (() => {})
+	

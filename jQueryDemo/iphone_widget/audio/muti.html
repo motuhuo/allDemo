@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>视频播放</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<link rel="stylesheet" type="text/css" href="../../iphone/css/common.css" />
+<style>
+a.btn{ display:block; width:4.8rem; height:1.6rem; line-height:1.6rem; margin:.4rem auto; font-size: .24rem; background:#000; color:#fff; text-align:center;}
+.videoShell{ position: absolute; left: 0; top: 0; width: 100%; height: 100%;background-color: #000; z-index: 99; display: none;}
+.videoShell video{width: 100%; height: 100%;}
+</style>
+</head>
+<body>
+<!--------------------------------------------------------------html区域-------------------------------------------------------------------------------------->
+
+
+
+
+<!--------------------------------------------------------------javascript区域-------------------------------------------------------------------------------------->
+<script type="text/javascript" src="../../iphone/js/base/framwork.js"></script>
+<script type="text/javascript" src="../../iphone/js/base/share.js"></script>
+<script type="text/javascript" src="../../iphone/js/base/audio.js"></script>
+<script>
+$(document).ready(function(e) {
+	
+	icom.screenTo169();
+	
+	var loadBox=$('aside.loadBox');
+	
+	//sound
+	var soundList={},soundMax=0,soundLoaded=0;
+	var bgmTime,bgmPlay,bgmBtn=$('a.bgmBtn');
+	
+	sound_handler();
+	
+	//----------------------------------------加载声音及处理----------------------------------------
+	function sound_handler(){
+		if(os.weixin) wx.ready(sound_creat);
+		else sound_creat();
+	}//end func
+	
+	function sound_creat(){	
+		soundList.bgm=iaudio.on('sound/bgm.mp3',{loop:true,onLoaded:sound_loaded});
+		soundList.music=iaudio.on('sound/music.mp3',{loop:true,onLoaded:sound_loaded});
+		soundMax=Object.keys(soundList).length;
+		console.log('sound length:'+soundMax);
+	}//end func
+	
+	function sound_loaded(){
+		soundLoaded++;
+		console.log('soundLoaded:'+soundLoaded);
+		if(soundLoaded==soundMax){
+			console.log('all sounds loaded');
+			soundList.bgm.play();
+			soundList.music.play();
+		}//end if
+	}//end func
+	
+		
+});
+</script>
+</body>
+</html>

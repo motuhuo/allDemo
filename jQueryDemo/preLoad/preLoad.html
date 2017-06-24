@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>预加载</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			display: none;
+		}
+	</style>
+	
+</head>
+<body>
+	<img src="http://oolg8et0c.bkt.clouddn.com/img/bmw_m1_side.jpg" alt="">
+	<img src="http://oolg8et0c.bkt.clouddn.com/img/corvette_pitstop.jpg" alt="">
+	<img src="http://oolg8et0c.bkt.clouddn.com/img/viper_corner.jpg" alt="">
+	<div id="preload-01"></div>
+	<div id="preload-02"></div>
+	<div id="preload-03"></div>
+	<!-- http://oolg8et0c.bkt.clouddn.com/img/bmw_m1_side.jpg
+	http://oolg8et0c.bkt.clouddn.com/img/corvette_pitstop.jpg
+  	http://oolg8et0c.bkt.clouddn.com/img/viper_corner.jpg -->
+
+</body>
+<!-- <script src="js/preLoad.js"></script> -->
+<script>
+//引入preLoad.js
+ // imgLoader(["http://oolg8et0c.bkt.clouddn.com/img/bmw_m1_side.jpg","http://oolg8et0c.bkt.clouddn.com/img/corvette_pitstop.jpg","http://oolg8et0c.bkt.clouddn.com/img/viper_corner.jpg"], function(percentage){
+ //        console.log(percentage)
+ //    });
+
+        
+    
+// function preloader() {  
+//     if (document.getElementById) {  
+//         document.getElementById("preload-01").style.background = "url(http://oolg8et0c.bkt.clouddn.com/img/bmw_m1_side.jpg) no-repeat -9999px -9999px";  
+//         document.getElementById("preload-02").style.background = "url(http://oolg8et0c.bkt.clouddn.com/img/corvette_pitstop.jpg) no-repeat -9999px -9999px";  
+//         document.getElementById("preload-03").style.background = "url(http://oolg8et0c.bkt.clouddn.com/img/viper_corner.jpg) no-repeat -9999px -9999px";  
+//     }  
+// }  
+// function addLoadEvent(func) {  
+//     var oldonload = window.onload;  
+//     if (typeof window.onload != 'function') {  
+//         window.onload = func;  
+//     } else {  
+//         window.onload = function() {  
+//             if (oldonload) {  
+//                 oldonload();  
+//             }  
+//             func();  
+//         }  
+//     }  
+// }  
+// addLoadEvent(preloader);
+</script>
+
+<script>
+	// var images = new Array()
+ //  function preload() {
+ //    for (i = 0; i < preload.arguments.length; i++) {
+ //      images[i] = new Image()
+ //      images[i].src = preload.arguments[i]
+ //    }
+ //  }
+ //  preload(
+ //    "http://oolg8et0c.bkt.clouddn.com/img/bmw_m1_side.jpg",
+ //  	"http://oolg8et0c.bkt.clouddn.com/img/corvette_pitstop.jpg",
+ //  	"http://oolg8et0c.bkt.clouddn.com/img/viper_corner.jpg" 
+ //  )
+</script>
+<script>
+	var loadImg = []; // 创建一个数组，用于存储所有要预加载的图片路径
+// 通过push方法，将
+loadImg.push("http://oolg8et0c.bkt.clouddn.com/img/bmw_m1_side.jpg");
+loadImg.push("http://oolg8et0c.bkt.clouddn.com/img/corvette_pitstop.jpg");
+loadImg.push("http://oolg8et0c.bkt.clouddn.com/img/viper_corner.jpg");
+loadImg.push("http://oolg8et0c.bkt.clouddn.com/img/bmw_m1_side.jpg");
+loadImg.push("http://oolg8et0c.bkt.clouddn.com/img/corvette_pitstop.jpg");
+loadImg.push("http://oolg8et0c.bkt.clouddn.com/img/viper_corner.jpg");
+loadImg.push("http://oolg8et0c.bkt.clouddn.com/img/bmw_m1_side.jpg");
+loadImg.push("http://oolg8et0c.bkt.clouddn.com/img/corvette_pitstop.jpg");
+loadImg.push("http://oolg8et0c.bkt.clouddn.com/img/viper_corner.jpg");
+loadImg.push("http://oolg8et0c.bkt.clouddn.com/img/viper_corner.jpg");
+ 
+var imgsNum = loadImg.length;
+ 
+var nowNum = 0;
+var nowPercentage = 0; // 用于显示加载每一张图片之后，能够给出百分比
+ 
+// 通过for循环，针对loadImg整个数组进行遍历
+for (var i = 0; i < imgsNum; i++) {
+    
+    // 每一次i变化之后，都需要执行这样的内容 - 创建一个img对象，将img对象的src设置为相应的图片地址
+    var newImg = new Image();
+    newImg.src = loadImg[i];
+ 
+    // 每一张图片加载完成之后，都可以执行相应的功能，比如我们在制作loading条时，希望每加载一张图片之后就能够将当前进度显示出来，就可以用这个方法
+    newImg.onload = (function() {
+        // 一张图片加载完毕之后执行的功能 - 通常是为了控制进度条
+        nowNum++;
+        if (nowNum == imgsNum) {
+        	console.log('加载完成')
+            // 加载完成一张图片之后，我们还可以判断是否完成了所有图片的加载，如果完成再执行相应的内容
+        };
+        nowPercentage = parseInt(nowNum / imgsNum * 100);
+        console.log(nowPercentage + '%');
+    })();
+};
+</script>
+</html>

@@ -1,0 +1,1026 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+ul li {
+    list-style: none;
+}
+body {
+    background: #f8fcff;
+    min-width: 1400px;
+}
+.bannerCon {
+    width: 100%;
+    min-width: 1400px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+.bannerCon img {
+    width: 1920px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -960px;
+}
+.waveBg {
+    width: 100%;
+    min-width: 1400px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+.waveBg img {
+    width: 1920px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -960px;
+}
+.waveBg .waveInfo {
+    width: 558px;
+    height: 118px;
+    position: absolute;
+    top: 1px;
+    left: 43%;
+    text-align: center;
+    margin-left: -146px;
+    font-size: 16px;
+    color: #666;
+    line-height: 31px;
+}
+.screenTitCon {
+    width: 100%;
+    margin-bottom: 40px;
+    margin-top: 80px;
+}
+.screenTitCon .screenTit {
+    width: 1190px;
+    font-size: 20px;
+    color: #333;
+    margin: 0 auto;
+    text-align: center;
+}
+.screenTitCon .screenTit01 {
+    width: 1190px;
+    font-size: 14px;
+    color: #666;
+    margin: 10px auto;
+    text-align: center;
+}
+.screenPng {
+    width: 100%;
+    min-width: 1400px;
+    color: #333;
+    text-align: left;
+}
+    .screenPng .bg_1400 {
+        width: 1400px;
+        height: 400px;
+        background: url("../../img/operationReport/MarchReport/screen.png") no-repeat;
+        margin: 0 auto 160px auto;
+        overflow: hidden;
+        position: relative;
+    }
+.screenPng span {
+    display: block;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: -10px;
+}
+.screenPng .srceenInfo01 {
+    position: absolute;
+    top: 84px;
+    left: 624px;
+    font-size: 20px;
+    text-align: center;
+}
+.screenPng .srceenInfo01 span {
+    font-size: 14px;
+}
+.screenPng .srceenInfo02 {
+    position: absolute;
+    top: 146px;
+    left: 624px;
+    text-align: center;
+}
+.screenPng .srceenInfo02 span {
+    font-size: 16px;
+}
+.screenPng .srceenInfo03 {
+    position: absolute;
+    top: 180px;
+    left: 250px;
+}
+.screenPng .srceenInfo04 {
+    position: absolute;
+    top: 330px;
+    left: 340px;
+}
+.screenPng .srceenInfo05 {
+    position: absolute;
+    top: 250px;
+    right: 400px;
+}
+.screenPng .srceenInfo06 {
+    position: absolute;
+    top: 124px;
+    right: 290px;
+}
+.screenPng .srceenInfo07 {
+    position: absolute;
+    top: 100px;
+    right: 130px;
+}
+.dataShowCon {
+    width: 1190px;
+    margin: 0 auto;
+}
+.dataShowCon .dataShow_module_01 {
+    width: 1190px;
+    height: 600px;
+}
+.dataShowCon .dataShow_module_01 .dataShow_titCon {
+    width: 1190px;
+    height: 40px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.dataShowCon .dataShow_module_01 .dataShow_titCon .tit01 {
+    font-size: 20px;
+    color: #333;
+}
+.dataShowCon .dataShow_module_01 .dataShow_titCon .tit02 {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+}
+.dataShowCon .dataShow_module_01 .firstItem {
+    margin-left: 0!important;
+}
+.dataShowCon .dataShow_module_01 .module_01_item {
+    width: 390px;
+    height: 480px;
+    border-radius: 6px;
+    background: #e9f6ff;
+    float: left;
+    margin-left: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.dataShowCon .dataShow_module_01 .module_01_item .marchTransactionTitle {
+    height: 20px;
+    border-left: solid 2px #73C1F1;
+    padding-left: 16px;
+    margin-left: 40px;
+    margin-top: 40px;
+    line-height: 20px;
+    color: #666;
+    font-size: 20px;
+    font-weight: normal;
+}
+.dataShowCon .dataShow_module_01 .module_01_item .marchTransactionTitle_01 {
+    height: 20px;
+    margin-left: 40px;
+    margin-top: 9px;
+    line-height: 20px;
+    color: #666;
+    font-size: 14px;
+}
+.dataShowCon .dataShow_module_01 .module_01_item .marchTransactionTitle_02 {
+    height: 24px;
+    margin-left: 40px;
+    margin-top: 9px;
+    line-height: 20px;
+    color: #666;
+    font-size: 14px;
+}
+.dataShowCon .dataShow_module_01 .module_01_item .marchTransactionNum {
+    width: 350px;
+    height: 24px;
+    font-size: 24px;
+    color: #333;
+    padding-left: 40px;
+    margin-top: 30px;
+}
+.dataShowCon .dataShow_module_01 .module_01_item .marchTransactionNum_01 {
+    width: 350px;
+    height: 24px;
+    font-size: 24px;
+    color: #333;
+    padding-left: 40px;
+    margin-top: 24px;
+}
+/* chart01 bar */
+.dataShowCon .dataShow_module_01 .firstItem .chartCon_01 {
+    margin-left: 40px;
+}
+/* chart02 bar */
+.dataShowCon .dataShow_module_01 .module_01_item .chartCon_02 {
+    margin-left: 40px;
+}
+/* chart03 pie */
+.dataShowCon .dataShow_module_01 .module_01_item .chartCon_03 {
+    margin-left: 40px;
+}
+/* 饼图切换 */
+.stabNav {
+    width: 79px;
+    height: 22px;
+    border: solid 1px #30C4FF;
+    position: absolute;
+    top: 40px;
+    right: 30px;
+    border-radius: 2px;
+}
+.stabNav .snavItem {
+    display: block;
+    width: 41px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+    color: #666;
+    float: left;
+    cursor: pointer;
+}
+.stabNav .snavItem.active {
+    width: 36px;
+    height: 21px;
+    background: #39D3FF;
+    color: #fff;
+}
+
+/* module_02 */
+.dataShowCon .dataShow_module_02 {
+    width: 1190px;
+    height: 600px;
+}
+.dataShowCon .dataShow_module_02 .dataShow_titCon {
+    width: 1190px;
+    height: 40px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.dataShowCon .dataShow_module_02 .dataShow_titCon .tit01 {
+    font-size: 20px;
+    color: #333;
+    margin-top: 140px;
+}
+.dataShowCon .dataShow_module_02 .dataShow_titCon .tit02 {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+}
+.dataShowCon .dataShow_module_02 .firstItem {
+    margin-left: 0!important;
+    background: transparent!important;
+}
+.dataShowCon .dataShow_module_02 .module_02_item {
+    width: 390px;
+    height: 480px;
+    border-radius: 6px;
+    background: #e9f6ff;
+    float: left;
+    margin-left: 10px;
+}
+.dataShowCon .dataShow_module_02 .module_02_item .marchTransactionTitle {
+    height: 20px;
+    border-left: solid 2px #73C1F1;
+    padding-left: 16px;
+    margin-left: 40px;
+    margin-top: 40px;
+    line-height: 20px;
+    color: #666;
+    font-size: 20px;
+    font-weight: normal;
+}
+.dataShowCon .dataShow_module_02 .module_02_item .marchTransactionTitle_01 {
+    height: 20px;
+    margin-left: 40px;
+    margin-top: 9px;
+    line-height: 20px;
+    color: #666;
+    font-size: 14px;
+}
+.dataShowCon .dataShow_module_02 .module_02_item .marchTransactionTitle_02 {
+    height: 24px;
+    margin-left: 40px;
+    margin-top: 9px;
+    line-height: 20px;
+    color: #666;
+    font-size: 14px;
+}
+.dataShowCon .dataShow_module_02 .module_02_item .marchTransactionNum {
+    width: 350px;
+    height: 24px;
+    font-size: 24px;
+    color: #333;
+    padding-left: 40px;
+    margin-top: 30px;
+}
+.dataShowCon .dataShow_module_02 .module_02_item .marchTransactionNum_01 {
+    width: 350px;
+    height: 24px;
+    font-size: 24px;
+    color: #333;
+    padding-left: 40px;
+    margin-top: 24px;
+}
+/* chart01 bar */
+.dataShowCon .dataShow_module_02 .firstItem .chartCon_01 {
+    margin-left: 40px;
+}
+/* chart02 bar */
+.dataShowCon .dataShow_module_02 .module_02_item .chartCon_04 {
+    margin-left: 40px;
+}
+/* chart03 pie */
+.dataShowCon .dataShow_module_02 .module_02_item .chartCon_05 {
+    margin-left: 40px;
+}
+.firstTable {
+    width: 390px;
+}
+.firstTable td {
+    height: 40px;
+    font-size: 24px;
+    color: #333;
+}
+.firstTable td .font_14 {
+    color: #666;
+    font-size: 14px;
+}
+.firstTable .secondTd {
+    padding-top: 60px;
+}
+.dataShowCon .dataShow_module_02 .module_02_item.firstItem img {
+    display: block;
+    width: 282px;
+    height: 295px;
+    float: left;
+    margin-left: 16px;
+}
+
+/* module_03 */
+.proportion {
+    width: 1190px;
+    margin-top: 160px;
+    margin-bottom: 160px;
+}
+.proportion .tabNav {
+    width: 246px;
+    height: 47px;
+    border: solid 1px #30C4FF;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+.proportion .tabNav .navItem {
+    display: inline-block;
+    width: 122px;
+    height: 45px;
+    font-size: 20px;
+    float: left;
+    line-height: 45px;
+    text-align: center;
+    color: #666;
+    cursor: pointer;
+}
+.proportion .tabNav .navItem.active {
+    color: #fff;
+    background: url("../../img/operationReport/MarchReport/navItemLeft.png") no-repeat;
+}
+.chartCon_06 {
+    margin-top: 100px;
+    margin-bottom: 30px;
+    margin-left: 100px;
+    background: url('../../img/operationReport/MarchReport/ageBg.png') 40px 130px no-repeat!important;
+}
+/* 年龄&性别占比 */
+.perCon {
+    width: 789px;
+    height: 394px;
+    margin: 100px auto 0 auto;
+}
+.leftCon {
+    width: 263px;
+    height: 394px;
+    float: left;
+    position: relative;
+    margin-left: 40px;
+}
+.leftCon .bl {
+     width: 141px;
+     float: left;
+     margin-top: 130px;
+}
+.leftCon .bl .s1 {
+    font-size: 24px;
+    color: #39c5ff;
+    float: right;
+    margin-right: 10px;
+}
+.leftCon .bl .s2 {
+    font-size: 14px;
+    color: #666;
+    float: right;
+    margin-right: 60px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.rightCon .bl .s1 {
+    font-size: 24px;
+    color: #e44040;
+    float: left;
+    margin-left: 10px;
+}
+.rightCon .bl .s2 {
+    font-size: 14px;
+    color: #666;
+    float: right;
+    margin-right: 94px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.rightCon .bl {
+    width: 141px;
+    float: left;
+    margin-top: 100px;
+}
+.leftCon .leftPerson {
+    width: 118px;
+    height: 348px;
+    background: url("../../img/operationReport/MarchReport/leftM.png") no-repeat;
+    float: left;
+    margin-top: 6px;
+}
+.rightCon {
+    width: 263px;
+    height: 394px;
+    float: left;
+    position: relative;
+    margin-left: 140px;
+}
+.leftCon .men {
+    width: 60px;
+    height: 29px;
+    background: url("../../img/operationReport/MarchReport/bgMen.png") no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 29px;
+}
+.rightCon .wom {
+    width: 60px;
+    height: 29px;
+    background: url("../../img/operationReport/MarchReport/bgWom.png") no-repeat;
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    line-height: 29px;
+}
+.rightCon .rightPerson {
+    width: 111px;
+    height: 330px;
+    background: url("../../img/operationReport/MarchReport/rightW.png") no-repeat;
+    float: left;
+    margin-top: 24px;
+}
+/* 终端占比 */
+.term {
+    width: 1190px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.term .termCon {
+    width: 800px;
+    height: 280px;
+    margin: 0 auto;
+}
+.term .termCon .leftTer {
+    width: 180px;
+    float: left;
+    margin-top: 120px;
+    margin-left: 20px;
+}
+.term .termCon .rightTer {
+    width: 180px;
+    float: left;
+    margin-top: 130px;
+    margin-left: 80px;
+}
+.term .termCon .chartCon_07 {
+    width: 280px;
+    float: left;
+}
+.term .termCon .leftTer .t1 {
+    font-size: 24px;
+    color: #2fc2ff;
+    float: right;
+    margin-right: 50px
+}
+.term .termCon .leftTer .t2 {
+    font-size: 14px;
+    color: #666;
+    float: right;
+    margin-right: 60px;
+    margin-top: -22px;
+}
+.term .termCon .rightTer .t1 {
+    font-size: 24px;
+    color: #ffa304;
+    float: right;
+    margin-right: 30px;
+}
+.term .termCon .rightTer .t2 {
+    font-size: 14px;
+    color: #666;
+    float: right;
+    margin-right: 40px;
+    margin-top: -20px;
+}
+.chartCon_07 {
+    margin-left: 60px;
+    background: url('../../img/operationReport/MarchReport/bgComputer.png') center center no-repeat!important;
+    background-size: 50%!important;
+}
+/* userActiveState */
+.userActiveState {
+    width: 1190px;
+    margin: 140px auto 0 auto;
+}
+.userActiveState .dataShow_titCon .tit01 {
+    width: 1190px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 20px;
+    color: #333;
+}
+.userActiveState .chartCon_08 {
+    width: 938px;
+    height: 250px;
+    margin: 60px auto 0 auto;
+}
+/* investmentInterval */
+.investmentInterval {
+    width: 1190px;
+    margin: 140px auto 0 auto;
+    overflow: hidden;
+}
+.investmentInterval .dataShow_titCon {
+    overflow: hidden;
+}
+.investmentInterval .dataShow_titCon .tit01 {
+    width: 1190px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 20px;
+    color: #333;
+}
+.investmentInterval .dataShow_titCon .secT {
+    width: 435px;
+    float: left;
+    color: #666;
+    font-size: 14px;
+    margin-top: 60px;
+    margin-bottom: 4px;
+}
+.investmentInterval .dataShow_titCon .secL {
+    text-align: right;
+}
+.investmentInterval .dataShow_titCon .secR {
+    text-align: left;
+    padding-left: 320px;
+}
+
+.investmentInterval .chartCon_09 {
+    margin-left: -16px;
+    margin-left: 120px;
+    background: url('../../img/operationReport/MarchReport/bgList.png') 256px 26px no-repeat!important;
+    margin-left: 248px;
+    margin-top: -10px;
+}
+/* listCon */
+.listCon {
+    width: 1190px;
+    height: 430px;
+    margin: 130px auto 0 auto;
+    overflow: hidden;
+}
+.listCon .leftBar {
+    width: 450px;
+    float: left;
+    margin-left: 160px;
+}
+.listCon .leftBar .up {
+    width: 450px;
+}
+.listCon .leftBar .up .tit {
+    width: 210px;
+    height: 35px;
+    background: url("../../img/operationReport/MarchReport/jiangbei.png") left top no-repeat;
+    text-align: right;
+    line-height: 35px;
+    font-size: 20px;
+}
+.listCon .leftBar .down {
+    margin-top: 90px;
+}
+.listCon .leftBar .down .tit {
+    width: 210px;
+    height: 35px;
+    background: url("../../img/operationReport/MarchReport/userBg.png") left top no-repeat;
+    text-align: right;
+    line-height: 35px;
+    font-size: 20px;
+}
+.listCon .leftBar .rightTitle {
+    display: block;
+    width: 390px;
+    text-align: right;
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.listCon .leftBar ul {
+    width: 390px;
+}
+.listCon .leftBar ul li {
+    width: 390px;
+    margin-bottom: 12px;
+}
+.listCon .leftBar ul li .m1 {
+    display: inline-block;
+    width: 32px;
+    font-size: 18px;
+    color: #666;
+}
+.listCon .leftBar ul li .m2 {
+    display: inline-block;
+    width: 96px;
+    font-size: 18px;
+    color: #666;
+}
+.listCon .leftBar ul li .m3 {
+    display: inline-block;
+    width: 55px;
+    margin-left: 32px;
+    font-size: 18px;
+    color: #333;
+}
+.listCon .leftBar ul li .m4 {
+    display: inline-block;
+    width: 120px;
+    margin-left: 46px;
+    text-align: right;
+    font-size: 18px;
+    color: #333;
+}
+.listCon .leftBar ul li .m4.active {
+    color: #E72A2B;
+}
+.listCon .rightBar {
+    width: 400px;
+    float: left;
+    margin-top: 110px;
+    margin-left: 130px;
+}
+.listCon .rightBar .desc {
+    width: 230px;
+    font-size: 14px;
+    color: #666;
+    margin-left: 94px;
+    margin-top: 30px;
+}
+/* memorabilia */
+.memorabilia {
+    width: 1190px;
+    margin: 160px auto 0 auto;
+}
+.memorabilia .dataShow_titCon {
+    width: 1190px;
+    height: 40px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.memorabilia .dataShow_titCon .tit01 {
+    font-size: 20px;
+    color: #333;
+}
+.memorabilia .jieduan {
+    width: 1000px;
+    height: 36px;
+    background: url("../../img/operationReport/MarchReport/lineBg.png") left bottom no-repeat;
+    margin: 0 auto;
+}
+.memorabilia .jieduan span {
+    display: inline-block;
+    width: 150px;
+    height: 20px;
+    text-align: right;
+}
+.memorabilia .jieduan .j1 {
+    width: 110px;
+    text-align: center;
+}
+.memorabilia .jieduan .j2 {
+    margin-left: 40px;
+}
+.memorabilia .jieduan .j3 {
+    margin-left: 64px;
+}
+.memorabilia .jieduan .j4 {
+    margin-left: 76px;
+}
+.memorabilia .jieduan .j5 {
+    margin-left: 74px;
+}
+.memorabilia .jieduanList {
+    width: 1190px;
+    overflow: hidden;
+}
+.memorabilia .jieduanList li {
+    display: block;
+    width: 238px;
+    float: left;
+    margin-top: 16px;
+}
+.memorabilia .jieduanList li img {
+    display: block;
+    margin: 0 auto;
+}
+.memorabilia .jieduanList li p {
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    margin-top: 8px;
+    line-height: 24px;
+}
+/* userStory */
+.userStory {
+    width: 1190px;
+    height: 480px;
+    margin: 100px auto 30px auto;
+    background: #fff;
+    overflow: hidden;
+}
+.userStory .userStoryTit {
+    width: 1190px;
+    text-align: center;
+    font-size: 20px;
+    color: #666;
+    margin-top: 60px;
+}
+.userStory .userStoryTit02 {
+    width: 1190px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: 8px;
+}
+.userStory .userImg {
+    width: 90px;
+    height: 112px;
+    background: url("../../img/operationReport/aprilReport/userImg2.png") no-repeat;
+    margin: 30px 0 0 170px;
+    float: left;
+}
+.userStory .userInfo {
+    float: left;
+    margin-top: 40px;
+    margin-left: 16px;
+    color: #666;
+    line-height: 24px;
+}
+.userStory .userInfo span {
+    color: #333;
+}
+.userStory .userInfo .cat {
+    color: #ff8718;
+}
+.userStory .storyCon {
+    width: 512px;
+    height: 230px;
+    background: #EFF8FF;
+    float: left;
+    overflow-y: scroll;
+    padding: 16px;
+    font-size: 14px;
+    color: #666;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    margin-left: 30px;
+    line-height: 22px;
+}
+/* footer */
+.footer {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+}
+.footer .footBg {
+    width: 1920px;
+    top: 0;
+    left: 50%;
+    position: absolute;
+    margin-left: -960px;
+}
+.footer .footerInfo {
+    width: 342px;
+    height: 264px;
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    text-align: center;
+    margin-left: -146px;
+    font-size: 16px;
+    color: #666;
+    line-height: 40px;
+}
+.footer .footerInfo .catLogo {
+    display: block;
+    margin-top: 40px;
+    margin-left: 70px;
+}
+/*菜单打开按钮*/
+@media screen and (max-width: 1650px)and (min-width: 1000px) {
+        .openMenuBtn {
+        width: 97px;
+        height: 102px;
+        background: url('../../img/operationReport/operationOpenBtn.png') no-repeat;
+        position: fixed;
+        bottom: 40px!important;
+        right: 90px!important;
+        cursor: pointer;
+        }
+        .clouseMenuBtn {
+        width: 32px;
+        height: 32px;
+        background: url('../../img/operationReport/operationCloseBtn.png') no-repeat;
+        position: fixed;
+        bottom: 60px!important;
+        right: 120px!important;
+        cursor: pointer;
+        display: none;
+        }
+        .operationMenu {
+        width: 260px;
+        height: 170px;
+        background: #fff;
+        position: fixed;
+        bottom: 40px;
+        right: 176px!important;
+        border-radius: 4px;
+        box-shadow: 0 2px 10px #e5e5e5;
+        overflow: hidden;
+        display: none;
+        }
+}
+.openMenuBtn {
+    width: 97px;
+    height: 102px;
+    background: url('../../img/operationReport/operationOpenBtn.png') no-repeat;
+    position: fixed;
+    bottom: 40px;
+    right: 370px;
+    cursor: pointer;
+}
+.clouseMenuBtn {
+    width: 32px;
+    height: 32px;
+    background: url('../../img/operationReport/operationCloseBtn.png') no-repeat;
+    position: fixed;
+    bottom: 60px;
+    right: 390px;
+    cursor: pointer;
+    display: none;
+}
+.operationMenu {
+    width: 266px;
+    height: 170px;
+    background: #fff;
+    position: fixed;
+    bottom: 40px;
+    right: 442px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px #e5e5e5;
+    overflow: hidden;
+    display: none;
+}
+.operationMenu #menuNav {
+    width: 234px;
+    font-size: 16px;
+    margin: 16px 0 8px 16px;
+    border-bottom: solid 1px #e5e5e5;
+}
+.operationMenu #menuNav .menuItem {
+    display: inline-block;
+    width: 52px;
+    text-align: center;
+    padding-bottom: 4px;
+}
+.operationMenu #menuNav li.active {
+    color: #ec6599;
+    border-bottom: solid 2px #ffa408;
+}
+.operationMenu .tabList {
+    width:244px;
+    height: 138px;
+    margin-left: 16px;
+    /*overflow-y: scroll;*/
+}
+.operationMenu .tabList li {
+    display: inline-block;
+    width: 70px;
+    height: 40px;
+    background-color: #eee;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border-radius: 2px;
+}
+.operationMenu .tabList li a img {
+    width: 70px;
+    height: 40px;
+}
+/* 菜单显示 */
+@-moz-keyframes showMenu {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+@-webkit-keyframes showMenu {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+@keyframes showMenu {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+/* 菜单隐藏 */
+@-moz-keyframes hidenMenu {
+    0% {
+        opacity: 1;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(40px);
+        display: none;
+    }
+}
+@-webkit-keyframes hidenMenu {
+    0% {
+        opacity: 1;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(40px);
+        display: none;
+    }
+}
+@keyframes hidenMenu {
+    0% {
+        opacity: 1;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(40px);
+        display: none;
+    }
+}
+/* 索引shadow */
+.shadowIndex {
+    width: 70px;
+    height: 40px;
+    box-shadow: 0 1px 8px #ffdb9c;
+}

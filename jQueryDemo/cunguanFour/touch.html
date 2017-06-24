@@ -9,6 +9,7 @@
       width: 100%;
       height: 200px;
       border: 1px solid red;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -40,7 +41,6 @@
                 oInp.innerHTML ="<br>Touch moved (" + event.touches[0].clientX +"," + event.touches[0].clientY +")";
                 break;
         }
-         
     }
 }
 window.addEventListener('load',load,false);
