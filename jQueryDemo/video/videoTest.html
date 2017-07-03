@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />  
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+	</style>
+	<!-- <script src="../js/jquery-3.0.0.min.js"></script> -->
+	<script src="../js/jquery-1.12.2.min.js"></script>
+</head>
+<body>
+	<input type="text" id="getNum" onblur="getError()">
+</body>
+<script>
+// var arr = [1,30,20,2,3,10];
+// 	arr.sort(function(a,b){
+// 		return (a-b)
+// 	});
+// 	console.log(arr);
+
+// 	let s = 'bob';
+// 	var replaced = s.replace(/b/g,'aaa');
+// 	console.log(replaced);
+// 	console.log(s);
+ function getError() {
+ 	var txtNum = $('#getNum').val();
+	console.log(txtNum);
+var regBankNum = /^\d{16,22}$/;
+if(!regBankNum.test(txtNum)){
+	alert('error')
+}
+ }
+	
+
+</script>
+</html>

@@ -3,7 +3,18 @@
 22、清除浮动 23、css3常用  24、hack 25、闭包 26、prototype 27、面向对象 28、ajax状态值 29、HTTP状态码 30、判断andriod ios 31、排序方法 32、es6的类 class的用法 33、媒介查寻  34、rem布局 35、屏幕旋转的事件和样式  36、模拟placeholder  37、前端文章 https://juejin.im/  entry/5936c99efe88c20061e63ad5/detail  知识点：https://mp.weixin.qq.com/s/zgIC0y0-PXhoTisLDdzVHw   38、双向数据绑定 
 
 */
-
+// win10激活方法：http://www.xitongzhijia.net/xtjc/20160721/78483.html
+// 
+// 只能输入数字，一个小数点
+// InputVal 为输入框
+// if (!/^\d+(\.{0,1}\d+){0,1}$/.test(InputVal.replace(".", ''))) {
+//  $(this).val(InputVal.substr(0, InputVal.length - 1));
+// }
+// 
+// $('.inputNum').bind('input', function () {
+//    连续改变事件
+// }
+// 
 
 // 图片压缩 https://tinypng.com/
 // 
@@ -41,6 +52,7 @@
 //  transform: translate3d(0, 0, 0);
 // }
 
+// 正则表达式  http://www.lovebxm.com/2017/05/31/RegExp/
 
 
 /*
@@ -122,13 +134,13 @@ function getStyle(obj,attr){
 //解除：removeEventListener('不带on的事件名'， 函数，是否捕获)
 //事件不带on,且加引号; 
 function MyAddEvent (obj,sEvent,fn)
-{ 
+{
   if(obj.attachEvent)
-  { 
+  {
     obj.attachEvent('on'+sEvent,fn);
   }
   else
-  { 
+  {
     obj.addEventListener(sEvent,fn,false);
   }
 }

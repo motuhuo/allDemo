@@ -97,8 +97,8 @@
 }
 
 .radioBox .checkbox input+i:after {
-  /*content: '\f00c';*/
- content:'\2714';
+  /*content:'\2714';*/
+  content: url(img/failBtn.png);
   top: -3px;
   left: 1px;
   width: 15px;
@@ -115,20 +115,20 @@
 	<div class="radioBox">
     <div class="row">
       <label class="radio">
-        <input type="radio" name="radio2" value="4" checked="checked">
+        <input type="radio" value="4" name="radio">
         <i></i>A
       </label>
       <label class="radio">
-        <input type="radio" value="3" name="radio2">
+        <input type="radio" value="3" name="radio">
         <i></i>B
       </label>
       <label class="radio">
-        <input type="radio" value="2" name="radio2">
+        <input type="radio" value="2" name="radio">
         <i></i>C
       </label>
       <label class="radio">
-        <input type="radio" value="1" name="radio2">
-        <i></i>C
+        <input type="radio" value="1" name="radio">
+        <i></i>D
       </label>
     </div>  
 	</div>
@@ -136,7 +136,7 @@
 		<p>Columned radios</p>
       <div class="row">
         <label class="radio">
-          <input type="radio" name="radio2" value="4" checked="checked">
+          <input type="radio" value="4" name="radio2">
           <i></i>A
         </label>
         <label class="radio">
@@ -149,12 +149,32 @@
         </label>
         <label class="radio">
           <input type="radio" value="1" name="radio2">
-          <i></i>C
+          <i></i>D
         </label>
       </div>
 	</div>
-
-   
+<div class="radioBox">
+		<p>Columned radios</p>
+      <div class="row">
+        <label class="radio">
+          <input type="radio" value="4" name="radio3">
+          <i></i>A
+        </label>
+        <label class="radio">
+          <input type="radio" value="3" name="radio3">
+          <i></i>B
+        </label>
+        <label class="radio">
+          <input type="radio" value="2" name="radio3">
+          <i></i>C
+        </label>
+        <label class="radio">
+          <input type="radio" value="1" name="radio3">
+          <i></i>D
+        </label>
+      </div>
+	</div>
+   <button class="getValue">getValue</button>
 	<div class="radioBox">
     <label class="checkbox">
       <input type="checkbox" name="checkbox" checked="checked">
@@ -170,4 +190,23 @@
     </label>
   </div>
 </body>
+<script>
+
+$('.getValue').click(function(){
+	var num = 0;
+	if($('.radioBox input:checked').length < 3){
+		alert('全选')
+	}else{
+		$('.radioBox input:checked').each(function(){
+		// console.log($(this).val());
+			num = Number(num) + Number($(this).val());
+		})
+		console.log(num);
+	}
+	
+	// console.log($('.radioBox input:checked').val())
+})
+	// var value = $('.radioBox input:checked').val();
+	// console.log(value)
+</script>
 </html>

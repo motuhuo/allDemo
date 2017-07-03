@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>视频背影</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		.videobox{
+			height: 100%;
+	    position: absolute;
+	    width: 100%;
+	    z-index: -100;
+	    overflow: hidden;
+	    border:1px solid red;
+		}
+		.videoItem{
+			top: 50%;
+			left: 50%;
+	    min-height: 100%;
+	    min-width: 100%;
+	    position: absolute;
+	    -webkit-transform: translateX(-50%) translateY(-50%);
+	    transform: translateX(-50%) translateY(-50%);
+		}
+	</style>
+	<script src="../js/jquery-3.0.0.min.js"></script>
+</head>
+<body>
+	<div class="videobox">
+		<!-- <video class="videoItem" src="http://hybrid.xiaoying.tv/web/vivaVideo/index/video/homepage.mp4" autoplay="autoplay" loop="loop"></video> -->
+		<video class="videoItem" src="http://webapi5.qianchengmao.com/Video/xcstory.mp4" autoplay="autoplay" loop="loop"></video>
+	</div>
+</body>
+</html>

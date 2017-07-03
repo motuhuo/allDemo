@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标上下滚动</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		.box {
+			width: 100px;
+			height: 100px;
+			position: fixed;
+			top: 0px;
+			border:1px solid red;
+		}
+		.scrollBox,#box{
+			width: 500px;
+			height: 500px;
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		
+	</div>
+	
+</body>
+<script>
+var oDiv = document.getElementById('box');
+	function onMouseWheel(ev)
+  {
+    var oEvent=ev||event;
+    var bDown=true;
+    bDown=oEvent.wheelDelta?oEvent.wheelDelta<0:oEvent.detail>0;
+    if(bDown){   //滚轮向下滚动
+      // oDiv.style.height=oDiv.offsetHeight+10+'px';
+      console.log('向下滚动')
+    }
+    else{
+      // oDiv.style.height=oDiv.offsetHeight-10+'px';
+      console.log('向上滚动')
+    }
+    if(oEvent.preventDefault){  //FF下addEventListener用preventDefault阻止莫认事件；
+      oEvent.preventDefault();
+    }
+    return false;
+  }
+  function MyAddEvent (obj,sEvent,fn){
+	  if(obj.attachEvent){ 
+	    obj.attachEvent('on'+sEvent,fn);
+	  }
+	  else{ 
+	    obj.addEventListener(sEvent,fn,false);
+	  }
+	}
+	
+  MyAddEvent(oDiv,'mousewheel',onMouseWheel);    //MyAddEvent为自定义函数。事件绑定在上面;
+  MyAddEvent(oDiv,'DOMMouseScroll',onMouseWheel);
+</script>
+</html>
