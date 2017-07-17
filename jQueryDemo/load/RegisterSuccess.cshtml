@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "注册";
+    Layout = "~/Views/Shared/_Navigater01.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/commom.css" rel="stylesheet" />
+    <link href="../../Content/css/register.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.12.2.min.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script>
+        $(".headerRight").find("ul li:eq(3)").addClass("active").siblings().removeClass("active");
+    </script>
+
+</head>
+<body>
+    <div style="width:100%;height:100%;padding-bottom:158px">
+
+        <section class="layout">
+            <article class="regNav">
+                <a href="/Home" style="color:#999"> 首页</a><span> > </span><span class="regAccount">账户注册</span>
+            </article>
+        </section>
+        <section class="layout">
+            <article class="regBox">
+                <section class="regBoxTitle">
+                    <ul class="regBoxUl">
+                        <li><span class="regWidth"><i class="of of-step1"></i><span>验证手机</span></span><span class="regLine"></span></li>
+                        <li><span class="regWidth"><i class="of of-step2"></i><span>设置密码</span></span><span class="regLine"></span></li>
+                        <li><span><span class="regSuccess"><i class="of of-correct" style="color:#ff8718"></i></span><span>注册成功</span></span></li>
+                    </ul>
+
+                </section>
+
+                <article class="regThree">
+                    <article class="headImg">
+                        <img src="../../Content/img/register/headImg.png" />
+                    </article>
+                    <article>恭喜您注册成功！</article>
+                    <article class="threeSuccess">
+                        @*<a href="/Auth/RegisterFill" class="tuoGuan btn-normal">开通托管账户</a>
+                        <a href="/NewGuide/Home" class="newPeople btn-common">新手导航</a>*@
+                        <a href="/UserCenter/UserAuth/FourElementsAuth" class="tuoGuan btn-normal">开通存管账户</a>
+                        <a href="/Article/BannerPage/NewbieGift" class="newPeople btn-common">新手导航</a>
+                    </article>
+                </article>
+            </article>
+        </section>
+       @*<section>
+        <button class="commonBtn paddingBtn">普通</button>
+        <button class="allBtnStyle paddingBtn">通用</button>
+        <button class="disAbledBtn paddingBtn">不可用</button>
+        <article class="allBtnStyle" style="width:160px;height:38px;line-height:37px;text-align:center; cursor:pointer">不是button</article>
+        <i class="of of-correct"></i>
+    </section>*@
+        
+
+
+    </div>
+
+</body>
+</html>
+
+
+

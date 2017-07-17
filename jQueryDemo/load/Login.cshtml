@@ -1,0 +1,223 @@
+﻿@model   AgileBoost.Osman.Service.Model.PortalViewModels.Login.LoginPVM
+@{  
+    ViewBag.Title = "登录";
+    Layout = "~/Views/Shared/_Navigater01.cshtml";
+}
+
+    
+   
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/css/commom.css" rel="stylesheet" />
+<link href="~/Content/css/load.css" rel="stylesheet" />
+<script src="~/Scripts/js/jquery-1.12.2.min.js"></script>
+<script src="~/Scripts/js/bootstrap.min.js"></script>
+<script src="~/Scripts/js/jquery.cookie.js"></script>
+
+   
+    @*<section class="layout">
+        <article class="loadNav">
+            <a href="/Home" style="color:#999"> 首页</a><span> > </span><span class="accountLoad">账户登录</span>
+        </article>
+    </section>*@
+    <section class="guanGao">
+        <img class="guanNav" src="~/Content/img/index/newLoad.png" />
+        <article class="layout">
+            
+            <article class="loadLoad">
+             @using (Html.BeginForm("Login", "Account", new {autocomplete = "off", }))
+             {
+                    <article class="accountDenglu">
+                        <input type="hidden" value="@Model.ReturnUrl" id="ReturnUrl" name="ReturnUrl" />
+                        <article class="userLoad">账户登录</article>
+                        <!--错误提示，内容会改变（账号或密码不正确）-->
+                        <article class="accDenglu" id="spmistakes" style="display:none"><img src="~/Content/img/load/t12.svg" /><span>@Model.Info</span></article>
+                            
+                        <!--<article class="accDenglu"><img src="img/t12.png"/>账号或密码错误</article>-->
+                        <!--公共场合不建议记住密码，以防账号丢失。-->
+                        <article class="accountNum"><span class="userIcon"><img src="~/Content/img/load/userName.svg" /></span> <span class="loadLine"></span> 
+                        <input type="tel" maxlength="11" class="phoneLoad same" id="Account" name="Account" onfocus="this.placeholder = ''" value="@Model.Account" onkeyup="CheckVlaue()" placeholder="请输入手机号码" /> 
+                            <span class="loadClear"><img class="clearImg" src="../../Content/img/load/clear.svg" /></span>
+                        </article>
+                        <article class="accountNum pasNum"><span class="userIcon"><img src="~/Content/img/load/psd.svg" /></span> <span class="loadLine"></span>  
+                        <input type="text" maxlength="20" class="same" id="Password" name="Password" onfocus="this.type='password'"  onkeyup="CheckVlaue()" value="@Model.Password" placeholder="请输入密码"  />
+                            <span class="loadClear"><img class="clearImg" autocomplete="off" src="../../Content/img/load/clear.svg" /></span>
+                         </article>
+                        <article class="forget">
+                            <article class="forgetLeft" ><input type="checkbox" style="height:14px;width:14px;float:left" id="ckRemeber" name="ckRemeber" /><span style="width:65px;line-height:14px;display:inline-block"  for="getNum" onclick="olRemeber()" class="getNum"><label style="float:right"> 记住账号</label></span></article>
+                            <article class="forgetRight"><a class="forgetRight" href="/Account/ResetPasswordOne">忘记登录密码？</a></article>
+                        </article>
+                        <button type="submit" class="accLoad btn-normal" id="btnLogin">登录&nbsp;</button>
+                        <article class="accLine"></article>
+                        <article class="accZhuche"><a href="/Account/RegisterMobile">免费注册</a></article>
+                    </article>
+             }
+
+            </article>
+        </article>
+    </section>
+    
+
+<script type="text/javascript">
+  
+    $(document).ready(function () {      
+
+        $(".clearImg").eq(0).click(function () {
+            $(".phoneLoad").val("");
+            $(this).css({ "display": "none" });
+        })
+        $(".clearImg").eq(1).click(function () {
+            //if ($("#Password").attr("type") == "password") {
+            //    $("#Password").attr("type", "text")
+            //}
+            //else {
+            //    $("#Password").attr("type", "password")
+            //}
+            $("#Password").val("");
+            $(this).css({ "display": "none" });
+        })
+        var mistake = "@Model.Info";
+        if (mistake != "" && mistake != null)
+        {
+            $("#spmistakes").show();
+        }
+        ValudateImg();
+        var cookieAccount = $.cookie("accountMobile");
+        if (cookieAccount!=null) {
+            $("#Account").val(cookieAccount);
+            $(".loadClear").find(".clearImg").eq(0).css({ "display": "block" });
+            $("#ckRemeber").prop("checked", true);
+        }
+        //CheckCookie();
+        //$("#Account").mouseup(function () {
+        //    CheckCookie();
+        //});
+      
+
+        $("#ckRemeber").click(function () {
+            if ($("#ckRemeber").is(":checked")) {
+                $("#spmistakes").show();
+                $("#spmistakes>span").text("公共场合不建议记住账号，以防账号丢失。");
+            }
+            else {
+                $("#spmistakes").hide();
+                $("#spmistakes>span").empty();
+            }
+
+        });
+
+        $("#btnLogin").click(function () {            
+            //if ($("#btnLogin").css("background-color") != "rgb(243, 98, 0)")
+            //if (CheckVlaue()==false)
+            //{
+            //    return false;
+            //}
+            if (ValidateInput() == false) {
+                return false;
+            }
+            if ($("#ckRemeber").is(":checked")) {
+                var account = $("#Account").val().trim();
+                $.cookie("accountMobile", account, { expires: 7 });
+            }
+            else {
+                $.cookie("accountMobile", null);
+            }
+        });
+
+        
+    });
+
+    function CheckCookie() {
+        var account = $("#Account").val().trim();
+        if (account.length > 0) {
+            $("#btnLogin").css("background-color", "#FF8718");
+        }
+        else {
+            $("#btnLogin").css("background-color", "#eee");
+        }
+
+    }
+    //选中记住账号
+    function olRemeber()
+    {
+        if ($("#ckRemeber").is(":checked")) {
+            $("#ckRemeber").removeAttr("checked");
+            $("#spmistakes").hide();
+            $("#spmistakes>span").empty();
+        }
+        else {
+            $("#ckRemeber").prop("checked", true);
+            $("#spmistakes").show();
+            $("#spmistakes>span").text("公共场合不建议记住账号，以防账号丢失。");
+        }
+
+    }
+
+    function CheckVlaue() {
+        ValudateImg();
+        //if (account.length > 0 && password.length > 0) {
+        //    $("#btnLogin").css("background-color", "#f36200");
+        //    return true;
+        //}
+        //else {
+        //    $("#btnLogin").css("background-color", "#eee");
+        //    return false;
+        //}
+    }
+   
+    function ValidateInput() {       
+        var account = $("#Account").val().trim();
+        var password = $("#Password").val().replace(/[ ]/g, "");
+        if (account.length == 0) {
+            $("#spmistakes").show();
+            $("#spmistakes>span").text("请输入您的手机号");
+            $("#Account").focus();
+            return false;
+        }
+        if (password.length == 0) {
+            $("#spmistakes").show();
+            $("#spmistakes>span").text("请输入登录密码");
+            $("#Password").focus();
+            return false;
+        }
+        if (!(/^1(3|4|5|7|8)\d{9}$/.test(account)))
+        {
+            $("#spmistakes").show();
+            $("#spmistakes>span").text("请输入合法的手机号");
+            $("#Account").focus();
+            return false;
+        }
+        return true;
+    }
+
+
+    function ValudateImg()
+    {
+        
+        $(".same").each(function(){
+            if ($(this).val().trim().length == 0) {
+                $(this).next().children(".clearImg").hide();
+            }
+            else {
+                if (navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.split(";")[1].replace(/[ ]/g, "") == "MSIE9.0") {
+                    $(this).next().children(".clearImg").hide();
+                } else {
+                    $(this).next().children(".clearImg").show();
+                }
+                
+            }
+        })
+    }
+
+    if ($(window).height() < 737) {
+        $(".guanGao").css({ "marginBottom": 30 + "px" });
+    } else {
+        $(".guanGao").css({ "marginBottom": $(window).height() - 737 + "px" });
+    }
+    
+</script>
+
+
+   
+   
+
+

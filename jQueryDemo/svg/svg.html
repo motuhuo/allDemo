@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>svg</title>
+</head>
+
+<body>
+	<canvas id="myCanvas" width="500" height="500"></canvas>
+</body>
+<script>
+	var myCanvas = document.getElementById('myCanvas');
+    var myCtx = myCanvas.getContext('2d');
+
+    myCtx.beginPath();
+    myCtx.moveTo(30, 30);
+
+    //利用bezierCurveTo 绘制canvas 三次贝塞尔曲线
+    // 填入控制点(P1,P2) 和 终点(p3)
+    myCtx.bezierCurveTo(300, 300, 400, 300, 500, 30);
+    myCtx.stroke();
+    myCtx.closePath();
+
+
+
+    
+</script>
+</html>

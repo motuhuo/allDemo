@@ -1,0 +1,405 @@
+﻿@using System.Data
+@using EnumLibrary
+@model AgileBoost.Osman.Service.Model.DepositModels.FourElementsAuth.UserInfoModel.UserDetailInfo
+@{
+    ViewBag.Title = "注册";
+    //Layout = "~/Views/Shared/_Navigater01.cshtml";
+    Layout = "~/Views/Shared/_Navigater01.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/commom.css" rel="stylesheet" />
+    <link href="~/Content/css/cunGuan/cunguan.css" rel="stylesheet" />
+    <link href="~/Content/css/cunGuan/select2.min.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.12.2.min.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script>
+        $(".headerRight").find("ul li:eq(3)").addClass("active").siblings().removeClass("active");
+    </script>
+    <style type="text/css">
+        .bgreadonly {
+            background-color: #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="width:100%;height:100%;padding-bottom:50px">
+        <section class="layout">
+            <article class="regNav">
+                @{
+                    string name1 = "身份认证";
+                    string name2 = "认证成功";
+                    if (Model.Status == DepositStatus_Enum.Unbound || Model.Status == DepositStatus_Enum.Unsynchronized)
+                    {
+                        name1 = "绑定银行卡";
+                        name2 = "绑卡成功";
+                    }
+
+                }
+                <a href="/UserCenter/Home" style="color:#999; cursor:pointer">我的账户</a><span> > </span><span class="regAccount">@name1</span>
+            </article>
+        </section>
+        <section class="layout">
+            <article class="regBox">
+                <section class="regBoxTitle">
+                    <ul class="regBoxUl">
+                        <li><span><img src="~/Content/img/cunGuan/regPhoneActive.svg" /></span><span>@name1</span><span class="regLine"></span></li>
+                        <li><span><img src="~/Content/img/cunGuan/regSuccess.svg" /></span><span>@name2</span></li>
+                    </ul>
+                    @* <section class="goLoad_two">已有账号？<a href="/Account/Login">去登录</a></section>*@
+                </section>
+                <div class="openCg">为保障您的资金安全，请先开通晋商银行存管账户</div>
+                @using (Html.BeginForm("SubmitFourElementsAuth", "UserAuth", FormMethod.Post))
+                {
+                    string bgreadonly = "";
+                    string isreadonly = "";
+                    string ismsg = "";
+                    if (!string.IsNullOrEmpty(Model.RealName))
+                    {
+                        bgreadonly = "bgreadonly";
+                        isreadonly = "readonly=\"readonly\"";
+                        ismsg = "style='display:none'";
+                    }
+                    <input type="hidden" name="InvestorId" id="hidInvestorId" value="@AgileBoost.Osman.User.LoginUser.Current.ID" />
+                    <input type="hidden" name="Status" id="hidStatus" value="@Model.Status" />
+
+                    <div class="inputBox">
+                        <div class="lineInput">
+                            <div class="leftMsg">姓名</div>
+                            <input type="text" onblur="realName()" class="boxSizing hookInput @bgreadonly" name="RealName" @isreadonly value="@Model.RealName" id="txtRealName" placeholder="请输入您的姓名">
+                            <span class="clearMsg"><img src="~/Content/img/cunGuan/clear.svg" alt=""></span>
+                        </div>
+                        <!-- 姓名错误提示 -->
+                        <div class="errorMsg nameMsg" @ismsg>
+                            <img src="~/Content/img/cunGuan/error.svg" alt=""> <span class="txtName"></span>
+                        </div>
+                        <div class="lineInput">
+                            <div class="leftMsg">身份证号</div>
+                            <input type="text" maxlength="18" onblur="verifyIdCode()" class="boxSizing hookInput @bgreadonly" @isreadonly value="@Model.IdCode" name="IdCode" id="txtIdCode" placeholder="请输入您的身份证号码">
+                            <span class="clearMsg"><img src="~/Content/img/cunGuan/clear.svg" alt=""></span>
+                        </div>
+                        <!-- 身份证号错误提示 -->
+                        <div class="errorMsg identityMsg" @ismsg>
+                            <img src="~/Content/img/cunGuan/error.svg" alt=""><span class="txtId"></span>
+                        </div>
+                        <div class="lineInput">
+                            <div class="leftMsg">所属银行</div>
+                            <div class="bankBox">
+                                @*<input type="text" class="boxSizing hookInput" value="01020000" name="OpenBranch" id="OpenBranch1" />*@
+                                <select class="js-example-templating js-states form-control select2-hidden-accessible errorBorder" name="OpenBranch" id="txtOpenBranch">
+                                    <option></option>
+                                    @if (ViewBag.BankList != null && ViewBag.BankList.Rows.Count > 0)
+                                    {
+                                        foreach (DataRow dr in ViewBag.BankList.Rows)
+                                        {
+                                            <option value="@dr["BankNumber"]" data='<span style="margin-left:8px; font-size:12px; color:#999">单笔@(Math.Round((Convert.ToDouble(dr["SingleMaxAmount"])/10000*1.0),1))万    单日@(Math.Round((Convert.ToDouble(dr["DailyMaxAmount"])/10000*1.0),1))万</span>' imgPath="~/Content/img/cunGuan/@(dr["BankNumber"]+".png")">@dr["BankName"]</option>
+
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <!-- 所属银行错误提示 -->
+                        <div class="errorMsg bankMsg">
+                            <img src="~/Content/img/cunGuan/error.svg" alt=""><span class="txtBank">请选择银行</span>
+                        </div>
+                        <div class="lineInput">
+                            <div class="leftMsg">银行卡号</div>
+                            <input type="tel" maxlength="22" onblur="verifyBankNum()" name="CardNo" id="txtCardNo" class="boxSizing hookInput" placeholder="请输入银行卡号">
+                            <span class="clearMsg"><img src="~/Content/img/cunGuan/clear.svg" alt=""></span>
+                        </div>
+                        <!-- 银行卡号错误提示 -->
+                        <div class="errorMsg bankNumMsg">
+                            <img src="~/Content/img/cunGuan/error.svg" alt=""><span class="txtCard"></span>
+                        </div>
+                        <div class="lineInput">
+                            <div class="leftMsg">手机号码</div>
+                            <input type="tel" maxlength="11" onblur="verifyTel()" class="boxSizing hookInput" name="PreMobile" id="txtMobile" placeholder="请输入银行预留手机号码">
+                            <span class="clearMsg"><img src="~/Content/img/cunGuan/clear.svg" alt=""></span>
+                        </div>
+                        <!-- 手机号码错误提示 -->
+                        <div class="errorMsg telNumMsg">
+                            <img src="~/Content/img/cunGuan/error.svg" alt=""><span class="txtTel"></span>
+                        </div>
+
+                        @*<!-- 手机验证码 -->
+                            <div class="lineInput">
+                                <div class="leftMsg">短信验证</div>
+                                <input type="text" maxlength="6" class="boxSizing hookInput noteBox onlyNum" id="noteNum" placeholder="输入银行预留手机短信" onblur="verifyNoteNum()">
+
+                                <button class="getNoteNum" type="button" style="font-size:14px" id="getCode">获取验证码</button>
+
+                                <span class="clearMsg noteClear"><img src="~/Content/img/cunGuan/clear.svg" alt=""></span>
+                            </div>
+                            <!-- 手机验证码错误提示 -->
+                            <div class="errorMsg noteMsg">
+                                <img src="~/Content/img/cunGuan/error.svg" alt=""><span class="txtNote"></span>
+                            </div>*@
+
+                        @if (!ViewBag.HasPayPwd)
+                        {
+                            <div class="lineInput">
+                                <div class="leftMsg">交易密码</div>
+                                <input type="text" maxlength="6" class="boxSizing hookInput dealNum" name="PayPassword" id="passwordNum" placeholder="请设置6位数字交易密码" onblur="verifyDealNum()" autocomplete="off" onfocus="this.type='password'">
+                                <span class="clearMsg"><img src="~/Content/img/cunGuan/clear.svg" alt=""></span>
+                            </div>
+                            //交易密码错误提示
+                            <div class="errorMsg passwordNumMsg">
+                                <img src="~/Content/img/cunGuan/error.svg" alt=""><span class="txtDeal"></span>
+                            </div>
+                        }
+                        <!-- 同意开通协议 -->
+                        @*<div class="agreeInput">
+                                <div class="leftMsg"></div>
+                                <div class="checkAgree">
+                                    <input type="checkbox" id="agreeOpen" name="agreeOpen" checked="checked">
+                                    <label for="agreeOpen" style="float:right">我已阅读并同意 <a href="/PdfViewer/Index?fileName=RegisterAgreement.pdf" target="_blank">《注册服务协议》</a></label>
+                                </div>
+                            </div>
+                            <div class="errorMsg openDeal">
+                                <img src="~/Content/img/cunGuan/error.svg" alt="">请阅读勾选注册服务协议
+                            </div>*@
+                    </div>
+                        <div class="nestTap">
+                            <button id="nextBtn" class="btn-normal nestBtn">下一步</button>
+                        </div>
+                }
+
+            </article>
+        </section>
+        <div class="layout hintBox">
+            <div class="hint" style="display:inline-block;text-align:left">
+                <span style="font-size:16px; margin-bottom:20px;display:inline-block;"><i class="of of-about" style="margin-top:2px; line-height:15px; float:left;margin-right:8px;"></i> 温馨提示：</span>
+                <p>1、你的账户资金将由晋商银行存管。</p>
+                <p>2、为了您的资金安全，请您在充值前完成晋商银行存管账户认证及绑定设置。</p>
+                <p>3、您绑定的银行卡必须是本人名下银行卡，将作为充值卡和提现卡使用。</p>
+                <p>4、遇到任何问题，请联系客服，400-008-7077。</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // 禁止输入且背景灰色
+    //$("#nameMsg").val('234343');
+    //$("#nameMsg").attr("disabled","disabled");
+    //if($("#nameMsg").attr('disabled') == 'disabled') {
+    //  $("#nameMsg").css({"background":'#e5e5e5'})
+    //}
+    // 清空按钮
+    $('.hookInput').keyup(function () {
+        if ($(this).val().length > 0) {
+            if (navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.split(";")[1].replace(/[ ]/g, "") == "MSIE9.0") {
+                $(this).siblings('.clearMsg').css({ "display": "none" });
+            } else {
+                $(this).siblings('.clearMsg').css({ "display": "block" });
+            }
+
+        } else {
+            $(this).siblings('.clearMsg').css({ "display": "none" });
+        }
+    })
+    // 清空内容
+    $('.clearMsg').click(function () {
+        $(this).siblings('input').val('');
+        $(this).css({ "display": "none" })
+    })
+
+
+    // 下拉选择银行
+    $("#txtOpenBranch").select2({
+        language: "zh-CN", //设置 提示语言
+        width: "100%", //设置下拉框的宽度
+        placeholder: "请选择银行",
+        templateResult: function (state) {
+            if (!state.id) {
+                return state.text;
+            }
+            var $state = $('<span><img style="height: 24px;margin-right:4px;" src="' + state.element.getAttribute("imgPath") + '" class="img-flag" /> ' + state.text + state.element.getAttribute("data") + '</span>');
+            return $state;
+        },
+        templateSelection: function (state) {
+            if (!state.id) return state.text; // optgroup
+            var $state = $('<span><img style="height: 24px;margin-top:4px;margin-right:4px;" src="' + state.element.getAttribute("imgPath") + '" class="img-flag" /> ' + state.text + '</span>');
+            return $state;
+        }
+    });
+
+    //认证姓名
+    function realName() {
+        var name = $("#txtRealName").val().trim();
+        if (name.length == 0) {
+            $("#txtRealName").addClass('errorBorder')
+            $(".nameMsg").css({ 'display': 'block' });
+            $(".txtName").html("姓名不能为空");
+            return false;
+        }
+        $("#txtRealName").removeClass('errorBorder')
+        $(".nameMsg").css({ 'display': 'none' });
+        $(".txtName").html("");
+        return true;
+    }
+
+    // 认证身份证号
+    function verifyIdCode() {
+        var txtIdCode = $("#txtIdCode").val().trim();
+        var regIdNo = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if (txtIdCode.length == 0) {
+            $("#txtIdCode").addClass('errorBorder')
+            $(".identityMsg").css({ 'display': 'block' });
+            $(".txtId").html("身份证号不能为空");
+            return false;
+        }
+        if (!regIdNo.test(txtIdCode)) {
+            $("#txtIdCode").addClass('errorBorder')
+            $(".identityMsg").css({ 'display': 'block' });
+            $(".txtId").html("身份证号格式有错误");
+            return false;
+        }
+        $("#txtIdCode").removeClass('errorBorder')
+        $(".identityMsg").css({ 'display': 'none' });
+        $(".txtId").html("");
+        return true;
+    }
+    //认证所属银行
+    function verifyBank() {
+        // 所选择的银行 selectBank
+        //var selectBank = $("#txtOpenBranch").select2("val");
+        //if (selectBank == '') {
+        //    $(".select2-container--default .select2-selection--single").css({ "border": "1px solid #ff8718" });
+        //    $(".bankMsg").css({ 'display': 'block' });
+        //    return false;
+        //}
+        //$(".select2-container--default .select2-selection--single").css({ "border": "1px solid #e5e5e5" });
+        //$(".bankMsg").css({ 'display': 'none' });
+        return true;
+    }
+    //认证银行卡号
+    function verifyBankNum() {
+        var txtCardNo = $("#txtCardNo").val().trim();
+        var regBankNum = /^\d{16,22}$/;
+        if (txtCardNo.length == 0) {
+            $("#txtCardNo").addClass('errorBorder')
+            $(".bankNumMsg").css({ 'display': 'block' });
+            $(".txtCard").html("银行卡号不能为空");
+            return false;
+        }
+        if (!regBankNum.test(txtCardNo)) {
+            $("#txtCardNo").addClass('errorBorder')
+            $(".bankNumMsg").css({ 'display': 'block' });
+            $(".txtCard").html("银行卡号格式错误");
+            return false;
+        }
+        $("#txtCardNo").removeClass('errorBorder')
+        $(".bankNumMsg").css({ 'display': 'none' });
+        $(".txtCard").html("");
+        return true;
+    }
+    // 认证手机号
+    function verifyTel() {
+        var mobile = $("#txtMobile").val().trim();
+        var regTel = /^1(3|4|5|7|8)\d{9}$/;
+        if (mobile.length == 0) {
+            $("#txtMobile").addClass('errorBorder')
+            $(".telNumMsg").css({ 'display': 'block' });
+            $(".txtTel").html("手机号不能为空");
+            return false;
+        }
+        if (!regTel.test(mobile)) {
+            $("#txtMobile").addClass('errorBorder')
+            $(".telNumMsg").css({ 'display': 'block' });
+            $(".txtTel").html("手机号格式错误");
+            return false;
+        }
+        $("#txtMobile").removeClass('errorBorder')
+        $(".telNumMsg").css({ 'display': 'none' });
+        $(".txtTel").html("");
+        return true;
+    }
+    //认证6位短信验证码
+    //function verifyNoteNum() {
+    //    var noteNum = $("#noteNum").val().trim();
+    //    if (noteNum.length == 0) {
+    //        $("#noteNum").addClass('errorBorder')
+    //        $(".noteMsg").css({ 'display': 'block' });
+    //        $(".txtNote").html("短信验证码不能为空");
+    //        return false;
+    //    }
+    //    if (noteNum.length < 6) {
+    //        $("#noteNum").addClass('errorBorder')
+    //        $(".noteMsg").css({ 'display': 'block' });
+    //        $(".txtNote").html("短信验证码少于6位");
+    //        return false;
+    //    }
+    //    $("#noteNum").removeClass('errorBorder')
+    //    $(".noteMsg").css({ 'display': 'none' });
+    //    $(".txtNote").html("");
+    //    return true;
+    //}
+    //认证交易密码
+    function verifyDealNum() {
+        var noteNum = $("#passwordNum").val().trim();
+        if (noteNum.length == 0) {
+            $("#passwordNum").addClass('errorBorder')
+            $(".passwordNumMsg").css({ 'display': 'block' });
+            $(".txtDeal").html("交易密码不能为空");
+            return false;
+        }
+        if (noteNum.length < 6) {
+            $("#passwordNum").addClass('errorBorder')
+            $(".passwordNumMsg").css({ 'display': 'block' });
+            $(".txtDeal").html("交易密码少于6位");
+            return false;
+        }
+        $("#passwordNum").removeClass('errorBorder')
+        $(".passwordNumMsg").css({ 'display': 'none' });
+        $(".txtDeal").html("");
+        return true;
+    }
+    //只能输入数字
+    $('.onlyNum').bind('input', function () {
+        var numOnly = $(".onlyNum").val();
+        if (!/^\d+(\.{0,1}\d+){0,1}$/.test(numOnly.replace(".", ''))) {
+            $(this).val(numOnly.substr(0, numOnly.length - 1));
+        }
+    })
+    $(".dealNum").bind('input', function () {
+        var numOnly = $(".dealNum").val();
+        if (!/^\d+(\.{0,1}\d+){0,1}$/.test(numOnly.replace(".", ''))) {
+            $(this).val(numOnly.substr(0, numOnly.length - 1));
+        }
+    })
+
+
+    //认证复选框是否选中
+    //$(".checkAgree").click(function () {
+    //    checboxTrue();
+    //})
+    //function checboxTrue() {
+    //    if ($("#agreeOpen").is(":checked")) {
+    //        $(".openDeal").css({ "display": "none" });
+    //        return true;
+    //    } else {
+    //        $(".openDeal").css({ "display": "block" });
+    //        return false;
+    //    }
+    //};
+
+    //点击下一步
+    $("#nextBtn").click(function () {
+        if (realName() && verifyIdCode() && verifyBank() && verifyBankNum() && verifyTel() && verifyDealNum()) {
+            return true;
+        }
+        return false;
+
+    })
+
+</script>
+</html>
+
+

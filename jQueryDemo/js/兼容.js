@@ -1,21 +1,44 @@
 // JavaScript Document
 /* 1、事件源  2、连续事件   3、4、getByclassName  5、获取当前样式   6、事件绑定  7、鼠标滚轮事件   8、选中文字  9、阻止冒泡   10、阻止默认事件   11、弹性菜单(运动框架) 12、input兼容ie8  13、1px兼容问题 14、苹果  15、深拷贝     16.input type="file"样式的修改   17.fontface(字体) 18.清除按钮  19.获取图片的原始 宽 、高 20、省略号  21、图片垂直居中 
-22、清除浮动 23、css3常用  24、hack 25、闭包 26、prototype 27、面向对象 28、ajax状态值 29、HTTP状态码 30、判断andriod ios 31、排序方法 32、es6的类 class的用法 33、媒介查寻  34、rem布局 35、屏幕旋转的事件和样式  36、模拟placeholder  37、前端文章 https://juejin.im/  entry/5936c99efe88c20061e63ad5/detail  知识点：https://mp.weixin.qq.com/s/zgIC0y0-PXhoTisLDdzVHw   38、双向数据绑定 
+22、清除浮动 23、css3常用  24、hack 25、闭包 26、prototype 27、面向对象 28、ajax状态值 29、HTTP状态码 30、判断andriod ios 31、排序方法 32、es6的类 class的用法 33、媒介查寻  34、rem布局 35、屏幕旋转的事件和样式  36、模拟placeholder  37、前端文章 https://juejin.im/  entry/5936c99efe88c20061e63ad5/detail  知识点：https://mp.weixin.qq.com/s/zgIC0y0-PXhoTisLDdzVHw   38、双向数据绑定 39、截取url?后的值  40、时间函数: 三次贝赛尔曲线 animation: name cubic-bezier(.97,.02,.28,1.44) 2s both;  网址：http://yisibl.github.io/cubic-bezier/#.97,.02,.28,1.44  
+
 
 */
 // win10激活方法：http://www.xitongzhijia.net/xtjc/20160721/78483.html
-// 
+//
+// 只能输入数字 
+// $(this).val($(this).val().replace(/\D/gi,""))
+// onkeyup='this.value=this.value.replace(/\D/gi,"")'
 // 只能输入数字，一个小数点
-// InputVal 为输入框
+// InputVal 为输入框内容
 // if (!/^\d+(\.{0,1}\d+){0,1}$/.test(InputVal.replace(".", ''))) {
 //  $(this).val(InputVal.substr(0, InputVal.length - 1));
 // }
-// 
 // $('.inputNum').bind('input', function () {
 //    连续改变事件
-// }
+// })
 // 
+// 复制文本
+// <input  type="text" id="contents"  style="opacity: 0;filter:alpha(opacity=0)">
+// <div type="button" onClick="jsCopy();">复制</div>
+// $("#contents").val('复制成功');
+// function jsCopy(){ 
+//         var e=document.getElementById("contents");//对象是contents 
+//         e.select(); //选择对象 
+//         document.execCommand("Copy"); //执行浏览器复制命令
+//     } 
+//     
+//只展示一次
+//var TanChuang = sessionStorage.getItem("TanChuang");
+//if (sessionStorage.getItem("TanChuang")) {
+    //     $("#mysWindow").modal("hide");
 
+    // } else {
+    //     $("#mysWindow").modal("show");
+    //     sessionStorage.setItem("TanChuang", "true");
+    // }
+//     
+//     
 // 图片压缩 https://tinypng.com/
 // 
 // Git   前面加  http://htmlpreview.github.io/? 可以运行html文件
@@ -53,7 +76,6 @@
 // }
 
 // 正则表达式  http://www.lovebxm.com/2017/05/31/RegExp/
-
 
 /*
 var scrolltop = document.documentElement.scrollTop||document.body.scrollTop;
@@ -739,5 +761,15 @@ HTML代码：
         obj.hello = e.target.value
       })
 
-
+      39、截取url?后的值  www.xxxxx?source=sourceDot
+        //获取source 并保存到localStorage
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        var sourceFrom = getQueryString('source');   //获取source  == sourceDot
+        localStorage.setItem("sourceFrom", sourceFrom);  //保存sourceFrom
+        localStorage.getItem("sourceFrom")  //获取sourceFrom
 

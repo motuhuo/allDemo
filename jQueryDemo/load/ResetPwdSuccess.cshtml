@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "找回密码";
+    Layout = "~/Views/Shared/_Navigater01.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/commom.css" rel="stylesheet" />
+    <link href="../../Content/css/register.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.12.2.min.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+  
+
+</head>
+<body>
+
+    @*<div style="width:100%;height:100%;padding-bottom:158px">
+
+            <section class="layout">
+                <article class="regNav">
+                    <a href="/Home" style="color:#999"> 首页</a><span> > </span><span class="regAccount">密码找回</span>
+                </article>
+            </section>
+            <section class="layout">
+                <article class="regBox">
+                    <section class="regBoxTitle">
+                        <ul class="regBoxUl">
+                            <li><span class="regWidth"><span class="regPhone"><img src="../../Content/img/register/regPhone.png" /></span><span>验证手机</span></span><span class="regLine"></span></li>
+                            <li><span class="regWidth"><span class="regPsd"><img src="../../Content/img/register/regPsd.png" /></span><span>设置密码</span></span><span class="regLine"></span></li>
+                            <li><span><span class="regSuccess"><img src="../../Content/img/register/regSuccessActive.png" /></span><span>修改成功</span></span></li>
+                        </ul>
+
+                    </section>
+
+                    <article class="retrThree">
+                        <article class="headImg">
+                            <img src="../../Content/img/register/headImg.png"/>
+                        </article>
+                        <article>恭喜您新密码已经修改成功，请登录！</article>
+                        <article class="retrSuccess">
+                            <a href="/Account/Login" class="tuoGuan">马上登录</a>
+                        </article>
+                    </article>
+                </article>
+            </section>
+
+            <script type="text/javascript">
+                $('.threeSuccess a').hover(function () {
+                    $(this).css({ 'background': '#f36200', 'color': '#ffffff' }).siblings().css({ 'background': '#ffffff', 'color': '#ff8718' })
+                });
+            </script>
+        </div>*@
+    <div style="width:100%;height:100%;padding-bottom:158px">
+
+        <section class="layout">
+            <article class="regNav">
+                <a href="/Home" style="color:#999"> 首页</a><span> > </span><span class="regAccount">密码找回</span>
+            </article>
+        </section>
+        <section class="layout">
+            <article class="regBox">
+                <section class="regBoxTitle">
+                    <ul class="regBoxUl">
+                        <li><span class="regWidth"><i class="of of-step1"></i><span>验证手机</span></span><span class="regLine"></span></li>
+                        <li><span class="regWidth"><i class="of of-step2"></i><span>设置密码</span></span><span class="regLine"></span></li>
+                        <li><span><span class="regSuccess"><i class="of of-correct" style="color:#ff8718"></i></span><span>修改成功</span></span></li>
+                    </ul>
+
+                </section>
+
+                <article class="regThree">
+                    <article class="headImg">
+                        <img src="../../Content/img/register/headImg.png" />
+                    </article>
+                    <article>恭喜您新密码已经修改成功，请登录！</article>
+                    <article class="threeSuccess">
+                        @*<a href="#" class="tuoGuan btn-normal">恭喜您新密码已经修改成功，请登录！</a>*@
+                        <a href="/Account/Login" class="newPeople1 btn-common">马上登录</a>
+                    </article>
+                </article>
+            </article>
+        </section>
+        @*<section>
+                <button class="commonBtn paddingBtn">普通</button>
+                <button class="allBtnStyle paddingBtn">通用</button>
+                <button class="disAbledBtn paddingBtn">不可用</button>
+                <article class="allBtnStyle" style="width:160px;height:38px;line-height:37px;text-align:center; cursor:pointer">不是button</article>
+                <i class="of of-correct"></i>
+            </section>*@
+
+
+
+    </div>
+</body>
+</html>
