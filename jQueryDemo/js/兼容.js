@@ -1,10 +1,27 @@
 // JavaScript Document
 /* 1、事件源  2、连续事件   3、4、getByclassName  5、获取当前样式   6、事件绑定  7、鼠标滚轮事件   8、选中文字  9、阻止冒泡   10、阻止默认事件   11、弹性菜单(运动框架) 12、input兼容ie8  13、1px兼容问题 14、苹果  15、深拷贝     16.input type="file"样式的修改   17.fontface(字体) 18.清除按钮  19.获取图片的原始 宽 、高 20、省略号  21、图片垂直居中 
-22、清除浮动 23、css3常用  24、hack 25、闭包 26、prototype 27、面向对象 28、ajax状态值 29、HTTP状态码 30、判断andriod ios 31、排序方法 32、es6的类 class的用法 33、媒介查寻  34、rem布局 35、屏幕旋转的事件和样式  36、模拟placeholder  37、前端文章 https://juejin.im/  entry/5936c99efe88c20061e63ad5/detail  知识点：https://mp.weixin.qq.com/s/zgIC0y0-PXhoTisLDdzVHw   38、双向数据绑定 39、截取url?后的值  40、时间函数: 三次贝赛尔曲线 animation: name cubic-bezier(.97,.02,.28,1.44) 2s both;  网址：http://yisibl.github.io/cubic-bezier/#.97,.02,.28,1.44  
+22、清除浮动 23、css3常用  24、hack 25、闭包 26、prototype 27、面向对象 28、ajax状态值 29、HTTP状态码 30、判断andriod ios 31、排序方法 32、es6的类 class的用法 33、媒介查寻  34、rem布局 35、屏幕旋转的事件和样式  36、模拟placeholder  37、前端文章 https://juejin.im/  entry/5936c99efe88c20061e63ad5/detail  知识点：https://mp.weixin.qq.com/s/zgIC0y0-PXhoTisLDdzVHw   38、双向数据绑定 39、截取url?后的值  40、时间函数: 三次贝赛尔曲线 animation: name cubic-bezier(.97,.02,.28,1.44) 2s both;  网址：http://yisibl.github.io/cubic-bezier/#.97,.02,.28,1.44  41、里层滚动不影响外层滚动
+
 
 
 */
+// 
+// 前缀添加
+// transform: rotate(30deg);
+// -ms-transform: rotate(30deg);
+// -webkit-transform: rotate(30deg);
+// -o-transform: rotate(30deg);
+// -moz-transform: rotate(30deg);
+// 
+// 动画
+// @keyframes name
+// @-moz-keyframes name
+// @-webkit-keyframes name
+// @-o-keyframes name
+// 
 // win10激活方法：http://www.xitongzhijia.net/xtjc/20160721/78483.html
+//
+//https://icomoon.io/app/#/select 字体图标
 //
 // 只能输入数字 
 // $(this).val($(this).val().replace(/\D/gi,""))
@@ -23,20 +40,19 @@
 // <div type="button" onClick="jsCopy();">复制</div>
 // $("#contents").val('复制成功');
 // function jsCopy(){ 
-//         var e=document.getElementById("contents");//对象是contents 
-//         e.select(); //选择对象 
-//         document.execCommand("Copy"); //执行浏览器复制命令
-//     } 
-//     
+//  var e=document.getElementById("contents");//对象是contents 
+//  e.select(); //选择对象 
+//  document.execCommand("Copy"); //执行浏览器复制命令
+// }
+//
 //只展示一次
 //var TanChuang = sessionStorage.getItem("TanChuang");
 //if (sessionStorage.getItem("TanChuang")) {
-    //     $("#mysWindow").modal("hide");
-
-    // } else {
-    //     $("#mysWindow").modal("show");
-    //     sessionStorage.setItem("TanChuang", "true");
-    // }
+//     $("#mysWindow").modal("hide");
+// } else {
+//     $("#mysWindow").modal("show");
+//     sessionStorage.setItem("TanChuang", "true");
+// }
 //     
 //     
 // 图片压缩 https://tinypng.com/
@@ -80,7 +96,9 @@
 /*
 var scrolltop = document.documentElement.scrollTop||document.body.scrollTop;
 var scrollleft = document.documentElement.scrollLeft||document.body.scrollLeft;
+
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />  
+
 */
 // 面试题 https://github.com/Xing-Chuan/blog/blob/master/works/Web前端面试总结-2017-05.md
 // 
@@ -167,27 +185,31 @@ function MyAddEvent (obj,sEvent,fn)
   }
 }
 /*7、鼠标滚轮事件  与事件绑定函数一起使用*/
-function onMouseWheel(ev)
-  {
+  var oDiv = document.getElementById('box');
+  function onMouseWheel(ev){
     var oEvent=ev||event;
     var bDown=true;
     bDown=oEvent.wheelDelta?oEvent.wheelDelta<0:oEvent.detail>0;
-    if(bDown)   //滚轮向下滚动
-    { 
-      oDiv.style.height=oDiv.offsetHeight+10+'px';
+    if(bDown){   //滚轮向下滚动
+      console.log('向下滚动')
     }
-    else
-    { 
-      oDiv.style.height=oDiv.offsetHeight-10+'px';
+    else{
+      console.log('向上滚动')
     }
-    if(oEvent.preventDefault)   //FF下addEventListener用preventDefault阻止莫认事件；
-    { 
+    if(oEvent.preventDefault){  //FF下addEventListener用preventDefault阻止莫认事件；
       oEvent.preventDefault();
     }
-    
     return false;
-    
   }
+  function MyAddEvent (obj,sEvent,fn){
+    if(obj.attachEvent){ 
+      obj.attachEvent('on'+sEvent,fn);
+    }
+    else{ 
+      obj.addEventListener(sEvent,fn,false);
+    }
+  }
+  
   MyAddEvent(oDiv,'mousewheel',onMouseWheel);    //MyAddEvent为自定义函数。事件绑定在上面;
   MyAddEvent(oDiv,'DOMMouseScroll',onMouseWheel);
 
@@ -217,7 +239,7 @@ function stopBubble(ev)//阻止事件冒泡函数
     ev.stopPropagation()
   else
   window.event.cancelBubble=true
-}   
+}
 
 
 /*10、阻止默认事件*/
@@ -284,13 +306,13 @@ A.onclick=function(ev)
 
     //13、   1px兼容问题
 .BorderTop,.BorderBottom,.BorderLeft,.BorderRight,.BorderAb { position: relative;}
-.BorderTop:before,.BorderBottom:after {pointer-events: none;position: absolute;content: ""; height: 1px; background: #e5e5e5left: 0;right: 0}
+.BorderTop:before,.BorderBottom:after {pointer-events: none;position: absolute;content: ""; height: 1px; background: #e5e5e5; left: 0;right: 0}
 .BorderTop:before {top: 0}
 .BorderBottom:after {bottom: 0}
-.BorderLeft:before,.BorderRight:after {pointer-events: none;position: absolute;content: ""; width: 1px; background: #e5e5e5 top: 0; bottom: 0}
+.BorderLeft:before,.BorderRight:after {pointer-events: none;position: absolute;content: ""; width: 1px; background: #e5e5e5; top: 0; bottom: 0}
 .BorderLeft:before {left: 0}
 .BorderRight:after {right: 0}
-.BorderAb:after {position: absolute;content: "";top: 0;left: 0; -webkit-box-sizing: border-box; box-sizing: border-box; width: 100%; height: 100%; border: 1px solid #e5e5e5 pointer-events: none}
+.BorderAb:after {position: absolute;content: "";top: 0;left: 0; -webkit-box-sizing: border-box; box-sizing: border-box; width: 100%; height: 100%; border: 1px solid #e5e5e5; pointer-events: none}
  
 @media (-webkit-min-device-pixel-ratio:1.5),(min-device-pixel-ratio:1.5),(min-resolution: 144dpi),(min-resolution:1.5dppx) {
 .BorderTop:before,.BorderBottom:after {-webkit-transform:scaleY(.5);transform: scaleY(.5) }
@@ -773,3 +795,18 @@ HTML代码：
         localStorage.setItem("sourceFrom", sourceFrom);  //保存sourceFrom
         localStorage.getItem("sourceFrom")  //获取sourceFrom
 
+      41、里层滚动不影响外层滚动
+        $(function() {
+            var scrollTop = -1;
+            // 里层div
+            $('.two').hover(function() {
+              scrollTop = $(window).scrollTop();
+            }, function() {
+              scrollTop = -1;
+            });
+
+            $(window).scroll(function() {
+              console.log('scroll1:' + scrollTop);
+              scrollTop !== -1 && $(this).scrollTop(scrollTop);
+            })
+        })
